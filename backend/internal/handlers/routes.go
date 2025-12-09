@@ -1,0 +1,101 @@
+package handlers
+
+import (
+	"readagain/internal/middleware"
+	"readagain/internal/services"
+
+	"github.com/gofiber/fiber/v2"
+)
+
+func SetupRoutes(
+	app *fiber.App,
+	authService *services.AuthService,
+	userService *services.UserService,
+	roleService *services.RoleService,
+	categoryService *services.CategoryService,
+	authorService *services.AuthorService,
+	bookService *services.BookService,
+	storageService *services.StorageService,
+	cartService *services.CartService,
+) {
+	api := app.Group("/api/v1")
+
+	authHandler := NewAuthHandler(authService)
+	userHandler := NewUserHandler(userService)
+	roleHandler := NewRoleHandler(roleService)
+	categoryHandler := NewCategoryHandler(categoryService)
+	authorHandler := NewAuthorHandler(authorService)
+	bookHandler := NewBookHandler(bookService, storageService)
+	cartHandler := NewCartHandler(cartService)
+
+	auth := api.Group("/auth")
+	auth.Post("/register", authHandler.Register)
+	auth.Post("/login", authHandler.Login)
+	auth.Post("/refresh", authHandler.RefreshToken)
+	auth.Post("/logout", middleware.AuthRequired(), authHandler.Logout)
+	auth.Get("/me", middleware.AuthRequired(), authHandler.GetMe)
+	auth.Post("/forgot-password", authHandler.ForgotPassword)
+	auth.Post("/reset-password", authHandler.ResetPassword)
+
+	users := api.Group("/users")
+	users.Get("/profile", middleware.AuthRequired(), userHandler.GetProfile)
+	users.Put("/profile", middleware.AuthRequired(), userHandler.UpdateProfile)
+	users.Post("/change-password", middleware.AuthRequired(), userHandler.ChangePassword)
+
+	users.Post("/", middleware.AdminRequired(), userHandler.CreateUser)
+	users.Get("/", middleware.AdminRequired(), userHandler.ListUsers)
+	users.Get("/:id", middleware.AdminRequired(), userHandler.GetUser)
+	users.Put("/:id", middleware.AdminRequired(), userHandler.UpdateUser)
+	users.Patch("/:id/status", middleware.AdminRequired(), userHandler.ToggleStatus)
+	users.Delete("/:id", middleware.AdminRequired(), userHandler.DeleteUser)
+	users.Post("/:id/roles", middleware.AdminRequired(), userHandler.AssignRole)
+	users.Delete("/:id/roles", middleware.AdminRequired(), userHandler.RemoveRole)
+	users.Post("/:id/reset-password", middleware.AdminRequired(), userHandler.AdminResetPassword)
+	
+	users.Post("/bulk/activate", middleware.AdminRequired(), userHandler.BulkActivate)
+	users.Post("/bulk/deactivate", middleware.AdminRequired(), userHandler.BulkDeactivate)
+	users.Post("/bulk/delete", middleware.AdminRequired(), userHandler.BulkDelete)
+
+	roles := api.Group("/roles")
+	roles.Get("/", roleHandler.ListRoles)
+	roles.Post("/", middleware.AdminRequired(), roleHandler.CreateRole)
+	roles.Get("/:id", roleHandler.GetRole)
+	roles.Put("/:id", middleware.AdminRequired(), roleHandler.UpdateRole)
+	roles.Delete("/:id", middleware.AdminRequired(), roleHandler.DeleteRole)
+
+	permissions := api.Group("/permissions")
+	permissions.Get("/", roleHandler.ListPermissions)
+
+	categories := api.Group("/categories")
+	categories.Get("/", categoryHandler.ListCategories)
+	categories.Get("/:id", categoryHandler.GetCategory)
+	categories.Post("/", middleware.AdminRequired(), categoryHandler.CreateCategory)
+	categories.Put("/:id", middleware.AdminRequired(), categoryHandler.UpdateCategory)
+	categories.Delete("/:id", middleware.AdminRequired(), categoryHandler.DeleteCategory)
+
+	authors := api.Group("/authors")
+	authors.Get("/", authorHandler.ListAuthors)
+	authors.Get("/:id", authorHandler.GetAuthor)
+	authors.Post("/", middleware.AdminRequired(), authorHandler.CreateAuthor)
+	authors.Put("/:id", middleware.AdminRequired(), authorHandler.UpdateAuthor)
+	authors.Delete("/:id", middleware.AdminRequired(), authorHandler.DeleteAuthor)
+
+	books := api.Group("/books")
+	books.Get("/", bookHandler.ListBooks)
+	books.Get("/featured", bookHandler.GetFeaturedBooks)
+	books.Get("/new-releases", bookHandler.GetNewReleases)
+	books.Get("/bestsellers", bookHandler.GetBestsellers)
+	books.Get("/:id", bookHandler.GetBook)
+	books.Post("/", middleware.AdminRequired(), bookHandler.CreateBook)
+	books.Put("/:id", middleware.AdminRequired(), bookHandler.UpdateBook)
+	books.Delete("/:id", middleware.AdminRequired(), bookHandler.DeleteBook)
+	books.Patch("/:id/featured", middleware.AdminRequired(), bookHandler.ToggleFeatured)
+
+	cart := api.Group("/cart", middleware.AuthRequired())
+	cart.Get("/", cartHandler.GetCart)
+	cart.Get("/count", cartHandler.GetCartCount)
+	cart.Post("/", cartHandler.AddToCart)
+	cart.Delete("/:id", cartHandler.RemoveFromCart)
+	cart.Delete("/", cartHandler.ClearCart)
+	cart.Post("/merge", cartHandler.MergeGuestCart)
+}
