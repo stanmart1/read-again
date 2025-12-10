@@ -238,12 +238,19 @@ func SetupRoutes(
 	settings.Put("/payment/config", settingsHandler.UpdatePaymentSettings)
 
 	analytics := api.Group("/admin/analytics", middleware.AdminRequired())
-	analytics.Get("/dashboard", analyticsHandler.GetDashboard)
+	analytics.Get("/dashboard", analyticsHandler.GetEnhancedOverview)
 	analytics.Get("/sales", analyticsHandler.GetSalesStats)
 	analytics.Get("/users", analyticsHandler.GetUserStats)
 	analytics.Get("/reading", analyticsHandler.GetReadingStats)
 	analytics.Get("/revenue", analyticsHandler.GetRevenueReport)
 	analytics.Get("/growth", analyticsHandler.GetGrowthMetrics)
+
+	api.Get("/analytics/reading", middleware.AdminRequired(), analyticsHandler.GetReadingAnalyticsByPeriod)
+
+	reports := api.Group("/admin/reports", middleware.AdminRequired())
+	reports.Get("/data", analyticsHandler.GetReportsData)
+	reports.Post("/generate", analyticsHandler.GenerateReport)
+	reports.Get("/download/:type", analyticsHandler.DownloadReport)
 
 	notifications := api.Group("/notifications", middleware.AuthRequired())
 	notifications.Get("/", notificationHandler.GetNotifications)
@@ -271,10 +278,4 @@ func SetupRoutes(
 	api.Put("/admin/about", middleware.AdminRequired(), aboutHandler.Update)
 
 	api.Get("/dashboard/activity", middleware.AuthRequired(), activityHandler.GetActivities)
-
-	api.Get("/admin/admin/enhanced/analytics/overview", middleware.AdminRequired(), analyticsHandler.GetEnhancedOverview)
-	api.Get("/analytics/reading", middleware.AdminRequired(), analyticsHandler.GetReadingAnalyticsByPeriod)
-	api.Get("/admin/reports/data", middleware.AdminRequired(), analyticsHandler.GetReportsData)
-	api.Post("/admin/reports/generate", middleware.AdminRequired(), analyticsHandler.GenerateReport)
-	api.Get("/admin/reports/download/:type", middleware.AdminRequired(), analyticsHandler.DownloadReport)
 }
