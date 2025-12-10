@@ -35,6 +35,7 @@ func SetupRoutes(
 	reviewService *services.ReviewService,
 	aboutService *services.AboutService,
 	activityService *services.ActivityService,
+	wishlistService *services.WishlistService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -61,6 +62,7 @@ func SetupRoutes(
 	reviewHandler := NewReviewHandler(reviewService)
 	aboutHandler := NewAboutHandler(aboutService)
 	activityHandler := NewActivityHandler(activityService)
+	wishlistHandler := NewWishlistHandler(wishlistService)
 
 	app.Use(middleware.AuditMiddleware(auditService))
 
@@ -278,4 +280,9 @@ func SetupRoutes(
 	api.Put("/admin/about", middleware.AdminRequired(), aboutHandler.Update)
 
 	api.Get("/dashboard/activity", middleware.AuthRequired(), activityHandler.GetActivities)
+
+	wishlist := api.Group("/wishlist", middleware.AuthRequired())
+	wishlist.Get("/", wishlistHandler.GetWishlist)
+	wishlist.Post("/", wishlistHandler.AddToWishlist)
+	wishlist.Delete("/:id", wishlistHandler.RemoveFromWishlist)
 }
