@@ -33,6 +33,8 @@ func SetupRoutes(
 	notificationService *services.NotificationService,
 	auditService *services.AuditService,
 	reviewService *services.ReviewService,
+	aboutService *services.AboutService,
+	activityService *services.ActivityService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -57,6 +59,8 @@ func SetupRoutes(
 	notificationHandler := NewNotificationHandler(notificationService)
 	auditHandler := NewAuditHandler(auditService)
 	reviewHandler := NewReviewHandler(reviewService)
+	aboutHandler := NewAboutHandler(aboutService)
+	activityHandler := NewActivityHandler(activityService)
 
 	app.Use(middleware.AuditMiddleware(auditService))
 
@@ -262,4 +266,15 @@ func SetupRoutes(
 	adminReviews.Patch("/", reviewHandler.UpdateStatus)
 	adminReviews.Patch("/feature", reviewHandler.ToggleFeatured)
 	adminReviews.Delete("/:id", reviewHandler.Delete)
+
+	api.Get("/about", aboutHandler.Get)
+	api.Put("/admin/about", middleware.AdminRequired(), aboutHandler.Update)
+
+	api.Get("/dashboard/activity", middleware.AuthRequired(), activityHandler.GetActivities)
+
+	api.Get("/admin/admin/enhanced/analytics/overview", middleware.AdminRequired(), analyticsHandler.GetEnhancedOverview)
+	api.Get("/analytics/reading", middleware.AdminRequired(), analyticsHandler.GetReadingAnalyticsByPeriod)
+	api.Get("/admin/reports/data", middleware.AdminRequired(), analyticsHandler.GetReportsData)
+	api.Post("/admin/reports/generate", middleware.AdminRequired(), analyticsHandler.GenerateReport)
+	api.Get("/admin/reports/download/:type", middleware.AdminRequired(), analyticsHandler.DownloadReport)
 }

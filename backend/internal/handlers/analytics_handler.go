@@ -93,3 +93,60 @@ func (h *AnalyticsHandler) GetGrowthMetrics(c *fiber.Ctx) error {
 
 	return c.JSON(fiber.Map{"data": metrics})
 }
+
+func (h *AnalyticsHandler) GetEnhancedOverview(c *fiber.Ctx) error {
+	data, err := h.service.GetEnhancedOverview()
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get enhanced overview: %v", err)
+		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch enhanced analytics"})
+	}
+
+	return c.JSON(data)
+}
+
+func (h *AnalyticsHandler) GetReadingAnalyticsByPeriod(c *fiber.Ctx) error {
+	period := c.Query("period", "month")
+
+	data, err := h.service.GetReadingAnalyticsByPeriod(period)
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get reading analytics: %v", err)
+		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch reading analytics"})
+	}
+
+	return c.JSON(data)
+}
+
+func (h *AnalyticsHandler) GetReportsData(c *fiber.Ctx) error {
+	data, err := h.service.GetReportsData()
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get reports data: %v", err)
+		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch reports data"})
+	}
+
+	return c.JSON(data)
+}
+
+func (h *AnalyticsHandler) GenerateReport(c *fiber.Ctx) error {
+	var req struct {
+		Type string `json:"type"`
+	}
+
+	if err := c.BodyParser(&req); err != nil {
+		return c.Status(400).JSON(fiber.Map{"error": "Invalid request body"})
+	}
+
+	return c.JSON(fiber.Map{
+		"message": "Report generation started",
+		"type":    req.Type,
+	})
+}
+
+func (h *AnalyticsHandler) DownloadReport(c *fiber.Ctx) error {
+	reportType := c.Params("type")
+
+	return c.JSON(fiber.Map{
+		"message": "Report download",
+		"type":    reportType,
+	})
+}
+

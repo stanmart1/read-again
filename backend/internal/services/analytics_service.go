@@ -200,3 +200,105 @@ func (s *AnalyticsService) GetGrowthMetrics() (*GrowthMetrics, error) {
 
 	return &metrics, nil
 }
+
+func (s *AnalyticsService) GetEnhancedOverview() (map[string]interface{}, error) {
+	overview, err := s.GetDashboardOverview()
+	if err != nil {
+		return nil, err
+	}
+
+	growth, _ := s.GetGrowthMetrics()
+
+	var userGrowth []map[string]interface{}
+	rows, _ := s.db.Raw(`
+		SELECT 
+			TO_CHAR(created_at, 'Mon YYYY') as month,
+			COUNT(*) as users
+		FROM users
+		WHERE created_at >= NOW() - INTERVAL '6 months'
+		GROUP BY TO_CHAR(created_at, 'Mon YYYY'), DATE_TRUNC('month', created_at)
+		ORDER BY DATE_TRUNC('month', created_at)
+	`).Rows()
+	defer rows.Close()
+
+	for rows.Next() {
+		var month string
+		var users int64
+		rows.Scan(&month, &users)
+		userGrowth = append(userGrowth, map[string]interface{}{
+			"month": month,
+			"users": users,
+		})
+	}
+
+	return map[string]interface{}{
+		"overview": map[string]interface{}{
+			"total_users":    overview.TotalUsers,
+			"total_books":    overview.TotalBooks,
+			"total_orders":   overview.TotalOrders,
+			"total_revenue":  overview.TotalRevenue,
+			"user_growth":    growth.UsersGrowth,
+			"revenue_growth": growth.RevenueGrowth,
+			"order_growth":   growth.OrdersGrowth,
+			"book_growth":    0.0,
+		},
+		"user_growth":      userGrowth,
+		"daily_activity":   []interface{}{},
+		"recent_activities": []interface{}{},
+	}, nil
+}
+
+func (s *AnalyticsService) GetReadingAnalyticsByPeriod(period string) (map[string]interface{}, error) {
+	var totalSessions, booksStarted int64
+	var totalPages int
+	var avgSessionTime float64
+
+	s.db.Model(&struct{ ID uint }{}).Table("reading_sessions").Count(&totalSessions)
+	s.db.Model(&struct{ ID uint }{}).Table("user_libraries").Where("progress > ?", 0).Count(&booksStarted)
+	s.db.Model(&struct{ ID uint }{}).Table("reading_sessions").Select("COALESCE(AVG(duration), 0)").Scan(&avgSessionTime)
+	s.db.Model(&struct{ ID uint }{}).Table("reading_sessions").Select("COALESCE(SUM(pages_read), 0)").Scan(&totalPages)
+
+	var currentlyReading []map[string]interface{}
+	rows, _ := s.db.Raw(`
+		SELECT b.title, ul.progress
+		FROM user_libraries ul
+		JOIN books b ON b.id = ul.book_id
+		WHERE ul.progress > 0 AND ul.progress < 100
+		LIMIT 10
+	`).Rows()
+	defer rows.Close()
+
+	for rows.Next() {
+		var title string
+		var progress float64
+		rows.Scan(&title, &progress)
+		currentlyReading = append(currentlyReading, map[string]interface{}{
+			"title":    title,
+			"progress": progress,
+		})
+	}
+
+	return map[string]interface{}{
+		"stats": map[string]interface{}{
+			"totalSessions":      totalSessions,
+			"booksStarted":       booksStarted,
+			"averageSessionTime": avgSessionTime,
+			"totalPages":         totalPages,
+		},
+		"weeklyData":       []interface{}{},
+		"currentlyReading": currentlyReading,
+	}, nil
+}
+
+func (s *AnalyticsService) GetReportsData() (map[string]interface{}, error) {
+	sales, _ := s.GetSalesStats(nil, nil)
+	users, _ := s.GetUserStats()
+	reading, _ := s.GetReadingStats()
+
+	return map[string]interface{}{
+		"sales":   sales,
+		"users":   users,
+		"reading": reading,
+	}, nil
+}
+

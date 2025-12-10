@@ -53,3 +53,27 @@ type UserAchievement struct {
 	Progress      int          `gorm:"default:0" json:"progress"`
 	IsUnlocked    bool         `gorm:"default:false" json:"is_unlocked"`
 }
+
+type AboutPage struct {
+	BaseModel
+	Title       string `json:"title"`
+	Content     string `gorm:"type:text" json:"content"`
+	Mission     string `gorm:"type:text" json:"mission"`
+	Vision      string `gorm:"type:text" json:"vision"`
+	TeamSection string `gorm:"type:text" json:"team_section"`
+	Values      string `gorm:"type:text" json:"values"`
+}
+
+type Activity struct {
+	BaseModel
+	UserID      uint   `gorm:"not null;index" json:"user_id"`
+	User        *User  `gorm:"foreignKey:UserID" json:"user,omitempty"`
+	Type        string `gorm:"not null;index" json:"type"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	EntityType  string `json:"entity_type"`
+	EntityID    uint   `json:"entity_id"`
+	Metadata    string `gorm:"type:text" json:"metadata"`
+}
+
+
