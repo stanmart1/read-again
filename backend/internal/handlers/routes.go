@@ -17,6 +17,8 @@ func SetupRoutes(
 	bookService *services.BookService,
 	storageService *services.StorageService,
 	cartService *services.CartService,
+	orderService *services.OrderService,
+	paymentService *services.PaymentService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -27,6 +29,8 @@ func SetupRoutes(
 	authorHandler := NewAuthorHandler(authorService)
 	bookHandler := NewBookHandler(bookService, storageService)
 	cartHandler := NewCartHandler(cartService)
+	checkoutHandler := NewCheckoutHandler(orderService, paymentService)
+	orderHandler := NewOrderHandler(orderService)
 
 	auth := api.Group("/auth")
 	auth.Post("/register", authHandler.Register)
@@ -98,4 +102,24 @@ func SetupRoutes(
 	cart.Delete("/:id", cartHandler.RemoveFromCart)
 	cart.Delete("/", cartHandler.ClearCart)
 	cart.Post("/merge", cartHandler.MergeGuestCart)
+
+	checkout := api.Group("/checkout", middleware.AuthRequired())
+	checkout.Post("/initialize", checkoutHandler.InitializeCheckout)
+	checkout.Post("/payment", checkoutHandler.InitializePayment)
+	checkout.Get("/verify/:reference", checkoutHandler.VerifyPayment)
+
+	webhooks := api.Group("/webhooks")
+	webhooks.Post("/paystack", checkoutHandler.PaystackWebhook)
+	webhooks.Post("/flutterwave", checkoutHandler.FlutterwaveWebhook)
+
+	orders := api.Group("/orders", middleware.AuthRequired())
+	orders.Get("/", orderHandler.GetUserOrders)
+	orders.Get("/:id", orderHandler.GetOrder)
+	orders.Post("/:id/cancel", orderHandler.CancelOrder)
+
+	adminOrders := api.Group("/admin/orders", middleware.AdminRequired())
+	adminOrders.Get("/", orderHandler.GetAllOrders)
+	adminOrders.Get("/stats", orderHandler.GetOrderStatistics)
+	adminOrders.Get("/:id", orderHandler.GetOrderAdmin)
+	adminOrders.Patch("/:id/status", orderHandler.UpdateOrderStatus)
 }

@@ -54,8 +54,11 @@ func main() {
 	bookService := services.NewBookService(database.DB)
 	storageService := services.NewStorageService("./uploads")
 	cartService := services.NewCartService(database.DB)
+	orderService := services.NewOrderService(database.DB)
+	bankTransferService := services.NewBankTransferService(database.DB)
+	paymentService := services.NewPaymentService(cfg.Payment.PaystackSecretKey, cfg.Payment.FlutterwaveSecretKey, bankTransferService)
 
-	handlers.SetupRoutes(app, authService, userService, roleService, categoryService, authorService, bookService, storageService, cartService)
+	handlers.SetupRoutes(app, authService, userService, roleService, categoryService, authorService, bookService, storageService, cartService, orderService, paymentService)
 
 	utils.InfoLogger.Printf("🚀 Server starting on port %s", cfg.Server.Port)
 	if err := app.Listen(":" + cfg.Server.Port); err != nil {
