@@ -18,16 +18,6 @@ func NewAnalyticsHandler(service *services.AnalyticsService) *AnalyticsHandler {
 	return &AnalyticsHandler{service: service}
 }
 
-func (h *AnalyticsHandler) GetDashboard(c *fiber.Ctx) error {
-	overview, err := h.service.GetDashboardOverview()
-	if err != nil {
-		utils.ErrorLogger.Printf("Failed to get dashboard overview: %v", err)
-		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch dashboard data"})
-	}
-
-	return c.JSON(fiber.Map{"data": overview})
-}
-
 func (h *AnalyticsHandler) GetSalesStats(c *fiber.Ctx) error {
 	var startDate, endDate *time.Time
 
