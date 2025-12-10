@@ -19,6 +19,10 @@ func SetupRoutes(
 	cartService *services.CartService,
 	orderService *services.OrderService,
 	paymentService *services.PaymentService,
+	libraryService *services.LibraryService,
+	ereaderService *services.EReaderService,
+	sessionService *services.ReadingSessionService,
+	goalService *services.ReadingGoalService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -31,6 +35,8 @@ func SetupRoutes(
 	cartHandler := NewCartHandler(cartService)
 	checkoutHandler := NewCheckoutHandler(orderService, paymentService)
 	orderHandler := NewOrderHandler(orderService)
+	libraryHandler := NewLibraryHandler(libraryService, ereaderService)
+	readingHandler := NewReadingHandler(sessionService, goalService)
 
 	auth := api.Group("/auth")
 	auth.Post("/register", authHandler.Register)
@@ -122,4 +128,26 @@ func SetupRoutes(
 	adminOrders.Get("/stats", orderHandler.GetOrderStatistics)
 	adminOrders.Get("/:id", orderHandler.GetOrderAdmin)
 	adminOrders.Patch("/:id/status", orderHandler.UpdateOrderStatus)
+
+	library := api.Group("/library", middleware.AuthRequired())
+	library.Get("/", libraryHandler.GetLibrary)
+	library.Get("/statistics", libraryHandler.GetStatistics)
+	library.Get("/:id/access", libraryHandler.AccessBook)
+	library.Put("/:id/progress", libraryHandler.UpdateProgress)
+	library.Get("/:id/bookmarks", libraryHandler.GetBookmarks)
+	library.Post("/:id/bookmarks", libraryHandler.CreateBookmark)
+	library.Delete("/bookmarks/:bookmarkId", libraryHandler.DeleteBookmark)
+	library.Get("/:id/notes", libraryHandler.GetNotes)
+	library.Post("/:id/notes", libraryHandler.CreateNote)
+	library.Put("/notes/:noteId", libraryHandler.UpdateNote)
+	library.Delete("/notes/:noteId", libraryHandler.DeleteNote)
+
+	reading := api.Group("/reading", middleware.AuthRequired())
+	reading.Post("/sessions/start", readingHandler.StartSession)
+	reading.Post("/sessions/end", readingHandler.EndSession)
+	reading.Get("/sessions", readingHandler.GetSessions)
+	reading.Get("/goals", readingHandler.GetGoals)
+	reading.Post("/goals", readingHandler.CreateGoal)
+	reading.Put("/goals/:id", readingHandler.UpdateGoal)
+	reading.Delete("/goals/:id", readingHandler.DeleteGoal)
 }

@@ -58,8 +58,12 @@ func main() {
 	orderService := services.NewOrderService(database.DB, emailService)
 	bankTransferService := services.NewBankTransferService(database.DB)
 	paymentService := services.NewPaymentService(cfg.Payment.PaystackSecretKey, cfg.Payment.FlutterwaveSecretKey, bankTransferService)
+	libraryService := services.NewLibraryService(database.DB)
+	ereaderService := services.NewEReaderService(database.DB)
+	sessionService := services.NewReadingSessionService(database.DB)
+	goalService := services.NewReadingGoalService(database.DB)
 
-	handlers.SetupRoutes(app, authService, userService, roleService, categoryService, authorService, bookService, storageService, cartService, orderService, paymentService)
+	handlers.SetupRoutes(app, authService, userService, roleService, categoryService, authorService, bookService, storageService, cartService, orderService, paymentService, libraryService, ereaderService, sessionService, goalService)
 
 	utils.InfoLogger.Printf("🚀 Server starting on port %s", cfg.Server.Port)
 	if err := app.Listen(":" + cfg.Server.Port); err != nil {
