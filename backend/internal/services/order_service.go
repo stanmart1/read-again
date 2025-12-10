@@ -11,14 +11,16 @@ import (
 )
 
 type OrderService struct {
-	db           *gorm.DB
-	emailService *EmailService
+	db                 *gorm.DB
+	emailService       *EmailService
+	achievementService *AchievementService
 }
 
-func NewOrderService(db *gorm.DB, emailService *EmailService) *OrderService {
+func NewOrderService(db *gorm.DB, emailService *EmailService, achievementService *AchievementService) *OrderService {
 	return &OrderService{
-		db:           db,
-		emailService: emailService,
+		db:                 db,
+		emailService:       emailService,
+		achievementService: achievementService,
 	}
 }
 
@@ -186,6 +188,8 @@ func (s *OrderService) CompleteOrder(orderID uint, transactionID string) error {
 			fmt.Sprintf("%.2f", order.TotalAmount),
 		)
 	}
+
+	go s.achievementService.CheckAndUnlockAchievements(order.UserID)
 
 	return nil
 }

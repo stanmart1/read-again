@@ -23,6 +23,7 @@ func SetupRoutes(
 	ereaderService *services.EReaderService,
 	sessionService *services.ReadingSessionService,
 	goalService *services.ReadingGoalService,
+	achievementService *services.AchievementService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -37,6 +38,7 @@ func SetupRoutes(
 	orderHandler := NewOrderHandler(orderService)
 	libraryHandler := NewLibraryHandler(libraryService, ereaderService)
 	readingHandler := NewReadingHandler(sessionService, goalService)
+	achievementHandler := NewAchievementHandler(achievementService)
 
 	auth := api.Group("/auth")
 	auth.Post("/register", authHandler.Register)
@@ -150,4 +152,9 @@ func SetupRoutes(
 	reading.Post("/goals", readingHandler.CreateGoal)
 	reading.Put("/goals/:id", readingHandler.UpdateGoal)
 	reading.Delete("/goals/:id", readingHandler.DeleteGoal)
+
+	achievements := api.Group("/achievements")
+	achievements.Get("/", achievementHandler.GetAllAchievements)
+	achievements.Get("/user", middleware.AuthRequired(), achievementHandler.GetUserAchievements)
+	achievements.Post("/check", middleware.AuthRequired(), achievementHandler.CheckAchievements)
 }

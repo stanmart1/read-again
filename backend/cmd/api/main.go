@@ -47,6 +47,7 @@ func main() {
 	app.Get("/health", handlers.GetHealth)
 
 	emailService := services.NewEmailService(cfg.Email.ResendAPIKey, cfg.Email.FromEmail, cfg.Email.FromName, cfg.Email.AppURL)
+	achievementService := services.NewAchievementService(database.DB)
 	authService := services.NewAuthService(database.DB, cfg, emailService)
 	userService := services.NewUserService(database.DB)
 	roleService := services.NewRoleService(database.DB)
@@ -55,7 +56,7 @@ func main() {
 	bookService := services.NewBookService(database.DB)
 	storageService := services.NewStorageService("./uploads")
 	cartService := services.NewCartService(database.DB)
-	orderService := services.NewOrderService(database.DB, emailService)
+	orderService := services.NewOrderService(database.DB, emailService, achievementService)
 	bankTransferService := services.NewBankTransferService(database.DB)
 	paymentService := services.NewPaymentService(cfg.Payment.PaystackSecretKey, cfg.Payment.FlutterwaveSecretKey, bankTransferService)
 	libraryService := services.NewLibraryService(database.DB)
@@ -63,7 +64,9 @@ func main() {
 	sessionService := services.NewReadingSessionService(database.DB)
 	goalService := services.NewReadingGoalService(database.DB)
 
-	handlers.SetupRoutes(app, authService, userService, roleService, categoryService, authorService, bookService, storageService, cartService, orderService, paymentService, libraryService, ereaderService, sessionService, goalService)
+	achievementService.SeedAchievements()
+
+	handlers.SetupRoutes(app, authService, userService, roleService, categoryService, authorService, bookService, storageService, cartService, orderService, paymentService, libraryService, ereaderService, sessionService, goalService, achievementService)
 
 	utils.InfoLogger.Printf("🚀 Server starting on port %s", cfg.Server.Port)
 	if err := app.Listen(":" + cfg.Server.Port); err != nil {
