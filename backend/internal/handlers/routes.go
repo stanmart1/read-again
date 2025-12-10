@@ -29,6 +29,7 @@ func SetupRoutes(
 	testimonialService *services.TestimonialService,
 	contactService *services.ContactService,
 	settingsService *services.SettingsService,
+	analyticsService *services.AnalyticsService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -49,6 +50,7 @@ func SetupRoutes(
 	testimonialHandler := NewTestimonialHandler(testimonialService)
 	contactHandler := NewContactHandler(contactService)
 	settingsHandler := NewSettingsHandler(settingsService)
+	analyticsHandler := NewAnalyticsHandler(analyticsService)
 
 	auth := api.Group("/auth")
 	auth.Post("/register", authHandler.Register)
@@ -222,4 +224,12 @@ func SetupRoutes(
 	settings.Put("/email/config", settingsHandler.UpdateEmailSettings)
 	settings.Get("/payment/config", settingsHandler.GetPaymentSettings)
 	settings.Put("/payment/config", settingsHandler.UpdatePaymentSettings)
+
+	analytics := api.Group("/admin/analytics", middleware.AdminRequired())
+	analytics.Get("/dashboard", analyticsHandler.GetDashboard)
+	analytics.Get("/sales", analyticsHandler.GetSalesStats)
+	analytics.Get("/users", analyticsHandler.GetUserStats)
+	analytics.Get("/reading", analyticsHandler.GetReadingStats)
+	analytics.Get("/revenue", analyticsHandler.GetRevenueReport)
+	analytics.Get("/growth", analyticsHandler.GetGrowthMetrics)
 }
