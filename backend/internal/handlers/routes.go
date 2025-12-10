@@ -28,6 +28,7 @@ func SetupRoutes(
 	faqService *services.FAQService,
 	testimonialService *services.TestimonialService,
 	contactService *services.ContactService,
+	settingsService *services.SettingsService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -47,6 +48,7 @@ func SetupRoutes(
 	faqHandler := NewFAQHandler(faqService)
 	testimonialHandler := NewTestimonialHandler(testimonialService)
 	contactHandler := NewContactHandler(contactService)
+	settingsHandler := NewSettingsHandler(settingsService)
 
 	auth := api.Group("/auth")
 	auth.Post("/register", authHandler.Register)
@@ -210,4 +212,14 @@ func SetupRoutes(
 	adminContact.Post("/:id/reply", contactHandler.Reply)
 	adminContact.Patch("/:id/status", contactHandler.UpdateStatus)
 	adminContact.Delete("/:id", contactHandler.Delete)
+
+	settings := api.Group("/admin/settings", middleware.AdminRequired())
+	settings.Get("/", settingsHandler.GetByCategory)
+	settings.Get("/:key", settingsHandler.GetByKey)
+	settings.Post("/", settingsHandler.Set)
+	settings.Delete("/:key", settingsHandler.Delete)
+	settings.Get("/email/config", settingsHandler.GetEmailSettings)
+	settings.Put("/email/config", settingsHandler.UpdateEmailSettings)
+	settings.Get("/payment/config", settingsHandler.GetPaymentSettings)
+	settings.Put("/payment/config", settingsHandler.UpdatePaymentSettings)
 }
