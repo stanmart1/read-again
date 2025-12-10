@@ -36,8 +36,11 @@ type RedisConfig struct {
 }
 
 type PaymentConfig struct {
-	PaystackSecretKey    string
-	FlutterwaveSecretKey string
+	PaystackSecretKey       string
+	PaystackPublicKey       string
+	FlutterwaveSecretKey    string
+	FlutterwavePublicKey    string
+	FlutterwaveEncryptionKey string
 }
 
 func Load() *Config {
@@ -65,8 +68,11 @@ func Load() *Config {
 			URL: getEnv("REDIS_URL", ""),
 		},
 		Payment: PaymentConfig{
-			PaystackSecretKey:    getEnv("PAYSTACK_SECRET_KEY", ""),
-			FlutterwaveSecretKey: getEnv("FLUTTERWAVE_SECRET_KEY", ""),
+			PaystackSecretKey:        getEnv("PAYSTACK_SECRET_KEY", ""),
+			PaystackPublicKey:        getEnv("PAYSTACK_PUBLIC_KEY", ""),
+			FlutterwaveSecretKey:     getEnv("FLUTTERWAVE_SECRET_KEY", ""),
+			FlutterwavePublicKey:     getEnv("FLUTTERWAVE_PUBLIC_KEY", ""),
+			FlutterwaveEncryptionKey: getEnv("FLUTTERWAVE_ENCRYPTION_KEY", ""),
 		},
 	}
 }
