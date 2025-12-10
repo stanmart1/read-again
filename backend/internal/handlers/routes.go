@@ -31,6 +31,7 @@ func SetupRoutes(
 	settingsService *services.SettingsService,
 	analyticsService *services.AnalyticsService,
 	notificationService *services.NotificationService,
+	auditService *services.AuditService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -53,6 +54,9 @@ func SetupRoutes(
 	settingsHandler := NewSettingsHandler(settingsService)
 	analyticsHandler := NewAnalyticsHandler(analyticsService)
 	notificationHandler := NewNotificationHandler(notificationService)
+	auditHandler := NewAuditHandler(auditService)
+
+	app.Use(middleware.AuditMiddleware(auditService))
 
 	auth := api.Group("/auth")
 	auth.Post("/register", authHandler.Register)
@@ -242,4 +246,8 @@ func SetupRoutes(
 	notifications.Patch("/:id/read", notificationHandler.MarkAsRead)
 	notifications.Post("/mark-all-read", notificationHandler.MarkAllAsRead)
 	notifications.Delete("/:id", notificationHandler.Delete)
+
+	audit := api.Group("/admin/audit", middleware.AdminRequired())
+	audit.Get("/", auditHandler.GetLogs)
+	audit.Get("/:id", auditHandler.GetLog)
 }
