@@ -3,6 +3,7 @@ package handlers
 import (
 	"strconv"
 
+	"readagain/internal/middleware"
 	"readagain/internal/services"
 	"readagain/internal/utils"
 
@@ -66,6 +67,7 @@ func (h *OrderHandler) CancelOrder(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
 	}
 
+	middleware.LogAudit(c, "cancel_order", "order", uint(orderID), "", "")
 	utils.InfoLogger.Printf("User %d cancelled order %d", userID, orderID)
 	return c.JSON(fiber.Map{"message": "Order cancelled successfully"})
 }

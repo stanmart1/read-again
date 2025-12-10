@@ -1,8 +1,10 @@
 package handlers
 
 import (
+	"fmt"
 	"strconv"
 
+	"readagain/internal/middleware"
 	"readagain/internal/services"
 	"readagain/internal/utils"
 
@@ -159,6 +161,7 @@ func (h *UserHandler) DeleteUser(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to delete user"})
 	}
 
+	middleware.LogAudit(c, "delete_user", "user", uint(userID), "", "")
 	utils.InfoLogger.Printf("Admin deleted user %d", userID)
 	return c.JSON(fiber.Map{"message": "User deleted successfully"})
 }
@@ -378,6 +381,7 @@ func (h *UserHandler) BulkDelete(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
 	}
 
+	middleware.LogAudit(c, "bulk_delete_users", "user", 0, "", fmt.Sprintf("%v", input.UserIDs))
 	utils.InfoLogger.Printf("Admin deleted %d users", len(input.UserIDs))
 	return c.JSON(fiber.Map{"message": "Users deleted successfully", "count": len(input.UserIDs)})
 }

@@ -3,6 +3,7 @@ package handlers
 import (
 	"strconv"
 
+	"readagain/internal/middleware"
 	"readagain/internal/services"
 	"readagain/internal/utils"
 
@@ -108,6 +109,7 @@ func (h *RoleHandler) DeleteRole(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
 	}
 
+	middleware.LogAudit(c, "delete_role", "role", uint(roleID), "", "")
 	utils.InfoLogger.Printf("Admin deleted role %d", roleID)
 	return c.JSON(fiber.Map{"message": "Role deleted successfully"})
 }

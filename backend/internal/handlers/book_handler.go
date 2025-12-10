@@ -3,6 +3,7 @@ package handlers
 import (
 	"strconv"
 
+	"readagain/internal/middleware"
 	"readagain/internal/services"
 	"readagain/internal/utils"
 
@@ -217,6 +218,7 @@ func (h *BookHandler) DeleteBook(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
 	}
 
+	middleware.LogAudit(c, "delete_book", "book", uint(bookID), "", "")
 	utils.InfoLogger.Printf("Deleted book %d", bookID)
 	return c.JSON(fiber.Map{"message": "Book deleted successfully"})
 }
