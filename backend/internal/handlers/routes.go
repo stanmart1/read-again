@@ -30,6 +30,7 @@ func SetupRoutes(
 	contactService *services.ContactService,
 	settingsService *services.SettingsService,
 	analyticsService *services.AnalyticsService,
+	notificationService *services.NotificationService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -51,6 +52,7 @@ func SetupRoutes(
 	contactHandler := NewContactHandler(contactService)
 	settingsHandler := NewSettingsHandler(settingsService)
 	analyticsHandler := NewAnalyticsHandler(analyticsService)
+	notificationHandler := NewNotificationHandler(notificationService)
 
 	auth := api.Group("/auth")
 	auth.Post("/register", authHandler.Register)
@@ -232,4 +234,12 @@ func SetupRoutes(
 	analytics.Get("/reading", analyticsHandler.GetReadingStats)
 	analytics.Get("/revenue", analyticsHandler.GetRevenueReport)
 	analytics.Get("/growth", analyticsHandler.GetGrowthMetrics)
+
+	notifications := api.Group("/notifications", middleware.AuthRequired())
+	notifications.Get("/", notificationHandler.GetNotifications)
+	notifications.Get("/unread-count", notificationHandler.GetUnreadCount)
+	notifications.Get("/:id", notificationHandler.GetNotification)
+	notifications.Patch("/:id/read", notificationHandler.MarkAsRead)
+	notifications.Post("/mark-all-read", notificationHandler.MarkAllAsRead)
+	notifications.Delete("/:id", notificationHandler.Delete)
 }
