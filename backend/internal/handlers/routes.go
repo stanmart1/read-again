@@ -24,6 +24,7 @@ func SetupRoutes(
 	sessionService *services.ReadingSessionService,
 	goalService *services.ReadingGoalService,
 	achievementService *services.AchievementService,
+	blogService *services.BlogService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -39,6 +40,7 @@ func SetupRoutes(
 	libraryHandler := NewLibraryHandler(libraryService, ereaderService)
 	readingHandler := NewReadingHandler(sessionService, goalService)
 	achievementHandler := NewAchievementHandler(achievementService)
+	blogHandler := NewBlogHandler(blogService)
 
 	auth := api.Group("/auth")
 	auth.Post("/register", authHandler.Register)
@@ -157,4 +159,18 @@ func SetupRoutes(
 	achievements.Get("/", achievementHandler.GetAllAchievements)
 	achievements.Get("/user", middleware.AuthRequired(), achievementHandler.GetUserAchievements)
 	achievements.Post("/check", middleware.AuthRequired(), achievementHandler.CheckAchievements)
+	achievements.Post("/", middleware.AdminRequired(), achievementHandler.CreateAchievement)
+	achievements.Put("/:id", middleware.AdminRequired(), achievementHandler.UpdateAchievement)
+	achievements.Delete("/:id", middleware.AdminRequired(), achievementHandler.DeleteAchievement)
+
+	blogs := api.Group("/blogs")
+	blogs.Get("/", blogHandler.List)
+	blogs.Get("/:slug", blogHandler.GetBySlug)
+
+	adminBlogs := api.Group("/admin/blogs", middleware.AdminRequired())
+	adminBlogs.Get("/", blogHandler.AdminList)
+	adminBlogs.Get("/:id", blogHandler.GetByID)
+	adminBlogs.Post("/", blogHandler.Create)
+	adminBlogs.Put("/:id", blogHandler.Update)
+	adminBlogs.Delete("/:id", blogHandler.Delete)
 }

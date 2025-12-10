@@ -87,3 +87,53 @@ func (s *AchievementService) SeedAchievements() error {
 	return nil
 }
 
+func (s *AchievementService) CreateAchievement(name, description, icon, achievementType string, target, points int) (*models.Achievement, error) {
+	var existing models.Achievement
+	if err := s.db.Where("name = ?", name).First(&existing).Error; err == nil {
+		return nil, utils.NewBadRequestError("Achievement with this name already exists")
+	}
+
+	achievement := models.Achievement{
+		Name:        name,
+		Description: description,
+		Icon:        icon,
+		Type:        achievementType,
+		Target:      target,
+		Points:      points,
+	}
+
+	if err := s.db.Create(&achievement).Error; err != nil {
+		return nil, utils.NewInternalServerError("Failed to create achievement", err)
+	}
+
+	return &achievement, nil
+}
+
+func (s *AchievementService) UpdateAchievement(achievementID uint, updates map[string]interface{}) (*models.Achievement, error) {
+	var achievement models.Achievement
+	if err := s.db.First(&achievement, achievementID).Error; err != nil {
+		return nil, utils.NewNotFoundError("Achievement not found")
+	}
+
+	if err := s.db.Model(&achievement).Updates(updates).Error; err != nil {
+		return nil, utils.NewInternalServerError("Failed to update achievement", err)
+	}
+
+	return &achievement, nil
+}
+
+func (s *AchievementService) DeleteAchievement(achievementID uint) error {
+	var userAchievements int64
+	s.db.Model(&models.UserAchievement{}).Where("achievement_id = ?", achievementID).Count(&userAchievements)
+
+	if userAchievements > 0 {
+		return utils.NewBadRequestError("Cannot delete achievement that users have unlocked")
+	}
+
+	if err := s.db.Delete(&models.Achievement{}, achievementID).Error; err != nil {
+		return utils.NewInternalServerError("Failed to delete achievement", err)
+	}
+
+	return nil
+}
+
