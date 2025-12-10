@@ -11,12 +11,17 @@ import (
 )
 
 type AuthService struct {
-	db  *gorm.DB
-	cfg *config.Config
+	db           *gorm.DB
+	cfg          *config.Config
+	emailService *EmailService
 }
 
-func NewAuthService(db *gorm.DB, cfg *config.Config) *AuthService {
-	return &AuthService{db: db, cfg: cfg}
+func NewAuthService(db *gorm.DB, cfg *config.Config, emailService *EmailService) *AuthService {
+	return &AuthService{
+		db:           db,
+		cfg:          cfg,
+		emailService: emailService,
+	}
 }
 
 func (s *AuthService) Register(email, username, password, firstName, lastName string) (*models.User, error) {
@@ -43,6 +48,12 @@ func (s *AuthService) Register(email, username, password, firstName, lastName st
 	if err := s.db.Create(user).Error; err != nil {
 		return nil, utils.NewInternalServerError("Failed to create user", err)
 	}
+
+	name := firstName
+	if name == "" {
+		name = username
+	}
+	go s.emailService.SendWelcomeEmail(email, name)
 
 	return user, nil
 }

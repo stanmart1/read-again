@@ -14,6 +14,7 @@ type Config struct {
 	JWT      JWTConfig
 	Redis    RedisConfig
 	Payment  PaymentConfig
+	Email    EmailConfig
 }
 
 type ServerConfig struct {
@@ -41,6 +42,13 @@ type PaymentConfig struct {
 	FlutterwaveSecretKey    string
 	FlutterwavePublicKey    string
 	FlutterwaveEncryptionKey string
+}
+
+type EmailConfig struct {
+	ResendAPIKey string
+	FromEmail    string
+	FromName     string
+	AppURL       string
 }
 
 func Load() *Config {
@@ -73,6 +81,12 @@ func Load() *Config {
 			FlutterwaveSecretKey:     getEnv("FLUTTERWAVE_SECRET_KEY", ""),
 			FlutterwavePublicKey:     getEnv("FLUTTERWAVE_PUBLIC_KEY", ""),
 			FlutterwaveEncryptionKey: getEnv("FLUTTERWAVE_ENCRYPTION_KEY", ""),
+		},
+		Email: EmailConfig{
+			ResendAPIKey: getEnv("RESEND_API_KEY", ""),
+			FromEmail:    getEnv("FROM_EMAIL", "noreply@readagain.com"),
+			FromName:     getEnv("FROM_NAME", "ReadAgain"),
+			AppURL:       getEnv("APP_URL", "http://localhost:3000"),
 		},
 	}
 }

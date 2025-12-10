@@ -46,7 +46,8 @@ func main() {
 	app.Get("/", handlers.GetRoot)
 	app.Get("/health", handlers.GetHealth)
 
-	authService := services.NewAuthService(database.DB, cfg)
+	emailService := services.NewEmailService(cfg.Email.ResendAPIKey, cfg.Email.FromEmail, cfg.Email.FromName, cfg.Email.AppURL)
+	authService := services.NewAuthService(database.DB, cfg, emailService)
 	userService := services.NewUserService(database.DB)
 	roleService := services.NewRoleService(database.DB)
 	categoryService := services.NewCategoryService(database.DB)
@@ -54,7 +55,7 @@ func main() {
 	bookService := services.NewBookService(database.DB)
 	storageService := services.NewStorageService("./uploads")
 	cartService := services.NewCartService(database.DB)
-	orderService := services.NewOrderService(database.DB)
+	orderService := services.NewOrderService(database.DB, emailService)
 	bankTransferService := services.NewBankTransferService(database.DB)
 	paymentService := services.NewPaymentService(cfg.Payment.PaystackSecretKey, cfg.Payment.FlutterwaveSecretKey, bankTransferService)
 
