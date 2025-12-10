@@ -42,3 +42,26 @@ type Review struct {
 	Comment string `gorm:"type:text" json:"comment"`
 	Status  string `gorm:"default:pending;index" json:"status"`
 }
+
+type Testimonial struct {
+	BaseModel
+	Name      string `gorm:"not null" json:"name" validate:"required"`
+	Role      string `json:"role"`
+	Company   string `json:"company"`
+	Content   string `gorm:"type:text;not null" json:"content" validate:"required"`
+	Avatar    string `json:"avatar"`
+	Rating    int    `gorm:"default:5" json:"rating" validate:"gte=1,lte=5"`
+	IsActive  bool   `gorm:"default:true" json:"is_active"`
+	Order     int    `gorm:"default:0" json:"order"`
+}
+
+type ContactMessage struct {
+	BaseModel
+	Name    string `gorm:"not null" json:"name" validate:"required"`
+	Email   string `gorm:"not null" json:"email" validate:"required,email"`
+	Subject string `json:"subject"`
+	Message string `gorm:"type:text;not null" json:"message" validate:"required"`
+	Status  string `gorm:"default:new;index" json:"status"`
+	Reply   string `gorm:"type:text" json:"reply"`
+}
+

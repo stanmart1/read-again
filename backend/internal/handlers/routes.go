@@ -26,6 +26,8 @@ func SetupRoutes(
 	achievementService *services.AchievementService,
 	blogService *services.BlogService,
 	faqService *services.FAQService,
+	testimonialService *services.TestimonialService,
+	contactService *services.ContactService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -43,6 +45,8 @@ func SetupRoutes(
 	achievementHandler := NewAchievementHandler(achievementService)
 	blogHandler := NewBlogHandler(blogService)
 	faqHandler := NewFAQHandler(faqService)
+	testimonialHandler := NewTestimonialHandler(testimonialService)
+	contactHandler := NewContactHandler(contactService)
 
 	auth := api.Group("/auth")
 	auth.Post("/register", authHandler.Register)
@@ -186,4 +190,24 @@ func SetupRoutes(
 	adminFaqs.Post("/", faqHandler.Create)
 	adminFaqs.Put("/:id", faqHandler.Update)
 	adminFaqs.Delete("/:id", faqHandler.Delete)
+
+	testimonials := api.Group("/testimonials")
+	testimonials.Get("/", testimonialHandler.List)
+
+	adminTestimonials := api.Group("/admin/testimonials", middleware.AdminRequired())
+	adminTestimonials.Get("/", testimonialHandler.AdminList)
+	adminTestimonials.Get("/:id", testimonialHandler.GetByID)
+	adminTestimonials.Post("/", testimonialHandler.Create)
+	adminTestimonials.Put("/:id", testimonialHandler.Update)
+	adminTestimonials.Delete("/:id", testimonialHandler.Delete)
+
+	contact := api.Group("/contact")
+	contact.Post("/", contactHandler.Submit)
+
+	adminContact := api.Group("/admin/contact", middleware.AdminRequired())
+	adminContact.Get("/", contactHandler.List)
+	adminContact.Get("/:id", contactHandler.GetByID)
+	adminContact.Post("/:id/reply", contactHandler.Reply)
+	adminContact.Patch("/:id/status", contactHandler.UpdateStatus)
+	adminContact.Delete("/:id", contactHandler.Delete)
 }
