@@ -14,7 +14,7 @@ export const useAdminAnalytics = () => {
       setLoading(true);
       setError(null);
 
-      const response = await api.get('/admin/admin/enhanced/analytics/overview');
+      const response = await api.get('/admin/analytics/dashboard');
       const data = response.data;
 
       setStats([
