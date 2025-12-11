@@ -147,3 +147,19 @@ func (h *SettingsHandler) UpdatePaymentSettings(c *fiber.Ctx) error {
 	utils.InfoLogger.Println("Payment settings updated")
 	return c.JSON(fiber.Map{"message": "Payment settings updated successfully"})
 }
+
+func (h *SettingsHandler) GetPublic(c *fiber.Ctx) error {
+	settings, err := h.service.GetByCategory("general")
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch settings"})
+	}
+
+	publicSettings := make(map[string]string)
+	for _, s := range settings {
+		if s.Key == "session_timeout" || s.Key == "site_name" || s.Key == "site_description" {
+			publicSettings[s.Key] = s.Value
+		}
+	}
+
+	return c.JSON(fiber.Map{"data": publicSettings})
+}

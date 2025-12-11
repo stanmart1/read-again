@@ -36,6 +36,7 @@ func SetupRoutes(
 	aboutService *services.AboutService,
 	activityService *services.ActivityService,
 	wishlistService *services.WishlistService,
+	workService *services.WorkService,
 ) {
 	api := app.Group("/api/v1")
 
@@ -63,6 +64,7 @@ func SetupRoutes(
 	aboutHandler := NewAboutHandler(aboutService)
 	activityHandler := NewActivityHandler(activityService)
 	wishlistHandler := NewWishlistHandler(wishlistService)
+	workHandler := NewWorkHandler(workService)
 
 	app.Use(middleware.AuditMiddleware(auditService))
 
@@ -286,4 +288,14 @@ func SetupRoutes(
 	wishlist.Get("/", wishlistHandler.GetWishlist)
 	wishlist.Post("/", wishlistHandler.AddToWishlist)
 	wishlist.Delete("/:id", wishlistHandler.RemoveFromWishlist)
+
+	api.Get("/api/works", workHandler.GetAll)
+	adminWorks := api.Group("/admin/works", middleware.AdminRequired())
+	adminWorks.Get("/", workHandler.GetAllAdmin)
+	adminWorks.Post("/", workHandler.Create)
+	adminWorks.Put("/:id", workHandler.Update)
+	adminWorks.Patch("/:id/toggle", workHandler.Toggle)
+	adminWorks.Delete("/:id", workHandler.Delete)
+
+	api.Get("/admin/system-settings/public", settingsHandler.GetPublic)
 }
