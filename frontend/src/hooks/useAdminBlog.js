@@ -54,7 +54,7 @@ export const useAdminBlog = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await api.get('/admin/blog/stats');
+      const response = await api.get('/admin/blogs/stats');
       const data = response.data;
       setStats(data.stats || {
         total_posts: 0,
