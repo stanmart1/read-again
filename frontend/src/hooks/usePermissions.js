@@ -9,7 +9,7 @@ export const usePermissions = () => {
     if (!user) return false;
     
     // Super admin has all permissions
-    if (user.role?.name === 'super_admin') {
+    if (user.role?.name === 'SuperAdmin' || user.role?.name === 'Admin') {
       return true;
     }
 
@@ -48,11 +48,11 @@ export const usePermissions = () => {
   };
 
   const isAdmin = () => {
-    return hasRole(['admin', 'super_admin']);
+    return hasRole(['Admin', 'SuperAdmin']);
   };
 
   const isSuperAdmin = () => {
-    return hasRole('super_admin');
+    return hasRole('SuperAdmin');
   };
 
   return {
