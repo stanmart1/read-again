@@ -17,8 +17,8 @@ export default function TestimonialsSection() {
   const fetchReviews = async () => {
     try {
       const response = await api.get('/reviews/featured?limit=10');
-      if (response.data) {
-        const reviews = response.data.map(review => ({
+      if (response.data.data) {
+        const reviews = response.data.data.map(review => ({
           id: review.id,
           name: `${review.first_name} ${review.last_name}`.trim(),
           firstName: review.first_name,
