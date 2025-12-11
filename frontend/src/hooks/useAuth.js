@@ -9,7 +9,7 @@ export const useAuth = () => {
     try {
       setLoading(true);
       setError('');
-      const response = await api.post('/auth/login', { email, password });
+      const response = await api.post('/auth/login', { email_or_username: email, password });
       
       // Backend returns: { access_token, refresh_token, user }
       if (response.data.access_token) {
