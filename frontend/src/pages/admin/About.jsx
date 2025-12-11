@@ -54,14 +54,14 @@ const AdminAbout = () => {
   const loadContent = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_BASE_URL}/api/about/admin`, {
+      const response = await axios.get(`${API_BASE_URL}/api/v1/about`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data && Object.keys(response.data).length > 0) {
         setContent({ ...defaultContent, ...response.data });
       } else {
         // No content exists, save default content
-        await axios.put(`${API_BASE_URL}/api/about/admin`, defaultContent, {
+        await axios.put(`${API_BASE_URL}/api/v1/admin/about`, defaultContent, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setContent(defaultContent);
@@ -77,7 +77,7 @@ const AdminAbout = () => {
     try {
       setSaving(true);
       const token = localStorage.getItem('token');
-      await axios.put(`${API_BASE_URL}/api/about/admin`, content, {
+      await axios.put(`${API_BASE_URL}/api/v1/admin/about`, content, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setLastSaved(new Date());
