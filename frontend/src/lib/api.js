@@ -16,7 +16,7 @@ if (window.location.protocol === 'https:') {
 
 // Create axios instance with base configuration
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_BASE_URL}/api/v1`,
   timeout: 50000,
   headers: {
     'Content-Type': 'application/json',

@@ -14,8 +14,9 @@ export const useBooks = (params = {}) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await api.get('/api/books/', { params });
-      setBooks(response.data.books || []);
+      const response = await api.get('/books', { params });
+      // Backend returns: { data: [...books], meta: {...} }
+      setBooks(response.data.data || []);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching books:', err);
