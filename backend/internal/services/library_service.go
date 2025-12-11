@@ -130,3 +130,25 @@ func (s *LibraryService) GetDashboardStats(userID uint) (map[string]interface{},
 		"reviews_count":  reviewsCount,
 	}, nil
 }
+
+func (s *LibraryService) GetUserAnalytics(userID uint) (map[string]interface{}, error) {
+	var totalBooks int64
+	s.db.Model(&models.UserLibrary{}).Where("user_id = ?", userID).Count(&totalBooks)
+
+	var completedBooks int64
+	s.db.Model(&models.UserLibrary{}).Where("user_id = ? AND completed_at IS NOT NULL", userID).Count(&completedBooks)
+
+	var totalReadingTime int64
+	s.db.Model(&models.ReadingSession{}).Where("user_id = ?", userID).Select("COALESCE(SUM(duration), 0)").Scan(&totalReadingTime)
+
+	var totalPagesRead int64
+	s.db.Model(&models.ReadingSession{}).Where("user_id = ?", userID).Select("COALESCE(SUM(pages_read), 0)").Scan(&totalPagesRead)
+
+	return map[string]interface{}{
+		"total_books":        totalBooks,
+		"completed_books":    completedBooks,
+		"total_reading_time": totalReadingTime,
+		"total_pages_read":   totalPagesRead,
+		"current_streak":     0,
+	}, nil
+}

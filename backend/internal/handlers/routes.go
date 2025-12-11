@@ -285,6 +285,7 @@ func SetupRoutes(
 	api.Get("/dashboard/activity", middleware.AuthRequired(), activityHandler.GetActivities)
 	api.Get("/dashboard/stats", middleware.AuthRequired(), libraryHandler.GetDashboardStats)
 	api.Get("/dashboard/reading-progress", middleware.AuthRequired(), readingHandler.GetReadingProgress)
+	api.Get("/dashboard/analytics", middleware.AuthRequired(), libraryHandler.GetUserAnalytics)
 
 	wishlist := api.Group("/wishlist", middleware.AuthRequired())
 	wishlist.Get("/", wishlistHandler.GetWishlist)
