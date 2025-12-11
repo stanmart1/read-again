@@ -323,7 +323,7 @@ export default function EmailGatewayManagement() {
       <div className="bg-white rounded-lg shadow-md p-3 sm:p-6">
         <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Email Gateway</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
-          {gateways.map((gateway) => (
+          {gateways && gateways.map((gateway) => (
             <div
               key={gateway.id}
               className={`p-2 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${activeGateway === gateway.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}

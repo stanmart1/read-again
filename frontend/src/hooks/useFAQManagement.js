@@ -20,10 +20,10 @@ export const useFAQManagement = () => {
       setCategories(categoryResponse.data.data || []);
 
       setStats({
-        total_faqs: faqData.data?.total || 0,
-        total_categories: categoryData.data?.length || 0,
+        total_faqs: faqResponse.data?.total || 0,
+        total_categories: categoryResponse.data?.length || 0,
         total_views: 0,
-        recent_faqs: faqData.data?.faqs?.slice(0, 5) || []
+        recent_faqs: faqResponse.data?.faqs?.slice(0, 5) || []
       });
     } catch (err) {
       setError(err.message);
