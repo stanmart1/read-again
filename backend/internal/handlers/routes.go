@@ -225,6 +225,7 @@ func SetupRoutes(
 
 	adminBlogs := api.Group("/admin/blogs", middleware.AdminRequired())
 	adminBlogs.Get("/", blogHandler.AdminList)
+	adminBlogs.Get("/stats", blogHandler.GetStats)
 	adminBlogs.Get("/:id", blogHandler.GetByID)
 	adminBlogs.Post("/", blogHandler.Create)
 	adminBlogs.Put("/:id", blogHandler.Update)

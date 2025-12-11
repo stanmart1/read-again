@@ -21,6 +21,32 @@ func NewBlogService(db *gorm.DB) *BlogService {
 	return &BlogService{db: db}
 }
 
+func (s *BlogService) GetStats() (map[string]interface{}, error) {
+	var totalBlogs int64
+	var publishedBlogs int64
+	var draftBlogs int64
+
+	if err := s.db.Model(&models.Blog{}).Count(&totalBlogs).Error; err != nil {
+		return nil, err
+	}
+
+	if err := s.db.Model(&models.Blog{}).Where("status = ?", "published").Count(&publishedBlogs).Error; err != nil {
+		return nil, err
+	}
+
+	if err := s.db.Model(&models.Blog{}).Where("status = ?", "draft").Count(&draftBlogs).Error; err != nil {
+		return nil, err
+	}
+
+	stats := map[string]interface{}{
+		"total_blogs":     totalBlogs,
+		"published_blogs": publishedBlogs,
+		"draft_blogs":     draftBlogs,
+	}
+
+	return stats, nil
+}
+
 func (s *BlogService) List(page, limit int, status, search, tag string) ([]models.Blog, *utils.PaginationMeta, error) {
 	var blogs []models.Blog
 	var total int64

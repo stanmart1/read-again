@@ -18,6 +18,16 @@ func NewBlogHandler(service *services.BlogService) *BlogHandler {
 	return &BlogHandler{service: service}
 }
 
+func (h *BlogHandler) GetStats(c *fiber.Ctx) error {
+	stats, err := h.service.GetStats()
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get blog stats: %v", err)
+		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch blog statistics"})
+	}
+
+	return c.JSON(stats)
+}
+
 func (h *BlogHandler) List(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 	limit, _ := strconv.Atoi(c.Query("limit", "10"))
