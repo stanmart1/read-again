@@ -77,8 +77,8 @@ func (s *AnalyticsService) GetDashboardOverview() (*DashboardOverview, error) {
 	s.db.Model(&struct{ ID uint }{}).Table("users").Where("created_at >= ?", today).Count(&overview.NewUsersToday)
 	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ?", today).Count(&overview.OrdersToday)
 
-	s.db.Model(&struct{ ID uint }{}).Table("orders").Select("COALESCE(SUM(total), 0)").Scan(&overview.TotalRevenue)
-	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ?", today).Select("COALESCE(SUM(total), 0)").Scan(&overview.RevenueToday)
+	s.db.Model(&struct{ ID uint }{}).Table("orders").Select("COALESCE(SUM(total_amount), 0)").Scan(&overview.TotalRevenue)
+	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ?", today).Select("COALESCE(SUM(total_amount), 0)").Scan(&overview.RevenueToday)
 
 	return &overview, nil
 }
@@ -99,7 +99,7 @@ func (s *AnalyticsService) GetSalesStats(startDate, endDate *time.Time) (*SalesS
 	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("status = ?", "pending").Count(&stats.PendingOrders)
 	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("status = ?", "cancelled").Count(&stats.CancelledOrders)
 
-	query.Select("COALESCE(SUM(total), 0)").Scan(&stats.TotalRevenue)
+	query.Select("COALESCE(SUM(total_amount), 0)").Scan(&stats.TotalRevenue)
 
 	if stats.TotalOrders > 0 {
 		stats.AverageOrderValue = stats.TotalRevenue / float64(stats.TotalOrders)
@@ -145,7 +145,7 @@ func (s *AnalyticsService) GetRevenueReport(days int) ([]RevenueReport, error) {
 	rows, err := s.db.Raw(`
 		SELECT 
 			DATE(created_at) as date,
-			COALESCE(SUM(total), 0) as revenue,
+			COALESCE(SUM(total_amount), 0) as revenue,
 			COUNT(*) as orders
 		FROM orders
 		WHERE created_at >= ? AND status = 'completed'
@@ -182,8 +182,8 @@ func (s *AnalyticsService) GetGrowthMetrics() (*GrowthMetrics, error) {
 	s.db.Model(&struct{ ID uint }{}).Table("users").Where("created_at >= ?", lastMonth).Count(&currentUsers)
 	s.db.Model(&struct{ ID uint }{}).Table("users").Where("created_at >= ? AND created_at < ?", twoMonthsAgo, lastMonth).Count(&previousUsers)
 
-	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ?", lastMonth).Select("COALESCE(SUM(total), 0)").Scan(&currentRevenue)
-	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ? AND created_at < ?", twoMonthsAgo, lastMonth).Select("COALESCE(SUM(total), 0)").Scan(&previousRevenue)
+	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ?", lastMonth).Select("COALESCE(SUM(total_amount), 0)").Scan(&currentRevenue)
+	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ? AND created_at < ?", twoMonthsAgo, lastMonth).Select("COALESCE(SUM(total_amount), 0)").Scan(&previousRevenue)
 
 	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ?", lastMonth).Count(&currentOrders)
 	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ? AND created_at < ?", twoMonthsAgo, lastMonth).Count(&previousOrders)
