@@ -181,6 +181,12 @@ func SetupRoutes(
 	reading.Put("/goals/:id", readingHandler.UpdateGoal)
 	reading.Delete("/goals/:id", readingHandler.DeleteGoal)
 
+	readingGoals := api.Group("/reading-goals", middleware.AuthRequired())
+	readingGoals.Get("/", readingHandler.GetGoals)
+	readingGoals.Post("/", readingHandler.CreateGoal)
+	readingGoals.Put("/:id", readingHandler.UpdateGoal)
+	readingGoals.Delete("/:id", readingHandler.DeleteGoal)
+
 	achievements := api.Group("/achievements")
 	achievements.Get("/", achievementHandler.GetAllAchievements)
 	achievements.Get("/user", middleware.AuthRequired(), achievementHandler.GetUserAchievements)
