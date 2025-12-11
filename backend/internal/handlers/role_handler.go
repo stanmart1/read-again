@@ -142,3 +142,58 @@ func (h *RoleHandler) GetUserPermissions(c *fiber.Ctx) error {
 
 	return c.JSON(fiber.Map{"permissions": permissions})
 }
+
+func (h *RoleHandler) GetRolePermissions(c *fiber.Ctx) error {
+	roleID, err := strconv.ParseUint(c.Params("id"), 10, 32)
+	if err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid role ID"})
+	}
+
+	var role models.Role
+	if err := h.roleService.GetDB().Preload("Permissions").First(&role, roleID).Error; err != nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "Role not found"})
+	}
+
+	return c.JSON(fiber.Map{"permissions": role.Permissions})
+}
+
+func (h *RoleHandler) AddPermission(c *fiber.Ctx) error {
+	roleID, err := strconv.ParseUint(c.Params("id"), 10, 32)
+	if err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid role ID"})
+	}
+
+	var req struct {
+		PermissionID uint `json:"permission_id" validate:"required"`
+	}
+
+	if err := c.BodyParser(&req); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid request body"})
+	}
+
+	if err := h.roleService.AddPermission(uint(roleID), req.PermissionID); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
+	}
+
+	middleware.LogAudit(c, "add_permission_to_role", "role", uint(roleID), "", "")
+	return c.JSON(fiber.Map{"message": "Permission added successfully"})
+}
+
+func (h *RoleHandler) RemovePermission(c *fiber.Ctx) error {
+	roleID, err := strconv.ParseUint(c.Params("id"), 10, 32)
+	if err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid role ID"})
+	}
+
+	permissionID, err := strconv.ParseUint(c.Params("permissionId"), 10, 32)
+	if err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid permission ID"})
+	}
+
+	if err := h.roleService.RemovePermission(uint(roleID), uint(permissionID)); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
+	}
+
+	middleware.LogAudit(c, "remove_permission_from_role", "role", uint(roleID), "", "")
+	return c.JSON(fiber.Map{"message": "Permission removed successfully"})
+}

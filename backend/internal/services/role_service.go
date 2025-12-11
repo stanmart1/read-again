@@ -136,3 +136,39 @@ func (s *RoleService) ListPermissions() ([]models.Permission, error) {
 	}
 	return permissions, nil
 }
+
+func (s *RoleService) AddPermission(roleID, permissionID uint) error {
+	var role models.Role
+	if err := s.db.First(&role, roleID).Error; err != nil {
+		return utils.NewNotFoundError("Role not found")
+	}
+
+	var permission models.Permission
+	if err := s.db.First(&permission, permissionID).Error; err != nil {
+		return utils.NewNotFoundError("Permission not found")
+	}
+
+	if err := s.db.Model(&role).Association("Permissions").Append(&permission); err != nil {
+		return utils.NewInternalServerError("Failed to add permission", err)
+	}
+
+	return nil
+}
+
+func (s *RoleService) RemovePermission(roleID, permissionID uint) error {
+	var role models.Role
+	if err := s.db.First(&role, roleID).Error; err != nil {
+		return utils.NewNotFoundError("Role not found")
+	}
+
+	var permission models.Permission
+	if err := s.db.First(&permission, permissionID).Error; err != nil {
+		return utils.NewNotFoundError("Permission not found")
+	}
+
+	if err := s.db.Model(&role).Association("Permissions").Delete(&permission); err != nil {
+		return utils.NewInternalServerError("Failed to remove permission", err)
+	}
+
+	return nil
+}

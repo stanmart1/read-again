@@ -109,6 +109,18 @@ func SetupRoutes(
 	// Auth permissions alias
 	api.Get("/auth/permissions", middleware.AuthRequired(), roleHandler.GetUserPermissions)
 
+	// RBAC aliases for frontend compatibility
+	rbac := api.Group("/rbac")
+	rbac.Get("/roles", roleHandler.ListRoles)
+	rbac.Post("/roles", middleware.AdminRequired(), roleHandler.CreateRole)
+	rbac.Get("/roles/:id", roleHandler.GetRole)
+	rbac.Put("/roles/:id", middleware.AdminRequired(), roleHandler.UpdateRole)
+	rbac.Delete("/roles/:id", middleware.AdminRequired(), roleHandler.DeleteRole)
+	rbac.Get("/roles/:id/permissions", roleHandler.GetRolePermissions)
+	rbac.Post("/roles/:id/permissions", middleware.AdminRequired(), roleHandler.AddPermission)
+	rbac.Delete("/roles/:id/permissions/:permissionId", middleware.AdminRequired(), roleHandler.RemovePermission)
+	rbac.Get("/permissions", roleHandler.ListPermissions)
+
 	// Admin users alias
 	adminUsers := api.Group("/admin/users", middleware.AdminRequired())
 	adminUsers.Get("/", userHandler.ListUsers)
