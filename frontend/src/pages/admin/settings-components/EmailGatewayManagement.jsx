@@ -323,25 +323,56 @@ export default function EmailGatewayManagement() {
       <div className="bg-white rounded-lg shadow-md p-3 sm:p-6">
         <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Email Gateway</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
-          {gateways && gateways.map((gateway) => (
-            <div
-              key={gateway.id}
-              className={`p-2 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${activeGateway === gateway.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}
-              onClick={() => handleGatewayChange(gateway.id)}
-            >
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-                  <span className="text-xl sm:text-2xl flex-shrink-0">{getGatewayIcon(gateway.type)}</span>
-                  <div className="min-w-0">
-                    <h4 className="font-medium text-gray-900 text-sm sm:text-base truncate">{gateway.name}</h4>
-                    <p className="text-xs text-gray-500 capitalize truncate">{gateway.type} Gateway</p>
+          {gateways && gateways.length > 0 ? (
+            gateways.map((gateway) => (
+              <div
+                key={gateway.id}
+                className={`p-2 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${activeGateway === gateway.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}
+                onClick={() => handleGatewayChange(gateway.id)}
+              >
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+                    <span className="text-xl sm:text-2xl flex-shrink-0">{getGatewayIcon(gateway.type)}</span>
+                    <div className="min-w-0">
+                      <h4 className="font-medium text-gray-900 text-sm sm:text-base truncate">{gateway.name}</h4>
+                      <p className="text-xs text-gray-500 capitalize truncate">{gateway.type} Gateway</p>
+                    </div>
                   </div>
-                </div>
-                <div className={`w-4 h-4 rounded-full flex-shrink-0 ${activeGateway === gateway.id ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
+                  <div className={`w-4 h-4 rounded-full flex-shrink-0 ${activeGateway === gateway.id ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
               </div>
               <p className="text-xs text-gray-600 line-clamp-2">{getGatewayDescription(gateway.type)}</p>
             </div>
-          ))}
+          ))
+          ) : (
+            <div className="col-span-full text-center py-8">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                <i className="ri-mail-line text-2xl text-gray-400"></i>
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No Email Gateways</h3>
+              <p className="text-gray-500 mb-4">
+                No email gateways are configured. Add an email gateway to start sending emails.
+              </p>
+              <button
+                onClick={() => setGateways([
+                  {
+                    id: 'resend',
+                    name: 'Resend',
+                    type: 'resend',
+                    isActive: true,
+                    fromEmail: 'noreply@readagain.com',
+                    fromName: 'ReadAgain',
+                    resendApiKey: '',
+                    resendDomain: 'readagain.com',
+                    useEnvVars: false,
+                    envVarPrefix: 'RESEND'
+                  }
+                ])}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Add Email Gateway
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
