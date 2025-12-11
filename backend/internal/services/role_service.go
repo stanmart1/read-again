@@ -15,6 +15,10 @@ func NewRoleService(db *gorm.DB) *RoleService {
 	return &RoleService{db: db}
 }
 
+func (s *RoleService) GetDB() *gorm.DB {
+	return s.db
+}
+
 func (s *RoleService) ListRoles() ([]models.Role, error) {
 	var roles []models.Role
 	if err := s.db.Preload("Permissions").Find(&roles).Error; err != nil {

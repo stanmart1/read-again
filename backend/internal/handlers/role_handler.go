@@ -4,6 +4,7 @@ import (
 	"strconv"
 
 	"readagain/internal/middleware"
+	"readagain/internal/models"
 	"readagain/internal/services"
 	"readagain/internal/utils"
 
@@ -119,6 +120,24 @@ func (h *RoleHandler) ListPermissions(c *fiber.Ctx) error {
 	if err != nil {
 		utils.ErrorLogger.Printf("Failed to list permissions: %v", err)
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to retrieve permissions"})
+	}
+
+	return c.JSON(fiber.Map{"permissions": permissions})
+}
+
+func (h *RoleHandler) GetUserPermissions(c *fiber.Ctx) error {
+	userID := c.Locals("userID").(uint)
+
+	var user models.User
+	if err := h.roleService.GetDB().Preload("Role.Permissions").First(&user, userID).Error; err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to retrieve user permissions"})
+	}
+
+	permissions := []string{}
+	if user.Role != nil {
+		for _, perm := range user.Role.Permissions {
+			permissions = append(permissions, perm.Name)
+		}
 	}
 
 	return c.JSON(fiber.Map{"permissions": permissions})

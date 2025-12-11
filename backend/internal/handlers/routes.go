@@ -106,6 +106,18 @@ func SetupRoutes(
 	permissions := api.Group("/permissions")
 	permissions.Get("/", roleHandler.ListPermissions)
 
+	// Auth permissions alias
+	api.Get("/auth/permissions", middleware.AuthRequired(), roleHandler.GetUserPermissions)
+
+	// Admin users alias
+	adminUsers := api.Group("/admin/users", middleware.AdminRequired())
+	adminUsers.Get("/", userHandler.ListUsers)
+	adminUsers.Post("/", userHandler.CreateUser)
+	adminUsers.Get("/:id", userHandler.GetUser)
+	adminUsers.Put("/:id", userHandler.UpdateUser)
+	adminUsers.Patch("/:id/status", userHandler.ToggleStatus)
+	adminUsers.Delete("/:id", userHandler.DeleteUser)
+
 	categories := api.Group("/categories")
 	categories.Get("/", categoryHandler.ListCategories)
 	categories.Get("/:id", categoryHandler.GetCategory)
