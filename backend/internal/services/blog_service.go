@@ -25,6 +25,7 @@ func (s *BlogService) GetStats() (map[string]interface{}, error) {
 	var totalBlogs int64
 	var publishedBlogs int64
 	var draftBlogs int64
+	var totalViews int64
 
 	if err := s.db.Model(&models.Blog{}).Count(&totalBlogs).Error; err != nil {
 		return nil, err
@@ -38,10 +39,15 @@ func (s *BlogService) GetStats() (map[string]interface{}, error) {
 		return nil, err
 	}
 
+	if err := s.db.Model(&models.Blog{}).Select("COALESCE(SUM(views), 0)").Scan(&totalViews).Error; err != nil {
+		return nil, err
+	}
+
 	stats := map[string]interface{}{
 		"total_blogs":     totalBlogs,
 		"published_blogs": publishedBlogs,
 		"draft_blogs":     draftBlogs,
+		"total_views":     totalViews,
 	}
 
 	return stats, nil
