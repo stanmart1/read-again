@@ -182,7 +182,7 @@ export default function EmailGatewayManagement() {
     }
   };
 
-  const getActiveGateway = () => gateways.find(gw => gw.id === activeGateway);
+  const getActiveGateway = () => gateways && gateways.find(gw => gw.id === activeGateway);
 
   const getGatewayIcon = (type) => {
     switch (type) {
@@ -349,8 +349,8 @@ export default function EmailGatewayManagement() {
         <div className="bg-white rounded-lg shadow-md p-3 sm:p-6">
         <div className="mb-6">
             <div className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">{getActiveGateway()?.name} Configuration</h3>
-              <p className="text-sm text-gray-500 mt-1">Configure your {getActiveGateway()?.name} email gateway settings</p>
+              <h3 className="text-lg font-semibold text-gray-900">{getActiveGateway()?.name || 'Gateway'} Configuration</h3>
+              <p className="text-sm text-gray-500 mt-1">Configure your {getActiveGateway()?.name || 'email'} gateway settings</p>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-4">
               <div className="flex-1 min-w-0">
