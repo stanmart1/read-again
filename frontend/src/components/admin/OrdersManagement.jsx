@@ -347,14 +347,79 @@ const OrdersManagement = () => {
 
       {/* Mobile Cards */}
       <div className="xl:hidden space-y-4">
-        {orders.map((order) => (
-          <OrderCard
-            key={order.id}
-            order={order}
+        {orders.length === 0 && !loading ? (
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+              <i className="ri-shopping-bag-line text-2xl text-gray-400"></i>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No orders found</h3>
+            <p className="text-gray-500 mb-4">
+              {searchTerm || statusFilter || paymentStatusFilter || paymentMethodFilter || dateFilter !== 'all' 
+                ? 'No orders match your current filters. Try adjusting your search criteria.'
+                : 'No orders have been placed yet. Orders will appear here once customers start making purchases.'
+              }
+            </p>
+            {(searchTerm || statusFilter || paymentStatusFilter || paymentMethodFilter || dateFilter !== 'all') && (
+              <button
+                onClick={clearFilters}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Clear Filters
+              </button>
+            )}
+          </div>
+        ) : (
+          orders.map((order) => (
+            <OrderCard
+              key={order.id}
+              order={order}
+              onView={handleViewOrder}
+              onDelete={handleDeleteOrder}
+              onSelect={handleSelectOrder}
+              isSelected={selectedOrders.has(order.id)}
+              getStatusColor={getStatusColor}
+              getPaymentStatusColor={getPaymentStatusColor}
+              formatCurrency={formatCurrency}
+              formatDate={formatDate}
+              formatTime={formatTime}
+              getCustomerName={getCustomerName}
+            />
+          ))
+        )}
+      </div>
+
+      {/* Desktop Table */}
+      <div className="hidden xl:block">
+        {orders.length === 0 && !loading ? (
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+              <i className="ri-shopping-bag-line text-2xl text-gray-400"></i>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No orders found</h3>
+            <p className="text-gray-500 mb-4">
+              {searchTerm || statusFilter || paymentStatusFilter || paymentMethodFilter || dateFilter !== 'all' 
+                ? 'No orders match your current filters. Try adjusting your search criteria.'
+                : 'No orders have been placed yet. Orders will appear here once customers start making purchases.'
+              }
+            </p>
+            {(searchTerm || statusFilter || paymentStatusFilter || paymentMethodFilter || dateFilter !== 'all') && (
+              <button
+                onClick={clearFilters}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Clear Filters
+              </button>
+            )}
+          </div>
+        ) : (
+          <OrderTable
+            orders={orders}
             onView={handleViewOrder}
             onDelete={handleDeleteOrder}
             onSelect={handleSelectOrder}
-            isSelected={selectedOrders.has(order.id)}
+            onSelectAll={handleSelectAll}
+            selectedOrders={selectedOrders}
+            selectAll={selectAll}
             getStatusColor={getStatusColor}
             getPaymentStatusColor={getPaymentStatusColor}
             formatCurrency={formatCurrency}
@@ -362,26 +427,7 @@ const OrdersManagement = () => {
             formatTime={formatTime}
             getCustomerName={getCustomerName}
           />
-        ))}
-      </div>
-
-      {/* Desktop Table */}
-      <div className="hidden xl:block">
-        <OrderTable
-          orders={orders}
-          onView={handleViewOrder}
-          onDelete={handleDeleteOrder}
-          onSelect={handleSelectOrder}
-          onSelectAll={handleSelectAll}
-          selectedOrders={selectedOrders}
-          selectAll={selectAll}
-          getStatusColor={getStatusColor}
-          getPaymentStatusColor={getPaymentStatusColor}
-          formatCurrency={formatCurrency}
-          formatDate={formatDate}
-          formatTime={formatTime}
-          getCustomerName={getCustomerName}
-        />
+        )}
       </div>
 
       {/* Pagination */}

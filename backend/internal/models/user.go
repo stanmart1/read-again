@@ -14,10 +14,10 @@ type User struct {
 	SchoolCategory           string     `json:"school_category"`
 	ClassLevel               string     `json:"class_level"`
 	Department               string     `json:"department"`
-	RoleID                   uint       `json:"role_id"`
+	RoleID                   uint       `gorm:"index" json:"role_id"`
 	Role                     *Role      `gorm:"foreignKey:RoleID" json:"role,omitempty"`
-	IsActive                 bool       `gorm:"default:false" json:"is_active"`
-	IsEmailVerified          bool       `gorm:"default:false" json:"is_email_verified"`
+	IsActive                 bool       `gorm:"default:false;index" json:"is_active"`
+	IsEmailVerified          bool       `gorm:"default:false;index" json:"is_email_verified"`
 	VerificationToken        string     `gorm:"index" json:"-"`
 	VerificationTokenExpires *time.Time `json:"-"`
 	LastLogin                *time.Time `json:"last_login"`
