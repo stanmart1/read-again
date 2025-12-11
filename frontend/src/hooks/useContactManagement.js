@@ -31,7 +31,7 @@ export const useContactManagement = () => {
     try {
       setSaving(true);
       setError(null);
-      await api.put('/api/contact/admin', {
+      await api.put('/admin/contact', {
         contactMethods,
         officeInfo,
         contactSubjects

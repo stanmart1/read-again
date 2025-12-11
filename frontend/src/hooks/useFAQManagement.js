@@ -35,7 +35,7 @@ export const useFAQManagement = () => {
 
   const createFAQ = useCallback(async (data) => {
     try {
-      await api.post('/api/faq', data);
+      await api.post('/admin/faqs', data);
       await fetchData();
       return { success: true };
     } catch (err) {
@@ -46,7 +46,7 @@ export const useFAQManagement = () => {
 
   const updateFAQ = useCallback(async (data) => {
     try {
-      await api.put(`/api/faq/${data.id}`, data);
+      await api.put(`/admin/faqs/${data.id}`, data);
       await fetchData();
       return { success: true };
     } catch (err) {
@@ -57,7 +57,7 @@ export const useFAQManagement = () => {
 
   const deleteFAQ = useCallback(async (id) => {
     try {
-      await api.delete(`/api/faq/${id}`);
+      await api.delete(`/admin/faqs/${id}`);
       await fetchData();
       return { success: true };
     } catch (err) {
@@ -68,7 +68,8 @@ export const useFAQManagement = () => {
 
   const bulkDeleteFAQs = useCallback(async (ids) => {
     try {
-      await api.post('/api/faq/bulk-delete', { ids });
+      // Bulk operations not implemented in backend
+      return { success: false, error: 'Bulk delete not available' };
       await fetchData();
       return { success: true };
     } catch (err) {
@@ -79,7 +80,8 @@ export const useFAQManagement = () => {
 
   const bulkUpdateFAQs = useCallback(async (ids, updates) => {
     try {
-      await api.post('/api/faq/bulk-update', { ids, updates });
+      // Bulk operations not implemented in backend
+      return { success: false, error: 'Bulk update not available' };
       await fetchData();
       return { success: true };
     } catch (err) {
@@ -90,7 +92,8 @@ export const useFAQManagement = () => {
 
   const createCategory = useCallback(async (data) => {
     try {
-      await api.post('/api/faq/categories', data);
+      // FAQ categories not separate - use main categories
+      return { success: false, error: 'Use main categories endpoint' };
       await fetchData();
       return { success: true };
     } catch (err) {
@@ -101,7 +104,8 @@ export const useFAQManagement = () => {
 
   const updateCategory = useCallback(async (data) => {
     try {
-      await api.put(`/api/faq/categories/${data.id}`, data);
+      // FAQ categories not separate - use main categories
+      return { success: false, error: 'Use main categories endpoint' };
       await fetchData();
       return { success: true };
     } catch (err) {

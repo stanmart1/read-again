@@ -96,7 +96,7 @@ export const useAdminBlog = () => {
         formData.append('featured_image', data.featured_image);
       }
       
-      const response = await api.post('/api/blog/posts', formData, {
+      const response = await api.post('/admin/blogs', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       console.log('✅ Blog post created:', response.data);
@@ -132,7 +132,7 @@ export const useAdminBlog = () => {
         formData.append('featured_image', data.featured_image);
       }
       
-      const response = await api.put(`/api/blog/posts/${id}`, formData, {
+      const response = await api.put(`/admin/blogs/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       console.log('✅ Blog post updated:', response.data);

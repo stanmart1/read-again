@@ -13,7 +13,7 @@ export const useAboutManagement = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await api.get('/api/about/admin');
+      const response = await api.get('/about');
       setContent(response.data || {});
     } catch (err) {
       setError(err.message);
@@ -27,7 +27,7 @@ export const useAboutManagement = () => {
     try {
       setSaving(true);
       setError(null);
-      await api.put('/api/about/admin', content);
+      await api.put('/admin/about', content);
       setLastSaved(new Date());
       setUnsavedChanges(false);
       return { success: true };
