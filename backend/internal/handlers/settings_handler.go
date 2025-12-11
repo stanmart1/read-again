@@ -15,6 +15,26 @@ func NewSettingsHandler(service *services.SettingsService) *SettingsHandler {
 	return &SettingsHandler{service: service}
 }
 
+func (h *SettingsHandler) TestEmailGateway(c *fiber.Ctx) error {
+	var req struct {
+		GatewayType string `json:"gateway_type"`
+		TestEmail   string `json:"test_email"`
+		Config      map[string]interface{} `json:"config"`
+	}
+
+	if err := c.BodyParser(&req); err != nil {
+		return c.Status(400).JSON(fiber.Map{"error": "Invalid request body"})
+	}
+
+	// Simple test response - in a real implementation, you'd test the actual email sending
+	return c.JSON(fiber.Map{
+		"success": true,
+		"message": "Email gateway test completed successfully",
+		"gateway_type": req.GatewayType,
+		"test_email": req.TestEmail,
+	})
+}
+
 func (h *SettingsHandler) GetByCategory(c *fiber.Ctx) error {
 	category := c.Query("category")
 

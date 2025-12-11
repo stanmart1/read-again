@@ -274,6 +274,7 @@ func SetupRoutes(
 
 	// Email gateways endpoint
 	api.Get("/admin/email/gateways", middleware.AdminRequired(), settingsHandler.GetEmailSettings)
+	api.Post("/admin/email/gateways/test", middleware.AdminRequired(), settingsHandler.TestEmailGateway)
 	
 	// Payment settings endpoint  
 	api.Get("/admin/payment-settings", middleware.AdminRequired(), settingsHandler.GetPaymentSettings)
