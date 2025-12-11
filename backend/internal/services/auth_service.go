@@ -135,6 +135,9 @@ func (s *AuthService) Logout(token string, userID uint) error {
 }
 
 func (s *AuthService) logAuthAttempt(userID uint, action, ipAddress, userAgent string, success bool) {
+	if userID == 0 {
+		return
+	}
 	log := &models.AuthLog{
 		UserID:    userID,
 		Action:    action,

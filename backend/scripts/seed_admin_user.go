@@ -21,11 +21,24 @@ func main() {
 	var existingUser models.User
 	err := database.DB.Where("email = ?", "admin@readnwin.com").First(&existingUser).Error
 	if err == nil {
-		log.Println("❌ Admin user already exists")
+		log.Println("⚠️  Admin user already exists, updating password...")
+		hashedPassword, err := bcrypt.GenerateFromPassword([]byte("admin123"), bcrypt.DefaultCost)
+		if err != nil {
+			log.Fatal("Failed to hash password:", err)
+		}
+		database.DB.Model(&existingUser).Updates(map[string]interface{}{
+			"password_hash":    string(hashedPassword),
+			"is_active":        true,
+			"is_email_verified": true,
+		})
+		log.Printf("✅ Admin user password updated!")
+		log.Printf("   Email: admin@readnwin.com")
+		log.Printf("   Username: admin")
+		log.Printf("   Password: admin123")
 		return
 	}
 
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte("admiin123"), bcrypt.DefaultCost)
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte("admin123"), bcrypt.DefaultCost)
 	if err != nil {
 		log.Fatal("Failed to hash password:", err)
 	}
@@ -48,6 +61,6 @@ func main() {
 	log.Printf("✅ Admin user created successfully!")
 	log.Printf("   Email: admin@readnwin.com")
 	log.Printf("   Username: admin")
-	log.Printf("   Password: admiin123")
+	log.Printf("   Password: admin123")
 	log.Printf("   Role: SuperAdmin (ID: 1)")
 }
