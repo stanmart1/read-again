@@ -101,7 +101,7 @@ func (s *ReviewService) GetStats() (map[string]interface{}, error) {
 	s.db.Model(&models.Review{}).Where("status = ?", "approved").Count(&approved)
 	s.db.Model(&models.Review{}).Where("status = ?", "rejected").Count(&rejected)
 	s.db.Model(&models.Review{}).Where("is_featured = ?", true).Count(&featured)
-	s.db.Model(&models.Review{}).Where("status = ?", "approved").Select("AVG(rating)").Scan(&avgRating)
+	s.db.Model(&models.Review{}).Where("status = ?", "approved").Select("COALESCE(AVG(rating), 0)").Scan(&avgRating)
 
 	return map[string]interface{}{
 		"total":         total,
