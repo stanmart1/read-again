@@ -113,3 +113,20 @@ func (s *LibraryService) GetReadingStatistics(userID uint) (map[string]interface
 		"current_streak":     currentStreak,
 	}, nil
 }
+
+func (s *LibraryService) GetDashboardStats(userID uint) (map[string]interface{}, error) {
+	var booksRead int64
+	s.db.Model(&models.UserLibrary{}).Where("user_id = ? AND completed_at IS NOT NULL", userID).Count(&booksRead)
+
+	var totalOrders int64
+	s.db.Model(&models.Order{}).Where("user_id = ?", userID).Count(&totalOrders)
+
+	var reviewsCount int64
+	s.db.Model(&models.Review{}).Where("user_id = ?", userID).Count(&reviewsCount)
+
+	return map[string]interface{}{
+		"books_read":     booksRead,
+		"total_orders":   totalOrders,
+		"reviews_count":  reviewsCount,
+	}, nil
+}

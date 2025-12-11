@@ -15,6 +15,10 @@ func NewReadingSessionService(db *gorm.DB) *ReadingSessionService {
 	return &ReadingSessionService{db: db}
 }
 
+func (s *ReadingSessionService) GetDB() *gorm.DB {
+	return s.db
+}
+
 func (s *ReadingSessionService) StartSession(userID, bookID uint) (*models.ReadingSession, error) {
 	var library models.UserLibrary
 	if err := s.db.Where("user_id = ? AND book_id = ?", userID, bookID).First(&library).Error; err != nil {

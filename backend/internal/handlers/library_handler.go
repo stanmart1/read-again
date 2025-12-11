@@ -102,6 +102,18 @@ func (h *LibraryHandler) GetStatistics(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{"statistics": stats})
 }
 
+func (h *LibraryHandler) GetDashboardStats(c *fiber.Ctx) error {
+	userID := c.Locals("userID").(uint)
+
+	stats, err := h.libraryService.GetDashboardStats(userID)
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get dashboard stats: %v", err)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to retrieve stats"})
+	}
+
+	return c.JSON(fiber.Map{"stats": stats})
+}
+
 func (h *LibraryHandler) GetBookmarks(c *fiber.Ctx) error {
 	userID := c.Locals("userID").(uint)
 	bookID, err := strconv.ParseUint(c.Params("id"), 10, 32)

@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"time"
 
+	"readagain/internal/models"
 	"readagain/internal/services"
 	"readagain/internal/utils"
 
@@ -87,6 +88,39 @@ func (h *ReadingHandler) GetSessions(c *fiber.Ctx) error {
 		"sessions":   sessions,
 		"pagination": meta,
 	})
+}
+
+func (h *ReadingHandler) GetReadingProgress(c *fiber.Ctx) error {
+	userID := c.Locals("userID").(uint)
+
+	var libraries []models.UserLibrary
+	err := h.sessionService.GetDB().
+		Where("user_id = ? AND progress > 0 AND progress < 100", userID).
+		Preload("Book").
+		Order("last_read_at DESC").
+		Limit(10).
+		Find(&libraries).Error
+
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get reading progress: %v", err)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to retrieve reading progress"})
+	}
+
+	progress := make([]map[string]interface{}, 0)
+	for _, lib := range libraries {
+		if lib.Book != nil {
+			progress = append(progress, map[string]interface{}{
+				"id":          lib.ID,
+				"book_id":     lib.BookID,
+				"title":       lib.Book.Title,
+				"author":      lib.Book.Author,
+				"cover_image": lib.Book.CoverImage,
+				"progress":    lib.Progress,
+			})
+		}
+	}
+
+	return c.JSON(fiber.Map{"reading_progress": progress})
 }
 
 func (h *ReadingHandler) GetGoals(c *fiber.Ctx) error {
