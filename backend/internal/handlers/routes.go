@@ -268,6 +268,7 @@ func SetupRoutes(
 
 	api.Post("/books/:id/reviews", middleware.AuthRequired(), reviewHandler.CreateReview)
 	api.Get("/books/:id/reviews", reviewHandler.GetBookReviews)
+	api.Get("/reviews/featured", reviewHandler.GetFeatured)
 
 	adminReviews := api.Group("/admin/reviews", middleware.AdminRequired())
 	adminReviews.Get("/", reviewHandler.ListAllReviews)

@@ -134,3 +134,14 @@ func (s *ReviewService) GetBookRating(bookID uint) (float64, int64, error) {
 
 	return avgRating, count, nil
 }
+
+func (s *ReviewService) GetFeatured(limit int) ([]models.Review, error) {
+	var reviews []models.Review
+	err := s.db.Where("is_featured = ? AND status = ?", true, "approved").
+		Preload("User").
+		Preload("Book").
+		Order("created_at DESC").
+		Limit(limit).
+		Find(&reviews).Error
+	return reviews, err
+}

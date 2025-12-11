@@ -159,3 +159,15 @@ func (h *ReviewHandler) Delete(c *fiber.Ctx) error {
 	utils.InfoLogger.Printf("Review deleted: %d", id)
 	return c.JSON(fiber.Map{"message": "Review deleted successfully"})
 }
+
+func (h *ReviewHandler) GetFeatured(c *fiber.Ctx) error {
+	limit, _ := strconv.Atoi(c.Query("limit", "10"))
+
+	reviews, err := h.service.GetFeatured(limit)
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get featured reviews: %v", err)
+		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch featured reviews"})
+	}
+
+	return c.JSON(fiber.Map{"data": reviews})
+}
