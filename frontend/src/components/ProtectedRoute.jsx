@@ -79,12 +79,12 @@ export const ProtectedRoute = ({ children, requiredRole = null, requiredPermissi
 };
 
 /**
- * Admin Route - Restricts access to admin and super_admin users
+ * Admin Route - Restricts access to Admin and SuperAdmin users
  * Usage: <AdminRoute requiredPermission="manage_settings">{children}</AdminRoute>
  */
 export const AdminRoute = ({ children, requiredPermission = null }) => {
   return (
-    <ProtectedRoute requiredRole={['admin', 'super_admin']} requiredPermission={requiredPermission}>
+    <ProtectedRoute requiredRole={['Admin', 'SuperAdmin']} requiredPermission={requiredPermission}>
       {children}
     </ProtectedRoute>
   );
