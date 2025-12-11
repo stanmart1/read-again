@@ -15,6 +15,26 @@ func NewAuthorService(db *gorm.DB) *AuthorService {
 	return &AuthorService{db: db}
 }
 
+func (s *AuthorService) GetStats() (map[string]interface{}, error) {
+	var totalAuthors int64
+	var activeAuthors int64
+
+	if err := s.db.Model(&models.Author{}).Count(&totalAuthors).Error; err != nil {
+		return nil, err
+	}
+
+	if err := s.db.Model(&models.Author{}).Where("status = ?", "active").Count(&activeAuthors).Error; err != nil {
+		return nil, err
+	}
+
+	stats := map[string]interface{}{
+		"total_authors":  totalAuthors,
+		"active_authors": activeAuthors,
+	}
+
+	return stats, nil
+}
+
 func (s *AuthorService) ListAuthors(page, limit int, search string) ([]models.Author, *utils.PaginationMeta, error) {
 	params := utils.GetPaginationParams(page, limit)
 

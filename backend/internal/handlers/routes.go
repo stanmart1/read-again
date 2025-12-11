@@ -144,6 +144,15 @@ func SetupRoutes(
 	authors.Put("/:id", middleware.AdminRequired(), authorHandler.UpdateAuthor)
 	authors.Delete("/:id", middleware.AdminRequired(), authorHandler.DeleteAuthor)
 
+	// Admin authors routes
+	adminAuthors := api.Group("/admin/authors", middleware.AdminRequired())
+	adminAuthors.Get("/", authorHandler.ListAuthors)
+	adminAuthors.Get("/stats", authorHandler.GetStats)
+	adminAuthors.Post("/", authorHandler.CreateAuthor)
+	adminAuthors.Get("/:id", authorHandler.GetAuthor)
+	adminAuthors.Put("/:id", authorHandler.UpdateAuthor)
+	adminAuthors.Delete("/:id", authorHandler.DeleteAuthor)
+
 	books := api.Group("/books")
 	books.Get("/", bookHandler.ListBooks)
 	books.Get("/featured", bookHandler.GetFeaturedBooks)

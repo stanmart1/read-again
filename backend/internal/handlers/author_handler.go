@@ -17,6 +17,16 @@ func NewAuthorHandler(authorService *services.AuthorService) *AuthorHandler {
 	return &AuthorHandler{authorService: authorService}
 }
 
+func (h *AuthorHandler) GetStats(c *fiber.Ctx) error {
+	stats, err := h.service.GetStats()
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get author stats: %v", err)
+		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch author statistics"})
+	}
+
+	return c.JSON(stats)
+}
+
 func (h *AuthorHandler) ListAuthors(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 	limit, _ := strconv.Atoi(c.Query("limit", "20"))
