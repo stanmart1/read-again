@@ -41,7 +41,7 @@ func (s *AuthService) Register(email, username, password, firstName, lastName st
 		PasswordHash: hashedPassword,
 		FirstName:    firstName,
 		LastName:     lastName,
-		RoleID:       3,
+		RoleID:       4,
 		IsActive:     false,
 	}
 
