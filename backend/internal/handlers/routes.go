@@ -272,6 +272,12 @@ func SetupRoutes(
 	settings.Get("/payment/config", settingsHandler.GetPaymentSettings)
 	settings.Put("/payment/config", settingsHandler.UpdatePaymentSettings)
 
+	// Email gateways endpoint
+	api.Get("/admin/email/gateways", middleware.AdminRequired(), settingsHandler.GetEmailSettings)
+	
+	// Payment settings endpoint  
+	api.Get("/admin/payment-settings", middleware.AdminRequired(), settingsHandler.GetPaymentSettings)
+
 	analytics := api.Group("/admin/analytics", middleware.AdminRequired())
 	analytics.Get("/dashboard", analyticsHandler.GetEnhancedOverview)
 	analytics.Get("/sales", analyticsHandler.GetSalesStats)

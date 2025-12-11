@@ -26,7 +26,7 @@ func (s *FAQService) List(category string, activeOnly bool) ([]models.FAQ, error
 		query = query.Where("is_active = ?", true)
 	}
 
-	if err := query.Order("order ASC, created_at ASC").Find(&faqs).Error; err != nil {
+	if err := query.Order("\"order\" ASC, created_at ASC").Find(&faqs).Error; err != nil {
 		return nil, err
 	}
 
