@@ -88,8 +88,26 @@ const Roles = () => {
         </div>
 
         {/* Roles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {roles.map((role) => (
+        {roles.length === 0 ? (
+          <div className="bg-white rounded-lg shadow-md p-12 text-center">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 mb-6">
+              <i className="ri-shield-user-line text-4xl text-gray-400"></i>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">No Roles Found</h3>
+            <p className="text-gray-600 max-w-md mx-auto mb-8">
+              Get started by creating your first role to manage user permissions and access control.
+            </p>
+            <button
+              onClick={() => setShowCreateModal(true)}
+              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+            >
+              <i className="ri-add-line mr-2"></i>
+              Create Your First Role
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {roles.map((role) => (
             <div
               key={role.id}
               className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
@@ -134,6 +152,7 @@ const Roles = () => {
             </div>
           ))}
         </div>
+        )}
 
         <CreateRoleModal
           isOpen={showCreateModal}
