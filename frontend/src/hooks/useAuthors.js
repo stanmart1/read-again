@@ -29,20 +29,9 @@ export const useAuthors = () => {
         ...(filters.status && { status: filters.status })
       };
 
-      const response = await api.get('/admin/authors', { params });
-      const result = response.data;
-
-      // Handle both array and object responses
-      let authorsData = [];
-      if (Array.isArray(result)) {
-        authorsData = result;
-      } else if (result.authors && Array.isArray(result.authors)) {
-        authorsData = result.authors;
-      } else if (result.data && Array.isArray(result.data)) {
-        authorsData = result.data;
-      } else {
-        authorsData = [];
-      }
+      const response = await api.get('/authors', { params });
+      // Backend returns: { data: [...authors] }
+      const authorsData = response.data.data || [];
       setAuthors(authorsData);
       
       if (result.pagination) {

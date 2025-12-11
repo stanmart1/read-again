@@ -78,7 +78,8 @@ export const useCart = () => {
       setIsLoading(true);
       setError(null);
       const response = await api.get('/cart');
-      const items = Array.isArray(response.data) ? response.data : (response.data.items || []);
+      // Backend returns: { data: [...items] }
+      const items = response.data.data || [];
       
       // Transform backend format to match expected format
       const transformedItems = items.map(item => ({
@@ -135,22 +136,17 @@ export const useCart = () => {
       
       console.log('Transferring guest cart to authenticated user...', guestItems);
       
-      // Use dedicated transfer endpoint if available
+      // Backend expects: { book_ids: [1, 2, 3] }
       try {
-        await api.post('/cart/transfer-guest', {
-          cartItems: guestItems.map(item => ({
-            book_id: item.book_id,
-            quantity: item.quantity
-          }))
-        });
+        const bookIds = guestItems.map(item => item.book_id);
+        await api.post('/cart/merge', { book_ids: bookIds });
       } catch (err) {
         // Fallback: Transfer each item individually
         console.log('Using fallback transfer method');
         for (const item of guestItems) {
           try {
-            await api.post('/cart/add', {
-              book_id: item.book_id,
-              quantity: item.quantity
+            await api.post('/cart', {
+              book_id: item.book_id
             });
           } catch (addErr) {
             console.error('Error adding item:', addErr);
@@ -252,9 +248,8 @@ export const useCart = () => {
       
       if (isAuthenticated) {
         // Authenticated user - use API
-        await api.post('/cart/add', {
-          book_id: book.id,
-          quantity
+        await api.post('/cart', {
+          book_id: book.id
         });
         // Immediately reload cart to update UI
         await loadAuthenticatedCart();
@@ -302,7 +297,7 @@ export const useCart = () => {
           // Delete the old item
           await api.delete(`/cart/${cartItem.id}`);
           // Add with new quantity
-          await api.post('/cart/add', { book_id: bookId, quantity });
+          await api.post('/cart', { book_id: bookId });
           // Immediately reload cart to update UI
           await loadAuthenticatedCart();
         }
@@ -354,7 +349,7 @@ export const useCart = () => {
       setError(null);
       
       if (isAuthenticated) {
-        await api.delete('/cart/clear');
+        await api.delete('/cart');
         setCartItems([]);
       } else {
         setCartItems([]);
