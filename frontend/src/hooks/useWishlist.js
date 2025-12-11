@@ -14,8 +14,9 @@ export const useWishlist = () => {
     try {
       setLoading(true);
       setError(null);
-      // Wishlist endpoint not implemented yet - return empty array
-      setItems([]);
+      const response = await api.get('/wishlist');
+      // Backend returns: { data: [...items] }
+      setItems(response.data.data || []);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching wishlist:', err);
@@ -26,8 +27,9 @@ export const useWishlist = () => {
 
   const addToWishlist = async (bookId) => {
     try {
-      // Wishlist endpoint not implemented yet
-      console.log('Wishlist feature coming soon');
+      await api.post('/wishlist', { book_id: bookId });
+      await fetchWishlist();
+      return true;
       return false;
     } catch (err) {
       console.error('Error adding to wishlist:', err);
@@ -35,10 +37,11 @@ export const useWishlist = () => {
     }
   };
 
-  const removeFromWishlist = async (bookId) => {
+  const removeFromWishlist = async (itemId) => {
     try {
-      // Wishlist endpoint not implemented yet
-      console.log('Wishlist feature coming soon');
+      await api.delete(`/wishlist/${itemId}`);
+      await fetchWishlist();
+      return true;
       return false;
     } catch (err) {
       console.error('Error removing from wishlist:', err);

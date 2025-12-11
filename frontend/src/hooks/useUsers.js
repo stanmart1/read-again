@@ -17,7 +17,7 @@ export const useUsers = () => {
       const validPage = Number(page) || 1;
       const skip = (validPage - 1) * itemsPerPage;
       const params = {
-        skip,
+        page: validPage,
         limit: itemsPerPage
       };
       
@@ -36,11 +36,12 @@ export const useUsers = () => {
       const url = `/admin/users?${queryParams}`;
       const response = await api.get(url);
       
+      // Backend returns: { users: [...], pagination: {...} }
       setUsers(response.data.users || []);
       setCurrentPage(page);
-      const total = response.data.total || 0;
-      setTotalUsers(total);
-      setTotalPages(Math.ceil(total / itemsPerPage));
+      const pagination = response.data.pagination || {};
+      setTotalUsers(pagination.total || 0);
+      setTotalPages(pagination.total_pages || 0);
       
       return { success: true, data: response.data };
     } catch (err) {

@@ -8,8 +8,9 @@ export const useRoles = () => {
   const fetchRoles = async () => {
     setLoading(true);
     try {
-      const response = await api.get('/rbac/roles');
-      setRoles(response.data || []);
+      const response = await api.get('/roles');
+      // Backend returns: { data: [...roles] }
+      setRoles(response.data.data || []);
     } catch (err) {
       console.error('Error fetching roles:', err);
       setRoles([]);
