@@ -17,6 +17,38 @@ func NewBookService(db *gorm.DB) *BookService {
 	return &BookService{db: db}
 }
 
+func (s *BookService) GetStats() (map[string]interface{}, error) {
+	var totalBooks int64
+	var publishedBooks int64
+	var featuredBooks int64
+	var totalViews int64
+
+	if err := s.db.Model(&models.Book{}).Count(&totalBooks).Error; err != nil {
+		return nil, err
+	}
+
+	if err := s.db.Model(&models.Book{}).Where("status = ?", "published").Count(&publishedBooks).Error; err != nil {
+		return nil, err
+	}
+
+	if err := s.db.Model(&models.Book{}).Where("is_featured = ?", true).Count(&featuredBooks).Error; err != nil {
+		return nil, err
+	}
+
+	if err := s.db.Model(&models.Book{}).Select("COALESCE(SUM(view_count), 0)").Scan(&totalViews).Error; err != nil {
+		return nil, err
+	}
+
+	stats := map[string]interface{}{
+		"total_books":     totalBooks,
+		"published_books": publishedBooks,
+		"featured_books":  featuredBooks,
+		"total_views":     totalViews,
+	}
+
+	return stats, nil
+}
+
 type BookFilters struct {
 	Search     string
 	CategoryID uint

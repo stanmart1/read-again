@@ -22,6 +22,16 @@ func NewBookHandler(bookService *services.BookService, storageService *services.
 	}
 }
 
+func (h *BookHandler) GetStats(c *fiber.Ctx) error {
+	stats, err := h.service.GetStats()
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get book stats: %v", err)
+		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch book statistics"})
+	}
+
+	return c.JSON(stats)
+}
+
 func (h *BookHandler) ListBooks(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 	limit, _ := strconv.Atoi(c.Query("limit", "20"))

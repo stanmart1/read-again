@@ -155,6 +155,16 @@ func SetupRoutes(
 	books.Delete("/:id", middleware.AdminRequired(), bookHandler.DeleteBook)
 	books.Patch("/:id/featured", middleware.AdminRequired(), bookHandler.ToggleFeatured)
 
+	// Admin books routes
+	adminBooks := api.Group("/admin/books", middleware.AdminRequired())
+	adminBooks.Get("/", bookHandler.ListBooks)
+	adminBooks.Get("/stats", bookHandler.GetStats)
+	adminBooks.Post("/", bookHandler.CreateBook)
+	adminBooks.Get("/:id", bookHandler.GetBook)
+	adminBooks.Put("/:id", bookHandler.UpdateBook)
+	adminBooks.Delete("/:id", bookHandler.DeleteBook)
+	adminBooks.Patch("/:id/featured", bookHandler.ToggleFeatured)
+
 	cart := api.Group("/cart", middleware.AuthRequired())
 	cart.Get("/", cartHandler.GetCart)
 	cart.Get("/count", cartHandler.GetCartCount)
