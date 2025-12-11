@@ -44,13 +44,37 @@ func AuthRequired() fiber.Handler {
 }
 
 func AdminRequired() fiber.Handler {
+	cfg := config.Load()
 	return func(c *fiber.Ctx) error {
-		if err := AuthRequired()(c); err != nil {
-			return err
+		// Do auth check inline instead of calling AuthRequired()
+		authHeader := c.Get("Authorization")
+		if authHeader == "" {
+			return utils.NewUnauthorizedError("Missing authorization header")
 		}
 
-		roleID, ok := c.Locals("roleID").(uint)
-		if !ok || (roleID != 1 && roleID != 2) {
+		tokenString := strings.TrimPrefix(authHeader, "Bearer ")
+		if tokenString == authHeader {
+			return utils.NewUnauthorizedError("Invalid authorization format")
+		}
+
+		var blacklisted models.TokenBlacklist
+		if err := database.DB.Where("token = ?", tokenString).First(&blacklisted).Error; err == nil {
+			return utils.NewUnauthorizedError("Token has been revoked")
+		}
+
+		claims, err := utils.ValidateAccessToken(tokenString, cfg.JWT.Secret)
+		if err != nil {
+			return utils.NewUnauthorizedError("Invalid or expired token")
+		}
+
+		c.Locals("userID", claims.UserID)
+		c.Locals("email", claims.Email)
+		c.Locals("roleID", claims.RoleID)
+		c.Locals("token", tokenString)
+
+		// Check admin role
+		roleID := claims.RoleID
+		if roleID != 1 && roleID != 2 {
 			return utils.NewForbiddenError("Admin access required")
 		}
 

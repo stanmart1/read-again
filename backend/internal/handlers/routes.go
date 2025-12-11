@@ -127,7 +127,7 @@ func SetupRoutes(
 	adminUsers.Post("/", userHandler.CreateUser)
 	adminUsers.Get("/:id", userHandler.GetUser)
 	adminUsers.Put("/:id", userHandler.UpdateUser)
-	adminUsers.Patch("/:id/status", userHandler.ToggleStatus)
+	adminUsers.Put("/:id/status", userHandler.ToggleStatus)
 	adminUsers.Delete("/:id", userHandler.DeleteUser)
 
 	categories := api.Group("/categories")

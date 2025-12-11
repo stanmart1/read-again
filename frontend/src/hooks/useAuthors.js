@@ -34,14 +34,14 @@ export const useAuthors = () => {
       const authorsData = response.data.data || [];
       setAuthors(authorsData);
       
-      if (result.pagination) {
+      if (response.data.pagination) {
         setPagination(prev => ({
           ...prev,
-          total: result.pagination.total || 0,
-          pages: result.pagination.pages || 0
+          total: response.data.pagination.total || 0,
+          pages: response.data.pagination.pages || 0
         }));
       }
-      return { success: true, data: result };
+      return { success: true, data: response.data };
     } catch (err) {
       console.error('Failed to fetch authors:', err);
       setError(err.response?.data?.error || 'Failed to load authors');
