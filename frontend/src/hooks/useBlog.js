@@ -14,8 +14,9 @@ export const useBlog = (limit = 6) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await api.get(`/api/blog/posts?limit=${limit}`);
-      setPosts(response.data || []);
+      const response = await api.get(`/blogs?limit=${limit}`);
+      // Backend returns: { data: [...posts], meta: {...} }
+      setPosts(response.data.data || []);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching blog posts:', err);

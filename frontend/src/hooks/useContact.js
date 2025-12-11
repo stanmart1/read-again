@@ -11,7 +11,7 @@ export const useContact = () => {
       setLoading(true);
       setError('');
       setSuccess(false);
-      await api.post('/api/contact', formData);
+      await api.post('/contact', formData);
       setSuccess(true);
       return true;
     } catch (err) {

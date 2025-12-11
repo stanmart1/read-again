@@ -14,13 +14,9 @@ export const useFAQ = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await api.get('/api/faq');
-      
-      if (response.data?.success && response.data?.data?.faqs) {
-        setFaqs(response.data.data.faqs);
-      } else {
-        setFaqs([]);
-      }
+      const response = await api.get('/faqs');
+      // Backend returns: { data: [...faqs] }
+      setFaqs(response.data.data || []);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching FAQs:', err);

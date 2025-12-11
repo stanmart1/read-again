@@ -14,10 +14,9 @@ export const useTestimonials = (limit = 10, featuredOnly = true) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await api.get(`/api/testimonials?featured_only=${featuredOnly}&limit=${limit}`);
-      if (response.data.success) {
-        setTestimonials(response.data.testimonials || []);
-      }
+      const response = await api.get('/testimonials');
+      // Backend returns: { data: [...testimonials] }
+      setTestimonials(response.data.data || []);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching testimonials:', err);
