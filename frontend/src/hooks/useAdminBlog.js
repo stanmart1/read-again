@@ -25,10 +25,11 @@ export const useAdminBlog = () => {
       if (filters.category) params.append('category', filters.category);
       if (filters.search) params.append('search', filters.search);
 
-      const response = await api.get(`/admin/blog/posts?${params}`);
+      const response = await api.get(`/admin/blogs?${params}`);
+      // Backend returns: { data: [...posts], meta: {...} }
       const data = response.data;
-      setPosts(data.posts || []);
-      return { success: true, data: data.posts };
+      setPosts(data.data || []);
+      return { success: true, data: data.data };
     } catch (err) {
       console.error('Error fetching posts:', err);
       setError(err.message);
@@ -40,10 +41,11 @@ export const useAdminBlog = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await api.get('/admin/blog/categories');
+      const response = await api.get('/categories');
+      // Backend returns: { data: [...categories] }
       const data = response.data;
-      setCategories(data.categories || []);
-      return { success: true, data: data.categories };
+      setCategories(data.data || []);
+      return { success: true, data: data.data };
     } catch (err) {
       console.error('Error fetching categories:', err);
       return { success: false, error: err.message };

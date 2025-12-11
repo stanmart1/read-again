@@ -11,9 +11,9 @@ export const useSettingsManagement = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await api.get('/admin/system-settings');
-      // Extract values from the settings objects
-      const settingsData = response.data.settings || {};
+      const response = await api.get('/admin/settings');
+      // Backend returns: { data: [...settings] }
+      const settingsData = response.data.data || [];
       const extractedSettings = {};
       
       // Store both snake_case and camelCase versions for compatibility

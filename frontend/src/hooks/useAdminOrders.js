@@ -11,7 +11,8 @@ export const useAdminOrders = () => {
       setLoading(true);
       setError(null);
       const response = await api.get('/admin/orders', { params });
-      setOrders(response.data.orders || []);
+      // Backend returns: { data: [...orders], meta: {...} }
+      setOrders(response.data.data || []);
       return {
         success: true,
         data: response.data,

@@ -11,17 +11,13 @@ export const useFAQManagement = () => {
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const faqResponse = await api.get('/api/faq');
-      const faqData = faqResponse.data;
-      if (faqData.success) {
-        setFaqs(faqData.data.faqs);
-      }
+      const faqResponse = await api.get('/admin/faqs');
+      // Backend returns: { data: [...faqs] }
+      setFaqs(faqResponse.data.data || []);
 
-      const categoryResponse = await api.get('/api/faq/categories');
-      const categoryData = categoryResponse.data;
-      if (categoryData.success) {
-        setCategories(categoryData.data);
-      }
+      const categoryResponse = await api.get('/faqs/categories');
+      // Backend returns: { data: [...categories] }
+      setCategories(categoryResponse.data.data || []);
 
       setStats({
         total_faqs: faqData.data?.total || 0,

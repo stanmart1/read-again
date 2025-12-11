@@ -20,11 +20,12 @@ export const useAuditLogs = () => {
         ...(filters.resource && { resource: filters.resource })
       };
 
-      const response = await api.get('/rbac/audit-logs', { params });
+      const response = await api.get('/admin/audit', { params });
+      // Backend returns: { data: [...logs], meta: {...} }
       const data = response.data;
 
-      setAuditLogs(data.logs || []);
-      setTotalLogs(data.total || 0);
+      setAuditLogs(data.data || []);
+      setTotalLogs(data.meta?.total || 0);
       
       return { success: true, data };
     } catch (err) {
@@ -44,8 +45,8 @@ export const useAuditLogs = () => {
         ...(filters.resource && { resource: filters.resource })
       };
 
-      const response = await api.get('/rbac/audit-logs', { params });
-      return { success: true, data: response.data.logs || [] };
+      const response = await api.get('/admin/audit', { params });
+      return { success: true, data: response.data.data || [] };
     } catch (err) {
       console.error('Error exporting audit logs:', err);
       return { success: false, error: err.message };

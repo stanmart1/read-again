@@ -13,8 +13,9 @@ export const useContactManagement = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await api.get('/api/contact/admin');
-      const data = response.data.data || response.data;
+      const response = await api.get('/admin/contact');
+      // Backend returns: { data: [...messages], meta: {...} }
+      const data = response.data.data || [];
       setContactMethods(data.contactMethods || []);
       setOfficeInfo(data.officeInfo || {});
       setContactSubjects(data.contactSubjects || []);
