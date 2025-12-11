@@ -67,6 +67,20 @@ export default function BlogSection() {
           <div className="flex justify-center py-20">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           </div>
+        ) : posts.length === 0 ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-20"
+          >
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 mb-6">
+              <i className="ri-article-line text-4xl text-gray-400"></i>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">No Blog Posts Yet</h3>
+            <p className="text-gray-600 max-w-md mx-auto mb-8">
+              We're working on creating amazing content for you. Check back soon for insightful articles and reading tips!
+            </p>
+          </motion.div>
         ) : (
           <div className="relative">
             {/* Navigation Buttons */}
