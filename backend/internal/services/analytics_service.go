@@ -72,7 +72,7 @@ func (s *AnalyticsService) GetDashboardOverview() (*DashboardOverview, error) {
 	s.db.Model(&struct{ ID uint }{}).Table("users").Where("is_active = ?", true).Count(&overview.ActiveUsers)
 	s.db.Model(&struct{ ID uint }{}).Table("orders").Count(&overview.TotalOrders)
 	s.db.Model(&struct{ ID uint }{}).Table("books").Count(&overview.TotalBooks)
-	s.db.Model(&struct{ ID uint }{}).Table("user_books").Where("progress = ?", 100).Count(&overview.TotalBooksRead)
+	s.db.Model(&struct{ ID uint }{}).Table("user_libraries").Where("progress = ?", 100).Count(&overview.TotalBooksRead)
 	s.db.Model(&struct{ ID uint }{}).Table("reading_sessions").Select("COALESCE(SUM(duration), 0)").Scan(&overview.TotalReadingTime)
 	s.db.Model(&struct{ ID uint }{}).Table("users").Where("created_at >= ?", today).Count(&overview.NewUsersToday)
 	s.db.Model(&struct{ ID uint }{}).Table("orders").Where("created_at >= ?", today).Count(&overview.OrdersToday)
@@ -126,7 +126,7 @@ func (s *AnalyticsService) GetUserStats() (*UserStats, error) {
 func (s *AnalyticsService) GetReadingStats() (*ReadingStats, error) {
 	var stats ReadingStats
 
-	s.db.Model(&struct{ ID uint }{}).Table("user_books").Where("progress = ?", 100).Count(&stats.TotalBooksRead)
+	s.db.Model(&struct{ ID uint }{}).Table("user_libraries").Where("progress = ?", 100).Count(&stats.TotalBooksRead)
 	s.db.Model(&struct{ ID uint }{}).Table("reading_sessions").Select("COALESCE(SUM(duration), 0)").Scan(&stats.TotalReadingTime)
 	s.db.Model(&struct{ ID uint }{}).Table("reading_sessions").Count(&stats.TotalSessions)
 	s.db.Model(&struct{ ID uint }{}).Table("reading_sessions").Distinct("user_id").Count(&stats.ActiveReaders)
