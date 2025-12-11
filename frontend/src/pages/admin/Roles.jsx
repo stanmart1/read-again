@@ -135,15 +135,14 @@ const Roles = () => {
               </div>
 
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                {role.display_name}
+                {role.name}
               </h3>
               <p className="text-sm text-gray-600 mb-3">
                 {role.description || 'No description provided'}
               </p>
 
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-500">Priority: {role.priority}</span>
-                {role.is_system_role && (
+              <div className="flex items-center justify-end text-sm">
+                {role.id <= 4 && (
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
                     System Role
                   </span>
