@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -26,27 +26,23 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Handle form submission
   };
 
   const contactMethods = [
     {
       icon: Mail,
       title: "Email",
-      contact: "support@readagain.com",
-      color: "text-blue-400"
+      contact: "support@readagain.com"
     },
     {
       icon: Phone,
       title: "Phone",
-      contact: "+1 (555) 123-4567",
-      color: "text-purple-400"
+      contact: "+1 (555) 123-4567"
     },
     {
       icon: MapPin,
       title: "Address",
-      contact: "123 Reading St, Book City, BC 12345",
-      color: "text-indigo-400"
+      contact: "123 Reading St, Book City, BC 12345"
     }
   ];
 
@@ -55,13 +51,13 @@ const Contact = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+      <section className="bg-gradient-gold text-background py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Get In Touch
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100">
+            <p className="text-xl md:text-2xl text-background/80">
               We'd love to hear from you. Send us a message!
             </p>
           </div>
@@ -142,7 +138,8 @@ const Contact = () => {
 
                   <Button
                     type="submit"
-                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold"
+                    variant="gold"
+                    className="w-full h-12 font-semibold"
                   >
                     Send Message
                   </Button>
@@ -165,8 +162,8 @@ const Contact = () => {
                 {contactMethods.map((method, idx) => (
                   <Card key={idx} className="shadow-md border-0">
                     <CardContent className="flex items-start space-x-4 p-6">
-                      <div className={`w-12 h-12 ${idx % 3 === 0 ? 'bg-blue-100 dark:bg-blue-900/30' : idx % 3 === 1 ? 'bg-purple-100 dark:bg-purple-900/30' : 'bg-indigo-100 dark:bg-indigo-900/30'} rounded-full flex items-center justify-center flex-shrink-0`}>
-                        <method.icon className={`w-6 h-6 ${method.color}`} />
+                      <div className="w-12 h-12 bg-gradient-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <method.icon className="w-6 h-6 text-gold" />
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">{method.title}</h3>
@@ -188,24 +185,24 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0">
+              <Card className="bg-gradient-gold text-background border-0">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-4">Follow Us</h3>
-                  <p className="mb-6 text-blue-100">
+                  <p className="mb-6 text-background/80">
                     Stay connected on social media
                   </p>
                   <div className="flex space-x-4">
-                    <a href="#" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                      <span className="text-2xl">📘</span>
+                    <a href="#" className="w-12 h-12 bg-background/20 rounded-full flex items-center justify-center hover:bg-background/30 transition-colors">
+                      <Facebook className="w-6 h-6" />
                     </a>
-                    <a href="#" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                      <span className="text-2xl">🐦</span>
+                    <a href="#" className="w-12 h-12 bg-background/20 rounded-full flex items-center justify-center hover:bg-background/30 transition-colors">
+                      <Twitter className="w-6 h-6" />
                     </a>
-                    <a href="#" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                      <span className="text-2xl">📷</span>
+                    <a href="#" className="w-12 h-12 bg-background/20 rounded-full flex items-center justify-center hover:bg-background/30 transition-colors">
+                      <Instagram className="w-6 h-6" />
                     </a>
-                    <a href="#" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
-                      <span className="text-2xl">💼</span>
+                    <a href="#" className="w-12 h-12 bg-background/20 rounded-full flex items-center justify-center hover:bg-background/30 transition-colors">
+                      <Linkedin className="w-6 h-6" />
                     </a>
                   </div>
                 </CardContent>
