@@ -5,10 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ArrowLeft, Mail, BookOpen } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export default function ResetPassword() {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { actualTheme } = useTheme();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +80,7 @@ export default function ResetPassword() {
               </form>
             ) : (
               <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
+                <div className={`w-16 h-16 ${actualTheme === 'dark' ? 'bg-green-900/30' : 'bg-green-100'} rounded-full flex items-center justify-center mx-auto`}>
                   <span className="text-2xl">✓</span>
                 </div>
                 <p className="text-muted-foreground">

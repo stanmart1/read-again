@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
+import { useTheme } from "@/contexts/ThemeContext";
 
 import { cn } from "@/utils/utils";
 

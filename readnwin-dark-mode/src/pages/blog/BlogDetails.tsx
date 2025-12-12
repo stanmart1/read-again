@@ -4,9 +4,11 @@ import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const BlogDetails = () => {
   const { slug } = useParams();
+  const { actualTheme } = useTheme();
 
   const blogPosts = {
     "future-of-digital-reading": {
@@ -93,7 +95,7 @@ const BlogDetails = () => {
             </header>
 
             <div 
-              className="prose prose-lg max-w-none dark:prose-invert"
+              className={`prose prose-lg max-w-none ${actualTheme === 'dark' ? 'prose-invert' : ''}`}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </article>
