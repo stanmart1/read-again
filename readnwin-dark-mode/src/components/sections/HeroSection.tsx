@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const floatingShapes = [
   { size: "w-32 h-32", position: "top-20 left-[10%]", color: "bg-primary/20", delay: "0s", duration: "20s" },
@@ -15,8 +16,14 @@ const glowOrbs = [
 ];
 
 export const HeroSection = () => {
+  const { actualTheme } = useTheme();
+  
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20">
+    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden pt-20 ${
+      actualTheme === 'dark' 
+        ? 'bg-gradient-to-b from-background via-background/95 to-background' 
+        : 'bg-gradient-to-b from-background via-muted/30 to-background'
+    }`}>
       {/* Animated glow orbs */}
       {glowOrbs.map((orb, index) => (
         <div
