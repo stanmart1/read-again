@@ -18,7 +18,7 @@ func NewAuthorHandler(authorService *services.AuthorService) *AuthorHandler {
 }
 
 func (h *AuthorHandler) GetStats(c *fiber.Ctx) error {
-	stats, err := h.service.GetStats()
+	stats, err := h.authorService.GetStats()
 	if err != nil {
 		utils.ErrorLogger.Printf("Failed to get author stats: %v", err)
 		return c.Status(500).JSON(fiber.Map{"error": "Failed to fetch author statistics"})
