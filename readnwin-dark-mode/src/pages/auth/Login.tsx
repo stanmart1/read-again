@@ -23,7 +23,7 @@ export default function Login() {
       <div className="max-w-md w-full">
         {/* Back to Home */}
         <div className="mb-6">
-          <Link to="/" className="text-background hover:text-background/80 inline-flex items-center">
+          <Link to="/" className="text-white hover:text-white/80 inline-flex items-center">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Link>

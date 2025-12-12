@@ -23,7 +23,7 @@ export default function ResetPassword() {
       <div className="max-w-md w-full">
         {/* Back to Login */}
         <div className="mb-6">
-          <Link to="/login" className="text-background hover:text-background/80 inline-flex items-center">
+          <Link to="/login" className="text-white hover:text-white/80 inline-flex items-center">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Login
           </Link>
