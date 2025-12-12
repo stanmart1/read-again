@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Star, Search, Filter, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import book1 from "@/assets/book-1.png";
-import book2 from "@/assets/book-2.png";
-import book3 from "@/assets/book-3.png";
-import book4 from "@/assets/book-4.png";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import book1 from "@/assets/images/book-1.png";
+import book2 from "@/assets/images/book-2.png";
+import book3 from "@/assets/images/book-3.png";
+import book4 from "@/assets/images/book-4.png";
 
 const allBooks = [
   { img: book1, title: "The Golden Legacy", author: "Amara Okonkwo", price: "₦4,500", rating: 4.8, badge: "Featured", category: "Fiction" },
