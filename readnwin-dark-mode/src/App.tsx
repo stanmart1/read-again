@@ -8,6 +8,7 @@ import { lazy, Suspense } from "react";
 
 const Landing = lazy(() => import("./pages/home/Landing"));
 const Books = lazy(() => import("./pages/books/Books"));
+const BookDetails = lazy(() => import("./pages/books/BookDetails"));
 const About = lazy(() => import("./pages/about/About"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const FAQ = lazy(() => import("./pages/faq/FAQ"));
@@ -31,6 +32,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/books" element={<Books />} />
+            <Route path="/books/:slug" element={<BookDetails />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
