@@ -19,7 +19,7 @@ export default function ResetPassword() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-600/80 to-yellow-600/80 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-black flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         {/* Back to Login */}
         <div className="mb-6">
