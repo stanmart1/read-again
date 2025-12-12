@@ -54,12 +54,16 @@ export const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="ghost" size="sm">
-              Login
-            </Button>
-            <Button variant="gold" size="sm">
-              Sign Up
-            </Button>
+            <Link to="/login">
+              <Button variant="ghost" size="sm">
+                Login
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button variant="gold" size="sm">
+                Sign Up
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -97,12 +101,16 @@ export const Header = () => {
                 )
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
-                <Button variant="ghost" size="sm">
-                  Login
-                </Button>
-                <Button variant="gold" size="sm">
-                  Sign Up
-                </Button>
+                <Link to="/login">
+                  <Button variant="ghost" size="sm" className="w-full">
+                    Login
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button variant="gold" size="sm" className="w-full">
+                    Sign Up
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>

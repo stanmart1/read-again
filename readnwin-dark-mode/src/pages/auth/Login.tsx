@@ -19,7 +19,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-gold flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-amber-600/80 to-yellow-600/80 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         {/* Back to Home */}
         <div className="mb-6">
@@ -96,7 +96,7 @@ export default function Login() {
                   />
                   <Label htmlFor="remember" className="text-sm">Remember me</Label>
                 </div>
-                <Link to="/forgot-password" className="text-sm text-gold hover:text-gold/80">
+                <Link to="/reset-password" className="text-sm text-gold hover:text-gold/80">
                   Forgot password?
                 </Link>
               </div>
