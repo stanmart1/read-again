@@ -6,9 +6,10 @@ import { Menu, X, BookOpen } from "lucide-react";
 const navLinks = [
   { name: "Home", href: "/", isRoute: true },
   { name: "Books", href: "/books", isRoute: true },
-  { name: "About", href: "/#about", isRoute: false },
-  { name: "FAQ", href: "/#faq", isRoute: false },
-  { name: "Contact", href: "/#contact", isRoute: false },
+  { name: "About", href: "/about", isRoute: true },
+  { name: "Blog", href: "/blog", isRoute: true },
+  { name: "FAQ", href: "/faq", isRoute: true },
+  { name: "Contact", href: "/contact", isRoute: true },
 ];
 
 export const Header = () => {
