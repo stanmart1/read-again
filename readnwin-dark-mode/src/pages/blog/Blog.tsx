@@ -11,26 +11,28 @@ const Blog = () => {
       id: 1,
       slug: "future-of-digital-reading",
       title: "The Future of Digital Reading",
-      excerpt: "Exploring how technology is transforming the way we consume books...",
+      excerpt:
+        "Exploring how technology is transforming the way we consume books...",
       date: "Dec 10, 2024",
       category: "Technology",
-      readTime: "5 min read"
+      readTime: "5 min read",
     },
     {
       id: 2,
       slug: "building-better-reading-habits",
       title: "Building Better Reading Habits",
-      excerpt: "Tips and strategies for developing consistent reading practices...",
+      excerpt:
+        "Tips and strategies for developing consistent reading practices...",
       date: "Dec 8, 2024",
       category: "Education",
-      readTime: "3 min read"
-    }
+      readTime: "3 min read",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -46,7 +48,9 @@ const Blog = () => {
                 <CardHeader>
                   <div className="flex items-center gap-2 mb-2">
                     <Badge variant="secondary">{post.category}</Badge>
-                    <span className="text-sm text-muted-foreground">{post.readTime}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {post.readTime}
+                    </span>
                   </div>
                   <Link to={`/blog/${post.slug}`}>
                     <CardTitle className="hover:text-primary cursor-pointer">
