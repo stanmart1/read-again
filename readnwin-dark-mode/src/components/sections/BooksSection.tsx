@@ -1,9 +1,9 @@
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import book1 from "@/assets/book-1.png";
-import book2 from "@/assets/book-2.png";
-import book3 from "@/assets/book-3.png";
-import book4 from "@/assets/book-4.png";
+import book1 from "@/assets/images/book-1.png";
+import book2 from "@/assets/images/book-2.png";
+import book3 from "@/assets/images/book-3.png";
+import book4 from "@/assets/images/book-4.png";
 
 const books = [
   { img: book1, title: "The Golden Legacy", author: "Amara Okonkwo", price: "₦4,500", rating: 4.8, badge: "Featured" },
