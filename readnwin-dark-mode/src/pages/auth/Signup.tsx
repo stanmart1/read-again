@@ -1,14 +1,18 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowLeft, Mail, Lock, Eye, EyeOff, BookOpen, User, Phone } from 'lucide-react';
+import authService from '@/services/authService';
 
 export default function Signup() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     username: '',
@@ -39,12 +43,40 @@ export default function Signup() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1);
     } else {
-      console.log('Signup:', formData);
+      if (formData.password !== formData.confirm_password) {
+        setError('Passwords do not match');
+        return;
+      }
+
+      setLoading(true);
+      setError('');
+
+      try {
+        const response = await authService.register({
+          email: formData.email,
+          username: formData.username,
+          first_name: formData.first_name,
+          last_name: formData.last_name,
+          password: formData.password,
+        });
+
+        if (response.success) {
+          navigate('/login', { 
+            state: { message: 'Account created successfully! Please login.' }
+          });
+        } else {
+          setError(response.message || 'Registration failed');
+        }
+      } catch (err: any) {
+        setError(err.response?.data?.message || 'Registration failed');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -266,6 +298,12 @@ export default function Signup() {
               <p className="text-muted-foreground">Create your account to get started.</p>
             </div>
 
+            {error && (
+              <div className="mb-6 p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg">
+                {error}
+              </div>
+            )}
+
             {/* Step Indicator */}
             <div className="flex justify-center mb-8">
               <div className="flex items-center space-x-4">
@@ -304,8 +342,9 @@ export default function Signup() {
                   type="submit"
                   variant="gold"
                   className="flex-1 h-12 font-semibold"
+                  disabled={loading}
                 >
-                  {currentStep === 3 ? 'Create Account' : 'Next'}
+                  {loading ? 'Creating Account...' : currentStep === 3 ? 'Create Account' : 'Next'}
                 </Button>
               </div>
             </form>

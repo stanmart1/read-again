@@ -1,21 +1,38 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ArrowLeft, Mail, BookOpen } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
+import authService from '@/services/authService';
 
 export default function ResetPassword() {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const { actualTheme } = useTheme();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Reset password for:', email);
-    setIsSubmitted(true);
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await authService.forgotPassword(email);
+      if (response.success) {
+        setIsSubmitted(true);
+      } else {
+        setError(response.message || 'Failed to send reset email');
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Failed to send reset email');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -51,6 +68,12 @@ export default function ResetPassword() {
               </p>
             </div>
 
+            {error && (
+              <div className="mb-6 p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg">
+                {error}
+              </div>
+            )}
+
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -74,8 +97,9 @@ export default function ResetPassword() {
                   type="submit"
                   variant="gold"
                   className="w-full h-12 font-semibold"
+                  disabled={loading}
                 >
-                  Send Reset Instructions
+                  {loading ? 'Sending...' : 'Send Reset Instructions'}
                 </Button>
               </form>
             ) : (

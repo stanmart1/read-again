@@ -1,21 +1,40 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ArrowLeft, Mail, Lock, Eye, EyeOff, BookOpen } from 'lucide-react';
+import authService from '@/services/authService';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Login:', { email, password, rememberMe });
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await authService.login(email, password);
+      if (response.success && response.data) {
+        authService.setAuthData(response.data);
+        navigate('/dashboard');
+      } else {
+        setError(response.message || 'Login failed');
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Login failed');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -44,6 +63,12 @@ export default function Login() {
               </div>
               <p className="text-muted-foreground">Welcome back! Please login to your account.</p>
             </div>
+
+            {error && (
+              <div className="mb-6 p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg">
+                {error}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -105,8 +130,9 @@ export default function Login() {
                 type="submit"
                 variant="gold"
                 className="w-full h-12 font-semibold"
+                disabled={loading}
               >
-                Login
+                {loading ? 'Logging in...' : 'Login'}
               </Button>
             </form>
 
