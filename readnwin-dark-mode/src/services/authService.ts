@@ -1,5 +1,5 @@
 import api from '@/lib/api';
-import { User, LoginRequest, SignupRequest, AuthResponse, ApiResponse } from '@/types';
+import { User, ApiResponse } from '@/types';
 
 export interface RegisterRequest {
   email: string;
@@ -41,12 +41,12 @@ export interface MeResponse {
 class AuthService {
   // Register new user
   async register(data: RegisterRequest): Promise<ApiResponse<{ user: User; message: string }>> {
-    return api.post('/api/auth/register', data);
+    return api.post('/api/v1/auth/register', data);
   }
 
   // Login user
   async login(email_or_username: string, password: string): Promise<ApiResponse<LoginResponse>> {
-    return api.post('/api/auth/login', {
+    return api.post('/api/v1/auth/login', {
       email_or_username,
       password,
     });
@@ -54,31 +54,31 @@ class AuthService {
 
   // Refresh access token
   async refreshToken(refresh_token: string): Promise<ApiResponse<RefreshTokenResponse>> {
-    return api.post('/api/auth/refresh', {
+    return api.post('/api/v1/auth/refresh', {
       refresh_token,
     });
   }
 
   // Logout user
   async logout(): Promise<ApiResponse<{ message: string }>> {
-    return api.post('/api/auth/logout');
+    return api.post('/api/v1/auth/logout');
   }
 
   // Get current user info
   async getMe(): Promise<ApiResponse<MeResponse>> {
-    return api.get('/api/auth/me');
+    return api.get('/api/v1/auth/me');
   }
 
   // Request password reset
   async forgotPassword(email: string): Promise<ApiResponse<{ message: string; token: string }>> {
-    return api.post('/api/auth/forgot-password', {
+    return api.post('/api/v1/auth/forgot-password', {
       email,
     });
   }
 
   // Reset password with token
   async resetPassword(token: string, new_password: string): Promise<ApiResponse<{ message: string }>> {
-    return api.post('/api/auth/reset-password', {
+    return api.post('/api/v1/auth/reset-password', {
       token,
       new_password,
     });
