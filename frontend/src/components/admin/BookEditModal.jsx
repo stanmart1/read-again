@@ -219,7 +219,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
             <button
               onClick={handleClose}
               disabled={isSubmitting}
-              className="text-gray-400 hover:text-muted-foreground disabled:opacity-50"
+              className="text-muted-foreground hover:text-muted-foreground disabled:opacity-50"
             >
               <i className="ri-close-line text-2xl"></i>
             </button>
@@ -249,7 +249,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
             <div className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="sm:col-span-2">
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">Book Title *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Book Title *</label>
                   <input
                     type="text"
                     value={formData.title}
@@ -263,7 +263,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">Author *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Author *</label>
                   <select
                     value={formData.author_id}
                     onChange={(e) => handleInputChange('author_id', e.target.value)}
@@ -280,7 +280,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">Category *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Category *</label>
                   <select
                     value={formData.category_id}
                     onChange={(e) => handleInputChange('category_id', e.target.value)}
@@ -297,7 +297,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">Price (₦) *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Price (₦) *</label>
                   <input
                     type="number"
                     step="0.01"
@@ -313,7 +313,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">Book Type *</label>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Book Type *</label>
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       type="button"
@@ -366,7 +366,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
 
                 <div className="sm:col-span-2">
                   <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border border-purple-200">
-                    <label className="text-sm font-semibold text-gray-800">Featured Book</label>
+                    <label className="text-sm font-semibold text-foreground">Featured Book</label>
                     <input
                       type="checkbox"
                       checked={formData.is_featured}
@@ -404,7 +404,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                   }`}
                   onClick={() => coverInputRef.current?.click()}
                 >
-                  <i className="ri-image-add-line text-4xl text-gray-400 mb-2"></i>
+                  <i className="ri-image-add-line text-4xl text-muted-foreground mb-2"></i>
                   <p className="text-sm text-muted-foreground">{formData.cover_image ? formData.cover_image.name : 'Drag & drop cover or click to browse'}</p>
                   <p className="text-xs text-muted-foreground mt-1">PNG, JPG, JPEG, WebP, GIF up to 10MB</p>
                   <input
@@ -434,7 +434,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                     }`}
                     onClick={() => ebookInputRef.current?.click()}
                   >
-                    <i className="ri-file-pdf-line text-4xl text-gray-400 mb-2"></i>
+                    <i className="ri-file-pdf-line text-4xl text-muted-foreground mb-2"></i>
                     <p className="text-sm text-muted-foreground">{formData.ebook_file ? formData.ebook_file.name : 'Drag & drop book file or click'}</p>
                     <p className="text-xs text-muted-foreground mt-1">PDF, EPUB, MOBI, HTML up to 500MB</p>
                     <input

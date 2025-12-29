@@ -282,7 +282,7 @@ const EmailTemplateManagement = () => {
               <select
                 value={filters.category}
                 onChange={(e) => setFilters({ ...filters, category: e.target.value })}
-                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
               >
                 <option value="">All Categories</option>
                 {categories.map((category) => (
@@ -299,7 +299,7 @@ const EmailTemplateManagement = () => {
               <select
                 value={filters.isActive}
                 onChange={(e) => setFilters({ ...filters, isActive: e.target.value })}
-                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
               >
                 <option value="">All Status</option>
                 <option value="true">Active</option>
@@ -314,7 +314,7 @@ const EmailTemplateManagement = () => {
                 type="text"
                 value={filters.search}
                 onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                 placeholder="Search templates..."
               />
             </div>
@@ -349,7 +349,7 @@ const EmailTemplateManagement = () => {
                         <div>
                           <div className="text-xs sm:text-sm font-medium text-foreground truncate">{template.name}</div>
                           <div className="text-xs text-muted-foreground truncate hidden sm:block">{template.slug}</div>
-                          <div className="text-xs text-gray-400 mt-0.5 line-clamp-1 hidden md:block">{template.subject}</div>
+                          <div className="text-xs text-muted-foreground mt-0.5 line-clamp-1 hidden md:block">{template.subject}</div>
                         </div>
                       </td>
                       <td className="px-2 sm:px-4 lg:px-6 py-3 sm:py-4">
@@ -366,7 +366,7 @@ const EmailTemplateManagement = () => {
                         <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap ${
                           template.is_active
                             ? 'bg-green-100 text-green-800'
-                            : 'bg-muted text-gray-800'
+                            : 'bg-muted text-foreground'
                         }`}>
                           {template.is_active ? 'Active' : 'Inactive'}
                         </span>
@@ -433,7 +433,7 @@ const EmailTemplateManagement = () => {
                       setShowVariables(false);
                       setShowPreviewInModal(false);
                     }}
-                    className="text-gray-400 hover:text-muted-foreground flex-shrink-0 p-1"
+                    className="text-muted-foreground hover:text-muted-foreground flex-shrink-0 p-1"
                   >
                     <i className="ri-close-line text-lg xs:text-xl sm:text-2xl"></i>
                   </button>
@@ -466,7 +466,7 @@ const EmailTemplateManagement = () => {
                         type="text"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                         placeholder="Enter template name"
                       />
                     </div>
@@ -479,7 +479,7 @@ const EmailTemplateManagement = () => {
                         type="text"
                         value={formData.slug}
                         onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                        className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                         placeholder="template-slug"
                       />
                     </div>
@@ -493,7 +493,7 @@ const EmailTemplateManagement = () => {
                       type="text"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                       placeholder="Email subject line"
                     />
                   </div>
@@ -505,7 +505,7 @@ const EmailTemplateManagement = () => {
                     <textarea
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                       rows={3}
                       placeholder="Template description"
                     />
@@ -519,7 +519,7 @@ const EmailTemplateManagement = () => {
                       <select
                         value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                        className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                       >
                         {categories.map((category) => (
                           <option key={category.name} value={category.name}>
@@ -535,7 +535,7 @@ const EmailTemplateManagement = () => {
                           type="checkbox"
                           checked={formData.is_active}
                           onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
-                          className="rounded border-input text-primary focus:ring-blue-500"
+                          className="rounded border-input text-primary focus:ring-ring"
                         />
                         <span className="ml-2 text-xs xs:text-sm text-foreground">Active</span>
                       </label>
@@ -585,7 +585,7 @@ const EmailTemplateManagement = () => {
                       <textarea
                         value={formData.html_content}
                         onChange={(e) => setFormData({ ...formData, html_content: e.target.value })}
-                        className="w-full px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring"
                         rows={12}
                         placeholder="Write your email template HTML content..."
                       />
@@ -609,7 +609,7 @@ const EmailTemplateManagement = () => {
                     <textarea
                       value={formData.text_content}
                       onChange={(e) => setFormData({ ...formData, text_content: e.target.value })}
-                      className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-2 xs:px-3 py-1.5 xs:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                       rows={5}
                       placeholder="Plain text version of the email..."
                     />
@@ -651,7 +651,7 @@ const EmailTemplateManagement = () => {
                   <h3 className="text-xl font-bold">Preview: {selectedTemplate.name}</h3>
                   <button
                     onClick={() => setShowPreviewModal(false)}
-                    className="text-gray-400 hover:text-muted-foreground"
+                    className="text-muted-foreground hover:text-muted-foreground"
                   >
                     <i className="ri-close-line text-2xl"></i>
                   </button>

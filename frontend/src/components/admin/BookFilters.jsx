@@ -8,10 +8,10 @@ const BookFilters = ({ filters, categories, onFiltersChange }) => {
           placeholder="Search books..."
           value={filters.search}
           onChange={(e) => onFiltersChange(prev => ({ ...prev, search: e.target.value }))}
-          className="w-full pl-10 pr-4 py-2.5 text-sm border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+          className="w-full pl-10 pr-4 py-2.5 text-sm border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-colors"
         />
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <i className="ri-search-line text-gray-400"></i>
+          <i className="ri-search-line text-muted-foreground"></i>
         </div>
       </div>
 
@@ -20,7 +20,7 @@ const BookFilters = ({ filters, categories, onFiltersChange }) => {
         <select
           value={filters.status}
           onChange={(e) => onFiltersChange(prev => ({ ...prev, status: e.target.value }))}
-          className="w-full sm:flex-1 px-3 py-2.5 text-sm border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+          className="w-full sm:flex-1 px-3 py-2.5 text-sm border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-colors"
         >
           <option value="">All Status</option>
           <option value="published">Published</option>
@@ -34,7 +34,7 @@ const BookFilters = ({ filters, categories, onFiltersChange }) => {
             ...prev, 
             category_id: e.target.value ? parseInt(e.target.value) : undefined 
           }))}
-          className="w-full sm:flex-1 px-3 py-2.5 text-sm border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+          className="w-full sm:flex-1 px-3 py-2.5 text-sm border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-colors"
         >
           <option value="">All Categories</option>
           {categories.map(category => (

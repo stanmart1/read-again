@@ -21,7 +21,7 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
       >
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-2xl font-bold text-foreground">User Details</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-muted-foreground">
+          <button onClick={onClose} className="text-muted-foreground hover:text-muted-foreground">
             <i className="ri-close-line text-2xl"></i>
           </button>
         </div>

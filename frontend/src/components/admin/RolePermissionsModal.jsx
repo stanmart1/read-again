@@ -123,7 +123,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                   )}
                   <button
                     onClick={onClose}
-                    className="text-gray-400 hover:text-muted-foreground transition-colors duration-200"
+                    className="text-muted-foreground hover:text-muted-foreground transition-colors duration-200"
                   >
                     <i className="ri-close-line text-2xl"></i>
                   </button>
@@ -150,7 +150,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                           type="checkbox"
                           checked={selectedPermissions.includes(permission.id)}
                           onChange={() => handlePermissionToggle(permission.id)}
-                          className="mt-1 h-4 w-4 text-primary focus:ring-blue-500 border-input rounded cursor-pointer"
+                          className="mt-1 h-4 w-4 text-primary focus:ring-ring border-input rounded cursor-pointer"
                         />
                         <div className="flex-1">
                           <div className="flex items-center justify-between mb-2">

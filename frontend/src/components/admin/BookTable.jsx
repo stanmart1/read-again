@@ -30,7 +30,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                   type="checkbox"
                   checked={selectedBooks.includes(book.id)}
                   onChange={(e) => handleSelectBook(book.id, e.target.checked)}
-                  className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                  className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
                 />
                 <div className="w-12 h-16 bg-muted rounded overflow-hidden relative flex-shrink-0">
                   <img
@@ -109,7 +109,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                 onClick={() => onBookAction('edit', book)}
                 disabled={editLoading}
                 className={`flex items-center text-sm whitespace-nowrap ${
-                  editLoading ? 'text-gray-400 cursor-not-allowed' : 'text-green-600 hover:text-green-800'
+                  editLoading ? 'text-muted-foreground cursor-not-allowed' : 'text-green-600 hover:text-green-800'
                 }`}
               >
                 <i className={`mr-1 ${
@@ -161,7 +161,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                     type="checkbox"
                     checked={selectedBooks.length === books.length && books.length > 0}
                     onChange={(e) => handleSelectAll(e.target.checked)}
-                    className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded cursor-pointer"
+                    className="h-4 w-4 text-primary focus:ring-ring border-input rounded cursor-pointer"
                   />
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
@@ -193,7 +193,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                       type="checkbox"
                       checked={selectedBooks.includes(book.id)}
                       onChange={(e) => handleSelectBook(book.id, e.target.checked)}
-                      className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded cursor-pointer"
+                      className="h-4 w-4 text-primary focus:ring-ring border-input rounded cursor-pointer"
                     />
                   </td>
                   <td className="px-4 py-4">
@@ -260,7 +260,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                         onClick={() => onBookAction('edit', book)}
                         disabled={editLoading}
                         className={`cursor-pointer transition-colors duration-200 ${
-                          editLoading ? 'text-gray-400 cursor-not-allowed' : 'text-green-600 hover:text-green-800'
+                          editLoading ? 'text-muted-foreground cursor-not-allowed' : 'text-green-600 hover:text-green-800'
                         }`}
                         title="Edit Book"
                       >

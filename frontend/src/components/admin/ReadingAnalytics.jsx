@@ -93,7 +93,7 @@ const ReadingAnalytics = () => {
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-3 sm:px-4 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-primary w-full sm:w-auto"
+              className="px-3 sm:px-4 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-ring focus:border-primary w-full sm:w-auto"
             >
               <option value="week">Last Week</option>
               <option value="month">Last Month</option>

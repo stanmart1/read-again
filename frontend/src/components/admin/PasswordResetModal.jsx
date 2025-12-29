@@ -64,7 +64,7 @@ const PasswordResetModal = ({ isOpen, onClose, user, onSubmit }) => {
       >
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-foreground">Reset Password</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-muted-foreground">
+          <button onClick={onClose} className="text-muted-foreground hover:text-muted-foreground">
             <i className="ri-close-line text-2xl"></i>
           </button>
         </div>
@@ -97,13 +97,13 @@ const PasswordResetModal = ({ isOpen, onClose, user, onSubmit }) => {
                 type={showPassword ? 'text' : 'password'}
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full px-4 py-2 pr-10 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 pr-10 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                 placeholder="Enter new password (8+ chars, uppercase, lowercase, number, special char)"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-muted-foreground"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
               >
                 <i className={showPassword ? 'ri-eye-off-line' : 'ri-eye-line'}></i>
               </button>
@@ -117,13 +117,13 @@ const PasswordResetModal = ({ isOpen, onClose, user, onSubmit }) => {
                 type={showConfirmPassword ? 'text' : 'password'}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-2 pr-10 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 pr-10 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                 placeholder="Confirm new password"
               />
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-muted-foreground"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
               >
                 <i className={showConfirmPassword ? 'ri-eye-off-line' : 'ri-eye-line'}></i>
               </button>

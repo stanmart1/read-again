@@ -421,7 +421,7 @@ const WorksManagement = () => {
                       setShowEditForm(false);
                       resetForm();
                     }}
-                    className="text-gray-400 hover:text-muted-foreground flex-shrink-0 p-1"
+                    className="text-muted-foreground hover:text-muted-foreground flex-shrink-0 p-1"
                   >
                     <i className="ri-close-line text-lg xs:text-xl sm:text-2xl"></i>
                   </button>
@@ -434,7 +434,7 @@ const WorksManagement = () => {
                       type="file"
                       accept="image/*"
                       onChange={handleFileSelect}
-                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring"
                       required={!showEditForm}
                     />
                     {previewUrl && (
@@ -450,7 +450,7 @@ const WorksManagement = () => {
                       type="text"
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring"
                       required
                     />
                   </div>
@@ -485,7 +485,7 @@ const WorksManagement = () => {
                       type="text"
                       value={formData.alt_text}
                       onChange={(e) => setFormData({ ...formData, alt_text: e.target.value })}
-                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring"
                       required
                     />
                   </div>
@@ -497,7 +497,7 @@ const WorksManagement = () => {
                         type="number"
                         value={formData.order_index}
                         onChange={(e) => setFormData({ ...formData, order_index: parseInt(e.target.value) })}
-                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring"
                       />
                     </div>
                     <div className="flex items-center pt-6">

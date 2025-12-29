@@ -238,7 +238,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
             <button
               onClick={handleClose}
               disabled={isSubmitting}
-              className="text-gray-400 hover:text-muted-foreground disabled:opacity-50"
+              className="text-muted-foreground hover:text-muted-foreground disabled:opacity-50"
             >
               <i className="ri-close-line text-2xl"></i>
             </button>
@@ -270,14 +270,14 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* Title */}
                 <div className="sm:col-span-2">
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Book Title *
                   </label>
                   <input
                     type="text"
                     value={formData.title}
                     onChange={(e) => handleInputChange('title', e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all ${errors.title ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all ${errors.title ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                       }`}
                     placeholder="Enter the book title"
                   />
@@ -286,7 +286,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
                 {/* Author */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Author *
                   </label>
                   <div className="relative">
@@ -299,7 +299,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                           handleInputChange('author_id', e.target.value);
                         }
                       }}
-                      className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all appearance-none bg-card ${errors.author_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
+                      className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all appearance-none bg-card ${errors.author_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                         }`}
                     >
                       <option value="">Select an author</option>
@@ -313,7 +313,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                       </option>
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <i className="ri-arrow-down-s-line text-gray-400"></i>
+                      <i className="ri-arrow-down-s-line text-muted-foreground"></i>
                     </div>
                   </div>
                   {errors.author_id && <p className="text-red-500 text-sm mt-1 flex items-center"><i className="ri-error-warning-line mr-1"></i>{errors.author_id}</p>}
@@ -327,7 +327,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                           value={newAuthorName}
                           onChange={(e) => setNewAuthorName(e.target.value)}
                           placeholder="Enter author name"
-                          className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                          className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
                         />
                         <button
                           type="button"
@@ -354,13 +354,13 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
                 {/* Category */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Category *
                   </label>
                   <select
                     value={formData.category_id}
                     onChange={(e) => handleInputChange('category_id', e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all appearance-none bg-card ${errors.category_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all appearance-none bg-card ${errors.category_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                       }`}
                   >
                     <option value="">Select a category</option>
@@ -375,7 +375,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
                 {/* Price */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Price (₦) *
                   </label>
                   <input
@@ -384,7 +384,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     min="0"
                     value={formData.price}
                     onChange={(e) => handleInputChange('price', e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all ${errors.price ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all ${errors.price ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                       }`}
                     placeholder="0.00"
                   />
@@ -393,7 +393,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
                 {/* Format */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Book Type *
                   </label>
                   <div className="grid grid-cols-2 gap-3">
@@ -436,14 +436,14 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     type="text"
                     value={formData.isbn}
                     onChange={(e) => handleInputChange('isbn', e.target.value)}
-                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
+                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-primary"
                     placeholder="978-0-000-00000-0"
                   />
                 </div>
 
                 {/* Status */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">
+                  <label className="block text-sm font-semibold text-foreground mb-2">
                     Status
                   </label>
                   <div className="grid grid-cols-2 gap-3">
@@ -482,7 +482,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                       type="text"
                       value={formData.publisher}
                       onChange={(e) => handleInputChange('publisher', e.target.value)}
-                      className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
+                      className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-primary"
                       placeholder="Publisher name"
                     />
                   </div>
@@ -496,7 +496,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                         <i className="ri-star-line text-purple-600"></i>
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-800">
+                        <label className="block text-sm font-semibold text-foreground">
                           Featured Book
                         </label>
                         <p className="text-xs text-muted-foreground">
@@ -546,7 +546,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                         type="number"
                         value={formData.stock_quantity}
                         onChange={(e) => handleInputChange('stock_quantity', e.target.value)}
-                        className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
+                        className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-primary"
                         placeholder="Stock quantity"
                         min="0"
                       />
@@ -592,7 +592,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     }`}
                   onClick={() => coverInputRef.current?.click()}
                 >
-                  <i className="ri-image-add-line text-4xl text-gray-400 mb-2"></i>
+                  <i className="ri-image-add-line text-4xl text-muted-foreground mb-2"></i>
                   <p className="text-sm text-muted-foreground">
                     {formData.cover_image ? formData.cover_image.name : 'Drag & drop cover image or click to browse'}
                   </p>
@@ -624,7 +624,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                       }`}
                     onClick={() => ebookInputRef.current?.click()}
                   >
-                    <i className="ri-file-pdf-line text-4xl text-gray-400 mb-2"></i>
+                    <i className="ri-file-pdf-line text-4xl text-muted-foreground mb-2"></i>
                     <p className="text-sm text-muted-foreground">
                       {formData.ebook_file ? formData.ebook_file.name : 'Drag & drop ebook file or click to browse'}
                     </p>

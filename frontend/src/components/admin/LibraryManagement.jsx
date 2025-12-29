@@ -374,13 +374,13 @@ const LibraryManagement = () => {
               placeholder="Search by user name, email, or book title..."
               value={filters.search}
               onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
-              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
             />
           </div>
           <select
             value={filters.status}
             onChange={(e) => setFilters(prev => ({ ...prev, status: e.target.value }))}
-            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
           >
             <option value="">All Status</option>
             <option value="unread">Unread</option>
@@ -390,7 +390,7 @@ const LibraryManagement = () => {
           <select
             value={filters.user_id || ''}
             onChange={(e) => setFilters(prev => ({ ...prev, user_id: e.target.value ? parseInt(e.target.value) : undefined }))}
-            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
           >
             <option value="">All Users</option>
             {users.map(user => (
@@ -405,14 +405,14 @@ const LibraryManagement = () => {
             type="date"
             value={filters.dateFrom}
             onChange={(e) => setFilters(prev => ({ ...prev, dateFrom: e.target.value }))}
-            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
             placeholder="From Date"
           />
           <input
             type="date"
             value={filters.dateTo}
             onChange={(e) => setFilters(prev => ({ ...prev, dateTo: e.target.value }))}
-            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
             placeholder="To Date"
           />
           <select
@@ -421,7 +421,7 @@ const LibraryManagement = () => {
               const [sortBy, sortOrder] = e.target.value.split('-');
               setFilters(prev => ({ ...prev, sortBy, sortOrder }));
             }}
-            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
           >
             <option value="created_at-desc">Newest First</option>
             <option value="created_at-asc">Oldest First</option>
@@ -543,7 +543,7 @@ const LibraryManagement = () => {
                       <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
                         library.status === 'reading' ? 'bg-green-100 text-green-800' :
                         library.status === 'completed' ? 'bg-primary/20 text-blue-800' :
-                        'bg-muted text-gray-800'
+                        'bg-muted text-foreground'
                       }`}>
                         {library.status}
                       </span>
@@ -628,7 +628,7 @@ const LibraryManagement = () => {
                     setUserSearch('');
                     setShowUserDropdown(false);
                   }}
-                  className="text-gray-400 hover:text-muted-foreground transition-colors p-1 rounded-full hover:bg-card/50"
+                  className="text-muted-foreground hover:text-muted-foreground transition-colors p-1 rounded-full hover:bg-card/50"
                 >
                   <i className="ri-close-line text-2xl"></i>
                 </button>
@@ -639,7 +639,7 @@ const LibraryManagement = () => {
             <div className="p-6 space-y-6">
               {/* Searchable User Dropdown */}
               <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">
+                <label className="block text-sm font-semibold text-foreground mb-2">
                   <i className="ri-user-line mr-1"></i>
                   Select User *
                 </label>
@@ -666,7 +666,7 @@ const LibraryManagement = () => {
                       ) : (
                         <span className="text-muted-foreground">Choose a user...</span>
                       )}
-                      <i className={`ri-arrow-down-s-line text-gray-400 transition-transform ${showUserDropdown ? 'rotate-180' : ''}`}></i>
+                      <i className={`ri-arrow-down-s-line text-muted-foreground transition-transform ${showUserDropdown ? 'rotate-180' : ''}`}></i>
                     </div>
                   </div>
                   
@@ -674,13 +674,13 @@ const LibraryManagement = () => {
                     <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-xl shadow-lg z-10 max-h-64 overflow-hidden">
                       <div className="p-3 border-b border-gray-100">
                         <div className="relative">
-                          <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                          <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"></i>
                           <input
                             type="text"
                             placeholder="Search users..."
                             value={userSearch}
                             onChange={(e) => setUserSearch(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
+                            className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-primary"
                             autoFocus
                           />
                         </div>
@@ -735,7 +735,7 @@ const LibraryManagement = () => {
 
               {/* Book Selection */}
               <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">
+                <label className="block text-sm font-semibold text-foreground mb-2">
                   <i className="ri-book-open-line mr-1"></i>
                   Select Book *
                 </label>
@@ -762,7 +762,7 @@ const LibraryManagement = () => {
                       ) : (
                         <span className="text-muted-foreground">Choose a book...</span>
                       )}
-                      <i className={`ri-arrow-down-s-line text-gray-400 transition-transform ${showBookDropdown ? 'rotate-180' : ''}`}></i>
+                      <i className={`ri-arrow-down-s-line text-muted-foreground transition-transform ${showBookDropdown ? 'rotate-180' : ''}`}></i>
                     </div>
                   </div>
                   
@@ -770,13 +770,13 @@ const LibraryManagement = () => {
                     <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-xl shadow-lg z-10 max-h-64 overflow-hidden">
                       <div className="p-3 border-b border-gray-100">
                         <div className="relative">
-                          <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                          <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"></i>
                           <input
                             type="text"
                             placeholder="Search books..."
                             value={bookSearch}
                             onChange={(e) => setBookSearch(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
+                            className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-primary"
                             autoFocus
                           />
                         </div>
@@ -845,7 +845,7 @@ const LibraryManagement = () => {
 
               {/* Format Selection */}
               <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-3">
+                <label className="block text-sm font-semibold text-foreground mb-3">
                   <i className="ri-file-list-line mr-1"></i>
                   Book Format *
                 </label>
@@ -860,7 +860,7 @@ const LibraryManagement = () => {
                     }`}
                   >
                     <i className={`ri-smartphone-line text-2xl mb-2 block ${
-                      selectedFormat === 'ebook' ? 'text-primary' : 'text-gray-400 group-hover:text-muted-foreground'
+                      selectedFormat === 'ebook' ? 'text-primary' : 'text-muted-foreground group-hover:text-muted-foreground'
                     }`}></i>
                     <span className="text-sm font-medium">Digital Ebook</span>
                     <p className="text-xs text-muted-foreground mt-1">Instant access</p>
@@ -875,7 +875,7 @@ const LibraryManagement = () => {
                     }`}
                   >
                     <i className={`ri-book-line text-2xl mb-2 block ${
-                      selectedFormat === 'physical' ? 'text-primary' : 'text-gray-400 group-hover:text-muted-foreground'
+                      selectedFormat === 'physical' ? 'text-primary' : 'text-muted-foreground group-hover:text-muted-foreground'
                     }`}></i>
                     <span className="text-sm font-medium">Physical Book</span>
                     <p className="text-xs text-muted-foreground mt-1">Hardcopy access</p>
@@ -946,7 +946,7 @@ const LibraryManagement = () => {
                     setBulkUsers([]);
                     setBulkBook(null);
                   }}
-                  className="text-gray-400 hover:text-muted-foreground"
+                  className="text-muted-foreground hover:text-muted-foreground"
                 >
                   <i className="ri-close-line text-2xl"></i>
                 </button>
@@ -954,7 +954,7 @@ const LibraryManagement = () => {
             </div>
             <div className="p-6 space-y-6">
               <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">Select Users *</label>
+                <label className="block text-sm font-semibold text-foreground mb-2">Select Users *</label>
                 <div className="border border-border rounded-xl p-3 max-h-48 overflow-y-auto">
                   {users.map(user => (
                     <label key={user.id} className="flex items-center space-x-3 p-2 hover:bg-muted rounded cursor-pointer">
@@ -980,7 +980,7 @@ const LibraryManagement = () => {
                 <p className="text-sm text-muted-foreground mt-2">{bulkUsers.length} user(s) selected</p>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">Select Book *</label>
+                <label className="block text-sm font-semibold text-foreground mb-2">Select Book *</label>
                 <select
                   value={bulkBook || ''}
                   onChange={(e) => setBulkBook(parseInt(e.target.value))}
@@ -993,7 +993,7 @@ const LibraryManagement = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">Format *</label>
+                <label className="block text-sm font-semibold text-foreground mb-2">Format *</label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
@@ -1070,7 +1070,7 @@ const LibraryManagement = () => {
                     setShowDetailsModal(false);
                     setAssignmentDetails(null);
                   }}
-                  className="text-gray-400 hover:text-muted-foreground transition-colors p-1 rounded-full hover:bg-card/50"
+                  className="text-muted-foreground hover:text-muted-foreground transition-colors p-1 rounded-full hover:bg-card/50"
                 >
                   <i className="ri-close-line text-2xl"></i>
                 </button>
@@ -1107,7 +1107,7 @@ const LibraryManagement = () => {
                         <span className={`inline-block px-2 py-1 text-xs font-semibold rounded-full ${
                           assignmentDetails.assignment.status === 'reading' ? 'bg-green-100 text-green-800' :
                           assignmentDetails.assignment.status === 'completed' ? 'bg-primary/20 text-blue-800' :
-                          'bg-muted text-gray-800'
+                          'bg-muted text-foreground'
                         }`}>
                           {assignmentDetails.assignment.status}
                         </span>
@@ -1189,7 +1189,7 @@ const LibraryManagement = () => {
                               <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
                                 goal.status === 'completed' ? 'bg-green-100 text-green-800' :
                                 goal.status === 'in_progress' ? 'bg-primary/20 text-blue-800' :
-                                'bg-muted text-gray-800'
+                                'bg-muted text-foreground'
                               }`}>
                                 {goal.status === 'completed' ? 'Completed' : goal.status === 'in_progress' ? 'In Progress' : 'Not Started'}
                               </span>
@@ -1233,7 +1233,7 @@ const LibraryManagement = () => {
                       <div className="space-y-3">
                         {assignmentDetails.highlights.map((highlight) => (
                           <div key={highlight.id} className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                            <p className="text-gray-800 italic mb-2">"{highlight.text}"</p>
+                            <p className="text-foreground italic mb-2">"{highlight.text}"</p>
                             {highlight.context && (
                               <p className="text-sm text-muted-foreground mb-2">Context: {highlight.context}</p>
                             )}
@@ -1265,7 +1265,7 @@ const LibraryManagement = () => {
                       <div className="space-y-3">
                         {assignmentDetails.notes.map((note) => (
                           <div key={note.id} className="bg-primary/10 border-l-4 border-blue-400 p-4 rounded-r-lg">
-                            <p className="text-gray-800 mb-2">{note.content}</p>
+                            <p className="text-foreground mb-2">{note.content}</p>
                             <div className="flex items-center justify-between text-xs text-muted-foreground">
                               <span>{note.highlight_id ? 'Attached to highlight' : 'Standalone note'}</span>
                               <span>{new Date(note.created_at).toLocaleString()}</span>

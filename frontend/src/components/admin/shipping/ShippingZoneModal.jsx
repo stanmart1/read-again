@@ -74,7 +74,7 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
             </h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-muted-foreground"
+              className="text-muted-foreground hover:text-muted-foreground"
             >
               <i className="ri-close-line text-2xl"></i>
             </button>
@@ -92,7 +92,7 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                 placeholder="e.g., Lagos & Surrounding Areas"
                 required
               />
@@ -106,7 +106,7 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                 rows={2}
                 placeholder="Brief description of this shipping zone"
               />
@@ -134,7 +134,7 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
                         type="checkbox"
                         checked={formData.states.includes(state)}
                         onChange={() => handleStateToggle(state)}
-                        className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                        className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
                       />
                       <span className="text-sm text-foreground">{state}</span>
                     </label>
@@ -149,7 +149,7 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
                 type="checkbox"
                 checked={formData.is_active}
                 onChange={(e) => setFormData(prev => ({ ...prev, is_active: e.target.checked }))}
-                className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
               />
               <label className="ml-2 text-sm text-foreground">
                 Active (visible to customers)

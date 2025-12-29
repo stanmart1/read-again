@@ -136,13 +136,13 @@ const CategoriesManagement = () => {
               placeholder="Search categories..."
               value={filters.search}
               onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
             />
           </div>
           <select
             value={filters.status}
             onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
           >
             <option value="">All Status</option>
             <option value="active">Active</option>
@@ -175,7 +175,7 @@ const CategoriesManagement = () => {
           ))
         ) : filteredCategories.length === 0 ? (
           <div className="col-span-full text-center py-12">
-            <i className="ri-folder-line text-4xl text-gray-400 mb-4 block"></i>
+            <i className="ri-folder-line text-4xl text-muted-foreground mb-4 block"></i>
             <h3 className="text-lg font-medium text-foreground">No categories found</h3>
             <p className="text-muted-foreground mt-1">
               {filters.search || filters.status 
@@ -206,7 +206,7 @@ const CategoriesManagement = () => {
                     className={`p-1 rounded transition-opacity ${
                       category.status === 'active'
                         ? 'text-green-600 hover:bg-green-50' 
-                        : 'text-gray-400 hover:bg-muted'
+                        : 'text-muted-foreground hover:bg-muted'
                     } ${isTogglingStatus ? 'opacity-50 cursor-not-allowed' : ''}`}
                     title={category.status === 'active' ? 'Deactivate' : 'Activate'}
                   >
@@ -247,7 +247,7 @@ const CategoriesManagement = () => {
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                     category.status === 'active' 
                       ? 'bg-green-100 text-green-800' 
-                      : 'bg-muted text-gray-800'
+                      : 'bg-muted text-foreground'
                   }`}>
                     {category.status === 'active' ? 'Active' : 'Inactive'}
                   </span>
@@ -272,7 +272,7 @@ const CategoriesManagement = () => {
                 </h3>
                 <button
                   onClick={handleModalClose}
-                  className="text-gray-400 hover:text-muted-foreground"
+                  className="text-muted-foreground hover:text-muted-foreground"
                 >
                   <i className="ri-close-line text-2xl"></i>
                 </button>
@@ -287,7 +287,7 @@ const CategoriesManagement = () => {
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
                     required
                   />
                 </div>
@@ -300,7 +300,7 @@ const CategoriesManagement = () => {
                     value={formData.description}
                     onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                     rows={3}
-                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
                   />
                 </div>
 
@@ -309,7 +309,7 @@ const CategoriesManagement = () => {
                     type="checkbox"
                     checked={formData.status === 'active'}
                     onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.checked ? 'active' : 'inactive' }))}
-                    className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                    className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
                   />
                   <label className="ml-2 text-sm text-foreground">Active</label>
                 </div>

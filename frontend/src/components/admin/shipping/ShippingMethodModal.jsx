@@ -69,7 +69,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
             </h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-muted-foreground"
+              className="text-muted-foreground hover:text-muted-foreground"
             >
               <i className="ri-close-line text-2xl"></i>
             </button>
@@ -87,7 +87,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
                 type="text"
                 value={formData.name}
                 onChange={(e) => updateFormData('name', e.target.value)}
-                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                 required
               />
             </div>
@@ -100,7 +100,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
               <textarea
                 value={formData.description}
                 onChange={(e) => updateFormData('description', e.target.value)}
-                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                 rows={3}
               />
             </div>
@@ -117,7 +117,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
                   min="0"
                   value={formData.base_cost}
                   onChange={(e) => updateFormData('base_cost', parseFloat(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                   required
                 />
               </div>
@@ -131,7 +131,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
                   min="0"
                   value={formData.cost_per_item}
                   onChange={(e) => updateFormData('cost_per_item', parseFloat(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                 />
               </div>
             </div>
@@ -147,7 +147,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
                 min="0"
                 value={formData.free_shipping_threshold || ''}
                 onChange={(e) => updateFormData('free_shipping_threshold', e.target.value ? parseFloat(e.target.value) : null)}
-                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                 placeholder="Leave empty for no free shipping"
               />
               <p className="text-xs text-muted-foreground mt-1">
@@ -166,7 +166,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
                   min="1"
                   value={formData.estimated_days_min}
                   onChange={(e) => updateFormData('estimated_days_min', parseInt(e.target.value) || 1)}
-                  className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                   required
                 />
               </div>
@@ -179,7 +179,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
                   min="1"
                   value={formData.estimated_days_max}
                   onChange={(e) => updateFormData('estimated_days_max', parseInt(e.target.value) || 7)}
-                  className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                   required
                 />
               </div>
@@ -195,7 +195,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
                 min="0"
                 value={formData.sort_order}
                 onChange={(e) => updateFormData('sort_order', parseInt(e.target.value) || 0)}
-                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
               />
               <p className="text-xs text-muted-foreground mt-1">
                 Lower numbers appear first
@@ -208,7 +208,7 @@ const ShippingMethodModal = ({ isOpen, onClose, onSubmit, editingMethod }) => {
                 type="checkbox"
                 checked={formData.is_active}
                 onChange={(e) => updateFormData('is_active', e.target.checked)}
-                className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
               />
               <label className="ml-2 text-sm text-foreground">
                 Active (visible to customers)

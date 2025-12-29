@@ -169,9 +169,9 @@ const OrdersManagement = () => {
       shipped: 'bg-indigo-100 text-indigo-800',
       delivered: 'bg-green-100 text-green-800',
       cancelled: 'bg-red-100 text-red-800',
-      refunded: 'bg-muted text-gray-800'
+      refunded: 'bg-muted text-foreground'
     };
-    return colors[status?.toLowerCase()] || 'bg-muted text-gray-800';
+    return colors[status?.toLowerCase()] || 'bg-muted text-foreground';
   };
 
   const getPaymentStatusColor = (status) => {
@@ -180,9 +180,9 @@ const OrdersManagement = () => {
       completed: 'bg-green-100 text-green-800',
       awaiting_approval: 'bg-primary/20 text-blue-800',
       failed: 'bg-red-100 text-red-800',
-      refunded: 'bg-muted text-gray-800'
+      refunded: 'bg-muted text-foreground'
     };
-    return colors[status?.toLowerCase()] || 'bg-muted text-gray-800';
+    return colors[status?.toLowerCase()] || 'bg-muted text-foreground';
   };
 
   const formatCurrency = (amount) => {
@@ -350,7 +350,7 @@ const OrdersManagement = () => {
         {orders.length === 0 && !loading ? (
           <div className="bg-card rounded-lg shadow-sm border border-border p-8 text-center">
             <div className="w-16 h-16 mx-auto mb-4 bg-muted rounded-full flex items-center justify-center">
-              <i className="ri-shopping-bag-line text-2xl text-gray-400"></i>
+              <i className="ri-shopping-bag-line text-2xl text-muted-foreground"></i>
             </div>
             <h3 className="text-lg font-medium text-foreground mb-2">No orders found</h3>
             <p className="text-muted-foreground mb-4">
@@ -393,7 +393,7 @@ const OrdersManagement = () => {
         {orders.length === 0 && !loading ? (
           <div className="bg-card rounded-lg shadow-sm border border-border p-8 text-center">
             <div className="w-16 h-16 mx-auto mb-4 bg-muted rounded-full flex items-center justify-center">
-              <i className="ri-shopping-bag-line text-2xl text-gray-400"></i>
+              <i className="ri-shopping-bag-line text-2xl text-muted-foreground"></i>
             </div>
             <h3 className="text-lg font-medium text-foreground mb-2">No orders found</h3>
             <p className="text-muted-foreground mb-4">
@@ -439,7 +439,7 @@ const OrdersManagement = () => {
               <select
                 value={itemsPerPage}
                 onChange={(e) => handleItemsPerPageChange(parseInt(e.target.value))}
-                className="px-3 py-1 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-1 border border-input rounded-lg focus:ring-2 focus:ring-ring"
               >
                 <option value={10}>10</option>
                 <option value={20}>20</option>

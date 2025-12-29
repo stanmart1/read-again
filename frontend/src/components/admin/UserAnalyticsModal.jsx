@@ -38,7 +38,7 @@ const UserAnalyticsModal = ({ isOpen, onClose, userId }) => {
       >
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-2xl font-bold text-foreground">Reading Analytics</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-muted-foreground">
+          <button onClick={onClose} className="text-muted-foreground hover:text-muted-foreground">
             <i className="ri-close-line text-2xl"></i>
           </button>
         </div>
@@ -123,7 +123,7 @@ const UserAnalyticsModal = ({ isOpen, onClose, userId }) => {
                   <div className="text-center py-12">
                     <i className="ri-book-open-line text-6xl text-gray-300 mb-4"></i>
                     <p className="text-muted-foreground text-lg font-medium">No books yet</p>
-                    <p className="text-gray-400 text-sm mt-1">User hasn't started reading any books</p>
+                    <p className="text-muted-foreground text-sm mt-1">User hasn't started reading any books</p>
                   </div>
                 )}
               </div>
