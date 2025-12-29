@@ -83,7 +83,7 @@ export default function CategoryForm({ category, onSubmit, onCancel }) {
               type="text"
               value={formData.name}
               onChange={(e) => handleChange('name', e.target.value)}
-              className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-ring ${
                 errors.name ? 'border-red-500' : 'border-input'
               }`}
               placeholder="Enter category name..."
@@ -98,7 +98,7 @@ export default function CategoryForm({ category, onSubmit, onCancel }) {
               value={formData.description}
               onChange={(e) => handleChange('description', e.target.value)}
               rows={3}
-              className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
               placeholder="Enter category description..."
             />
           </div>
@@ -161,7 +161,7 @@ export default function CategoryForm({ category, onSubmit, onCancel }) {
               id="is_active"
               checked={formData.is_active}
               onChange={(e) => handleChange('is_active', e.target.checked)}
-              className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+              className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
             />
             <label htmlFor="is_active" className="ml-2 block text-sm text-foreground">Active</label>
           </div>

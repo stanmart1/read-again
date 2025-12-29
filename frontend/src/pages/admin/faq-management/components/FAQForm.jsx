@@ -122,7 +122,7 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
               <select
                 value={formData.category}
                 onChange={(e) => handleChange('category', e.target.value)}
-                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-ring ${
                   errors.category ? 'border-red-500' : 'border-input'
                 }`}
               >
@@ -141,7 +141,7 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
                 value={formData.priority}
                 onChange={(e) => handleChange('priority', parseInt(e.target.value) || 0)}
                 min="0"
-                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-ring ${
                   errors.priority ? 'border-red-500' : 'border-input'
                 }`}
                 placeholder="0"
@@ -158,7 +158,7 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
                 id="is_active"
                 checked={formData.is_active}
                 onChange={(e) => handleChange('is_active', e.target.checked)}
-                className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
               />
               <label htmlFor="is_active" className="ml-2 block text-sm text-foreground">Active</label>
             </div>
@@ -169,7 +169,7 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
                 id="is_featured"
                 checked={formData.is_featured}
                 onChange={(e) => handleChange('is_featured', e.target.checked)}
-                className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
               />
               <label htmlFor="is_featured" className="ml-2 block text-sm text-foreground">Featured</label>
             </div>

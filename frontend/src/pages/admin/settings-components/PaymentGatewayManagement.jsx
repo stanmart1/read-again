@@ -330,7 +330,7 @@ export default function PaymentGatewayManagement() {
                     type={showApiKeys[`${gateway.id}_publicKey`] ? 'text' : 'password'}
                     value={gateway.apiKeys.publicKey}
                     onChange={(e) => updateApiKey(gateway.id, 'publicKey', e.target.value)}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring pr-10 ${
                       validationErrors[gateway.id]?.publicKey ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Flutterwave Public Key (FLWPUBK-...)"
@@ -360,7 +360,7 @@ export default function PaymentGatewayManagement() {
                     type={showApiKeys[`${gateway.id}_secretKey`] ? 'text' : 'password'}
                     value={gateway.apiKeys.secretKey}
                     onChange={(e) => updateApiKey(gateway.id, 'secretKey', e.target.value)}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring pr-10 ${
                       validationErrors[gateway.id]?.secretKey ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Flutterwave Secret Key (FLWSECK-...)"
@@ -390,7 +390,7 @@ export default function PaymentGatewayManagement() {
                     type={showApiKeys[`${gateway.id}_hash`] ? 'text' : 'password'}
                     value={gateway.apiKeys.hash}
                     onChange={(e) => updateApiKey(gateway.id, 'hash', e.target.value)}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring pr-10 ${
                       validationErrors[gateway.id]?.hash ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Flutterwave Encryption Hash"
@@ -431,7 +431,7 @@ export default function PaymentGatewayManagement() {
                     type="text"
                     value={gateway.bankAccount?.bankName || ''}
                     onChange={(e) => updateBankAccount(gateway.id, 'bankName', e.target.value)}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring ${
                       validationErrors[gateway.id]?.bankName ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Enter Bank Name"
@@ -450,7 +450,7 @@ export default function PaymentGatewayManagement() {
                     type="text"
                     value={gateway.bankAccount?.accountNumber || ''}
                     onChange={(e) => updateBankAccount(gateway.id, 'accountNumber', e.target.value)}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring ${
                       validationErrors[gateway.id]?.accountNumber ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Enter Account Number"
@@ -469,7 +469,7 @@ export default function PaymentGatewayManagement() {
                     type="text"
                     value={gateway.bankAccount?.accountName || ''}
                     onChange={(e) => updateBankAccount(gateway.id, 'accountName', e.target.value)}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring ${
                       validationErrors[gateway.id]?.accountName ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Enter Account Name"
@@ -487,7 +487,7 @@ export default function PaymentGatewayManagement() {
                   <textarea
                     value={gateway.bankAccount?.instructions || ''}
                     onChange={(e) => updateBankAccount(gateway.id, 'instructions', e.target.value)}
-                    className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
                     rows={3}
                     placeholder="Instructions for customers making bank transfers"
                   />
@@ -593,7 +593,7 @@ export default function PaymentGatewayManagement() {
             <select
               value={paymentSettings.defaultGateway}
               onChange={(e) => setPaymentSettings(prev => ({ ...prev, defaultGateway: e.target.value }))}
-              className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
             >
               {paymentGateways.filter(g => g.enabled).map(gateway => (
                 <option key={gateway.id} value={gateway.id}>{gateway.name}</option>
@@ -605,7 +605,7 @@ export default function PaymentGatewayManagement() {
             <select
               value={paymentSettings.currency}
               onChange={(e) => setPaymentSettings(prev => ({ ...prev, currency: e.target.value }))}
-              className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <option value="NGN">Nigerian Naira (NGN)</option>
               <option value="USD">US Dollar (USD)</option>
@@ -620,7 +620,7 @@ export default function PaymentGatewayManagement() {
               step="0.1"
               value={paymentSettings.taxRate}
               onChange={(e) => setPaymentSettings(prev => ({ ...prev, taxRate: parseFloat(e.target.value) || 0 }))}
-              className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
               placeholder="7.5"
             />
           </div>

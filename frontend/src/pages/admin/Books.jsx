@@ -477,7 +477,7 @@ const AdminBooks = () => {
                           ...prev, 
                           batchUpdate: { ...prev.batchUpdate, status: e.target.value } 
                         }))}
-                        className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
                       >
                         <option value="">Don't change</option>
                         <option value="published">Published</option>
@@ -493,7 +493,7 @@ const AdminBooks = () => {
                           ...prev, 
                           batchUpdate: { ...prev.batchUpdate, category_id: e.target.value } 
                         }))}
-                        className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
                       >
                         <option value="">Don't change</option>
                         {data.categories.map(cat => (
@@ -514,7 +514,7 @@ const AdminBooks = () => {
                               price_adjustment: { ...prev.batchUpdate.price_adjustment, value: e.target.value } 
                             } 
                           }))}
-                          className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                          className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
                           placeholder="0"
                         />
                         <select
@@ -526,7 +526,7 @@ const AdminBooks = () => {
                               price_adjustment: { ...prev.batchUpdate.price_adjustment, type: e.target.value } 
                             } 
                           }))}
-                          className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                          className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
                         >
                           <option value="percentage">%</option>
                           <option value="fixed">₦</option>
@@ -696,7 +696,7 @@ const AdminBooks = () => {
                           type="text"
                           value={forms.userSearch}
                           onChange={(e) => setForms(prev => ({ ...prev, userSearch: e.target.value }))}
-                          className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
+                          className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring ${
                             errors.users ? 'border-red-500' : 'border-input'
                           }`}
                           placeholder="Search and select users..."

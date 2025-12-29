@@ -447,7 +447,7 @@ const AdminAbout = () => {
                                     }
                                   }
                                 }}
-                                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent text-sm"
                               />
                               {member.image && (
                                 <img src={getFileUrl(member.image)} alt={member.name} className="mt-2 w-full h-48 object-cover rounded-lg border border-border" />
@@ -462,7 +462,7 @@ const AdminAbout = () => {
                                 newTeam[idx] = { ...member, name: e.target.value };
                                 updateContent('team', newTeam);
                               }}
-                              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                             />
                             <input
                               type="text"
@@ -473,7 +473,7 @@ const AdminAbout = () => {
                                 newTeam[idx] = { ...member, role: e.target.value };
                                 updateContent('team', newTeam);
                               }}
-                              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                             />
                             <div>
                               <label className="block text-sm font-medium text-foreground mb-2">Bio</label>

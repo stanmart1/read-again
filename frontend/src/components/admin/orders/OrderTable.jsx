@@ -24,7 +24,7 @@ const OrderTable = ({
                   type="checkbox"
                   checked={selectAll}
                   onChange={onSelectAll}
-                  className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                  className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
                 />
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
@@ -67,7 +67,7 @@ const OrderTable = ({
                       type="checkbox"
                       checked={selectedOrders.has(order.id)}
                       onChange={() => onSelect(order.id)}
-                      className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                      className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
                     />
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">

@@ -52,7 +52,7 @@ const EditRoleModal = ({ isOpen, onClose, role, onSuccess }) => {
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring"
               required
             />
           </div>
@@ -63,7 +63,7 @@ const EditRoleModal = ({ isOpen, onClose, role, onSuccess }) => {
               type="text"
               value={formData.display_name}
               onChange={(e) => setFormData({ ...formData, display_name: e.target.value })}
-              className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring"
               required
             />
           </div>
@@ -73,7 +73,7 @@ const EditRoleModal = ({ isOpen, onClose, role, onSuccess }) => {
             <textarea
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring"
               rows="3"
             />
           </div>
@@ -84,7 +84,7 @@ const EditRoleModal = ({ isOpen, onClose, role, onSuccess }) => {
               type="number"
               value={formData.priority}
               onChange={(e) => setFormData({ ...formData, priority: parseInt(e.target.value) })}
-              className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring"
               min="0"
             />
           </div>

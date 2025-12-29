@@ -30,7 +30,7 @@ const OrderFilters = ({
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && onSearch()}
-            className="w-full pl-10 pr-4 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+            className="w-full pl-10 pr-4 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent text-base"
           />
         </div>
 
@@ -56,7 +56,7 @@ const OrderFilters = ({
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent text-base"
                 >
                   <option value="">All Statuses</option>
                   <option value="pending">Pending</option>
@@ -75,7 +75,7 @@ const OrderFilters = ({
                 <select
                   value={paymentStatusFilter}
                   onChange={(e) => setPaymentStatusFilter(e.target.value)}
-                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent text-base"
                 >
                   <option value="">All Payment Statuses</option>
                   <option value="pending">Payment Pending</option>
@@ -91,7 +91,7 @@ const OrderFilters = ({
                 <select
                   value={paymentMethodFilter}
                   onChange={(e) => setPaymentMethodFilter(e.target.value)}
-                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent text-base"
                 >
                   <option value="">All Payment Methods</option>
                   <option value="flutterwave">Flutterwave</option>
@@ -106,7 +106,7 @@ const OrderFilters = ({
                 <select
                   value={dateFilter}
                   onChange={(e) => setDateFilter(e.target.value)}
-                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent text-base"
                 >
                   <option value="all">All Time</option>
                   <option value="today">Today</option>

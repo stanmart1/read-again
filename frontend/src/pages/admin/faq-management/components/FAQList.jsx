@@ -59,7 +59,7 @@ export default function FAQList({
                   type="checkbox"
                   checked={selectedFAQs.length === faqs.length && faqs.length > 0}
                   onChange={handleSelectAll}
-                  className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                  className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
                 />
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
@@ -93,7 +93,7 @@ export default function FAQList({
                     type="checkbox"
                     checked={selectedFAQs.includes(faq.id)}
                     onChange={() => onSelectFAQ(faq.id)}
-                    className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+                    className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
                   />
                 </td>
                 <td className="px-6 py-4">

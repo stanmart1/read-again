@@ -124,7 +124,7 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
                   value={displayOrder.status}
                   onChange={(e) => handleOrderStatusUpdate(e.target.value)}
                   disabled={updatingStatus}
-                  className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
                 >
                   <option value="pending">Pending</option>
                   <option value="confirmed">Confirmed</option>
@@ -147,7 +147,7 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
                   value={displayOrder.payment_status}
                   onChange={(e) => handlePaymentStatusUpdate(e.target.value)}
                   disabled={updatingPaymentStatus}
-                  className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
                 >
                   <option value="pending">Pending</option>
                   <option value="completed">Completed</option>

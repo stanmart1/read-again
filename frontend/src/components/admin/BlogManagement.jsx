@@ -591,7 +591,7 @@ const BlogManagement = () => {
               <select
                 value={filters.status}
                 onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
               >
                 <option value="">All Status</option>
                 <option value="published">Published</option>
@@ -606,7 +606,7 @@ const BlogManagement = () => {
               <select
                 value={filters.category}
                 onChange={(e) => setFilters({ ...filters, category: e.target.value })}
-                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
               >
                 <option value="">All Categories</option>
                 {categories.map((cat) => (
@@ -622,7 +622,7 @@ const BlogManagement = () => {
                 type="text"
                 value={filters.search}
                 onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
                 placeholder="Search posts..."
               />
             </div>
@@ -1089,7 +1089,7 @@ const BlogManagement = () => {
                         type="text"
                         value={formData.title}
                         onChange={(e) => handleTitleChange(e.target.value)}
-                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${validationErrors.title ? 'border-red-500' : ''}`}
+                        className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring ${validationErrors.title ? 'border-red-500' : ''}`}
                         placeholder="Enter post title"
                       />
                       {validationErrors.title && <p className="text-red-500 text-xs mt-1">{validationErrors.title}</p>}
@@ -1103,7 +1103,7 @@ const BlogManagement = () => {
                           value={formData.slug}
                           onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
                           disabled={!slugEditable}
-                          className={`flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${validationErrors.slug ? 'border-red-500' : ''} ${!slugEditable ? 'bg-muted cursor-not-allowed' : ''}`}
+                          className={`flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring ${validationErrors.slug ? 'border-red-500' : ''} ${!slugEditable ? 'bg-muted cursor-not-allowed' : ''}`}
                           placeholder="auto-generated-slug"
                         />
                         <button
@@ -1123,7 +1123,7 @@ const BlogManagement = () => {
                       <select
                         value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring"
                       >
                         {categories.map((cat) => (
                           <option key={cat.slug || cat.name} value={cat.name}>{cat.name}</option>
@@ -1242,7 +1242,7 @@ const BlogManagement = () => {
                         <select
                           value={formData.status}
                           onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                          className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-ring"
                         >
                           <option value="draft">Draft</option>
                           <option value="published">Published</option>
@@ -1447,7 +1447,7 @@ const BlogManagement = () => {
                         type="text"
                         value={formData.title}
                         onChange={(e) => { handleTitleChange(e.target.value); setHasUnsavedChanges(true); }}
-                        className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all ${validationErrors.title ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'}`}
+                        className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all ${validationErrors.title ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'}`}
                         placeholder="Enter post title"
                       />
                       {validationErrors.title && <p className="text-red-500 text-sm mt-1"><i className="ri-error-warning-line mr-1"></i>{validationErrors.title}</p>}
@@ -1460,7 +1460,7 @@ const BlogManagement = () => {
                           value={formData.slug}
                           onChange={(e) => { setFormData({ ...formData, slug: e.target.value }); setHasUnsavedChanges(true); }}
                           disabled={!slugEditable}
-                          className={`flex-1 px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all ${!slugEditable ? 'bg-muted cursor-not-allowed' : 'border-border hover:border-input'}`}
+                          className={`flex-1 px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all ${!slugEditable ? 'bg-muted cursor-not-allowed' : 'border-border hover:border-input'}`}
                           placeholder="auto-generated-slug"
                         />
                         <button type="button" onClick={() => setSlugEditable(!slugEditable)} className="px-4 py-3 border-2 border-border rounded-xl hover:bg-muted transition-colors">
@@ -1471,13 +1471,13 @@ const BlogManagement = () => {
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-800 mb-2">Category</label>
-                      <select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input appearance-none bg-card">
+                      <select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input appearance-none bg-card">
                         {categories.map((cat) => <option key={cat.slug || cat.name} value={cat.name}>{cat.name}</option>)}
                       </select>
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-800 mb-2">Featured Image</label>
-                      <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" />
+                      <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" />
                       <p className="text-xs text-muted-foreground mt-1">Max 5MB. Recommended: 1200x630px</p>
                       {imagePreview && (
                         <div className="mt-3 relative inline-block">
@@ -1496,7 +1496,7 @@ const BlogManagement = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-semibold text-gray-800 mb-2">Status</label>
-                        <select value={formData.status} onChange={(e) => setFormData({ ...formData, status: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input appearance-none bg-card">
+                        <select value={formData.status} onChange={(e) => setFormData({ ...formData, status: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input appearance-none bg-card">
                           <option value="draft">Draft</option>
                           <option value="published">Published</option>
                           <option value="archived">Archived</option>
@@ -1504,7 +1504,7 @@ const BlogManagement = () => {
                       </div>
                       <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border border-primary/20">
                         <label className="text-sm font-semibold text-gray-800">Featured Post</label>
-                        <input type="checkbox" checked={formData.featured} onChange={(e) => setFormData({ ...formData, featured: e.target.checked })} className="h-5 w-5 text-primary rounded focus:ring-2 focus:ring-blue-500" />
+                        <input type="checkbox" checked={formData.featured} onChange={(e) => setFormData({ ...formData, featured: e.target.checked })} className="h-5 w-5 text-primary rounded focus:ring-2 focus:ring-ring" />
                       </div>
                     </div>
                   </div>
@@ -1519,7 +1519,7 @@ const BlogManagement = () => {
                     <div>
                       <label className="block text-sm font-semibold text-gray-800 mb-2">Tags</label>
                       <div className="flex gap-2 mb-2">
-                        <input type="text" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input" placeholder="Add tag and press Enter" />
+                        <input type="text" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" placeholder="Add tag and press Enter" />
                         <button onClick={addTag} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>
                       </div>
                       <div className="flex flex-wrap gap-2">
@@ -1533,11 +1533,11 @@ const BlogManagement = () => {
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-800 mb-2">Publish Date</label>
-                      <input type="datetime-local" value={formData.published_at} onChange={(e) => setFormData({ ...formData, published_at: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input" />
+                      <input type="datetime-local" value={formData.published_at} onChange={(e) => setFormData({ ...formData, published_at: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" />
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-800 mb-2">SEO Title</label>
-                      <input type="text" value={formData.seo_title} onChange={(e) => setFormData({ ...formData, seo_title: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input" maxLength="60" placeholder="SEO optimized title" />
+                      <input type="text" value={formData.seo_title} onChange={(e) => setFormData({ ...formData, seo_title: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" maxLength="60" placeholder="SEO optimized title" />
                       <div className="flex justify-between text-xs mt-1">
                         <span className={formData.seo_title.length > 60 ? 'text-red-500' : 'text-muted-foreground'}>
                           {formData.seo_title.length}/60 characters
@@ -1546,7 +1546,7 @@ const BlogManagement = () => {
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-800 mb-2">SEO Description</label>
-                      <textarea value={formData.seo_description} onChange={(e) => setFormData({ ...formData, seo_description: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input" rows="3" maxLength="160" placeholder="Meta description for search engines" />
+                      <textarea value={formData.seo_description} onChange={(e) => setFormData({ ...formData, seo_description: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" rows="3" maxLength="160" placeholder="Meta description for search engines" />
                       <div className="flex justify-between text-xs mt-1">
                         <span className={formData.seo_description.length > 160 ? 'text-red-500' : 'text-muted-foreground'}>
                           {formData.seo_description.length}/160 characters
@@ -1556,7 +1556,7 @@ const BlogManagement = () => {
                     <div>
                       <label className="block text-sm font-semibold text-gray-800 mb-2">SEO Keywords</label>
                       <div className="flex gap-2 mb-2">
-                        <input type="text" value={keywordInput} onChange={(e) => setKeywordInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addKeyword())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input" placeholder="Add keyword and press Enter" />
+                        <input type="text" value={keywordInput} onChange={(e) => setKeywordInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addKeyword())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" placeholder="Add keyword and press Enter" />
                         <button onClick={addKeyword} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>
                       </div>
                       <div className="flex flex-wrap gap-2">

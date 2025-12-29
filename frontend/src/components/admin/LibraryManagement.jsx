@@ -645,7 +645,7 @@ const LibraryManagement = () => {
                 </label>
                 <div className="relative" ref={userDropdownRef}>
                   <div
-                    className="w-full px-4 py-3 border-2 border-border rounded-xl focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-primary cursor-pointer transition-all hover:border-input"
+                    className="w-full px-4 py-3 border-2 border-border rounded-xl focus-within:ring-2 focus-within:ring-ring focus-within:border-primary cursor-pointer transition-all hover:border-input"
                     onClick={() => setShowUserDropdown(!showUserDropdown)}
                   >
                     <div className="flex items-center justify-between">
@@ -741,7 +741,7 @@ const LibraryManagement = () => {
                 </label>
                 <div className="relative" ref={bookDropdownRef}>
                   <div
-                    className="w-full px-4 py-3 border-2 border-border rounded-xl focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-primary cursor-pointer transition-all hover:border-input"
+                    className="w-full px-4 py-3 border-2 border-border rounded-xl focus-within:ring-2 focus-within:ring-ring focus-within:border-primary cursor-pointer transition-all hover:border-input"
                     onClick={() => setShowBookDropdown(!showBookDropdown)}
                   >
                     <div className="flex items-center justify-between">
@@ -984,7 +984,7 @@ const LibraryManagement = () => {
                 <select
                   value={bulkBook || ''}
                   onChange={(e) => setBulkBook(parseInt(e.target.value))}
-                  className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring"
                 >
                   <option value="">Choose a book...</option>
                   {books.map(book => (

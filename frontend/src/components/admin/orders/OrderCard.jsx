@@ -20,7 +20,7 @@ const OrderCard = ({
             type="checkbox"
             checked={isSelected}
             onChange={() => onSelect(order.id)}
-            className="mt-1 h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
+            className="mt-1 h-4 w-4 text-primary focus:ring-ring border-input rounded"
           />
           <div>
             <h3 className="text-sm font-semibold text-foreground">#{order.order_number}</h3>

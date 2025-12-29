@@ -201,7 +201,7 @@ const Audit = () => {
                   type="text"
                   value={filters.userId}
                   onChange={(e) => setFilters({...filters, userId: e.target.value})}
-                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
                   placeholder="Filter by user ID"
                 />
               </div>
@@ -211,7 +211,7 @@ const Audit = () => {
                   type="text"
                   value={filters.action}
                   onChange={(e) => setFilters({...filters, action: e.target.value})}
-                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
                   placeholder="Filter by action"
                 />
               </div>
@@ -221,7 +221,7 @@ const Audit = () => {
                   type="text"
                   value={filters.resource}
                   onChange={(e) => setFilters({...filters, resource: e.target.value})}
-                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
                   placeholder="Filter by resource"
                 />
               </div>

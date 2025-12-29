@@ -79,7 +79,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                   type="text"
                   value={formData.first_name}
                   onChange={(e) => setFormData({ ...formData, first_name: e.target.value })}
-                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                   required
                 />
               </div>
@@ -90,7 +90,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                   type="text"
                   value={formData.last_name}
                   onChange={(e) => setFormData({ ...formData, last_name: e.target.value })}
-                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                   required
                 />
               </div>
@@ -101,7 +101,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                   required
                 />
               </div>
@@ -112,7 +112,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                   type="text"
                   value={formData.username}
                   onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                   required
                 />
               </div>
@@ -124,7 +124,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                   inputMode="tel"
                   value={formData.phone_number}
                   onChange={(e) => setFormData({ ...formData, phone_number: e.target.value })}
-                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                   placeholder="+234 123 456 7890"
                 />
               </div>
@@ -134,7 +134,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                 <select
                   value={formData.is_active ? 'active' : 'inactive'}
                   onChange={(e) => setFormData({ ...formData, is_active: e.target.value === 'active' })}
-                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                 >
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
@@ -154,7 +154,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                   <select
                     value={formData.school_category}
                     onChange={(e) => setFormData({ ...formData, school_category: e.target.value })}
-                    className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                   >
                     <option value="">Select category</option>
                     <option value="Primary">Primary</option>
@@ -169,7 +169,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                     type="text"
                     value={formData.school_name}
                     onChange={(e) => setFormData({ ...formData, school_name: e.target.value })}
-                    className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                     placeholder="University of Lagos"
                   />
                 </div>
@@ -181,7 +181,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                       type="text"
                       value={formData.class_level}
                       onChange={(e) => setFormData({ ...formData, class_level: e.target.value })}
-                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                       placeholder={formData.school_category === 'Primary' ? 'Primary 1' : 'SS1'}
                     />
                   </div>
@@ -194,7 +194,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                       type="text"
                       value={formData.department}
                       onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
                       placeholder="Computer Science"
                     />
                   </div>
@@ -211,7 +211,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
               <select
                 value={formData.role_id}
                 onChange={(e) => setFormData({ ...formData, role_id: parseInt(e.target.value) })}
-                className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
               >
                 {roles.map(role => (
                   <option key={role.id} value={role.id}>{role.display_name || role.name}</option>

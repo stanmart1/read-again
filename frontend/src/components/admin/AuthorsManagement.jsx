@@ -134,13 +134,13 @@ const AuthorsManagement = () => {
               placeholder="Search authors by name or email..."
               value={filters.search}
               onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
             />
           </div>
           <select
             value={filters.status}
             onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
           >
             <option value="">All Status</option>
             <option value="active">Active</option>
@@ -291,7 +291,7 @@ const AuthorsManagement = () => {
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                     placeholder="Enter author name"
                     required
                   />
@@ -303,7 +303,7 @@ const AuthorsManagement = () => {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                     placeholder="Enter author email (optional)"
                   />
                 </div>
@@ -313,7 +313,7 @@ const AuthorsManagement = () => {
                   <textarea
                     value={formData.bio}
                     onChange={(e) => setFormData(prev => ({ ...prev, bio: e.target.value }))}
-                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                     placeholder="Enter author biography"
                     rows={3}
                   />
@@ -325,7 +325,7 @@ const AuthorsManagement = () => {
                     type="url"
                     value={formData.avatar_url}
                     onChange={(e) => setFormData(prev => ({ ...prev, avatar_url: e.target.value }))}
-                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                     placeholder="Enter avatar image URL"
                   />
                 </div>
@@ -335,7 +335,7 @@ const AuthorsManagement = () => {
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value }))}
-                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
                   >
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>

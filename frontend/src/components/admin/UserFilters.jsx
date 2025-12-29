@@ -123,7 +123,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
               <select 
                 value={advancedFilters.accountType}
                 onChange={(e) => handleAdvancedFilterChange('accountType', e.target.value)}
-                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-ring"
               >
                 <option value="all">All Users</option>
                 <option value="students">Students Only</option>
@@ -137,7 +137,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
               <select 
                 value={advancedFilters.schoolCategory}
                 onChange={(e) => handleAdvancedFilterChange('schoolCategory', e.target.value)}
-                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-ring"
               >
                 <option value="all">All Categories</option>
                 <option value="Primary">Primary</option>
@@ -154,7 +154,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                 value={advancedFilters.schoolName}
                 onChange={(e) => handleAdvancedFilterChange('schoolName', e.target.value)}
                 placeholder="Search by school name..."
-                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-ring"
               />
             </div>
 
@@ -166,7 +166,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                 value={advancedFilters.classLevel}
                 onChange={(e) => handleAdvancedFilterChange('classLevel', e.target.value)}
                 placeholder="e.g., SS1, Primary 3..."
-                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-ring"
               />
             </div>
 
@@ -178,7 +178,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                 value={advancedFilters.department}
                 onChange={(e) => handleAdvancedFilterChange('department', e.target.value)}
                 placeholder="e.g., Computer Science..."
-                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-ring"
               />
             </div>
 
@@ -188,7 +188,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
               <select 
                 value={advancedFilters.registrationDate}
                 onChange={(e) => handleAdvancedFilterChange('registrationDate', e.target.value)}
-                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-ring"
               >
                 <option value="all">All Time</option>
                 <option value="today">Today</option>

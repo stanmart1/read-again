@@ -182,7 +182,7 @@ export default function FAQManagementPage() {
                     placeholder="Search questions..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-input rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="pl-10 w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-input rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                   />
                 </div>
               </div>
@@ -191,7 +191,7 @@ export default function FAQManagementPage() {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-input rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-input rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                 >
                   <option value="">All Categories</option>
                   {categories.map(category => (
