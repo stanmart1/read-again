@@ -177,23 +177,23 @@ const AuthorsManagement = () => {
                   <tr key={i}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="animate-pulse bg-gray-200 h-10 w-10 rounded-full mr-4"></div>
+                        <div className="animate-pulse bg-muted h-10 w-10 rounded-full mr-4"></div>
                         <div>
-                          <div className="animate-pulse bg-gray-200 h-4 w-24 rounded mb-1"></div>
-                          <div className="animate-pulse bg-gray-200 h-3 w-32 rounded"></div>
+                          <div className="animate-pulse bg-muted h-4 w-24 rounded mb-1"></div>
+                          <div className="animate-pulse bg-muted h-3 w-32 rounded"></div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap"><div className="animate-pulse bg-gray-200 h-4 w-8 rounded"></div></td>
-                    <td className="px-6 py-4 whitespace-nowrap"><div className="animate-pulse bg-gray-200 h-6 w-16 rounded-full"></div></td>
-                    <td className="px-6 py-4 whitespace-nowrap"><div className="animate-pulse bg-gray-200 h-4 w-20 rounded"></div></td>
-                    <td className="px-6 py-4 whitespace-nowrap"><div className="animate-pulse bg-gray-200 h-4 w-16 rounded"></div></td>
+                    <td className="px-6 py-4 whitespace-nowrap"><div className="animate-pulse bg-muted h-4 w-8 rounded"></div></td>
+                    <td className="px-6 py-4 whitespace-nowrap"><div className="animate-pulse bg-muted h-6 w-16 rounded-full"></div></td>
+                    <td className="px-6 py-4 whitespace-nowrap"><div className="animate-pulse bg-muted h-4 w-20 rounded"></div></td>
+                    <td className="px-6 py-4 whitespace-nowrap"><div className="animate-pulse bg-muted h-4 w-16 rounded"></div></td>
                   </tr>
                 ))
               ) : authors.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
-                    <i className="ri-user-line text-4xl text-gray-400 mb-4 block"></i>
+                    <i className="ri-user-line text-4xl text-muted-foreground mb-4 block"></i>
                     <h3 className="text-lg font-medium text-foreground">No authors found</h3>
                     <p className="text-muted-foreground mt-1">Add your first author to get started</p>
                     <button
@@ -225,7 +225,7 @@ const AuthorsManagement = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">{author.books_count || 0}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-                        author.status === 'active' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-muted text-gray-800'
+                        author.status === 'active' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-muted text-foreground'
                       }`}>
                         {author.status}
                       </span>

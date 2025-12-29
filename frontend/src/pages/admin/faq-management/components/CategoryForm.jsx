@@ -65,13 +65,13 @@ export default function CategoryForm({ category, onSubmit, onCancel }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div className="fixed inset-0 bg-muted bg-opacity-50 overflow-y-auto h-full w-full z-50">
       <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-2/3 lg:w-1/2 shadow-lg rounded-md bg-card">
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-medium text-foreground">
             {category ? 'Edit Category' : 'Create New Category'}
           </h3>
-          <button onClick={onCancel} className="text-gray-400 hover:text-muted-foreground">
+          <button onClick={onCancel} className="text-muted-foreground hover:text-muted-foreground">
             <i className="ri-close-line text-2xl"></i>
           </button>
         </div>
@@ -130,7 +130,7 @@ export default function CategoryForm({ category, onSubmit, onCancel }) {
                   type="button"
                   onClick={() => handleChange('color', color)}
                   className={`w-10 h-10 rounded-full border-2 ${
-                    formData.color === color ? 'border-gray-900' : 'border-input'
+                    formData.color === color ? 'border-border' : 'border-input'
                   }`}
                   style={{ backgroundColor: color }}
                   title={color}

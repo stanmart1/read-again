@@ -149,7 +149,7 @@ const ReportsSection = () => {
                     <i className="ri-star-fill text-yellow-400 text-sm"></i>
                   </div>
                   <div className="flex-1">
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-muted rounded-full h-2">
                       <div
                         className="bg-yellow-400 h-2 rounded-full"
                         style={{ width: `${item.percentage}%` }}

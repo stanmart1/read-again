@@ -56,7 +56,7 @@ export default function FAQ() {
                     onClick={() => toggleFAQ(index)}
                     className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                   >
-                    <span className="font-semibold text-lg text-gray-900">
+                    <span className="font-semibold text-lg text-foreground">
                       {faq.question}
                     </span>
                     <i className={`ri-arrow-${openIndex === index ? 'up' : 'down'}-s-line text-2xl text-blue-600`}></i>
@@ -71,7 +71,7 @@ export default function FAQ() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-6 pb-4 text-gray-600">
+                        <div className="px-6 pb-4 text-muted-foreground">
                           {faq.answer}
                         </div>
                       </motion.div>
@@ -82,9 +82,9 @@ export default function FAQ() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <i className="ri-question-line text-6xl text-gray-300 mb-4"></i>
-              <h3 className="text-2xl font-semibold text-gray-700 mb-2">No FAQs available</h3>
-              <p className="text-gray-500">Check back soon for answers to common questions</p>
+              <i className="ri-question-line text-6xl text-muted-foreground mb-4"></i>
+              <h3 className="text-2xl font-semibold text-foreground mb-2">No FAQs available</h3>
+              <p className="text-muted-foreground">Check back soon for answers to common questions</p>
             </div>
           )}
 

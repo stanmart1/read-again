@@ -124,7 +124,7 @@ export default function ImageOptimization() {
           <button
             onClick={startOptimization}
             disabled={optimizing || !status?.optimization_needed}
-            className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center gap-2"
+            className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:bg-muted disabled:cursor-not-allowed flex items-center gap-2"
           >
             {optimizing ? (
               <>
@@ -142,7 +142,7 @@ export default function ImageOptimization() {
           <button
             onClick={loadStatus}
             disabled={loading}
-            className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 disabled:bg-gray-300 flex items-center gap-2"
+            className="px-6 py-2 bg-muted text-white rounded-lg hover:bg-card disabled:bg-muted flex items-center gap-2"
           >
             <i className="ri-refresh-line"></i>
             Refresh Status

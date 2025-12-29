@@ -247,7 +247,7 @@ const Audit = () => {
         <div className="xl:hidden space-y-4">
           {!loading && auditLogs.length === 0 ? (
             <div className="bg-card rounded-lg shadow-md p-12 text-center">
-              <i className="ri-file-list-3-line text-6xl text-gray-300 mb-4"></i>
+              <i className="ri-file-list-3-line text-6xl text-muted-foreground mb-4"></i>
               <h3 className="text-xl font-semibold text-foreground mb-2">No Audit Logs Found</h3>
               <p className="text-muted-foreground">
                 {filters.userId || filters.action || filters.resource
@@ -284,16 +284,16 @@ const Audit = () => {
 
                 <div className="border-t border-gray-100 pt-3 space-y-2">
                   <div className="flex items-center gap-2 text-sm">
-                    <i className={`${getDeviceIcon(log.user_agent)} text-gray-400`}></i>
+                    <i className={`${getDeviceIcon(log.user_agent)} text-muted-foreground`}></i>
                     <span className="text-foreground">{getDeviceInfo(log.user_agent)}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <i className="ri-map-pin-line text-gray-400"></i>
+                    <i className="ri-map-pin-line text-muted-foreground"></i>
                     <span className="text-foreground">{getLocationInfo(log.ip_address)}</span>
                   </div>
                   {log.page_visited && (
                     <div className="flex items-center gap-2 text-sm">
-                      <i className="ri-pages-line text-gray-400"></i>
+                      <i className="ri-pages-line text-muted-foreground"></i>
                       <span className="text-foreground truncate">{log.page_visited}</span>
                     </div>
                   )}
@@ -323,7 +323,7 @@ const Audit = () => {
         <div className="hidden xl:block bg-card rounded-lg shadow-md overflow-hidden">
           {!loading && auditLogs.length === 0 ? (
             <div className="p-12 text-center">
-              <i className="ri-file-list-3-line text-6xl text-gray-300 mb-4"></i>
+              <i className="ri-file-list-3-line text-6xl text-muted-foreground mb-4"></i>
               <h3 className="text-xl font-semibold text-foreground mb-2">No Audit Logs Found</h3>
               <p className="text-muted-foreground">
                 {filters.userId || filters.action || filters.resource
@@ -364,11 +364,11 @@ const Audit = () => {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2 text-sm text-foreground mb-1">
-                        <i className={`${getDeviceIcon(log.user_agent)} text-gray-400`}></i>
+                        <i className={`${getDeviceIcon(log.user_agent)} text-muted-foreground`}></i>
                         <span className="text-xs">{getDeviceInfo(log.user_agent)}</span>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <i className="ri-map-pin-line text-gray-400"></i>
+                        <i className="ri-map-pin-line text-muted-foreground"></i>
                         <span>{getLocationInfo(log.ip_address)}</span>
                       </div>
                     </td>
@@ -452,7 +452,7 @@ const Audit = () => {
                   </div>
                   <button
                     onClick={() => setShowDetailsModal(false)}
-                    className="text-gray-400 hover:text-muted-foreground transition-colors"
+                    className="text-muted-foreground hover:text-muted-foreground transition-colors"
                   >
                     <i className="ri-close-line text-2xl"></i>
                   </button>

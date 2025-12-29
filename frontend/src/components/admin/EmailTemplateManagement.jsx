@@ -406,7 +406,7 @@ const EmailTemplateManagement = () => {
                 ) : (
                   <tr>
                     <td colSpan={4} className="px-3 sm:px-6 py-8 sm:py-12 text-center">
-                      <i className="ri-mail-line text-4xl sm:text-6xl text-gray-300 mb-3 sm:mb-4"></i>
+                      <i className="ri-mail-line text-4xl sm:text-6xl text-muted-foreground mb-3 sm:mb-4"></i>
                       <h3 className="text-sm sm:text-lg font-medium text-foreground">No templates found</h3>
                       <p className="text-xs sm:text-base text-muted-foreground mt-1">Create your first email template</p>
                     </td>

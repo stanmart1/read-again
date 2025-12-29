@@ -51,9 +51,9 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
       shipped: 'bg-indigo-100 text-indigo-800',
       delivered: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200',
       cancelled: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200',
-      refunded: 'bg-muted text-gray-800'
+      refunded: 'bg-muted text-foreground'
     };
-    return colors[status?.toLowerCase()] || 'bg-muted text-gray-800';
+    return colors[status?.toLowerCase()] || 'bg-muted text-foreground';
   };
 
   const getPaymentStatusColor = (status) => {
@@ -62,9 +62,9 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
       completed: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200',
       awaiting_approval: 'bg-primary/20 text-blue-800',
       failed: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200',
-      refunded: 'bg-muted text-gray-800'
+      refunded: 'bg-muted text-foreground'
     };
-    return colors[status?.toLowerCase()] || 'bg-muted text-gray-800';
+    return colors[status?.toLowerCase()] || 'bg-muted text-foreground';
   };
 
   const formatCurrency = (amount) => {
@@ -104,7 +104,7 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
             <h2 className="text-2xl font-bold text-foreground">Order #{displayOrder.order_number}</h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-muted-foreground"
+              className="text-muted-foreground hover:text-muted-foreground"
             >
               <i className="ri-close-line text-2xl"></i>
             </button>
@@ -335,7 +335,7 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
         <div className="sticky bottom-0 bg-card border-t border-border p-6">
           <button
             onClick={onClose}
-            className="w-full px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
+            className="w-full px-6 py-3 bg-muted text-white rounded-lg hover:bg-card transition-colors font-medium"
           >
             Close
           </button>
@@ -350,7 +350,7 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
               <h3 className="text-xl font-bold text-foreground">Payment Proof</h3>
               <button
                 onClick={() => setShowProofModal(false)}
-                className="text-gray-400 hover:text-muted-foreground"
+                className="text-muted-foreground hover:text-muted-foreground"
               >
                 <i className="ri-close-line text-2xl"></i>
               </button>

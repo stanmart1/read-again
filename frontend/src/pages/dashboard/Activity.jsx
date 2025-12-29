@@ -41,7 +41,7 @@ export default function Activity() {
         {/* Activity Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-muted"></div>
 
           {/* Activities */}
           <div className="space-y-6">
@@ -73,7 +73,7 @@ export default function Activity() {
             ))
             ) : (
               <div className="text-center py-12">
-                <i className="ri-time-line text-6xl text-gray-300 mb-4"></i>
+                <i className="ri-time-line text-6xl text-muted-foreground mb-4"></i>
                 <p className="text-muted-foreground">No activities yet</p>
               </div>
             )}

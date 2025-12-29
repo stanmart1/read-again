@@ -338,7 +338,7 @@ export default function EmailGatewayManagement() {
                       <p className="text-xs text-muted-foreground capitalize truncate">{gateway.type} Gateway</p>
                     </div>
                   </div>
-                  <div className={`w-4 h-4 rounded-full flex-shrink-0 ${activeGateway === gateway.id ? 'bg-primary/100' : 'bg-gray-300'}`}></div>
+                  <div className={`w-4 h-4 rounded-full flex-shrink-0 ${activeGateway === gateway.id ? 'bg-primary/100' : 'bg-muted'}`}></div>
               </div>
               <p className="text-xs text-muted-foreground line-clamp-2">{getGatewayDescription(gateway.type)}</p>
             </div>
@@ -346,7 +346,7 @@ export default function EmailGatewayManagement() {
           ) : (
             <div className="col-span-full text-center py-8">
               <div className="w-16 h-16 mx-auto mb-4 bg-muted rounded-full flex items-center justify-center">
-                <i className="ri-mail-line text-2xl text-gray-400"></i>
+                <i className="ri-mail-line text-2xl text-muted-foreground"></i>
               </div>
               <h3 className="text-lg font-medium text-foreground mb-2">No Email Gateways</h3>
               <p className="text-muted-foreground mb-4">

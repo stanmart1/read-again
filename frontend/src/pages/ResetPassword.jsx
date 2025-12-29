@@ -85,8 +85,8 @@ export default function ResetPassword() {
             <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <i className="ri-error-warning-line text-3xl text-red-600"></i>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Invalid Reset Link</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-2xl font-bold text-foreground mb-2">Invalid Reset Link</h2>
+            <p className="text-muted-foreground mb-6">
               The password reset link is missing or invalid. Please request a new one.
             </p>
             <Link
@@ -120,8 +120,8 @@ export default function ResetPassword() {
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           {/* Logo/Brand */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">ReadAgain</h1>
-            <p className="text-gray-600">Create a new password</p>
+            <h1 className="text-4xl font-bold text-foreground mb-2">ReadAgain</h1>
+            <p className="text-muted-foreground">Create a new password</p>
           </div>
 
           {success ? (
@@ -129,8 +129,8 @@ export default function ResetPassword() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i className="ri-check-line text-3xl text-green-600"></i>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Password Reset Successful!</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-xl font-semibold text-foreground mb-2">Password Reset Successful!</h3>
+              <p className="text-muted-foreground mb-6">
                 Your password has been successfully reset. Redirecting to login...
               </p>
               <div className="animate-spin inline-block w-6 h-6 border-3 border-primary border-t-transparent rounded-full"></div>
@@ -166,11 +166,11 @@ export default function ResetPassword() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
+                  <label className="block text-foreground font-semibold mb-2">
                     New Password
                   </label>
                   <div className="relative">
-                    <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"></i>
                     <input
                       type={showPassword ? "text" : "password"}
                       value={password}
@@ -182,23 +182,23 @@ export default function ResetPassword() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground transition-colors"
                       title={showPassword ? "Hide password" : "Show password"}
                     >
                       <i className={`ri-${showPassword ? 'eye-line' : 'eye-off-line'}`}></i>
                     </button>
                   </div>
-                  <p className="mt-2 text-sm text-gray-600">
+                  <p className="mt-2 text-sm text-muted-foreground">
                     Must be at least 8 characters with uppercase, lowercase, number, and special character
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
+                  <label className="block text-foreground font-semibold mb-2">
                     Confirm Password
                   </label>
                   <div className="relative">
-                    <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"></i>
                     <input
                       type={showConfirmPassword ? "text" : "password"}
                       value={confirmPassword}
@@ -210,7 +210,7 @@ export default function ResetPassword() {
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground transition-colors"
                       title={showConfirmPassword ? "Hide password" : "Show password"}
                     >
                       <i className={`ri-${showConfirmPassword ? 'eye-line' : 'eye-off-line'}`}></i>

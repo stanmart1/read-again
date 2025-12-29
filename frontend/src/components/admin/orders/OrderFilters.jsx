@@ -21,7 +21,7 @@ const OrderFilters = ({
       <div className="space-y-4">
         {/* Search Bar */}
         <div className="relative">
-          <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
@@ -39,7 +39,7 @@ const OrderFilters = ({
           <h3 className="text-lg font-semibold text-foreground">Filters</h3>
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center space-x-2 px-3 py-2 text-sm bg-muted hover:bg-gray-200 rounded-lg transition-colors"
+            className="flex items-center space-x-2 px-3 py-2 text-sm bg-muted hover:bg-muted rounded-lg transition-colors"
           >
             <i className={`ri-${showFilters ? 'eye-off' : 'eye'}-line`}></i>
             <span>{showFilters ? 'Hide' : 'Show'} Filters</span>
@@ -121,7 +121,7 @@ const OrderFilters = ({
             <div className="flex justify-end">
               <button
                 onClick={onClearFilters}
-                className="px-4 py-2 text-sm bg-muted hover:bg-gray-200 text-foreground rounded-lg transition-colors"
+                className="px-4 py-2 text-sm bg-muted hover:bg-muted text-foreground rounded-lg transition-colors"
               >
                 Clear All Filters
               </button>

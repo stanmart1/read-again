@@ -40,10 +40,10 @@ export default function NotFound() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
                 Page Not Found
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-muted-foreground mb-8">
                 Oops! The page you're looking for doesn't exist. It might have been moved or deleted.
               </p>
             </motion.div>
@@ -75,7 +75,7 @@ export default function NotFound() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+              <h3 className="text-lg font-semibold text-foreground mb-6">
                 Try these popular pages instead:
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -86,7 +86,7 @@ export default function NotFound() {
                     className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all group"
                   >
                     <i className={`${page.icon} text-4xl text-blue-600 group-hover:text-primary transition-colors mb-3`}></i>
-                    <p className="font-semibold text-gray-900">{page.name}</p>
+                    <p className="font-semibold text-foreground">{page.name}</p>
                   </Link>
                 ))}
               </div>

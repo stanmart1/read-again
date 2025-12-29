@@ -40,7 +40,7 @@ Our advanced e-reader technology bridges the gap between traditional book readin
 
   const themes = {
     light: { bg: 'bg-card', text: 'text-foreground', border: 'border-border' },
-    dark: { bg: 'bg-gray-900', text: 'text-gray-100', border: 'border-gray-700' },
+    dark: { bg: 'bg-background', text: 'text-gray-100', border: 'border-border' },
     sepia: { bg: 'bg-amber-50', text: 'text-amber-900', border: 'border-amber-200' }
   };
 

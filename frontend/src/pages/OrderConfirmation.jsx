@@ -15,9 +15,9 @@ export default function OrderConfirmation() {
             <i className="ri-check-line text-green-600 text-4xl"></i>
           </div>
           
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Order Placed Successfully!</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-4">Order Placed Successfully!</h1>
           
-          <p className="text-gray-600 mb-2">Order Number: <span className="font-semibold text-gray-900">#{orderId}</span></p>
+          <p className="text-muted-foreground mb-2">Order Number: <span className="font-semibold text-foreground">#{orderId}</span></p>
           
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 my-6">
             <p className="text-yellow-800">

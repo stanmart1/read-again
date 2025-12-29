@@ -36,16 +36,16 @@ export default function ForgotPassword() {
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           {/* Logo/Brand */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">ReadAgain</h1>
-            <p className="text-gray-600">Reset your password</p>
+            <h1 className="text-4xl font-bold text-foreground mb-2">ReadAgain</h1>
+            <p className="text-muted-foreground">Reset your password</p>
           </div>
 
           <div className="text-center mb-6">
             <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <i className="ri-lock-unlock-line text-3xl text-blue-600"></i>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Forgot Password?</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-bold text-foreground mb-2">Forgot Password?</h2>
+            <p className="text-muted-foreground">
               Enter your email and we'll send you a reset link
             </p>
           </div>
@@ -55,8 +55,8 @@ export default function ForgotPassword() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i className="ri-check-line text-3xl text-green-600"></i>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Check your email</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-xl font-semibold text-foreground mb-2">Check your email</h3>
+              <p className="text-muted-foreground mb-6">
                 We've sent a password reset link to <strong>{email}</strong>
               </p>
               <Link
@@ -77,11 +77,11 @@ export default function ForgotPassword() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
+                  <label className="block text-foreground font-semibold mb-2">
                     Email Address
                   </label>
                   <div className="relative">
-                    <i className="ri-mail-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <i className="ri-mail-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"></i>
                     <input
                       type="email"
                       value={email}

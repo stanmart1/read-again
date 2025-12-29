@@ -49,16 +49,16 @@ export default function Library() {
         <div className="space-y-6">
           <div className="flex justify-between items-center">
             <div className="animate-pulse">
-              <div className="h-8 bg-gray-200 rounded w-48 mb-2"></div>
-              <div className="h-4 bg-gray-200 rounded w-32"></div>
+              <div className="h-8 bg-muted rounded w-48 mb-2"></div>
+              <div className="h-4 bg-muted rounded w-32"></div>
             </div>
           </div>
           <div className="flex flex-wrap gap-4">
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="animate-pulse w-72">
-                <div className="aspect-[3/4] bg-gray-200 rounded-2xl mb-3"></div>
-                <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
-                <div className="h-3 bg-gray-200 rounded w-3/4"></div>
+                <div className="aspect-[3/4] bg-muted rounded-2xl mb-3"></div>
+                <div className="h-4 bg-muted rounded w-full mb-2"></div>
+                <div className="h-3 bg-muted rounded w-3/4"></div>
               </div>
             ))}
           </div>
@@ -311,7 +311,7 @@ export default function Library() {
                       setSelectedBook(null);
                     }}
                     disabled={removing}
-                    className="flex-1 px-4 py-3 bg-muted text-foreground font-semibold rounded-xl hover:bg-gray-200 transition-colors disabled:opacity-50"
+                    className="flex-1 px-4 py-3 bg-muted text-foreground font-semibold rounded-xl hover:bg-muted transition-colors disabled:opacity-50"
                   >
                     Cancel
                   </button>

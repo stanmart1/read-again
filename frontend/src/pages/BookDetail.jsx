@@ -79,7 +79,7 @@ export default function BookDetail() {
       <div className="min-h-screen bg-gray-50">
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Book not found</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">Book not found</h2>
           <Link to="/books" className="text-blue-600 hover:text-primary">
             Browse all books
           </Link>
@@ -116,8 +116,8 @@ export default function BookDetail() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             >
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">{book.title}</h1>
-              <p className="text-xl text-gray-600 mb-6">by {book.author_name || book.author || 'Unknown Author'}</p>
+              <h1 className="text-4xl font-bold text-foreground mb-4">{book.title}</h1>
+              <p className="text-xl text-muted-foreground mb-6">by {book.author_name || book.author || 'Unknown Author'}</p>
 
               {/* Rating */}
               {book.rating && (
@@ -127,7 +127,7 @@ export default function BookDetail() {
                       <i key={i} className={`ri-star-${i < Math.floor(book.rating) ? 'fill' : 'line'}`}></i>
                     ))}
                   </div>
-                  <span className="ml-2 text-gray-600">({book.rating.toFixed(1)})</span>
+                  <span className="ml-2 text-muted-foreground">({book.rating.toFixed(1)})</span>
                 </div>
               )}
 
@@ -159,30 +159,30 @@ export default function BookDetail() {
 
               {/* Description */}
               <div className="mb-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Description</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <h3 className="text-xl font-bold text-foreground mb-3">Description</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   {book.description || 'No description available.'}
                 </p>
               </div>
 
               {/* Details */}
               <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Book Details</h3>
+                <h3 className="text-xl font-bold text-foreground mb-4">Book Details</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Pages:</span>
+                    <span className="text-muted-foreground">Pages:</span>
                     <span className="font-semibold">{book.pages || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Language:</span>
+                    <span className="text-muted-foreground">Language:</span>
                     <span className="font-semibold">{book.language || 'English'}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Publisher:</span>
+                    <span className="text-muted-foreground">Publisher:</span>
                     <span className="font-semibold">{book.publisher || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">ISBN:</span>
+                    <span className="text-muted-foreground">ISBN:</span>
                     <span className="font-semibold">{book.isbn || 'N/A'}</span>
                   </div>
                 </div>
@@ -193,7 +193,7 @@ export default function BookDetail() {
           {/* Related Books */}
           {relatedBooks.length > 0 && (
             <div className="mt-20">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Books</h2>
+              <h2 className="text-3xl font-bold text-foreground mb-8">Related Books</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {relatedBooks.map((relatedBook) => (
                   <Link
@@ -208,7 +208,7 @@ export default function BookDetail() {
                     />
                     <div className="p-4">
                       <h3 className="font-bold text-lg mb-2 line-clamp-2">{relatedBook.title}</h3>
-                      <p className="text-gray-600 text-sm mb-2">{relatedBook.author}</p>
+                      <p className="text-muted-foreground text-sm mb-2">{relatedBook.author}</p>
                       <span className="text-xl font-bold text-blue-600">₦{relatedBook.price?.toLocaleString() || '0'}</span>
                     </div>
                   </Link>

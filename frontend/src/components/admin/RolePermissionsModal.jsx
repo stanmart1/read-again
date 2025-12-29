@@ -206,7 +206,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
 
               {!isEditingPermissions && rolePermissions.length === 0 && (
                 <div className="text-center py-12">
-                  <i className="ri-shield-line text-6xl text-gray-300 mb-4"></i>
+                  <i className="ri-shield-line text-6xl text-muted-foreground mb-4"></i>
                   <p className="text-muted-foreground text-lg">
                     No permissions assigned to this role
                   </p>

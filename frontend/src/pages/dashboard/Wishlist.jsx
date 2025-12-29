@@ -65,7 +65,7 @@ export default function Wishlist() {
                       className={`flex-1 py-2 rounded-lg text-sm font-semibold ${
                         item.inStock
                           ? 'bg-gradient-to-r from-primary to-primary text-white hover:shadow-md'
-                          : 'bg-gray-200 text-muted-foreground cursor-not-allowed'
+                          : 'bg-muted text-muted-foreground cursor-not-allowed'
                       }`}
                     >
                       <i className="ri-shopping-cart-line mr-2"></i>
@@ -86,7 +86,7 @@ export default function Wishlist() {
 
         {!loading && wishlistItems.length === 0 && (
           <div className="bg-card rounded-xl shadow-md p-12 text-center">
-            <i className="ri-heart-line text-6xl text-gray-300 mb-4"></i>
+            <i className="ri-heart-line text-6xl text-muted-foreground mb-4"></i>
             <h3 className="text-xl font-semibold text-foreground mb-2">Your wishlist is empty</h3>
             <p className="text-muted-foreground mb-6">Save books you love for later</p>
             <Link

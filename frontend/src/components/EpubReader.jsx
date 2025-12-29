@@ -641,9 +641,9 @@ export default function EpubReader({ bookId, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-900 z-50 flex flex-col">
+    <div className="fixed inset-0 bg-background z-50 flex flex-col">
       {loading && (
-        <div className="absolute inset-0 bg-gray-900 flex items-center justify-center z-50">
+        <div className="absolute inset-0 bg-background flex items-center justify-center z-50">
           <div className="text-center">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto mb-4"></div>
             <p className="text-white text-lg">Loading book...</p>
@@ -652,7 +652,7 @@ export default function EpubReader({ bookId, onClose }) {
       )}
 
       {error && (
-        <div className="absolute inset-0 bg-gray-900 flex items-center justify-center z-50">
+        <div className="absolute inset-0 bg-background flex items-center justify-center z-50">
           <div className="bg-card rounded-xl p-8 max-w-md mx-4">
             <div className="text-center">
               <i className="ri-error-warning-line text-5xl text-red-500 mb-4"></i>
@@ -681,13 +681,13 @@ export default function EpubReader({ bookId, onClose }) {
         </div>
       )}
       {/* Header */}
-      <div className="bg-gray-800 text-white shadow-lg">
+      <div className="bg-card text-white shadow-lg">
         <div className="px-4 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <button
               data-tour="close-button"
               onClick={onClose}
-              className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+              className="p-2 hover:bg-card rounded-lg transition-colors"
             >
               <i className="ri-arrow-left-line text-xl"></i>
             </button>
@@ -700,7 +700,7 @@ export default function EpubReader({ bookId, onClose }) {
           <div className="flex items-center space-x-2">
             <button
               onClick={() => setShowTour(true)}
-              className="px-3 py-1.5 text-sm hover:bg-gray-700 rounded-lg transition-colors flex items-center gap-1"
+              className="px-3 py-1.5 text-sm hover:bg-card rounded-lg transition-colors flex items-center gap-1"
               title="Show Tour"
             >
               <i className="ri-question-line text-lg"></i>
@@ -709,7 +709,7 @@ export default function EpubReader({ bookId, onClose }) {
             <button
               data-tour="toc-button"
               onClick={() => setShowToc(!showToc)}
-              className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+              className="p-2 hover:bg-card rounded-lg transition-colors"
               title="Table of Contents"
             >
               <i className="ri-list-unordered text-xl"></i>
@@ -717,7 +717,7 @@ export default function EpubReader({ bookId, onClose }) {
             <button
               data-tour="annotations-button"
               onClick={() => setShowAnnotationsPanel(!showAnnotationsPanel)}
-              className="p-2 hover:bg-gray-700 rounded-lg transition-colors relative"
+              className="p-2 hover:bg-card rounded-lg transition-colors relative"
               title="Notes & Highlights"
             >
               <i className="ri-sticky-note-line text-xl"></i>
@@ -730,7 +730,7 @@ export default function EpubReader({ bookId, onClose }) {
             <button
               data-tour="settings-button"
               onClick={() => setShowSettings(!showSettings)}
-              className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+              className="p-2 hover:bg-card rounded-lg transition-colors"
               title="Settings"
             >
               <i className="ri-settings-3-line text-xl"></i>
@@ -774,11 +774,11 @@ export default function EpubReader({ bookId, onClose }) {
             </button>
             
             <div className="flex-1 mx-4 max-w-md">
-              <div className="flex items-center justify-between text-xs text-gray-300 mb-1">
+              <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
                 <span>{progressData.percentage}% complete</span>
                 <span>{formatTimeRemaining(progressData.timeRemaining)} left</span>
               </div>
-              <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+              <div className="w-full bg-card rounded-full h-2 overflow-hidden">
                 <div 
                   className="bg-gradient-to-r from-primary to-primary h-full transition-all duration-300"
                   style={{ width: `${progressData.percentage}%` }}
@@ -946,7 +946,7 @@ export default function EpubReader({ bookId, onClose }) {
           <button
             onClick={() => createNote()}
             disabled={!noteContent.trim() || isSavingNote}
-            className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+            className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:bg-muted disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
           >
             {isSavingNote ? (
               <>
@@ -1042,7 +1042,7 @@ export default function EpubReader({ bookId, onClose }) {
                   <button
                     onClick={() => createNote()}
                     disabled={!noteContent.trim() || isSavingNote}
-                    className="mt-2 w-full px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="mt-2 w-full px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:bg-muted disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSavingNote ? (
                       <>
@@ -1088,7 +1088,7 @@ export default function EpubReader({ bookId, onClose }) {
                                 </button>
                                 <button
                                   onClick={() => setEditingNote(null)}
-                                  className="px-3 py-1 bg-gray-300 text-foreground text-sm rounded hover:bg-gray-400"
+                                  className="px-3 py-1 bg-muted text-foreground text-sm rounded hover:bg-muted"
                                 >
                                   Cancel
                                 </button>
@@ -1265,7 +1265,7 @@ export default function EpubReader({ bookId, onClose }) {
                 className={`p-3 rounded-lg border-2 transition-all ${theme === 'dark' ? 'border-primary bg-blue-50' : 'border-border'
                   }`}
               >
-                <div className="w-full h-8 bg-gray-900 border border-gray-700 rounded mb-2"></div>
+                <div className="w-full h-8 bg-background border border-border rounded mb-2"></div>
                 <p className="text-xs font-medium">Dark</p>
               </button>
             </div>

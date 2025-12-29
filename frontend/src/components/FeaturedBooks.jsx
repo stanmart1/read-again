@@ -189,10 +189,10 @@ export default function FeaturedBooks() {
             <i className="ri-book-line mr-2"></i>
             Our Collection
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Discover Amazing Books
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Explore our curated collection of bestsellers, new releases, and featured titles
           </p>
         </motion.div>
@@ -211,7 +211,7 @@ export default function FeaturedBooks() {
               onClick={() => setSelectedCategory(category.id)}
               className={`flex items-center space-x-2 px-6 py-3 rounded-full font-semibold transition-all ${selectedCategory === category.id
                 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md'
+                : 'bg-white text-foreground hover:bg-gray-100 shadow-md'
                 }`}
             >
               <i className={category.icon}></i>
@@ -227,8 +227,8 @@ export default function FeaturedBooks() {
           </div>
         ) : books.length === 0 ? (
           <div className="text-center py-20">
-            <i className="ri-book-line text-6xl text-gray-300 mb-4"></i>
-            <p className="text-xl text-gray-500">No books found in this category</p>
+            <i className="ri-book-line text-6xl text-muted-foreground mb-4"></i>
+            <p className="text-xl text-muted-foreground">No books found in this category</p>
           </div>
         ) : (
           <>
@@ -263,7 +263,7 @@ export default function FeaturedBooks() {
                       <div className="absolute bottom-4 left-4 right-4 flex gap-2">
                         <Link
                           to={`/books/${book.id}`}
-                          className="flex-1 bg-white text-gray-900 py-2 rounded-lg font-semibold text-center hover:bg-gray-100 transition-all text-sm"
+                          className="flex-1 bg-white text-foreground py-2 rounded-lg font-semibold text-center hover:bg-gray-100 transition-all text-sm"
                         >
                           View Details
                         </Link>
@@ -308,10 +308,10 @@ export default function FeaturedBooks() {
 
                   {/* Book Info */}
                   <div className="p-4">
-                    <h3 className="font-bold text-lg text-gray-900 mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-lg text-foreground mb-1 line-clamp-1 group-hover:text-primary transition-colors">
                       {book.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-3 line-clamp-1">
+                    <p className="text-muted-foreground text-sm mb-3 line-clamp-1">
                       {book.author_name || 'Unknown Author'}
                     </p>
 
@@ -324,7 +324,7 @@ export default function FeaturedBooks() {
                             className={`ri-star-${i < Math.floor(book.rating || 4) ? 'fill' : 'line'} text-yellow-400 text-sm`}
                           ></i>
                         ))}
-                        <span className="text-xs text-gray-500 ml-1">
+                        <span className="text-xs text-muted-foreground ml-1">
                           ({book.review_count || 0})
                         </span>
                       </div>
@@ -337,12 +337,12 @@ export default function FeaturedBooks() {
                           ₦{(book.price || 9.99).toLocaleString('en-NG')}
                         </span>
                         {book.original_price && book.original_price > book.price && (
-                          <span className="text-gray-400 text-sm line-through ml-2">
+                          <span className="text-muted-foreground text-sm line-through ml-2">
                             ₦{book.original_price.toLocaleString('en-NG')}
                           </span>
                         )}
                       </div>
-                      <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                      <span className="text-xs text-muted-foreground bg-gray-100 px-2 py-1 rounded">
                         {book.format || 'eBook'}
                       </span>
                     </div>
@@ -356,20 +356,20 @@ export default function FeaturedBooks() {
                 onClick={() => scroll('left')}
                 className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
               >
-                <i className="ri-arrow-left-line text-2xl text-gray-700"></i>
+                <i className="ri-arrow-left-line text-2xl text-foreground"></i>
               </button>
               <button
                 onClick={() => scroll('right')}
                 className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
               >
-                <i className="ri-arrow-right-line text-2xl text-gray-700"></i>
+                <i className="ri-arrow-right-line text-2xl text-foreground"></i>
               </button>
 
               {/* Auto-scroll indicator */}
               <div className="flex justify-center mt-6 gap-3 items-center">
                 <button
                   onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors shadow-md"
+                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm font-medium text-foreground hover:bg-gray-100 transition-colors shadow-md"
                 >
                   <i className={`ri-${isAutoScrolling ? 'pause' : 'play'}-circle-line text-lg`}></i>
                   {isAutoScrolling ? 'Auto-scroll' : 'Paused'}
@@ -424,10 +424,10 @@ export default function FeaturedBooks() {
 
                     {/* Book Info */}
                     <div className="p-4">
-                      <h3 className="font-bold text-lg text-gray-900 mb-1 line-clamp-1">
+                      <h3 className="font-bold text-lg text-foreground mb-1 line-clamp-1">
                         {book.title}
                       </h3>
-                      <p className="text-gray-600 text-sm mb-3 line-clamp-1">
+                      <p className="text-muted-foreground text-sm mb-3 line-clamp-1">
                         {book.author_name || 'Unknown Author'}
                       </p>
 
@@ -440,7 +440,7 @@ export default function FeaturedBooks() {
                               className={`ri-star-${i < Math.floor(book.rating || 4) ? 'fill' : 'line'} text-yellow-400 text-sm`}
                             ></i>
                           ))}
-                          <span className="text-xs text-gray-500 ml-1">
+                          <span className="text-xs text-muted-foreground ml-1">
                             ({book.review_count || 0})
                           </span>
                         </div>
@@ -453,12 +453,12 @@ export default function FeaturedBooks() {
                             ₦{(book.price || 9.99).toLocaleString('en-NG')}
                           </span>
                           {book.original_price && book.original_price > book.price && (
-                            <span className="text-gray-400 text-sm line-through ml-2">
+                            <span className="text-muted-foreground text-sm line-through ml-2">
                               ₦{book.original_price.toLocaleString('en-NG')}
                             </span>
                           )}
                         </div>
-                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                        <span className="text-xs text-muted-foreground bg-gray-100 px-2 py-1 rounded">
                           {book.format || 'eBook'}
                         </span>
                       </div>
@@ -467,7 +467,7 @@ export default function FeaturedBooks() {
                       <div className="flex gap-2">
                         <Link
                           to={`/books/${book.id}`}
-                          className="flex-1 bg-gray-100 text-gray-900 py-2 rounded-lg font-semibold text-center hover:bg-gray-200 transition-all text-sm"
+                          className="flex-1 bg-gray-100 text-foreground py-2 rounded-lg font-semibold text-center hover:bg-muted transition-all text-sm"
                         >
                           View
                         </Link>
@@ -498,7 +498,7 @@ export default function FeaturedBooks() {
               <div className="flex justify-center mt-4 gap-3 items-center">
                 <button
                   onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                  className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium text-gray-700 hover:bg-gray-200 transition-colors"
+                  className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium text-foreground hover:bg-muted transition-colors"
                 >
                   <i className={`ri-${isAutoScrolling ? 'pause' : 'play'}-circle-line text-sm`}></i>
                   {isAutoScrolling ? 'Auto-scroll' : 'Paused'}

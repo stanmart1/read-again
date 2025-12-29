@@ -116,7 +116,7 @@ export default function Orders() {
 
         {!loading && orders.length === 0 && (
           <div className="bg-card rounded-xl shadow-md p-12 text-center">
-            <i className="ri-shopping-bag-line text-6xl text-gray-300 mb-4"></i>
+            <i className="ri-shopping-bag-line text-6xl text-muted-foreground mb-4"></i>
             <h3 className="text-xl font-semibold text-foreground mb-2">No orders yet</h3>
             <p className="text-muted-foreground mb-6">Start shopping to see your orders here</p>
             <a

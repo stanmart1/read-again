@@ -124,7 +124,7 @@ export default function ImageCacheManager() {
           </div>
         </div>
         <div className="mt-2">
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-muted rounded-full h-2">
             <div 
               className={`h-2 rounded-full ${
                 stats.hit_rate >= 80 ? 'bg-green-50 dark:bg-green-900/200' : 

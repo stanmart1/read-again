@@ -229,13 +229,13 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
         <div className="px-4 sm:px-6 py-3">
           <div className="flex items-center space-x-2 mb-2">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${
-              currentStep >= 1 ? 'bg-orange-600 text-white' : 'bg-gray-200 text-muted-foreground'
+              currentStep >= 1 ? 'bg-orange-600 text-white' : 'bg-muted text-muted-foreground'
             }`}>1</div>
             <div className={`flex-1 h-1 rounded-full ${
-              currentStep >= 2 ? 'bg-orange-600' : 'bg-gray-200'
+              currentStep >= 2 ? 'bg-orange-600' : 'bg-muted'
             }`}></div>
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${
-              currentStep >= 2 ? 'bg-orange-600 text-white' : 'bg-gray-200 text-muted-foreground'
+              currentStep >= 2 ? 'bg-orange-600 text-white' : 'bg-muted text-muted-foreground'
             }`}>2</div>
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">

@@ -14,7 +14,7 @@ const CreateUserModal = ({ isOpen, onClose, newUser, setNewUser, onSubmit }) => 
           <h3 className="text-xl font-bold text-foreground">Create New User</h3>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-muted-foreground"
+            className="text-muted-foreground hover:text-muted-foreground"
           >
             <i className="ri-close-line text-2xl"></i>
           </button>

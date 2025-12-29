@@ -404,8 +404,8 @@ const BlogManagement = () => {
     switch (status) {
       case 'published': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200';
       case 'draft': return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200';
-      case 'archived': return 'bg-muted text-gray-800';
-      default: return 'bg-muted text-gray-800';
+      case 'archived': return 'bg-muted text-foreground';
+      default: return 'bg-muted text-foreground';
     }
   };
 
@@ -727,7 +727,7 @@ const BlogManagement = () => {
                               )}
                             </div>
                             <div className="text-xs text-muted-foreground truncate hidden sm:block">{post.slug}</div>
-                            <div className="text-xs text-gray-400 mt-0.5 line-clamp-1 hidden md:block" dangerouslySetInnerHTML={{ __html: post.excerpt?.replace(/<[^>]*>/g, '') || '' }}></div>
+                            <div className="text-xs text-muted-foreground mt-0.5 line-clamp-1 hidden md:block" dangerouslySetInnerHTML={{ __html: post.excerpt?.replace(/<[^>]*>/g, '') || '' }}></div>
                           </div>
                         </div>
                       </td>
@@ -820,7 +820,7 @@ const BlogManagement = () => {
                 ) : (
                   <tr>
                     <td colSpan={6} className="px-3 sm:px-6 py-8 sm:py-12 text-center">
-                      <i className="ri-article-line text-4xl sm:text-6xl text-gray-300 mb-3 sm:mb-4"></i>
+                      <i className="ri-article-line text-4xl sm:text-6xl text-muted-foreground mb-3 sm:mb-4"></i>
                       <h3 className="text-sm sm:text-lg font-medium text-foreground">No posts found</h3>
                       <p className="text-xs sm:text-base text-muted-foreground mt-1">Create your first blog post</p>
                     </td>
@@ -976,7 +976,7 @@ const BlogManagement = () => {
             ))
           ) : (
             <div className="bg-card rounded-lg shadow-sm border border-border p-8 text-center">
-              <i className="ri-article-line text-5xl text-gray-300 mb-3"></i>
+              <i className="ri-article-line text-5xl text-muted-foreground mb-3"></i>
               <h3 className="text-base font-medium text-foreground">No posts found</h3>
               <p className="text-sm text-muted-foreground mt-1">Create your first blog post</p>
             </div>
@@ -990,7 +990,7 @@ const BlogManagement = () => {
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-2xl font-bold">Preview</h2>
-                  <button onClick={() => setShowPreview(false)} className="text-gray-400 hover:text-muted-foreground">
+                  <button onClick={() => setShowPreview(false)} className="text-muted-foreground hover:text-muted-foreground">
                     <i className="ri-close-line text-2xl"></i>
                   </button>
                 </div>
@@ -1009,7 +1009,7 @@ const BlogManagement = () => {
                 <div className="flex gap-2 mb-4">
                   <span className="px-2 py-1 bg-primary/20 text-blue-800 rounded text-sm">{formData.category}</span>
                   {formData.tags.map(tag => (
-                    <span key={tag} className="px-2 py-1 bg-muted text-gray-800 rounded text-sm">{tag}</span>
+                    <span key={tag} className="px-2 py-1 bg-muted text-foreground rounded text-sm">{tag}</span>
                   ))}
                 </div>
                 <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: formData.content }} />
@@ -1039,7 +1039,7 @@ const BlogManagement = () => {
                         setCurrentStep(1);
                         setHasUnsavedChanges(false);
                       }}
-                      className="text-gray-400 hover:text-muted-foreground transition-colors"
+                      className="text-muted-foreground hover:text-muted-foreground transition-colors"
                     >
                       <i className="ri-close-line text-2xl"></i>
                     </button>
@@ -1050,23 +1050,23 @@ const BlogManagement = () => {
                   {/* Step Indicator */}
                   <div className="flex items-center space-x-2 mb-3">
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all ${
-                      currentStep >= 1 ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg' : 'bg-gray-200 text-muted-foreground'
+                      currentStep >= 1 ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg' : 'bg-muted text-muted-foreground'
                     }`}>
                       {currentStep > 1 ? <i className="ri-check-line"></i> : '1'}
                     </div>
                     <div className={`flex-1 h-1 rounded-full transition-all ${
-                      currentStep >= 2 ? 'bg-gradient-to-r from-primary to-primary' : 'bg-gray-200'
+                      currentStep >= 2 ? 'bg-gradient-to-r from-primary to-primary' : 'bg-muted'
                     }`}></div>
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all ${
-                      currentStep >= 2 ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg' : 'bg-gray-200 text-muted-foreground'
+                      currentStep >= 2 ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg' : 'bg-muted text-muted-foreground'
                     }`}>
                       {currentStep > 2 ? <i className="ri-check-line"></i> : '2'}
                     </div>
                     <div className={`flex-1 h-1 rounded-full transition-all ${
-                      currentStep >= 3 ? 'bg-gradient-to-r from-primary to-primary' : 'bg-gray-200'
+                      currentStep >= 3 ? 'bg-gradient-to-r from-primary to-primary' : 'bg-muted'
                     }`}></div>
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all ${
-                      currentStep >= 3 ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg' : 'bg-gray-200 text-muted-foreground'
+                      currentStep >= 3 ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg' : 'bg-muted text-muted-foreground'
                     }`}>
                       3
                     </div>
@@ -1408,7 +1408,7 @@ const BlogManagement = () => {
                         setEditMode('basic');
                         setHasUnsavedChanges(false);
                       }}
-                      className="text-gray-400 hover:text-muted-foreground transition-colors"
+                      className="text-muted-foreground hover:text-muted-foreground transition-colors"
                     >
                       <i className="ri-close-line text-2xl"></i>
                     </button>
@@ -1442,7 +1442,7 @@ const BlogManagement = () => {
                 {editMode === 'basic' && (
                   <div className="space-y-4 sm:space-y-6">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">Title *</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Title *</label>
                       <input
                         type="text"
                         value={formData.title}
@@ -1453,7 +1453,7 @@ const BlogManagement = () => {
                       {validationErrors.title && <p className="text-red-500 text-sm mt-1"><i className="ri-error-warning-line mr-1"></i>{validationErrors.title}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">Slug *</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Slug *</label>
                       <div className="flex gap-2">
                         <input
                           type="text"
@@ -1470,13 +1470,13 @@ const BlogManagement = () => {
                       <p className="text-xs text-muted-foreground mt-1">URL: /blog/{formData.slug || 'post-slug'}</p>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">Category</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Category</label>
                       <select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input appearance-none bg-card">
                         {categories.map((cat) => <option key={cat.slug || cat.name} value={cat.name}>{cat.name}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">Featured Image</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Featured Image</label>
                       <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" />
                       <p className="text-xs text-muted-foreground mt-1">Max 5MB. Recommended: 1200x630px</p>
                       {imagePreview && (
@@ -1489,13 +1489,13 @@ const BlogManagement = () => {
                       )}
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">Content *</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Content *</label>
                       <ReactQuill theme="snow" value={formData.content} onChange={(value) => { setFormData({ ...formData, content: value }); setHasUnsavedChanges(true); }} className={`bg-card rounded-xl ${validationErrors.content ? 'border-2 border-red-500' : ''}`} style={{ height: '300px', marginBottom: '60px' }} />
                       {validationErrors.content && <p className="text-red-500 text-sm mt-1"><i className="ri-error-warning-line mr-1"></i>{validationErrors.content}</p>}
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-800 mb-2">Status</label>
+                        <label className="block text-sm font-semibold text-foreground mb-2">Status</label>
                         <select value={formData.status} onChange={(e) => setFormData({ ...formData, status: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input appearance-none bg-card">
                           <option value="draft">Draft</option>
                           <option value="published">Published</option>
@@ -1503,7 +1503,7 @@ const BlogManagement = () => {
                         </select>
                       </div>
                       <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border border-primary/20">
-                        <label className="text-sm font-semibold text-gray-800">Featured Post</label>
+                        <label className="text-sm font-semibold text-foreground">Featured Post</label>
                         <input type="checkbox" checked={formData.featured} onChange={(e) => setFormData({ ...formData, featured: e.target.checked })} className="h-5 w-5 text-primary rounded focus:ring-2 focus:ring-ring" />
                       </div>
                     </div>
@@ -1513,11 +1513,11 @@ const BlogManagement = () => {
                 {editMode === 'advanced' && (
                   <div className="space-y-4 sm:space-y-6">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">Excerpt</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Excerpt</label>
                       <ReactQuill theme="snow" value={formData.excerpt} onChange={(value) => setFormData({ ...formData, excerpt: value })} className="bg-card rounded-xl" placeholder="Brief description" />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">Tags</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Tags</label>
                       <div className="flex gap-2 mb-2">
                         <input type="text" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" placeholder="Add tag and press Enter" />
                         <button onClick={addTag} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>
@@ -1532,11 +1532,11 @@ const BlogManagement = () => {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">Publish Date</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">Publish Date</label>
                       <input type="datetime-local" value={formData.published_at} onChange={(e) => setFormData({ ...formData, published_at: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">SEO Title</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">SEO Title</label>
                       <input type="text" value={formData.seo_title} onChange={(e) => setFormData({ ...formData, seo_title: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" maxLength="60" placeholder="SEO optimized title" />
                       <div className="flex justify-between text-xs mt-1">
                         <span className={formData.seo_title.length > 60 ? 'text-red-500' : 'text-muted-foreground'}>
@@ -1545,7 +1545,7 @@ const BlogManagement = () => {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">SEO Description</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">SEO Description</label>
                       <textarea value={formData.seo_description} onChange={(e) => setFormData({ ...formData, seo_description: e.target.value })} className="w-full px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" rows="3" maxLength="160" placeholder="Meta description for search engines" />
                       <div className="flex justify-between text-xs mt-1">
                         <span className={formData.seo_description.length > 160 ? 'text-red-500' : 'text-muted-foreground'}>
@@ -1554,7 +1554,7 @@ const BlogManagement = () => {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">SEO Keywords</label>
+                      <label className="block text-sm font-semibold text-foreground mb-2">SEO Keywords</label>
                       <div className="flex gap-2 mb-2">
                         <input type="text" value={keywordInput} onChange={(e) => setKeywordInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addKeyword())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" placeholder="Add keyword and press Enter" />
                         <button onClick={addKeyword} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>

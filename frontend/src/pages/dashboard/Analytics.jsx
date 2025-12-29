@@ -278,7 +278,7 @@ export default function Analytics() {
                     <span className="text-sm font-bold text-primary">{progress.toFixed(0)}%</span>
                   </div>
                   
-                  <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                  <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${progress}%` }}
@@ -290,7 +290,7 @@ export default function Analytics() {
               );
             }) : (
               <div className="text-center py-12">
-                <i className="ri-trophy-line text-6xl text-gray-300 mb-4"></i>
+                <i className="ri-trophy-line text-6xl text-muted-foreground mb-4"></i>
                 <h3 className="text-lg font-semibold text-foreground mb-2">No Reading Goals Yet</h3>
                 <p className="text-muted-foreground mb-6">Set goals to track your reading progress and stay motivated!</p>
                 <button

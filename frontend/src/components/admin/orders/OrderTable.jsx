@@ -54,7 +54,7 @@ const OrderTable = ({
             {orders.length === 0 ? (
               <tr>
                 <td colSpan={8} className="px-6 py-12 text-center">
-                  <i className="ri-shopping-bag-line text-6xl text-gray-300 mb-4"></i>
+                  <i className="ri-shopping-bag-line text-6xl text-muted-foreground mb-4"></i>
                   <h3 className="text-lg font-medium text-foreground">No orders found</h3>
                   <p className="text-muted-foreground mt-1">Try adjusting your filters</p>
                 </td>

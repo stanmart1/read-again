@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-background text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -28,7 +28,7 @@ export default function Footer() {
                   key={social}
                   whileHover={{ scale: 1.1, y: -2 }}
                   href="#"
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
+                  className="w-10 h-10 bg-card rounded-full flex items-center justify-center hover:bg-primary transition-colors"
                 >
                   <i className={`ri-${social}-fill text-lg`}></i>
                 </motion.a>
@@ -73,7 +73,7 @@ export default function Footer() {
         </div>
         
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
             © 2025 ReadAgain. All rights reserved.
           </p>
@@ -88,7 +88,7 @@ export default function Footer() {
         </div>
         
         {/* Created with Love */}
-        <div className="border-t border-gray-800 mt-4 pt-4 flex justify-center">
+        <div className="border-t border-border mt-4 pt-4 flex justify-center">
           <p className="text-muted-foreground text-sm flex items-center space-x-1">
             <span>Created with</span>
             <motion.i

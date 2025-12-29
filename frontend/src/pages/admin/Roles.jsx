@@ -91,7 +91,7 @@ const Roles = () => {
         {roles.length === 0 ? (
           <div className="bg-card rounded-lg shadow-md p-12 text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-6">
-              <i className="ri-shield-user-line text-4xl text-gray-400"></i>
+              <i className="ri-shield-user-line text-4xl text-muted-foreground"></i>
             </div>
             <h3 className="text-2xl font-bold text-foreground mb-3">No Roles Found</h3>
             <p className="text-muted-foreground max-w-md mx-auto mb-8">

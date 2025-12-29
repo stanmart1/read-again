@@ -83,15 +83,15 @@ export default function AboutSection() {
               </span>
             </div>
             
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
               {aboutContent.hero?.title || 'About ReadAgain'}
             </h2>
             
-            <div className="text-lg md:text-xl text-gray-600 mb-6"
+            <div className="text-lg md:text-xl text-muted-foreground mb-6"
                  {...createHTMLProps(aboutContent.hero?.subtitle || 'Empowering The Mind Through Reading')}
             />
             
-            <div className="text-base md:text-lg text-gray-600 mb-8"
+            <div className="text-base md:text-lg text-muted-foreground mb-8"
                  {...createHTMLProps(aboutContent.mission?.description || defaultContent.mission.description)}
             />
 
@@ -110,8 +110,8 @@ export default function AboutSection() {
                     index === 0 ? 'text-blue-600' : 'text-purple-600'
                   }`}></i>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{value.title}</h4>
-                    <p className="text-sm text-gray-600" {...createHTMLProps(value.description)} />
+                    <h4 className="font-semibold text-foreground">{value.title}</h4>
+                    <p className="text-sm text-muted-foreground" {...createHTMLProps(value.description)} />
                   </div>
                 </motion.div>
               ))}

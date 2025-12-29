@@ -234,10 +234,10 @@ export default function PaymentGatewayManagement() {
   const getStatusColor = (status) => {
     switch (status) {
       case 'active': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200';
-      case 'inactive': return 'bg-muted text-gray-800';
+      case 'inactive': return 'bg-muted text-foreground';
       case 'error': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200';
       case 'testing': return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200';
-      default: return 'bg-muted text-gray-800';
+      default: return 'bg-muted text-foreground';
     }
   };
 
@@ -277,7 +277,7 @@ export default function PaymentGatewayManagement() {
               onChange={(e) => toggleGateway(gateway.id, e.target.checked)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+            <div className="w-11 h-6 bg-muted peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
       </div>
@@ -314,7 +314,7 @@ export default function PaymentGatewayManagement() {
               onChange={() => toggleTestMode(gateway.id)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+            <div className="w-11 h-6 bg-muted peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
 
@@ -531,7 +531,7 @@ export default function PaymentGatewayManagement() {
             <button
               onClick={() => setAsDefault(gateway.id)}
               disabled={paymentSettings.defaultGateway === gateway.id}
-              className="px-3 py-1 text-sm bg-muted text-foreground rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center"
+              className="px-3 py-1 text-sm bg-muted text-foreground rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center"
             >
               <i className="ri-star-line mr-1"></i>
               Set Default

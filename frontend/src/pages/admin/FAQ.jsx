@@ -176,7 +176,7 @@ export default function FAQManagementPage() {
               <div>
                 <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">Search FAQs</label>
                 <div className="relative">
-                  <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                  <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"></i>
                   <input
                     type="text"
                     placeholder="Search questions..."

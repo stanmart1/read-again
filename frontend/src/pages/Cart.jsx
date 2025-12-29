@@ -81,7 +81,7 @@ export default function Cart() {
         title: "Empty Cart",
         message: "Your cart is empty. Add some books to get started!",
         icon: "ri-shopping-bag-line",
-        color: "text-gray-600",
+        color: "text-muted-foreground",
         bgColor: "bg-gray-50",
         borderColor: "border-gray-200"
       };
@@ -123,16 +123,16 @@ export default function Cart() {
         <Header />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-20 sm:pt-24">
           <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-1/4 mb-8"></div>
+            <div className="h-8 bg-muted rounded w-1/4 mb-8"></div>
             <div className="space-y-4">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="bg-white p-6 rounded-lg shadow">
                   <div className="flex space-x-4">
-                    <div className="w-20 h-24 bg-gray-200 rounded"></div>
+                    <div className="w-20 h-24 bg-muted rounded"></div>
                     <div className="flex-1 space-y-2">
-                      <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                      <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                      <div className="h-4 bg-gray-200 rounded w-1/4"></div>
+                      <div className="h-4 bg-muted rounded w-3/4"></div>
+                      <div className="h-4 bg-muted rounded w-1/2"></div>
+                      <div className="h-4 bg-muted rounded w-1/4"></div>
                     </div>
                   </div>
                 </div>
@@ -170,8 +170,8 @@ export default function Cart() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-4 sm:mb-8"
         >
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Shopping Cart</h1>
-          <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Shopping Cart</h1>
+          <p className="text-sm sm:text-base text-muted-foreground mt-1 sm:mt-2">
             {getTotalItems()} item{getTotalItems() !== 1 ? 's' : ''} in your cart
           </p>
         </motion.div>
@@ -202,7 +202,7 @@ export default function Cart() {
                   </button>
                   <button
                     onClick={handleGuestSignup}
-                    className="inline-flex items-center justify-center px-4 py-2.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="inline-flex items-center justify-center px-4 py-2.5 border border-gray-300 text-sm font-medium rounded-md text-foreground bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <i className="ri-user-add-line mr-2"></i>
                     Create Account
@@ -224,7 +224,7 @@ export default function Cart() {
               <i className={`${cartTypeInfo.icon} ${cartTypeInfo.color} text-xl mr-2 sm:mr-3`}></i>
               <div className="min-w-0">
                 <h3 className={`text-sm sm:text-base font-medium ${cartTypeInfo.color}`}>{cartTypeInfo.title}</h3>
-                <p className="text-xs sm:text-sm text-gray-600 mt-0.5">{cartTypeInfo.message}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">{cartTypeInfo.message}</p>
               </div>
             </div>
           </motion.div>
@@ -236,9 +236,9 @@ export default function Cart() {
             animate={{ opacity: 1, scale: 1 }}
             className="text-center py-8 sm:py-12 px-4"
           >
-            <i className="ri-shopping-bag-line text-6xl text-gray-400 mb-4"></i>
-            <h3 className="mt-2 text-base sm:text-lg font-medium text-gray-900">Your cart is empty</h3>
-            <p className="mt-1 text-sm text-gray-500">Start shopping to add items to your cart.</p>
+            <i className="ri-shopping-bag-line text-6xl text-muted-foreground mb-4"></i>
+            <h3 className="mt-2 text-base sm:text-lg font-medium text-foreground">Your cart is empty</h3>
+            <p className="mt-1 text-sm text-muted-foreground">Start shopping to add items to your cart.</p>
             <div className="mt-4 sm:mt-6">
               <Link
                 to="/books"
@@ -254,7 +254,7 @@ export default function Cart() {
             <div className="lg:col-span-2">
               <div className="bg-white rounded-lg shadow overflow-hidden">
                 <div className="p-4 sm:p-6">
-                  <h2 className="text-base sm:text-lg font-medium text-gray-900 mb-3 sm:mb-4">Cart Items</h2>
+                  <h2 className="text-base sm:text-lg font-medium text-foreground mb-3 sm:mb-4">Cart Items</h2>
                   <AnimatePresence>
                     <div className="space-y-3 sm:space-y-4">
                       {cartItems.map((item) => {
@@ -284,10 +284,10 @@ export default function Cart() {
                             </div>
 
                             <div className="flex-1 min-w-0">
-                              <h3 className="text-sm sm:text-base font-semibold text-gray-900 line-clamp-2 mb-1">
+                              <h3 className="text-sm sm:text-base font-semibold text-foreground line-clamp-2 mb-1">
                                 {item.book?.title}
                               </h3>
-                              <p className="text-xs sm:text-sm text-gray-600 mb-2">
+                              <p className="text-xs sm:text-sm text-muted-foreground mb-2">
                                 by {item.book?.author_name}
                               </p>
                               <div className="flex items-center gap-2">
@@ -322,11 +322,11 @@ export default function Cart() {
                           <div className="flex items-center justify-between sm:justify-end sm:space-x-6">
                             {/* Price */}
                             <div className="text-left sm:text-right">
-                              <p className="text-base sm:text-lg font-bold text-gray-900">
+                              <p className="text-base sm:text-lg font-bold text-foreground">
                                 ₦{(item.book?.price || 0).toLocaleString()}
                               </p>
                               {item.book?.original_price && item.book.original_price > (item.book?.price || 0) && (
-                                <p className="text-xs sm:text-sm text-gray-500 line-through">
+                                <p className="text-xs sm:text-sm text-muted-foreground line-through">
                                   ₦{item.book.original_price.toLocaleString()}
                                 </p>
                               )}
@@ -343,7 +343,7 @@ export default function Cart() {
                                 >
                                   <i className="ri-subtract-line text-lg"></i>
                                 </button>
-                                <span className="text-sm font-bold text-gray-900 w-8 text-center">
+                                <span className="text-sm font-bold text-foreground w-8 text-center">
                                   {item.quantity}
                                 </span>
                                 <button
@@ -358,7 +358,7 @@ export default function Cart() {
                               {/* Remove Button */}
                               <button
                                 onClick={() => handleRemoveItem(item.book_id)}
-                                className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 border-2 border-transparent hover:border-red-200"
+                                className="p-2 text-muted-foreground hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 border-2 border-transparent hover:border-red-200"
                                 title="Remove from cart"
                               >
                                 <i className="ri-delete-bin-line text-xl"></i>
@@ -381,11 +381,11 @@ export default function Cart() {
                 animate={{ opacity: 1, x: 0 }}
                 className="bg-white rounded-lg shadow p-4 sm:p-6 lg:sticky lg:top-8"
               >
-                <h2 className="text-base sm:text-lg font-medium text-gray-900 mb-3 sm:mb-4">Order Summary</h2>
+                <h2 className="text-base sm:text-lg font-medium text-foreground mb-3 sm:mb-4">Order Summary</h2>
                 
                 <div className="space-y-2 sm:space-y-3">
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Subtotal ({getTotalItems()} items)</span>
+                    <span className="text-muted-foreground">Subtotal ({getTotalItems()} items)</span>
                     <span className="font-medium">₦{getSubtotal().toLocaleString()}</span>
                   </div>
                   
@@ -398,7 +398,7 @@ export default function Cart() {
 
                   {!isEbookOnly() && (
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">Shipping</span>
+                      <span className="text-muted-foreground">Shipping</span>
                       <span className="font-medium text-xs sm:text-sm">
                         {isAuthenticated ? 'Based on delivery address' : 'Requires sign in'}
                       </span>
@@ -410,7 +410,7 @@ export default function Cart() {
                       <span>Total</span>
                       <span>₦{getSubtotal().toLocaleString()}</span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-muted-foreground mt-1">
                       {isEbookOnly() 
                         ? 'Digital delivery - no shipping fees' 
                         : isAuthenticated() 
@@ -425,7 +425,7 @@ export default function Cart() {
                   <button
                     onClick={handleCheckout}
                     disabled={cartItems.length === 0}
-                    className="w-full mt-4 sm:mt-6 bg-blue-600 text-white py-3 px-4 rounded-md text-sm sm:text-base font-medium hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                    className="w-full mt-4 sm:mt-6 bg-blue-600 text-white py-3 px-4 rounded-md text-sm sm:text-base font-medium hover:bg-blue-700 disabled:bg-muted disabled:cursor-not-allowed transition-colors"
                   >
                     Proceed to Checkout
                   </button>
@@ -439,7 +439,7 @@ export default function Cart() {
                     </button>
                     <button
                       onClick={handleGuestSignup}
-                      className="w-full bg-gray-100 text-gray-800 py-3 px-4 rounded-md text-sm sm:text-base font-medium hover:bg-gray-200 transition-colors"
+                      className="w-full bg-gray-100 text-foreground py-3 px-4 rounded-md text-sm sm:text-base font-medium hover:bg-muted transition-colors"
                     >
                       Create Account
                     </button>

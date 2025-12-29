@@ -400,7 +400,7 @@ const WorksManagement = () => {
 
         {works.length === 0 && (
           <div className="bg-card rounded-lg shadow-sm border border-border p-12 text-center">
-            <i className="ri-image-line text-6xl text-gray-300 mb-4"></i>
+            <i className="ri-image-line text-6xl text-muted-foreground mb-4"></i>
             <h3 className="text-lg font-medium text-foreground">No works found</h3>
             <p className="text-muted-foreground mt-1">Upload your first work</p>
           </div>

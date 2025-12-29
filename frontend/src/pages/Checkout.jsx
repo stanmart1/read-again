@@ -98,7 +98,7 @@ export default function Checkout() {
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-16 pt-24 text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading checkout...</p>
+          <p className="mt-4 text-muted-foreground">Loading checkout...</p>
         </div>
       </div>
     );
@@ -122,8 +122,8 @@ export default function Checkout() {
       <div className="min-h-screen bg-gray-50">
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-16 pt-24 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Your Cart is Empty</h2>
-          <p className="text-gray-600 mb-8">Add some books before checking out</p>
+          <h2 className="text-2xl font-bold text-foreground mb-4">Your Cart is Empty</h2>
+          <p className="text-muted-foreground mb-8">Add some books before checking out</p>
           <button
             onClick={() => navigate('/books')}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
@@ -200,7 +200,7 @@ export default function Checkout() {
         <div className="mb-6">
           <button
             onClick={() => navigate('/cart')}
-            className="flex items-center text-gray-600 hover:text-primary transition-colors font-medium"
+            className="flex items-center text-muted-foreground hover:text-primary transition-colors font-medium"
           >
             <i className="ri-arrow-left-line mr-2"></i>
             Back to Cart ({cartItems.length} items)
@@ -223,7 +223,7 @@ export default function Checkout() {
         {isProcessing ? (
           <div className="text-center py-16">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-            <p className="mt-4 text-gray-600">Processing your order...</p>
+            <p className="mt-4 text-muted-foreground">Processing your order...</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -268,7 +268,7 @@ function OrderSummarySidebar({ cartItems }) {
 
   return (
     <div className="bg-white rounded-lg shadow p-6">
-      <h3 className="text-xl font-bold text-gray-900 mb-6">Order Summary</h3>
+      <h3 className="text-xl font-bold text-foreground mb-6">Order Summary</h3>
       
       {/* Cart Items */}
       <div className="space-y-4 mb-6 max-h-64 overflow-y-auto">
@@ -288,10 +288,10 @@ function OrderSummarySidebar({ cartItems }) {
               }}
             />
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-medium text-gray-900 truncate">
+              <h4 className="text-sm font-medium text-foreground truncate">
                 {item.book?.title}
               </h4>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-muted-foreground">
                 ₦{item.book?.price?.toLocaleString()}
               </p>
             </div>
@@ -337,7 +337,7 @@ function OrderSummarySidebar({ cartItems }) {
         </div>
       </div>
       
-      <p className="text-sm text-gray-600 mt-2">
+      <p className="text-sm text-muted-foreground mt-2">
         {isEbookOnly ? 'Ebook orders ship instantly via email' : 'Physical books ship within 2-3 business days'}
       </p>
     </div>

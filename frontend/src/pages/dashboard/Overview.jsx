@@ -77,11 +77,11 @@ export default function Overview() {
             <div className="space-y-4">
               {[...Array(3)].map((_, i) => (
                 <div key={i} className="flex items-center gap-4 animate-pulse">
-                  <div className="w-16 h-20 bg-gray-200 rounded-lg"></div>
+                  <div className="w-16 h-20 bg-muted rounded-lg"></div>
                   <div className="flex-1">
-                    <div className="h-5 bg-gray-200 rounded w-3/4 mb-2"></div>
-                    <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
-                    <div className="h-2 bg-gray-200 rounded w-full"></div>
+                    <div className="h-5 bg-muted rounded w-3/4 mb-2"></div>
+                    <div className="h-4 bg-muted rounded w-1/2 mb-2"></div>
+                    <div className="h-2 bg-muted rounded w-full"></div>
                   </div>
                 </div>
               ))}
@@ -103,7 +103,7 @@ export default function Overview() {
                     <h3 className="font-semibold text-foreground line-clamp-1 mb-1">{book.title}</h3>
                     <p className="text-sm text-muted-foreground mb-2 line-clamp-1">{book.author}</p>
                     {/* Progress Bar */}
-                    <div className="w-full bg-gray-200 rounded-full h-2 mb-1">
+                    <div className="w-full bg-muted rounded-full h-2 mb-1">
                       <div
                         className="bg-gradient-to-r from-primary to-primary h-2 rounded-full transition-all duration-300"
                         style={{ width: `${book.progress || 0}%` }}
@@ -123,7 +123,7 @@ export default function Overview() {
             </div>
           ) : (
             <div className="text-center py-8">
-              <i className="ri-book-line text-4xl text-gray-300 mb-2"></i>
+              <i className="ri-book-line text-4xl text-muted-foreground mb-2"></i>
               <p className="text-muted-foreground mb-4">No books in progress</p>
               <a href="/dashboard/library" className="text-primary hover:text-primary/90 font-medium">
                 Browse Your Library

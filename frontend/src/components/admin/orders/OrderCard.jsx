@@ -60,7 +60,7 @@ const OrderCard = ({
       {/* Payment Method */}
       {order.payment_method && (
         <div className="flex items-center space-x-2 text-sm">
-          <i className="ri-bank-card-line text-gray-400"></i>
+          <i className="ri-bank-card-line text-muted-foreground"></i>
           <span className="text-muted-foreground">{order.payment_method}</span>
         </div>
       )}

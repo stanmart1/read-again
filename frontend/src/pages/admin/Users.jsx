@@ -234,7 +234,7 @@ const AdminUsers = () => {
                 </button>
                 <button
                   onClick={() => selectAll([])}
-                  className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm flex items-center gap-2"
+                  className="px-4 py-2 bg-muted text-white rounded-lg hover:bg-card transition-colors text-sm flex items-center gap-2"
                 >
                   <i className="ri-close-line"></i>
                   Clear Selection

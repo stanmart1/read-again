@@ -121,7 +121,7 @@ const UserAnalyticsModal = ({ isOpen, onClose, userId }) => {
                   ))
                 ) : (
                   <div className="text-center py-12">
-                    <i className="ri-book-open-line text-6xl text-gray-300 mb-4"></i>
+                    <i className="ri-book-open-line text-6xl text-muted-foreground mb-4"></i>
                     <p className="text-muted-foreground text-lg font-medium">No books yet</p>
                     <p className="text-muted-foreground text-sm mt-1">User hasn't started reading any books</p>
                   </div>
@@ -131,7 +131,7 @@ const UserAnalyticsModal = ({ isOpen, onClose, userId }) => {
           </div>
         ) : (
           <div className="text-center py-12">
-            <i className="ri-bar-chart-line text-6xl text-gray-300 mb-4"></i>
+            <i className="ri-bar-chart-line text-6xl text-muted-foreground mb-4"></i>
             <p className="text-muted-foreground">No analytics data available</p>
           </div>
         )}

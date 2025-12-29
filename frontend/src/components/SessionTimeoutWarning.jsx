@@ -25,13 +25,13 @@ export default function SessionTimeoutWarning({ show, timeRemaining, onExtend, o
               <i className="ri-time-line text-2xl text-yellow-600"></i>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900">Session Expiring Soon</h3>
-              <p className="text-sm text-gray-600">Your session is about to expire</p>
+              <h3 className="text-lg font-bold text-foreground">Session Expiring Soon</h3>
+              <p className="text-sm text-muted-foreground">Your session is about to expire</p>
             </div>
           </div>
 
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-            <p className="text-center text-gray-700 mb-2">
+            <p className="text-center text-foreground mb-2">
               You will be logged out in:
             </p>
             <div className="text-center">
@@ -50,7 +50,7 @@ export default function SessionTimeoutWarning({ show, timeRemaining, onExtend, o
             </button>
             <button
               onClick={onLogout}
-              className="flex-1 bg-gray-200 text-gray-700 px-4 py-3 rounded-lg font-medium hover:bg-gray-300 transition-colors"
+              className="flex-1 bg-muted text-foreground px-4 py-3 rounded-lg font-medium hover:bg-muted transition-colors"
             >
               Logout Now
             </button>

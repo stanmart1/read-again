@@ -495,14 +495,14 @@ const LibraryManagement = () => {
                 Array.from({ length: 5 }).map((_, i) => (
                   <tr key={i}>
                     <td className="px-6 py-4 whitespace-nowrap" colSpan={8}>
-                      <div className="animate-pulse bg-gray-200 h-4 rounded"></div>
+                      <div className="animate-pulse bg-muted h-4 rounded"></div>
                     </td>
                   </tr>
                 ))
               ) : libraries.length === 0 ? (
                 <tr>
                   <td colSpan={8} className="px-6 py-12 text-center">
-                    <i className="ri-book-shelf-line text-6xl text-gray-300 mb-4"></i>
+                    <i className="ri-book-shelf-line text-6xl text-muted-foreground mb-4"></i>
                     <p className="text-muted-foreground">No library assignments found</p>
                   </td>
                 </tr>
@@ -530,7 +530,7 @@ const LibraryManagement = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="w-full bg-gray-200 rounded-full h-2 mr-2">
+                        <div className="w-full bg-muted rounded-full h-2 mr-2">
                           <div
                             className="bg-primary h-2 rounded-full"
                             style={{ width: `${library.progress || 0}%` }}
@@ -1199,7 +1199,7 @@ const LibraryManagement = () => {
                                 <span className="text-muted-foreground">Progress</span>
                                 <span className="font-semibold text-foreground">{goal.current_value || 0} / {goal.target_value}</span>
                               </div>
-                              <div className="w-full bg-gray-200 rounded-full h-2">
+                              <div className="w-full bg-muted rounded-full h-2">
                                 <div
                                   className={`h-2 rounded-full ${
                                     goal.status === 'completed' ? 'bg-green-50 dark:bg-green-900/200' : 'bg-primary/100'
@@ -1226,7 +1226,7 @@ const LibraryManagement = () => {
                     </h4>
                     {assignmentDetails.highlights.length === 0 ? (
                       <div className="text-center py-8 bg-muted rounded-xl">
-                        <i className="ri-mark-pen-line text-4xl text-gray-300 mb-2"></i>
+                        <i className="ri-mark-pen-line text-4xl text-muted-foreground mb-2"></i>
                         <p className="text-muted-foreground">No highlights yet</p>
                       </div>
                     ) : (
@@ -1258,7 +1258,7 @@ const LibraryManagement = () => {
                     </h4>
                     {assignmentDetails.notes.length === 0 ? (
                       <div className="text-center py-8 bg-muted rounded-xl">
-                        <i className="ri-sticky-note-line text-4xl text-gray-300 mb-2"></i>
+                        <i className="ri-sticky-note-line text-4xl text-muted-foreground mb-2"></i>
                         <p className="text-muted-foreground">No notes yet</p>
                       </div>
                     ) : (

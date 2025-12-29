@@ -271,7 +271,7 @@ const ReadingAnalytics = () => {
                     <span className="text-sm font-medium text-foreground">{book.bookTitle}</span>
                     <span className="text-sm text-muted-foreground">{book.readersCount} readers</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-muted rounded-full h-2">
                     <div
                       className="bg-primary h-2 rounded-full"
                       style={{ width: `${book.averageProgress}%` }}

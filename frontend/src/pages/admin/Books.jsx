@@ -371,7 +371,7 @@ const AdminBooks = () => {
 
                   {books.length === 0 && !loading ? (
                     <div className="text-center py-12 bg-card rounded-lg shadow-md">
-                      <i className="ri-book-line text-6xl text-gray-300 mb-4"></i>
+                      <i className="ri-book-line text-6xl text-muted-foreground mb-4"></i>
                       <h3 className="text-xl font-semibold text-foreground mb-2">No Books Found</h3>
                       <p className="text-muted-foreground">
                         {filters.search || filters.status || filters.category_id
@@ -562,7 +562,7 @@ const AdminBooks = () => {
                     <h3 className="text-xl font-bold text-foreground">Book Details</h3>
                     <button
                       onClick={() => setModals(prev => ({ ...prev, details: false }))}
-                      className="text-gray-400 hover:text-muted-foreground"
+                      className="text-muted-foreground hover:text-muted-foreground"
                     >
                       <i className="ri-close-line text-2xl"></i>
                     </button>
@@ -676,7 +676,7 @@ const AdminBooks = () => {
                         setUserAssignments({});
                         setForms(prev => ({ ...prev, selectedFormat: 'ebook', userSearch: '' }));
                       }}
-                      className="text-gray-400 hover:text-muted-foreground transition-colors p-1 rounded-full hover:bg-card/50"
+                      className="text-muted-foreground hover:text-muted-foreground transition-colors p-1 rounded-full hover:bg-card/50"
                     >
                       <i className="ri-close-line text-2xl"></i>
                     </button>
@@ -687,7 +687,7 @@ const AdminBooks = () => {
                 <div className="p-6 space-y-6">
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-800 mb-2">
+                    <label className="block text-sm font-semibold text-foreground mb-2">
                       <i className="ri-user-line mr-1"></i>
                       Select Users *
                     </label>
@@ -782,7 +782,7 @@ const AdminBooks = () => {
                     </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-800 mb-3">
+                    <label className="block text-sm font-semibold text-foreground mb-3">
                       <i className="ri-file-list-line mr-1"></i>
                       Book Format *
                     </label>
@@ -797,7 +797,7 @@ const AdminBooks = () => {
                         }`}
                       >
                         <i className={`ri-smartphone-line text-2xl mb-2 block ${
-                          forms.selectedFormat === 'ebook' ? 'text-primary' : 'text-gray-400 group-hover:text-muted-foreground'
+                          forms.selectedFormat === 'ebook' ? 'text-primary' : 'text-muted-foreground group-hover:text-muted-foreground'
                         }`}></i>
                         <span className="text-sm font-medium">Digital Ebook</span>
                         <p className="text-xs text-muted-foreground mt-1">Instant access</p>
@@ -812,7 +812,7 @@ const AdminBooks = () => {
                         }`}
                       >
                         <i className={`ri-book-line text-2xl mb-2 block ${
-                          forms.selectedFormat === 'physical' ? 'text-primary' : 'text-gray-400 group-hover:text-muted-foreground'
+                          forms.selectedFormat === 'physical' ? 'text-primary' : 'text-muted-foreground group-hover:text-muted-foreground'
                         }`}></i>
                         <span className="text-sm font-medium">Physical Book</span>
                         <p className="text-xs text-muted-foreground mt-1">Hardcopy access</p>

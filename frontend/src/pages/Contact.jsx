@@ -79,7 +79,7 @@ export default function Contact() {
               transition={{ duration: 0.3 }}
               className="bg-white rounded-2xl shadow-xl p-8"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-foreground mb-6">
                 Send us a message
               </h2>
 
@@ -99,7 +99,7 @@ export default function Contact() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
+                  <label className="block text-foreground font-semibold mb-2">
                     Name
                   </label>
                   <input
@@ -114,7 +114,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
+                  <label className="block text-foreground font-semibold mb-2">
                     Email
                   </label>
                   <input
@@ -129,7 +129,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
+                  <label className="block text-foreground font-semibold mb-2">
                     Subject
                   </label>
                   <input
@@ -144,7 +144,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
+                  <label className="block text-foreground font-semibold mb-2">
                     Message
                   </label>
                   <textarea
@@ -176,10 +176,10 @@ export default function Contact() {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl font-bold text-foreground mb-6">
                   Contact Information
                 </h2>
-                <p className="text-gray-600 mb-8">
+                <p className="text-muted-foreground mb-8">
                   Have questions? We're here to help. Reach out to us through any of these channels.
                 </p>
               </div>
@@ -191,8 +191,8 @@ export default function Contact() {
                       <i className={`${method.icon} text-2xl ${idx % 3 === 0 ? 'text-blue-600' : idx % 3 === 1 ? 'text-purple-600' : 'text-indigo-600'}`}></i>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">{method.title}</h3>
-                      <p className="text-gray-600">{method.contact}</p>
+                      <h3 className="font-semibold text-foreground mb-1">{method.title}</h3>
+                      <p className="text-muted-foreground">{method.contact}</p>
                     </div>
                   </div>
                 ))}
@@ -200,8 +200,8 @@ export default function Contact() {
 
               {contactInfo?.officeInfo?.isActive && (
                 <div className="bg-white rounded-2xl p-8 shadow-md">
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900">Office Information</h3>
-                  <div className="space-y-3 text-gray-600">
+                  <h3 className="text-2xl font-bold mb-4 text-foreground">Office Information</h3>
+                  <div className="space-y-3 text-muted-foreground">
                     <p><strong>Address:</strong> {contactInfo.officeInfo.address}</p>
                     <p><strong>Hours:</strong> {contactInfo.officeInfo.hours}</p>
                     <p><strong>Parking:</strong> {contactInfo.officeInfo.parking}</p>

@@ -345,7 +345,7 @@ const ShippingManagement = () => {
                   ) : (
                     <tr>
                       <td colSpan={6} className="px-6 py-12 text-center">
-                        <i className="ri-truck-line text-6xl text-gray-300 mb-4"></i>
+                        <i className="ri-truck-line text-6xl text-muted-foreground mb-4"></i>
                         <h3 className="text-lg font-medium text-foreground">No shipping methods found</h3>
                         <p className="text-muted-foreground mt-1">Add your first shipping method to get started</p>
                       </td>
@@ -429,7 +429,7 @@ const ShippingManagement = () => {
               ))
             ) : (
               <div className="col-span-full text-center py-12">
-                <i className="ri-map-pin-line text-6xl text-gray-300 mb-4"></i>
+                <i className="ri-map-pin-line text-6xl text-muted-foreground mb-4"></i>
                 <h3 className="text-lg font-medium text-foreground">No shipping zones found</h3>
                 <p className="text-muted-foreground mt-1">Add your first shipping zone to get started</p>
               </div>
@@ -469,7 +469,7 @@ const ShippingManagement = () => {
                             className={`inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
                               isMethodAvailableInZone(method.id, zone.id)
                                 ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 hover:bg-green-200'
-                                : 'bg-muted text-gray-400 hover:bg-gray-200'
+                                : 'bg-muted text-muted-foreground hover:bg-muted'
                             }`}
                             title={isMethodAvailableInZone(method.id, zone.id) ? 'Available' : 'Not Available'}
                           >
@@ -482,7 +482,7 @@ const ShippingManagement = () => {
                 ) : (
                   <tr>
                     <td colSpan={shippingZones.length + 1} className="px-6 py-12 text-center">
-                      <i className="ri-links-line text-6xl text-gray-300 mb-4"></i>
+                      <i className="ri-links-line text-6xl text-muted-foreground mb-4"></i>
                       <h3 className="text-lg font-medium text-foreground">No data available</h3>
                       <p className="text-muted-foreground mt-1">Add shipping methods and zones first</p>
                     </td>

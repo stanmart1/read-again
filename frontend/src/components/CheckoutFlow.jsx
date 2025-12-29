@@ -200,8 +200,8 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
     <div className="max-w-4xl mx-auto p-4 space-y-6">
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Checkout</h1>
-        <p className="text-gray-600">
+        <h1 className="text-3xl font-bold text-foreground mb-2">Checkout</h1>
+        <p className="text-muted-foreground">
           {analytics.isEbookOnly ? 'Complete your digital purchase' : 'Complete your order'}
         </p>
       </div>
@@ -213,7 +213,7 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
             <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
               currentStep === step.id ? 'border-primary bg-blue-600 text-white' :
               currentStep > step.id ? 'border-green-600 bg-green-600 text-white' :
-              'border-gray-300 bg-gray-100 text-gray-500'
+              'border-gray-300 bg-gray-100 text-muted-foreground'
             }`}>
               {currentStep > step.id ? (
                 <i className="ri-check-line"></i>
@@ -223,15 +223,15 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
             </div>
             <div className="ml-3 flex-1">
               <p className={`text-sm font-medium ${
-                currentStep >= step.id ? 'text-gray-900' : 'text-gray-500'
+                currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'
               }`}>
                 {step.title}
               </p>
-              <p className="text-xs text-gray-500">{step.description}</p>
+              <p className="text-xs text-muted-foreground">{step.description}</p>
             </div>
             {index < steps.length - 1 && (
               <div className={`w-16 h-0.5 mx-4 ${
-                currentStep > step.id ? 'bg-green-600' : 'bg-gray-300'
+                currentStep > step.id ? 'bg-green-600' : 'bg-muted'
               }`} />
             )}
           </div>
@@ -324,7 +324,7 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
       <div className="flex justify-between items-center">
         <button
           onClick={currentStep === 1 ? onCancel : prevStep}
-          className="flex items-center px-4 py-2 text-gray-600 hover:text-gray-800"
+          className="flex items-center px-4 py-2 text-muted-foreground hover:text-foreground"
         >
           <i className="ri-arrow-left-line mr-2"></i>
           {currentStep === 1 ? 'Back to Cart' : 'Previous'}
@@ -366,11 +366,11 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
 function CustomerInformationStep({ formData, updateFormData }) {
   return (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Customer Information</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-4">Customer Information</h3>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+          <label className="block text-sm font-medium text-foreground mb-2">First Name *</label>
           <input
             type="text"
             required
@@ -381,7 +381,7 @@ function CustomerInformationStep({ formData, updateFormData }) {
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+          <label className="block text-sm font-medium text-foreground mb-2">Last Name *</label>
           <input
             type="text"
             required
@@ -393,9 +393,9 @@ function CustomerInformationStep({ formData, updateFormData }) {
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+        <label className="block text-sm font-medium text-foreground mb-2">Email Address *</label>
         <div className="relative">
-          <i className="ri-mail-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+          <i className="ri-mail-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
           <input
             type="email"
             inputMode="email"
@@ -408,9 +408,9 @@ function CustomerInformationStep({ formData, updateFormData }) {
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+        <label className="block text-sm font-medium text-foreground mb-2">Phone Number</label>
         <div className="relative">
-          <i className="ri-phone-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+          <i className="ri-phone-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
           <input
             type="text"
             inputMode="tel"
@@ -428,12 +428,12 @@ function CustomerInformationStep({ formData, updateFormData }) {
 function ShippingAddressStep({ formData, updateFormData }) {
   return (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Shipping Address</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-4">Shipping Address</h3>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Street Address *</label>
+        <label className="block text-sm font-medium text-foreground mb-2">Street Address *</label>
         <div className="relative">
-          <i className="ri-home-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+          <i className="ri-home-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
           <input
             type="text"
             required
@@ -447,9 +447,9 @@ function ShippingAddressStep({ formData, updateFormData }) {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">City *</label>
+          <label className="block text-sm font-medium text-foreground mb-2">City *</label>
           <div className="relative">
-            <i className="ri-building-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+            <i className="ri-building-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
             <input
               type="text"
               required
@@ -462,7 +462,7 @@ function ShippingAddressStep({ formData, updateFormData }) {
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">State *</label>
+          <label className="block text-sm font-medium text-foreground mb-2">State *</label>
           <input
             type="text"
             required
@@ -475,7 +475,7 @@ function ShippingAddressStep({ formData, updateFormData }) {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">ZIP/Postal Code</label>
+          <label className="block text-sm font-medium text-foreground mb-2">ZIP/Postal Code</label>
           <input
             type="text"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
@@ -486,7 +486,7 @@ function ShippingAddressStep({ formData, updateFormData }) {
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Country *</label>
+          <label className="block text-sm font-medium text-foreground mb-2">Country *</label>
           <input
             type="text"
             required
@@ -506,10 +506,10 @@ function ShippingMethodStep({ formData, updateFormData, shippingMethods, analyti
   if (isLoading) {
     return (
       <div className="space-y-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Choose Shipping Method</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-4">Choose Shipping Method</h3>
         <div className="flex items-center justify-center p-8">
           <i className="ri-loader-4-line animate-spin text-blue-600 text-2xl mr-2"></i>
-          <span className="text-gray-600">Loading shipping methods...</span>
+          <span className="text-muted-foreground">Loading shipping methods...</span>
         </div>
       </div>
     );
@@ -517,7 +517,7 @@ function ShippingMethodStep({ formData, updateFormData, shippingMethods, analyti
   
   return (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Choose Shipping Method</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-4">Choose Shipping Method</h3>
       
       {!formData.shipping_method && (
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
@@ -530,9 +530,9 @@ function ShippingMethodStep({ formData, updateFormData, shippingMethods, analyti
       
       {activeShippingMethods.length === 0 ? (
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
-          <i className="ri-truck-line text-gray-400 text-4xl mb-2"></i>
-          <p className="text-gray-600">No shipping methods available at the moment.</p>
-          <p className="text-sm text-gray-500 mt-1">Please contact support for assistance.</p>
+          <i className="ri-truck-line text-muted-foreground text-4xl mb-2"></i>
+          <p className="text-muted-foreground">No shipping methods available at the moment.</p>
+          <p className="text-sm text-muted-foreground mt-1">Please contact support for assistance.</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -558,16 +558,16 @@ function ShippingMethodStep({ formData, updateFormData, shippingMethods, analyti
                     )}
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">{method.name}</h4>
-                    <p className="text-sm text-gray-600">{method.description || 'Standard delivery service'}</p>
-                    <p className="text-sm text-gray-500 mt-1">
+                    <h4 className="font-medium text-foreground">{method.name}</h4>
+                    <p className="text-sm text-muted-foreground">{method.description || 'Standard delivery service'}</p>
+                    <p className="text-sm text-muted-foreground mt-1">
                       <i className="ri-time-line mr-1"></i>
                       Delivery: {method.estimated_days_min}-{method.estimated_days_max} business days
                     </p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="font-semibold text-lg text-gray-900">₦{method.base_cost.toLocaleString()}</p>
+                  <p className="font-semibold text-lg text-foreground">₦{method.base_cost.toLocaleString()}</p>
                   {method.free_shipping_threshold && (
                     <p className="text-xs text-green-600 mt-1">
                       Free over ₦{method.free_shipping_threshold.toLocaleString()}
@@ -586,11 +586,11 @@ function ShippingMethodStep({ formData, updateFormData, shippingMethods, analyti
 function PaymentStep({ formData, updateFormData, paymentGateways, analytics }) {
   return (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Payment Method</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-4">Payment Method</h3>
       
       {/* Order Summary */}
       <div className="bg-gray-50 rounded-lg p-4 mb-6">
-        <h4 className="font-medium text-gray-900 mb-3">Order Summary</h4>
+        <h4 className="font-medium text-foreground mb-3">Order Summary</h4>
         <div className="space-y-2 text-sm">
           <div className="flex justify-between">
             <span>Subtotal ({analytics.totalItems} items)</span>
@@ -614,7 +614,7 @@ function PaymentStep({ formData, updateFormData, paymentGateways, analytics }) {
         
         {/* Format Breakdown */}
         <div className="mt-4 pt-3 border-t border-gray-200">
-          <div className="flex items-center justify-between text-xs text-gray-600">
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span>Order Type:</span>
             <div className="flex items-center space-x-2">
               {analytics.isEbookOnly ? (
@@ -647,11 +647,11 @@ function PaymentStep({ formData, updateFormData, paymentGateways, analytics }) {
           >
             <div className="flex justify-between items-center">
               <div>
-                <h4 className="font-medium text-gray-900">{gateway.name}</h4>
-                <p className="text-sm text-gray-600">{gateway.description}</p>
+                <h4 className="font-medium text-foreground">{gateway.name}</h4>
+                <p className="text-sm text-muted-foreground">{gateway.description}</p>
               </div>
               <i className={`${gateway.id === 'flutterwave' ? 'ri-bank-card-line' : 'ri-bank-line'} text-2xl ${
-                formData.payment.method === gateway.id ? 'text-blue-600' : 'text-gray-400'
+                formData.payment.method === gateway.id ? 'text-blue-600' : 'text-muted-foreground'
               }`}></i>
             </div>
           </div>

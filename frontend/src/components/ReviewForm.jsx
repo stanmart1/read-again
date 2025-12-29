@@ -75,7 +75,7 @@ export default function ReviewForm({ bookId, bookTitle, onSuccess, onCancel }) {
                   type="button"
                   onClick={() => setRating(star)}
                   className={`text-3xl transition-all duration-200 transform hover:scale-110 ${
-                    star <= rating ? 'text-yellow-400 drop-shadow-sm' : 'text-gray-300 hover:text-yellow-300'
+                    star <= rating ? 'text-yellow-400 drop-shadow-sm' : 'text-muted-foreground hover:text-yellow-300'
                   }`}
                 >
                   <i className={`ri-star-${star <= rating ? 'fill' : 'line'}`}></i>

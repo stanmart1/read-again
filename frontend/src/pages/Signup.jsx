@@ -177,8 +177,8 @@ export default function Signup() {
         <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
           {/* Logo/Brand */}
           <div className="text-center mb-6">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">ReadAgain</h1>
-            <p className="text-gray-600 text-sm sm:text-base">Create your account and start reading!</p>
+            <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">ReadAgain</h1>
+            <p className="text-muted-foreground text-sm sm:text-base">Create your account and start reading!</p>
           </div>
 
           {/* Progress Indicator */}
@@ -186,34 +186,34 @@ export default function Signup() {
             <div className="flex items-center justify-center mb-4">
               <div className="flex items-center space-x-2 sm:space-x-4">
                 <div className={`flex items-center justify-center w-10 h-10 rounded-full text-sm font-semibold transition-all ${
-                  currentStep >= 1 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-gray-600'
+                  currentStep >= 1 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-muted text-muted-foreground'
                 }`}>
                   {currentStep > 1 ? <i className="ri-check-line text-lg"></i> : '1'}
                 </div>
                 {formData.is_student === 'yes' && (
                   <>
                     <div className={`w-8 sm:w-12 h-1 rounded transition-all ${
-                      currentStep >= 2 ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-gray-200'
+                      currentStep >= 2 ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-muted'
                     }`}></div>
                     <div className={`flex items-center justify-center w-10 h-10 rounded-full text-sm font-semibold transition-all ${
-                      currentStep >= 2 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-gray-600'
+                      currentStep >= 2 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-muted text-muted-foreground'
                     }`}>
                       {currentStep > 2 ? <i className="ri-check-line text-lg"></i> : '2'}
                     </div>
                   </>
                 )}
                 <div className={`w-8 sm:w-12 h-1 rounded transition-all ${
-                  currentStep >= 3 ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-gray-200'
+                  currentStep >= 3 ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-muted'
                 }`}></div>
                 <div className={`flex items-center justify-center w-10 h-10 rounded-full text-sm font-semibold transition-all ${
-                  currentStep >= 3 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-gray-600'
+                  currentStep >= 3 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-muted text-muted-foreground'
                 }`}>
                   {formData.is_student === 'yes' ? '3' : '2'}
                 </div>
               </div>
             </div>
             <div className="text-center">
-              <p className="text-sm font-medium text-gray-700">
+              <p className="text-sm font-medium text-foreground">
                 Step {formData.is_student === 'no' && currentStep === 3 ? '2' : currentStep} of {formData.is_student === 'yes' ? '3' : '2'}: {
                   currentStep === 1 ? 'Personal Information' : 
                   currentStep === 2 ? 'Education Details' : 
@@ -249,7 +249,7 @@ export default function Signup() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                      <label className="block text-foreground font-semibold mb-2 text-sm">
                         First Name *
                       </label>
                       <input
@@ -267,7 +267,7 @@ export default function Signup() {
                       )}
                     </div>
                     <div>
-                      <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                      <label className="block text-foreground font-semibold mb-2 text-sm">
                         Last Name *
                       </label>
                       <input
@@ -287,11 +287,11 @@ export default function Signup() {
                   </div>
 
                   <div>
-                    <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    <label className="block text-foreground font-semibold mb-2 text-sm">
                       Email Address *
                     </label>
                     <div className="relative">
-                      <i className="ri-mail-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                      <i className="ri-mail-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
                       <input
                         type="email"
                         name="email"
@@ -309,11 +309,11 @@ export default function Signup() {
                   </div>
 
                   <div>
-                    <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    <label className="block text-foreground font-semibold mb-2 text-sm">
                       Phone Number
                     </label>
                     <div className="relative">
-                      <i className="ri-phone-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                      <i className="ri-phone-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
                       <input
                         type="text"
                         inputMode="tel"
@@ -327,7 +327,7 @@ export default function Signup() {
                   </div>
 
                   <div>
-                    <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    <label className="block text-foreground font-semibold mb-2 text-sm">
                       Are you a student? *
                     </label>
                     <div className="flex gap-4">
@@ -340,7 +340,7 @@ export default function Signup() {
                           onChange={handleChange}
                           className="mr-2 w-4 h-4 text-blue-600"
                         />
-                        <span className="text-gray-700">Yes</span>
+                        <span className="text-foreground">Yes</span>
                       </label>
                       <label className="flex items-center cursor-pointer">
                         <input
@@ -351,7 +351,7 @@ export default function Signup() {
                           onChange={handleChange}
                           className="mr-2 w-4 h-4 text-blue-600"
                         />
-                        <span className="text-gray-700">No</span>
+                        <span className="text-foreground">No</span>
                       </label>
                     </div>
                     {stepErrors.is_student && (
@@ -381,11 +381,11 @@ export default function Signup() {
               >
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    <label className="block text-foreground font-semibold mb-2 text-sm">
                       Username *
                     </label>
                     <div className="relative">
-                      <i className="ri-user-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                      <i className="ri-user-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
                       <input
                         type="text"
                         name="username"
@@ -401,7 +401,7 @@ export default function Signup() {
                       <p className="text-red-500 text-xs mt-1">{stepErrors.username}</p>
                     )}
                     {!stepErrors.username && (
-                      <p className="text-gray-500 text-xs mt-1">
+                      <p className="text-muted-foreground text-xs mt-1">
                         3-50 characters, letters, numbers, underscores, and hyphens only
                       </p>
                     )}
@@ -409,7 +409,7 @@ export default function Signup() {
                   {formData.is_student === 'yes' && (
                     <>
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                        <label className="block text-foreground font-semibold mb-2 text-sm">
                           School Category
                         </label>
                         <select
@@ -426,11 +426,11 @@ export default function Signup() {
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                        <label className="block text-foreground font-semibold mb-2 text-sm">
                           School Name
                         </label>
                         <div className="relative">
-                          <i className="ri-school-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                          <i className="ri-school-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
                           <input
                             type="text"
                             name="school_name"
@@ -444,7 +444,7 @@ export default function Signup() {
 
                       {(formData.school_category === 'Primary' || formData.school_category === 'Secondary') && (
                         <div>
-                          <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                          <label className="block text-foreground font-semibold mb-2 text-sm">
                             Class Level
                           </label>
                           <input
@@ -460,7 +460,7 @@ export default function Signup() {
 
                       {formData.school_category === 'Tertiary' && (
                         <div>
-                          <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                          <label className="block text-foreground font-semibold mb-2 text-sm">
                             Department
                           </label>
                           <input
@@ -509,11 +509,11 @@ export default function Signup() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {formData.is_student === 'no' && (
                     <div>
-                      <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                      <label className="block text-foreground font-semibold mb-2 text-sm">
                         Username *
                       </label>
                       <div className="relative">
-                        <i className="ri-user-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                        <i className="ri-user-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
                         <input
                           type="text"
                           name="username"
@@ -529,7 +529,7 @@ export default function Signup() {
                         <p className="text-red-500 text-xs mt-1">{stepErrors.username}</p>
                       )}
                       {!stepErrors.username && (
-                        <p className="text-gray-500 text-xs mt-1">
+                        <p className="text-muted-foreground text-xs mt-1">
                           3-50 characters, letters, numbers, underscores, and hyphens only
                         </p>
                       )}
@@ -537,11 +537,11 @@ export default function Signup() {
                   )}
 
                   <div>
-                    <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    <label className="block text-foreground font-semibold mb-2 text-sm">
                       Password *
                     </label>
                     <div className="relative">
-                      <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                      <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
                       <input
                         type={showPassword ? 'text' : 'password'}
                         name="password"
@@ -555,7 +555,7 @@ export default function Signup() {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                       >
                         <i className={showPassword ? 'ri-eye-off-line' : 'ri-eye-line'}></i>
                       </button>
@@ -564,18 +564,18 @@ export default function Signup() {
                       <p className="text-red-500 text-xs mt-1">{stepErrors.password}</p>
                     )}
                     {!stepErrors.password && (
-                      <p className="text-gray-500 text-xs mt-1">
+                      <p className="text-muted-foreground text-xs mt-1">
                         Must be 8+ characters with uppercase, lowercase, number, and special character
                       </p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-gray-700 font-semibold mb-2 text-sm">
+                    <label className="block text-foreground font-semibold mb-2 text-sm">
                       Confirm Password *
                     </label>
                     <div className="relative">
-                      <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                      <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
                       <input
                         type={showPassword ? 'text' : 'password'}
                         name="confirm_password"
@@ -589,7 +589,7 @@ export default function Signup() {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                       >
                         <i className={showPassword ? 'ri-eye-off-line' : 'ri-eye-line'}></i>
                       </button>
@@ -601,7 +601,7 @@ export default function Signup() {
 
                   <div className="flex items-start">
                     <input type="checkbox" required className="mt-1 mr-2" />
-                    <span className="text-sm text-gray-600">
+                    <span className="text-sm text-muted-foreground">
                       I agree to the{' '}
                       <Link to="/terms" className="text-blue-600 hover:text-primary">
                         Terms of Service
@@ -646,7 +646,7 @@ export default function Signup() {
           </AnimatePresence>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-600">
+            <p className="text-muted-foreground">
               Already have an account?{' '}
               <Link to="/login" className="text-blue-600 hover:text-primary font-semibold">
                 Login

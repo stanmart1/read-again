@@ -74,7 +74,7 @@ export default function BlogPost() {
       <div className="min-h-screen bg-gray-50">
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Post not found</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">Post not found</h2>
           <Link to="/blog" className="text-blue-600 hover:text-primary">
             Back to Blog
           </Link>
@@ -109,7 +109,7 @@ export default function BlogPost() {
           className="bg-white rounded-2xl shadow-2xl p-8 md:p-12"
         >
           {/* Meta Info */}
-          <div className="flex items-center text-sm text-gray-500 mb-6">
+          <div className="flex items-center text-sm text-muted-foreground mb-6">
             <i className="ri-calendar-line mr-2"></i>
             <span>{formatDate(post.created_at)}</span>
             <span className="mx-3">•</span>
@@ -118,7 +118,7 @@ export default function BlogPost() {
           </div>
 
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             {post.title}
           </h1>
 
@@ -128,27 +128,27 @@ export default function BlogPost() {
               {post.author_name?.[0] || 'A'}
             </div>
             <div className="ml-4">
-              <p className="font-semibold text-gray-900">{post.author_name || 'Anonymous'}</p>
-              <p className="text-sm text-gray-500">Author</p>
+              <p className="font-semibold text-foreground">{post.author_name || 'Anonymous'}</p>
+              <p className="text-sm text-muted-foreground">Author</p>
             </div>
           </div>
 
           {/* Content */}
           <div className="prose prose-lg max-w-none mb-8">
             {post.excerpt && (
-              <p className="text-xl text-gray-600 mb-6 italic border-l-4 border-primary pl-4">
+              <p className="text-xl text-muted-foreground mb-6 italic border-l-4 border-primary pl-4">
                 {post.excerpt.replace(/<[^>]*>/g, '')}
               </p>
             )}
             <div
-              className="text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-h2:text-3xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-2xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3 prose-p:mb-4 prose-ul:list-disc prose-ul:ml-6 prose-ul:mb-4 prose-ol:list-decimal prose-ol:ml-6 prose-ol:mb-4 prose-li:mb-2 prose-strong:font-semibold prose-strong:text-gray-900 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600"
+              className="text-foreground leading-relaxed prose-headings:text-foreground prose-h2:text-3xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-2xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3 prose-p:mb-4 prose-ul:list-disc prose-ul:ml-6 prose-ul:mb-4 prose-ol:list-decimal prose-ol:ml-6 prose-ol:mb-4 prose-li:mb-2 prose-strong:font-semibold prose-strong:text-foreground prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-muted-foreground"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
 
           {/* Share Buttons */}
           <div className="pt-8 border-t">
-            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Share this post</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-foreground mb-4">Share this post</h3>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={() => sharePost('twitter')}
@@ -178,7 +178,7 @@ export default function BlogPost() {
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
           <div className="mt-16 mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Posts</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-8">Related Posts</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedPosts.map((relatedPost) => (
                 <Link
@@ -194,7 +194,7 @@ export default function BlogPost() {
                   />
                   <div className="p-6">
                     <h3 className="font-bold text-lg mb-2 line-clamp-2">{relatedPost.title}</h3>
-                    <p className="text-gray-600 text-sm line-clamp-2">{relatedPost.excerpt?.replace(/<[^>]*>/g, '') || ''}</p>
+                    <p className="text-muted-foreground text-sm line-clamp-2">{relatedPost.excerpt?.replace(/<[^>]*>/g, '') || ''}</p>
                   </div>
                 </Link>
               ))}

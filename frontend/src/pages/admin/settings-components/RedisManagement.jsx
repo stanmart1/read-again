@@ -98,7 +98,7 @@ export default function RedisManagement() {
               disabled={toggling}
               className="sr-only peer"
             />
-            <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary peer-disabled:opacity-50"></div>
+            <div className="w-14 h-7 bg-muted peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary peer-disabled:opacity-50"></div>
           </label>
         </div>
       </div>

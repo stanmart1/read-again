@@ -143,12 +143,12 @@ export default function About() {
               transition={{ duration: 0.3 }}
             >
               {aboutData.mission?.title && (
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
                   {aboutData.mission.title}
                 </h2>
               )}
               {aboutData.mission?.description && (
-                <div className="text-lg text-gray-600 mb-6"
+                <div className="text-lg text-muted-foreground mb-6"
                      {...createHTMLProps(aboutData.mission.description)}
                 />
               )}
@@ -157,7 +157,7 @@ export default function About() {
                   {aboutData.mission.features.map((feature, index) => (
                     <div key={index} className="flex items-center space-x-3">
                       <i className="ri-check-line text-2xl text-green-600"></i>
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-foreground">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -194,10 +194,10 @@ export default function About() {
             transition={{ duration: 0.3 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Our Values
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-muted-foreground">
               The principles that guide everything we do
             </p>
           </motion.div>
@@ -215,10 +215,10 @@ export default function About() {
                 <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className={`${value.icon} text-3xl text-white`}></i>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-foreground mb-2">
                   {value.title}
                 </h3>
-                <div className="text-gray-600"
+                <div className="text-muted-foreground"
                      {...createHTMLProps(value.description)}
                 />
               </motion.div>
@@ -238,10 +238,10 @@ export default function About() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Meet Our Team
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-xl text-muted-foreground">
                 The people behind ReadAgain
               </p>
             </motion.div>
@@ -277,7 +277,7 @@ export default function About() {
                       />
                     )}
                     <div className="p-6">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      <h3 className="text-2xl font-bold text-foreground mb-2">
                         {member.name}
                       </h3>
                       <p className="text-lg text-purple-600 font-medium mb-4">
@@ -296,7 +296,7 @@ export default function About() {
               <div className="flex justify-center mt-8 gap-3 items-center">
                 <button
                   onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors shadow-md"
+                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm font-medium text-foreground hover:bg-gray-100 transition-colors shadow-md"
                 >
                   <i className={`ri-${isAutoScrolling ? 'pause' : 'play'}-circle-line text-lg`}></i>
                   {isAutoScrolling ? 'Auto-scroll' : 'Paused'}
@@ -329,17 +329,17 @@ export default function About() {
                 onClick={() => setSelectedMember(null)}
                 className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors"
               >
-                <i className="ri-close-line text-2xl text-gray-700"></i>
+                <i className="ri-close-line text-2xl text-foreground"></i>
               </button>
             </div>
             <div className="p-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              <h2 className="text-3xl font-bold text-foreground mb-2">
                 {selectedMember.name}
               </h2>
               <p className="text-xl text-purple-600 font-medium mb-6">
                 {selectedMember.role}
               </p>
-              <div className="prose prose-lg max-w-none text-gray-600" dangerouslySetInnerHTML={{ __html: selectedMember.bio }} />
+              <div className="prose prose-lg max-w-none text-muted-foreground" dangerouslySetInnerHTML={{ __html: selectedMember.bio }} />
             </div>
           </motion.div>
         </div>

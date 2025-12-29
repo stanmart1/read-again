@@ -79,7 +79,7 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
       >
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-foreground">Assign Books</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-muted-foreground">
+          <button onClick={onClose} className="text-muted-foreground hover:text-muted-foreground">
             <i className="ri-close-line text-2xl"></i>
           </button>
         </div>
@@ -96,7 +96,7 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
         {/* Search */}
         <div className="mb-4">
           <div className="relative">
-            <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"></i>
             <input
               type="text"
               placeholder="Search books..."
@@ -109,7 +109,7 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
 
         {/* Format Selection */}
         <div className="mb-4">
-          <label className="block text-sm font-semibold text-gray-800 mb-2">
+          <label className="block text-sm font-semibold text-foreground mb-2">
             Book Format
           </label>
           <div className="grid grid-cols-2 gap-3">

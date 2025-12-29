@@ -23,7 +23,7 @@ export default function Blog() {
       'Literature': 'bg-purple-100 text-purple-800',
       'Reviews': 'bg-red-100 text-red-800',
       'Reading Tips': 'bg-cyan-100 text-cyan-800',
-      'default': 'bg-gray-100 text-gray-800'
+      'default': 'bg-gray-100 text-foreground'
     };
     return colors[category] || colors.default;
   };
@@ -84,7 +84,7 @@ export default function Blog() {
                     </div>
 
                     <div className="p-6">
-                      <div className="flex items-center text-sm text-gray-500 mb-3">
+                      <div className="flex items-center text-sm text-muted-foreground mb-3">
                         <i className="ri-calendar-line mr-1"></i>
                         <span>{formatDate(post.created_at)}</span>
                         <span className="mx-2">•</span>
@@ -92,11 +92,11 @@ export default function Blog() {
                         <span>{post.read_time || 5} min read</span>
                       </div>
 
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                      <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2">
                         {post.title}
                       </h3>
 
-                      <p className="text-gray-600 mb-4 line-clamp-3">
+                      <p className="text-muted-foreground mb-4 line-clamp-3">
                         {(post.excerpt || post.content)?.replace(/<[^>]*>/g, '').substring(0, 150) + '...'}
                       </p>
 
@@ -111,9 +111,9 @@ export default function Blog() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <i className="ri-article-line text-6xl text-gray-300 mb-4"></i>
-              <h3 className="text-2xl font-semibold text-gray-700 mb-2">No blog posts yet</h3>
-              <p className="text-gray-500">Check back soon for new content</p>
+              <i className="ri-article-line text-6xl text-muted-foreground mb-4"></i>
+              <h3 className="text-2xl font-semibold text-foreground mb-2">No blog posts yet</h3>
+              <p className="text-muted-foreground">Check back soon for new content</p>
             </div>
           )}
         </div>

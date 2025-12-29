@@ -100,7 +100,7 @@ export default function FAQList({
                   <div className="flex items-center">
                     <button
                       onClick={() => toggleExpanded(faq.id)}
-                      className="mr-2 text-gray-400 hover:text-muted-foreground"
+                      className="mr-2 text-muted-foreground hover:text-muted-foreground"
                     >
                       <i className={`ri-arrow-${expandedFAQs.includes(faq.id) ? 'up' : 'down'}-s-line`}></i>
                     </button>

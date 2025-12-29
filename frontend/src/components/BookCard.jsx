@@ -85,7 +85,7 @@ export default function BookCard({ book }) {
               className="p-3 bg-white rounded-full hover:bg-gray-100 transition-colors"
               title="View Details"
             >
-              <i className="ri-eye-line text-gray-600 text-lg"></i>
+              <i className="ri-eye-line text-muted-foreground text-lg"></i>
             </Link>
             <button 
               onClick={handleAddToCart}
@@ -100,11 +100,11 @@ export default function BookCard({ book }) {
         
         <div className="p-6 flex-1 flex flex-col">
           <Link to={`/books/${book.id}`}>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors line-clamp-2 h-14">
+            <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 h-14">
               {book.title}
             </h3>
           </Link>
-          <p className="text-gray-600 mb-4 h-6">
+          <p className="text-muted-foreground mb-4 h-6">
             by {displayAuthor || 'Unknown Author'}
           </p>
           
@@ -115,10 +115,10 @@ export default function BookCard({ book }) {
                 <div className="flex space-x-1">
                   {renderStars(displayRating)}
                 </div>
-                <span className="text-sm text-gray-500">({displayReviewCount})</span>
+                <span className="text-sm text-muted-foreground">({displayReviewCount})</span>
               </>
             ) : (
-              <span className="text-sm text-gray-400">No ratings yet</span>
+              <span className="text-sm text-muted-foreground">No ratings yet</span>
             )}
           </div>
 
@@ -128,7 +128,7 @@ export default function BookCard({ book }) {
               <div className="flex items-center space-x-2">
                 <span className="text-2xl font-bold text-blue-600">₦{(book.price || 0).toLocaleString()}</span>
                 {displayOriginalPrice && displayOriginalPrice > book.price && (
-                  <span className="text-sm text-gray-500 line-through">₦{displayOriginalPrice.toLocaleString()}</span>
+                  <span className="text-sm text-muted-foreground line-through">₦{displayOriginalPrice.toLocaleString()}</span>
                 )}
               </div>
             </div>

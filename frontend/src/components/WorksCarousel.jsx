@@ -174,7 +174,7 @@ export default function WorksCarousel() {
                     className={`h-2 rounded-full transition-all duration-300 ${
                       index === activeIndex
                         ? 'w-8 bg-primary' 
-                        : 'w-2 bg-gray-300 hover:bg-gray-400'
+                        : 'w-2 bg-muted hover:bg-muted'
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />

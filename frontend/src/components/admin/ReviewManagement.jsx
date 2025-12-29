@@ -132,7 +132,7 @@ const ReviewManagement = () => {
           <i
             key={star}
             className={`ri-star-fill text-sm ${
-              star <= rating ? 'text-yellow-400' : 'text-gray-300'
+              star <= rating ? 'text-yellow-400' : 'text-muted-foreground'
             }`}
           />
         ))}
@@ -234,7 +234,7 @@ const ReviewManagement = () => {
         {review.is_featured && (
           <button
             onClick={() => handleAction(review, 'unfeature')}
-            className="px-3 py-1 text-xs bg-muted text-foreground rounded-full hover:bg-gray-200 transition-colors"
+            className="px-3 py-1 text-xs bg-muted text-foreground rounded-full hover:bg-muted transition-colors"
           >
             Unfeature
           </button>
@@ -259,7 +259,7 @@ const ReviewManagement = () => {
               <p className="text-xs text-muted-foreground">Total</p>
               <p className="text-2xl font-bold text-foreground">{stats.total}</p>
             </div>
-            <i className="ri-star-line text-2xl text-gray-400"></i>
+            <i className="ri-star-line text-2xl text-muted-foreground"></i>
           </div>
         </div>
         <div className="bg-card rounded-lg shadow-sm border border-border p-4">
@@ -354,15 +354,15 @@ const ReviewManagement = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="bg-card rounded-lg shadow-sm border border-border p-4 animate-pulse">
-              <div className="h-20 bg-gray-200 rounded mb-3"></div>
-              <div className="h-4 bg-gray-200 rounded mb-2"></div>
-              <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+              <div className="h-20 bg-muted rounded mb-3"></div>
+              <div className="h-4 bg-muted rounded mb-2"></div>
+              <div className="h-4 bg-muted rounded w-2/3"></div>
             </div>
           ))}
         </div>
       ) : reviews.length === 0 ? (
         <div className="bg-card rounded-lg shadow-sm border border-border p-12 text-center">
-          <i className="ri-star-line text-6xl text-gray-300 mb-4"></i>
+          <i className="ri-star-line text-6xl text-muted-foreground mb-4"></i>
           <h3 className="text-lg font-medium text-foreground">No reviews found</h3>
           <p className="text-muted-foreground mt-1">
             {searchQuery || filterStatus !== 'all' ? 'Try adjusting your filters' : 'No reviews yet'}
@@ -438,7 +438,7 @@ const ReviewManagement = () => {
               <h3 className="text-xl font-bold text-foreground">Review Details</h3>
               <button
                 onClick={() => setShowReviewDetail(false)}
-                className="text-gray-400 hover:text-muted-foreground"
+                className="text-muted-foreground hover:text-muted-foreground"
               >
                 <i className="ri-close-line text-2xl"></i>
               </button>

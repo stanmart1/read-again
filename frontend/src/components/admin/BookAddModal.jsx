@@ -248,11 +248,11 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
         {/* Progress Bar */}
         <div className="px-4 sm:px-6 py-3">
           <div className="flex items-center space-x-2 mb-2">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${currentStep >= 1 ? 'bg-primary text-white' : 'bg-gray-200 text-muted-foreground'
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${currentStep >= 1 ? 'bg-primary text-white' : 'bg-muted text-muted-foreground'
               }`}>1</div>
-            <div className={`flex-1 h-1 rounded-full ${currentStep >= 2 ? 'bg-primary' : 'bg-gray-200'
+            <div className={`flex-1 h-1 rounded-full ${currentStep >= 2 ? 'bg-primary' : 'bg-muted'
               }`}></div>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${currentStep >= 2 ? 'bg-primary text-white' : 'bg-gray-200 text-muted-foreground'
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${currentStep >= 2 ? 'bg-primary text-white' : 'bg-muted text-muted-foreground'
               }`}>2</div>
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">
@@ -343,7 +343,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                             setShowAddAuthor(false);
                             setNewAuthorName('');
                           }}
-                          className="px-3 py-2 bg-gray-200 text-foreground rounded-lg hover:bg-gray-300"
+                          className="px-3 py-2 bg-muted text-foreground rounded-lg hover:bg-muted"
                         >
                           <i className="ri-close-line"></i>
                         </button>
@@ -511,7 +511,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                         onChange={(e) => handleInputChange('is_featured', e.target.checked)}
                         className="sr-only"
                       />
-                      <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.is_featured ? 'bg-purple-600' : 'bg-gray-300'
+                      <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.is_featured ? 'bg-purple-600' : 'bg-muted'
                         }`}>
                         <span className={`inline-block h-4 w-4 transform rounded-full bg-card transition-transform ${formData.is_featured ? 'translate-x-6' : 'translate-x-1'
                           }`} />
@@ -534,7 +534,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                           onChange={(e) => handleInputChange('track_inventory', e.target.checked)}
                           className="sr-only"
                         />
-                        <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.track_inventory ? 'bg-primary' : 'bg-gray-200'
+                        <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.track_inventory ? 'bg-primary' : 'bg-muted'
                           }`}>
                           <span className={`inline-block h-4 w-4 transform rounded-full bg-card transition-transform ${formData.track_inventory ? 'translate-x-6' : 'translate-x-1'
                             }`} />

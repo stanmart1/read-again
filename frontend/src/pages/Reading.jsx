@@ -59,7 +59,7 @@ export default function Reading() {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-gray-900 flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto mb-4"></div>
           <p className="text-white text-lg">Loading book...</p>
@@ -70,12 +70,12 @@ export default function Reading() {
 
   if (error) {
     return (
-      <div className="fixed inset-0 bg-gray-900 flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
         <div className="bg-white rounded-xl p-8 max-w-md mx-4">
           <div className="text-center">
             <i className="ri-error-warning-line text-5xl text-red-500 mb-4"></i>
             <h3 className="text-xl font-bold mb-2">Error Loading Book</h3>
-            <p className="text-gray-600 mb-6">{error}</p>
+            <p className="text-muted-foreground mb-6">{error}</p>
             <button
               onClick={handleClose}
               className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"

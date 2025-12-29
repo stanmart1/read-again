@@ -49,7 +49,7 @@ export default function Books() {
                   placeholder="Search books, authors, or genres..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full px-6 py-4 rounded-full text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+                  className="w-full px-6 py-4 rounded-full text-foreground text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
                 />
                 <button className="absolute right-2 top-2 bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
                   <i className="ri-search-line"></i>
@@ -82,9 +82,9 @@ export default function Books() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <i className="ri-book-line text-6xl text-gray-300 mb-4"></i>
-              <h3 className="text-2xl font-semibold text-gray-700 mb-2">No books found</h3>
-              <p className="text-gray-500">Try adjusting your search or filters</p>
+              <i className="ri-book-line text-6xl text-muted-foreground mb-4"></i>
+              <h3 className="text-2xl font-semibold text-foreground mb-2">No books found</h3>
+              <p className="text-muted-foreground">Try adjusting your search or filters</p>
             </div>
           )}
         </div>

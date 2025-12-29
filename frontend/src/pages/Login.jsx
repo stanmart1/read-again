@@ -51,8 +51,8 @@ export default function Login() {
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           {/* Logo/Brand */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">ReadAgain</h1>
-            <p className="text-gray-600">Welcome back! Please login to your account.</p>
+            <h1 className="text-4xl font-bold text-foreground mb-2">ReadAgain</h1>
+            <p className="text-muted-foreground">Welcome back! Please login to your account.</p>
           </div>
 
           {sessionExpired && (
@@ -71,11 +71,11 @@ export default function Login() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-gray-700 font-semibold mb-2">
+              <label className="block text-foreground font-semibold mb-2">
                 Email Address
               </label>
               <div className="relative">
-                <i className="ri-mail-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <i className="ri-mail-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"></i>
                 <input
                   type="email"
                   value={email}
@@ -88,11 +88,11 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold mb-2">
+              <label className="block text-foreground font-semibold mb-2">
                 Password
               </label>
               <div className="relative">
-                <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <i className="ri-lock-line absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"></i>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={password}
@@ -104,7 +104,7 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                 >
                   <i className={showPassword ? 'ri-eye-off-line' : 'ri-eye-line'}></i>
                 </button>
@@ -114,7 +114,7 @@ export default function Login() {
             <div className="flex items-center justify-between">
               <label className="flex items-center">
                 <input type="checkbox" className="mr-2" />
-                <span className="text-sm text-gray-600">Remember me</span>
+                <span className="text-sm text-muted-foreground">Remember me</span>
               </label>
               <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-primary">
                 Forgot password?
@@ -131,7 +131,7 @@ export default function Login() {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-600">
+            <p className="text-muted-foreground">
               Don't have an account?{' '}
               <Link to="/signup" className="text-blue-600 hover:text-primary font-semibold">
                 Sign up

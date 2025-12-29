@@ -63,10 +63,10 @@ export default function PaymentFailed() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
                 {config.title}
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-muted-foreground mb-8">
                 {config.description}
               </p>
             </motion.div>
@@ -80,8 +80,8 @@ export default function PaymentFailed() {
                 className="mb-12"
               >
                 <div className="max-w-md mx-auto bg-white p-6 rounded-xl shadow-md border-2 border-gray-200">
-                  <p className="text-sm text-gray-600 mb-2">Order Reference</p>
-                  <p className="text-2xl font-bold text-gray-900">{orderId}</p>
+                  <p className="text-sm text-muted-foreground mb-2">Order Reference</p>
+                  <p className="text-2xl font-bold text-foreground">{orderId}</p>
                 </div>
               </motion.div>
             )}
@@ -92,7 +92,7 @@ export default function PaymentFailed() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-6">
+              <h3 className="text-lg font-semibold text-foreground mb-6">
                 What would you like to do?
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -103,7 +103,7 @@ export default function PaymentFailed() {
                     className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all group"
                   >
                     <i className={`${action.icon} text-4xl text-blue-600 group-hover:text-primary transition-colors mb-3`}></i>
-                    <p className="font-semibold text-gray-900">{action.name}</p>
+                    <p className="font-semibold text-foreground">{action.name}</p>
                   </Link>
                 ))}
               </div>
@@ -132,7 +132,7 @@ export default function PaymentFailed() {
               transition={{ delay: 0.6 }}
               className="mt-8"
             >
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Need help? Contact our support team at{' '}
                 <a href="mailto:support@readagain.com" className="text-blue-600 hover:underline font-medium">
                   support@readagain.com

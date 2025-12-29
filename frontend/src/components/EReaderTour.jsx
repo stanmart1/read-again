@@ -197,17 +197,17 @@ export default function EReaderTour({ onComplete }) {
                 <div className="relative">
                     {/* Header */}
                     <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-lg font-semibold text-gray-900">{step.title}</h3>
+                        <h3 className="text-lg font-semibold text-foreground">{step.title}</h3>
                         <button
                             onClick={handleSkip}
-                            className="text-gray-400 hover:text-gray-600 transition-colors"
+                            className="text-muted-foreground hover:text-muted-foreground transition-colors"
                         >
                             <i className="ri-close-line text-xl"></i>
                         </button>
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-600 mb-4">{step.description}</p>
+                    <p className="text-muted-foreground mb-4">{step.description}</p>
 
                     {/* Progress */}
                     <div className="flex items-center gap-1 mb-4">
@@ -218,7 +218,7 @@ export default function EReaderTour({ onComplete }) {
                                     ? 'bg-blue-600'
                                     : index < currentStep
                                         ? 'bg-blue-300'
-                                        : 'bg-gray-200'
+                                        : 'bg-muted'
                                     }`}
                             />
                         ))}
@@ -228,7 +228,7 @@ export default function EReaderTour({ onComplete }) {
                     <div className="flex items-center justify-between">
                         <button
                             onClick={handleSkip}
-                            className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                         >
                             Skip Tour
                         </button>
@@ -236,7 +236,7 @@ export default function EReaderTour({ onComplete }) {
                             {currentStep > 0 && (
                                 <button
                                     onClick={handlePrev}
-                                    className="px-4 py-2 text-sm text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                                    className="px-4 py-2 text-sm text-foreground border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                                 >
                                     Previous
                                 </button>

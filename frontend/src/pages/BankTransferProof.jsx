@@ -81,7 +81,7 @@ export default function BankTransferProof() {
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-16 pt-24 text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <p className="mt-4 text-muted-foreground">Loading...</p>
         </div>
       </div>
     );
@@ -95,7 +95,7 @@ export default function BankTransferProof() {
         <div className="mb-6">
           <button
             onClick={() => navigate('/cart')}
-            className="flex items-center text-gray-600 hover:text-primary transition-colors"
+            className="flex items-center text-muted-foreground hover:text-primary transition-colors"
           >
             <i className="ri-arrow-left-line mr-2"></i>
             Back to Cart
@@ -106,8 +106,8 @@ export default function BankTransferProof() {
           <div className="flex items-center mb-6">
             <i className="ri-bank-line text-blue-600 text-3xl mr-3"></i>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Bank Transfer Payment</h1>
-              <p className="text-gray-600">Order #{orderData?.order_number}</p>
+              <h1 className="text-2xl font-bold text-foreground">Bank Transfer Payment</h1>
+              <p className="text-muted-foreground">Order #{orderData?.order_number}</p>
             </div>
           </div>
 
@@ -123,22 +123,22 @@ export default function BankTransferProof() {
           {/* Bank Account Details */}
           {bankDetails && (
             <div className="bg-blue-50 border border-primary/30 rounded-lg p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Transfer to this account</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Transfer to this account</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Bank Name:</span>
+                  <span className="text-muted-foreground">Bank Name:</span>
                   <span className="font-semibold">{bankDetails.bank_account.bank_name}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Account Number:</span>
+                  <span className="text-muted-foreground">Account Number:</span>
                   <span className="font-semibold text-lg">{bankDetails.bank_account.account_number}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Account Name:</span>
+                  <span className="text-muted-foreground">Account Name:</span>
                   <span className="font-semibold">{bankDetails.bank_account.account_name}</span>
                 </div>
                 <div className="flex justify-between border-t pt-3">
-                  <span className="text-gray-600">Amount to Transfer:</span>
+                  <span className="text-muted-foreground">Amount to Transfer:</span>
                   <span className="font-bold text-xl text-blue-600">₦{bankDetails.amount.toLocaleString()}</span>
                 </div>
               </div>
@@ -155,17 +155,17 @@ export default function BankTransferProof() {
 
           {/* Upload Section */}
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Upload Proof of Payment</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">Upload Proof of Payment</h3>
             
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-foreground mb-2">
                 Select file (JPG, PNG, PDF - Max 5MB)
               </label>
               <input
                 type="file"
                 accept="image/jpeg,image/jpg,image/png,application/pdf"
                 onChange={handleFileChange}
-                className="block w-full text-sm text-gray-500
+                className="block w-full text-sm text-muted-foreground
                   file:mr-4 file:py-2 file:px-4
                   file:rounded-lg file:border-0
                   file:text-sm file:font-semibold
@@ -177,8 +177,8 @@ export default function BankTransferProof() {
             {file && (
               <div className="mb-4 p-3 bg-gray-50 rounded-lg">
                 <div className="flex items-center">
-                  <i className="ri-file-line text-gray-600 mr-2"></i>
-                  <span className="text-sm text-gray-700">{file.name}</span>
+                  <i className="ri-file-line text-muted-foreground mr-2"></i>
+                  <span className="text-sm text-foreground">{file.name}</span>
                   <button
                     onClick={() => setFile(null)}
                     className="ml-auto text-red-600 hover:text-red-800"

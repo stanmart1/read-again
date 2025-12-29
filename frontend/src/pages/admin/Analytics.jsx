@@ -12,7 +12,7 @@ const AdminAnalytics = () => {
           animate={{ opacity: 1, y: 0 }}
           className="card p-12 text-center"
         >
-          <i className="ri-line-chart-line text-6xl text-gray-300 mb-4"></i>
+          <i className="ri-line-chart-line text-6xl text-muted-foreground mb-4"></i>
           <p className="text-muted-foreground text-lg">Analytics dashboard coming soon...</p>
         </motion.div>
       </div>

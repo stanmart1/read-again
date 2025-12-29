@@ -495,7 +495,7 @@ const AdminAbout = () => {
                         ))}
                         <button
                           onClick={() => updateContent('team', [...(content.team || []), { name: '', role: '', bio: '', image: '' }])}
-                          className="border-2 border-dashed border-input rounded-lg p-8 text-muted-foreground hover:border-gray-400 hover:text-muted-foreground transition-colors"
+                          className="border-2 border-dashed border-input rounded-lg p-8 text-muted-foreground hover:border-input hover:text-muted-foreground transition-colors"
                         >
                           <i className="ri-add-line text-2xl mb-2"></i>
                           <div>Add Team Member</div>
