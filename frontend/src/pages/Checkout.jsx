@@ -252,19 +252,14 @@ export default function Checkout() {
 function OrderSummarySidebar({ cartItems }) {
   const { updateQuantity } = useCart();
   
-  const ebooks = cartItems.filter(item => item.book?.format === 'ebook');
-  const physicalBooks = cartItems.filter(item => item.book?.format === 'physical');
-  const isEbookOnly = ebooks.length > 0 && physicalBooks.length === 0;
-  
   const subtotal = cartItems.reduce((sum, item) => {
     const price = parseFloat(item.book?.price || 0);
     const quantity = parseInt(item.quantity || 0);
     return sum + (price * quantity);
   }, 0);
   
-  const shipping = isEbookOnly ? 0 : 0;
   const tax = Math.round(subtotal * 0.075);
-  const total = subtotal + shipping + tax;
+  const total = subtotal + tax;
 
   return (
     <div className="bg-card rounded-lg shadow p-6">
@@ -321,10 +316,6 @@ function OrderSummarySidebar({ cartItems }) {
           <span>₦{subtotal.toLocaleString()}</span>
         </div>
         <div className="flex justify-between">
-          <span>Shipping</span>
-          <span>{isEbookOnly ? 'Free' : 'Select method'}</span>
-        </div>
-        <div className="flex justify-between">
           <span>Tax (7.5%)</span>
           <span>₦{tax.toLocaleString()}</span>
         </div>
@@ -338,7 +329,7 @@ function OrderSummarySidebar({ cartItems }) {
       </div>
       
       <p className="text-sm text-muted-foreground mt-2">
-        {isEbookOnly ? 'Ebook orders ship instantly via email' : 'Physical books ship within 2-3 business days'}
+        Digital delivery - instant access via email
       </p>
     </div>
   );

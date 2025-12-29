@@ -16,19 +16,11 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
   const [formData, setFormData] = useState(() => {
     const saved = sessionStorage.getItem('checkoutFormData');
     return saved ? JSON.parse(saved) : {
-      shipping: {
+      customer: {
         first_name: '',
         last_name: '',
         email: '',
-        phone: '',
-        address: '',
-        city: '',
-        state: '',
-        zip_code: '',
-        country: 'Nigeria'
-      },
-      billing: {
-        sameAsShipping: true
+        phone: ''
       },
       payment: {
         method: 'flutterwave'
@@ -42,45 +34,35 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
     if (currentUser) {
       setFormData(prev => ({
         ...prev,
-        shipping: {
-          ...prev.shipping,
-          first_name: currentUser.first_name || prev.shipping.first_name,
-          last_name: currentUser.last_name || prev.shipping.last_name,
-          email: currentUser.email || prev.shipping.email,
-          phone: currentUser.phone || prev.shipping.phone,
-          address: currentUser.address || prev.shipping.address,
-          city: currentUser.city || prev.shipping.city,
-          state: currentUser.state || prev.shipping.state,
-          zip_code: currentUser.zip_code || prev.shipping.zip_code,
-          country: currentUser.country || prev.shipping.country
+        customer: {
+          ...prev.customer,
+          first_name: currentUser.first_name || prev.customer.first_name,
+          last_name: currentUser.last_name || prev.customer.last_name,
+          email: currentUser.email || prev.customer.email,
+          phone: currentUser.phone || prev.customer.phone
         }
       }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Analyze cart first to determine if ebook-only
+  // Analyze cart for totals
   const analyzeCart = useCallback(() => {
     if (!cartItems || cartItems.length === 0) return null;
-
-    const ebooks = cartItems.filter(item => item.book?.format === 'ebook');
-    const physical = cartItems.filter(item => item.book?.format === 'physical');
-    const isEbookOnly = ebooks.length > 0 && physical.length === 0;
     
     const subtotal = cartItems.reduce((sum, item) => 
       sum + (parseFloat(item.book?.price || 0) * parseInt(item.quantity || 0)), 0
     );
     
-    const shipping = isEbookOnly ? 0 : parseFloat(formData.shipping_method?.base_cost || 0);
     const tax = Math.round(subtotal * 0.075);
-    const total = subtotal + shipping + tax;
+    const total = subtotal + tax;
 
-    return { isEbookOnly, subtotal, shipping, tax, total, totalItems: cartItems.reduce((sum, item) => sum + item.quantity, 0) };
-  }, [cartItems, formData.shipping_method]);
+    return { subtotal, tax, total, totalItems: cartItems.reduce((sum, item) => sum + item.quantity, 0) };
+  }, [cartItems]);
 
   const analytics = analyzeCart();
   
-  const { shippingMethods, paymentGateways, isLoading: isLoadingCheckoutData, error: checkoutDataError } = useCheckout(analytics?.isEbookOnly);
+  const { paymentGateways, isLoading: isLoadingCheckoutData, error: checkoutDataError } = useCheckout();
   
   // Handle checkout data loading errors
   useEffect(() => {
@@ -91,17 +73,10 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
 
   const generateSteps = useCallback(() => {
     if (!analytics) return [];
-    const steps = [
-      { id: 1, title: 'Customer Information', description: 'Contact details', icon: 'ri-user-line' }
+    return [
+      { id: 1, title: 'Customer Information', description: 'Contact details', icon: 'ri-user-line' },
+      { id: 2, title: 'Payment', description: 'Complete purchase', icon: 'ri-bank-card-line' }
     ];
-    if (!analytics.isEbookOnly) {
-      steps.push(
-        { id: 2, title: 'Shipping Address', description: 'Delivery information', icon: 'ri-map-pin-line' },
-        { id: 3, title: 'Shipping Method', description: 'Delivery option', icon: 'ri-truck-line' }
-      );
-    }
-    steps.push({ id: steps.length + 1, title: 'Payment', description: 'Complete purchase', icon: 'ri-bank-card-line' });
-    return steps;
   }, [analytics]);
 
 
@@ -120,13 +95,7 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
   const validateStep = (step) => {
     switch (step) {
       case 1:
-        return !!(formData.shipping.first_name && formData.shipping.last_name && formData.shipping.email);
-      case 2:
-        if (analytics?.isEbookOnly) return true;
-        return !!(formData.shipping.address && formData.shipping.city && formData.shipping.state);
-      case 3:
-        if (analytics?.isEbookOnly) return true;
-        return !!formData.shipping_method;
+        return !!(formData.customer.first_name && formData.customer.last_name && formData.customer.email);
       default:
         return true;
     }
