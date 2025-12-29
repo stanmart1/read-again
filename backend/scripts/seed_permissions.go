@@ -60,10 +60,6 @@ func main() {
 		{Name: "orders.delete", Description: "Delete orders", Category: "orders"},
 		{Name: "orders.manage", Description: "Full order management", Category: "orders"},
 
-		// Shipping
-		{Name: "shipping.view", Description: "View shipping", Category: "shipping"},
-		{Name: "shipping.manage", Description: "Manage shipping", Category: "shipping"},
-
 		// Reading Analytics
 		{Name: "reading.view_analytics", Description: "View reading analytics", Category: "reading"},
 		{Name: "reading.manage", Description: "Manage reading data", Category: "reading"},
