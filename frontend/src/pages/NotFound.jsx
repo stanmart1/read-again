@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Footer } from '../components/public-layout/Footer';
 
 export default function NotFound() {
   const popularPages = [
@@ -62,7 +62,7 @@ export default function NotFound() {
                   <Link
                     key={index}
                     to={page.path}
-                    className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all group"
+                    className="bg-card p-6 rounded-xl shadow-md hover:shadow-xl transition-all group border border-border"
                   >
                     <i className={`${page.icon} text-4xl text-primary group-hover:text-primary transition-colors mb-3`}></i>
                     <p className="font-semibold text-foreground">{page.name}</p>
