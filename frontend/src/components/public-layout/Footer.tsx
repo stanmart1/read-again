@@ -72,7 +72,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-8 pt-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2024 ReadAgain. All rights reserved.
+            © 2025 ReadAgain. All rights reserved.
           </p>
           <div className="flex items-center gap-3">
             {socialLinks.map((social, index) => (

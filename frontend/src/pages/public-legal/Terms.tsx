@@ -15,7 +15,7 @@ const Terms = () => {
               Terms of Service
             </h1>
             <p className="text-xl md:text-2xl text-background/80">
-              Last updated: December 29, 2024
+              Last updated: December 29, 2025
             </p>
           </div>
         </div>

@@ -13,7 +13,7 @@ const BlogDetails = () => {
   const blogPosts = {
     "future-of-digital-reading": {
       title: "The Future of Digital Reading",
-      date: "Dec 10, 2024",
+      date: "Dec 10, 2025",
       category: "Technology",
       readTime: "5 min read",
       content: `
@@ -36,7 +36,7 @@ const BlogDetails = () => {
     },
     "building-better-reading-habits": {
       title: "Building Better Reading Habits",
-      date: "Dec 8, 2024",
+      date: "Dec 8, 2025",
       category: "Education",
       readTime: "3 min read",
       content: `

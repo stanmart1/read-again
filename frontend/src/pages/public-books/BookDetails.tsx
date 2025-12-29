@@ -24,7 +24,7 @@ const allBooks = [
     pages: 324,
     language: "English",
     publisher: "ReadAgain Publishing",
-    publishDate: "2024",
+    publishDate: "2025",
     isbn: "978-0-123456-78-9"
   },
   { 
@@ -41,7 +41,7 @@ const allBooks = [
     pages: 298,
     language: "English",
     publisher: "ReadAgain Publishing",
-    publishDate: "2024",
+    publishDate: "2025",
     isbn: "978-0-123456-79-0"
   },
   { 
@@ -58,7 +58,7 @@ const allBooks = [
     pages: 356,
     language: "English",
     publisher: "ReadAgain Publishing",
-    publishDate: "2024",
+    publishDate: "2025",
     isbn: "978-0-123456-80-6"
   },
   { 
@@ -75,7 +75,7 @@ const allBooks = [
     pages: 412,
     language: "English",
     publisher: "ReadAgain Publishing",
-    publishDate: "2024",
+    publishDate: "2025",
     isbn: "978-0-123456-81-3"
   }
 ];
