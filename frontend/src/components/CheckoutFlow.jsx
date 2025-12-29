@@ -171,7 +171,7 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
       <div className="text-center">
         <h1 className="text-3xl font-bold text-foreground mb-2">Checkout</h1>
         <p className="text-muted-foreground">
-          {analytics.isEbookOnly ? 'Complete your digital purchase' : 'Complete your order'}
+          Complete your digital purchase
         </p>
       </div>
 
@@ -301,8 +301,8 @@ function CustomerInformationStep({ formData, updateFormData }) {
             type="text"
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
-            value={formData.shipping.first_name}
-            onChange={(e) => updateFormData('shipping', { first_name: e.target.value })}
+            value={formData.customer.first_name}
+            onChange={(e) => updateFormData('customer', { first_name: e.target.value })}
           />
         </div>
         
@@ -312,8 +312,8 @@ function CustomerInformationStep({ formData, updateFormData }) {
             type="text"
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
-            value={formData.shipping.last_name}
-            onChange={(e) => updateFormData('shipping', { last_name: e.target.value })}
+            value={formData.customer.last_name}
+            onChange={(e) => updateFormData('customer', { last_name: e.target.value })}
           />
         </div>
       </div>
@@ -327,8 +327,8 @@ function CustomerInformationStep({ formData, updateFormData }) {
             inputMode="email"
             required
             className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
-            value={formData.shipping.email}
-            onChange={(e) => updateFormData('shipping', { email: e.target.value })}
+            value={formData.customer.email}
+            onChange={(e) => updateFormData('customer', { email: e.target.value })}
           />
         </div>
       </div>
@@ -341,8 +341,8 @@ function CustomerInformationStep({ formData, updateFormData }) {
             type="text"
             inputMode="tel"
             className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
-            value={formData.shipping.phone}
-            onChange={(e) => updateFormData('shipping', { phone: e.target.value })}
+            value={formData.customer.phone}
+            onChange={(e) => updateFormData('customer', { phone: e.target.value })}
             placeholder="+234 801 234 5678"
           />
         </div>
@@ -351,163 +351,6 @@ function CustomerInformationStep({ formData, updateFormData }) {
   );
 }
 
-function ShippingAddressStep({ formData, updateFormData }) {
-  return (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-foreground mb-4">Shipping Address</h3>
-      
-      <div>
-        <label className="block text-sm font-medium text-foreground mb-2">Street Address *</label>
-        <div className="relative">
-          <i className="ri-home-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
-          <input
-            type="text"
-            required
-            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
-            value={formData.shipping.address}
-            onChange={(e) => updateFormData('shipping', { address: e.target.value })}
-            placeholder="123 Main Street, Apartment 4B"
-          />
-        </div>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-2">City *</label>
-          <div className="relative">
-            <i className="ri-building-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground pointer-events-none"></i>
-            <input
-              type="text"
-              required
-              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
-              value={formData.shipping.city}
-              onChange={(e) => updateFormData('shipping', { city: e.target.value })}
-              placeholder="Lagos"
-            />
-          </div>
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-2">State *</label>
-          <input
-            type="text"
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
-            value={formData.shipping.state}
-            onChange={(e) => updateFormData('shipping', { state: e.target.value })}
-          />
-        </div>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-2">ZIP/Postal Code</label>
-          <input
-            type="text"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
-            value={formData.shipping.zip_code}
-            onChange={(e) => updateFormData('shipping', { zip_code: e.target.value })}
-            placeholder="Optional"
-          />
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-2">Country *</label>
-          <input
-            type="text"
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
-            value={formData.shipping.country}
-            onChange={(e) => updateFormData('shipping', { country: e.target.value })}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ShippingMethodStep({ formData, updateFormData, shippingMethods, analytics, isLoading }) {
-  const activeShippingMethods = shippingMethods?.filter(method => method.is_active !== false) || [];
-  
-  if (isLoading) {
-    return (
-      <div className="space-y-6">
-        <h3 className="text-lg font-semibold text-foreground mb-4">Choose Shipping Method</h3>
-        <div className="flex items-center justify-center p-8">
-          <i className="ri-loader-4-line animate-spin text-blue-600 text-2xl mr-2"></i>
-          <span className="text-muted-foreground">Loading shipping methods...</span>
-        </div>
-      </div>
-    );
-  }
-  
-  return (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-foreground mb-4">Choose Shipping Method</h3>
-      
-      {!formData.shipping_method && (
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
-          <div className="flex items-center">
-            <i className="ri-information-line text-yellow-600 mr-2"></i>
-            <span className="text-sm text-yellow-800">Please select a shipping method to continue</span>
-          </div>
-        </div>
-      )}
-      
-      {activeShippingMethods.length === 0 ? (
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
-          <i className="ri-truck-line text-muted-foreground text-4xl mb-2"></i>
-          <p className="text-muted-foreground">No shipping methods available at the moment.</p>
-          <p className="text-sm text-muted-foreground mt-1">Please contact support for assistance.</p>
-        </div>
-      ) : (
-        <div className="space-y-3">
-          {activeShippingMethods.map((method) => (
-            <div
-              key={method.id}
-              className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
-                formData.shipping_method?.id === method.id 
-                  ? 'border-primary bg-blue-50 shadow-md' 
-                  : 'border-gray-200 hover:border-primary/50 hover:shadow-sm'
-              }`}
-              onClick={() => updateFormData('shipping_method', method)}
-            >
-              <div className="flex justify-between items-start">
-                <div className="flex items-start space-x-3">
-                  <div className={`mt-1 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                    formData.shipping_method?.id === method.id
-                      ? 'border-primary bg-blue-500'
-                      : 'border-gray-300'
-                  }`}>
-                    {formData.shipping_method?.id === method.id && (
-                      <i className="ri-check-line text-white text-xs"></i>
-                    )}
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-foreground">{method.name}</h4>
-                    <p className="text-sm text-muted-foreground">{method.description || 'Standard delivery service'}</p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      <i className="ri-time-line mr-1"></i>
-                      Delivery: {method.estimated_days_min}-{method.estimated_days_max} business days
-                    </p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <p className="font-semibold text-lg text-foreground">₦{method.base_cost.toLocaleString()}</p>
-                  {method.free_shipping_threshold && (
-                    <p className="text-xs text-green-600 mt-1">
-                      Free over ₦{method.free_shipping_threshold.toLocaleString()}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 function PaymentStep({ formData, updateFormData, paymentGateways, analytics }) {
   return (
@@ -522,12 +365,6 @@ function PaymentStep({ formData, updateFormData, paymentGateways, analytics }) {
             <span>Subtotal ({analytics.totalItems} items)</span>
             <span>₦{analytics.subtotal.toLocaleString()}</span>
           </div>
-          {!analytics.isEbookOnly && (
-            <div className="flex justify-between">
-              <span>Shipping</span>
-              <span>₦{analytics.shipping.toLocaleString()}</span>
-            </div>
-          )}
           <div className="flex justify-between">
             <span>Tax (7.5%)</span>
             <span>₦{analytics.tax.toLocaleString()}</span>
@@ -538,22 +375,13 @@ function PaymentStep({ formData, updateFormData, paymentGateways, analytics }) {
           </div>
         </div>
         
-        {/* Format Breakdown */}
+        {/* Digital Delivery Info */}
         <div className="mt-4 pt-3 border-t border-gray-200">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>Order Type:</span>
+            <span>Delivery:</span>
             <div className="flex items-center space-x-2">
-              {analytics.isEbookOnly ? (
-                <>
-                  <i className="ri-download-line text-green-600"></i>
-                  <span className="text-green-700 font-medium">Digital Only</span>
-                </>
-              ) : (
-                <>
-                  <i className="ri-truck-line text-blue-600"></i>
-                  <span className="text-blue-700 font-medium">Physical Delivery</span>
-                </>
-              )}
+              <i className="ri-download-line text-green-600"></i>
+              <span className="text-green-700 font-medium">Instant Digital Delivery</span>
             </div>
           </div>
         </div>
