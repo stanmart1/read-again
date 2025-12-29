@@ -160,20 +160,9 @@ export default function Library() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  {/* Format Badge */}
-                  <div className="absolute top-3 right-3">
-                    <span className={`px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm shadow-lg ${
-                      book.format === 'ebook' 
-                        ? 'bg-gradient-to-r from-primary to-primary text-white' 
-                        : 'bg-gradient-to-r from-amber-600 to-orange-600 text-white'
-                    }`}>
-                      {book.format === 'ebook' ? 'Digital' : 'Physical'}
-                    </span>
-                  </div>
 
                   {/* Progress Bar */}
-                  {book.progress > 0 && book.format === 'ebook' && (
+                  {book.progress > 0 && (
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
                       <div className="flex items-center space-x-2">
                         <div className="flex-1 bg-card/20 rounded-full h-1.5">

@@ -342,9 +342,6 @@ export default function FeaturedBooks() {
                           </span>
                         )}
                       </div>
-                      <span className="text-xs text-muted-foreground bg-gray-100 px-2 py-1 rounded">
-                        {book.format || 'eBook'}
-                      </span>
                     </div>
                   </div>
                   </motion.div>
@@ -458,9 +455,6 @@ export default function FeaturedBooks() {
                             </span>
                           )}
                         </div>
-                        <span className="text-xs text-muted-foreground bg-gray-100 px-2 py-1 rounded">
-                          {book.format || 'eBook'}
-                        </span>
                       </div>
 
                       {/* Action Buttons */}

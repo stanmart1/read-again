@@ -39,8 +39,8 @@ export default function Reading() {
         readerFormat = 'epub';
       } else if (fileExt === 'html' || fileExt === 'htm') {
         readerFormat = 'html';
-      } else if (libraryItem.format === 'ebook') {
-        // If no file extension but format is ebook, default to epub
+      } else {
+        // Default to epub for ebooks
         readerFormat = 'epub';
       }
       
