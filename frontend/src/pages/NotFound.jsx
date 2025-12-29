@@ -25,11 +25,11 @@ export default function NotFound() {
             {/* 404 Illustration */}
             <div className="mb-8">
               <div className="inline-block relative">
-                <div className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                <div className="text-9xl font-bold text-primary">
                   404
                 </div>
                 <div className="absolute -top-4 -right-4">
-                  <i className="ri-emotion-sad-line text-6xl text-blue-600"></i>
+                  <i className="ri-emotion-sad-line text-6xl text-primary"></i>
                 </div>
               </div>
             </div>

@@ -26,7 +26,7 @@ const PublicFAQ = lazy(() => import('./pages/public-faq/FAQ'));
 const PublicLogin = lazy(() => import('./pages/public-auth/Login'));
 const PublicSignup = lazy(() => import('./pages/public-auth/Signup'));
 const PublicResetPassword = lazy(() => import('./pages/public-auth/ResetPassword'));
-const PublicNotFound = lazy(() => import('./pages/public-common/NotFound'));
+const PublicNotFound = lazy(() => import('./pages/NotFound'));
 const Privacy = lazy(() => import('./pages/public-legal/Privacy'));
 const Terms = lazy(() => import('./pages/public-legal/Terms'));
 
