@@ -123,12 +123,12 @@ const CategoriesManagement = () => {
   return (
     <div className="p-6">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Categories Management</h2>
-        <p className="text-gray-600 mt-1">Organize your books with categories</p>
+        <h2 className="text-2xl font-bold text-foreground">Categories Management</h2>
+        <p className="text-muted-foreground mt-1">Organize your books with categories</p>
       </div>
 
       {/* Filters and Actions */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6">
+      <div className="bg-card rounded-lg border border-border p-4 mb-6">
         <div className="flex flex-col sm:flex-row gap-4 mb-4">
           <div className="flex-1">
             <input
@@ -136,13 +136,13 @@ const CategoriesManagement = () => {
               placeholder="Search categories..."
               value={filters.search}
               onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <select
             value={filters.status}
             onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="">All Status</option>
             <option value="active">Active</option>
@@ -152,7 +152,7 @@ const CategoriesManagement = () => {
         <div className="flex justify-end">
           <button
             onClick={() => setShowModal(true)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+            className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2"
           >
             <i className="ri-add-line"></i>
             Add Category
@@ -164,7 +164,7 @@ const CategoriesManagement = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {loading ? (
           Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="bg-white p-6 rounded-lg border border-gray-200 animate-pulse">
+            <div key={i} className="bg-card p-6 rounded-lg border border-border animate-pulse">
               <div className="h-6 bg-gray-200 rounded mb-2"></div>
               <div className="h-4 bg-gray-200 rounded mb-4"></div>
               <div className="flex justify-between items-center">
@@ -176,8 +176,8 @@ const CategoriesManagement = () => {
         ) : filteredCategories.length === 0 ? (
           <div className="col-span-full text-center py-12">
             <i className="ri-folder-line text-4xl text-gray-400 mb-4 block"></i>
-            <h3 className="text-lg font-medium text-gray-900">No categories found</h3>
-            <p className="text-gray-500 mt-1">
+            <h3 className="text-lg font-medium text-foreground">No categories found</h3>
+            <p className="text-muted-foreground mt-1">
               {filters.search || filters.status 
                 ? 'Try adjusting your filters' 
                 : 'Create your first category to organize books'}
@@ -185,7 +185,7 @@ const CategoriesManagement = () => {
             {!filters.search && !filters.status && (
               <button
                 onClick={() => setShowModal(true)}
-                className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="mt-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
               >
                 Add Category
               </button>
@@ -193,11 +193,11 @@ const CategoriesManagement = () => {
           </div>
         ) : (
           filteredCategories.map((category) => (
-            <div key={category.id} className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+            <div key={category.id} className="bg-card p-6 rounded-lg border border-border hover:shadow-md transition-shadow">
               <div className="flex justify-between items-start mb-4">
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">{category.name}</h3>
-                  <p className="text-sm text-gray-600 line-clamp-2">{category.description}</p>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">{category.name}</h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2">{category.description}</p>
                 </div>
                 <div className="flex items-center gap-2 ml-4">
                   <button
@@ -206,7 +206,7 @@ const CategoriesManagement = () => {
                     className={`p-1 rounded transition-opacity ${
                       category.status === 'active'
                         ? 'text-green-600 hover:bg-green-50' 
-                        : 'text-gray-400 hover:bg-gray-50'
+                        : 'text-gray-400 hover:bg-muted'
                     } ${isTogglingStatus ? 'opacity-50 cursor-not-allowed' : ''}`}
                     title={category.status === 'active' ? 'Deactivate' : 'Activate'}
                   >
@@ -218,7 +218,7 @@ const CategoriesManagement = () => {
                   </button>
                   <button
                     onClick={() => handleEdit(category)}
-                    className="p-1 text-blue-600 hover:bg-blue-50 rounded"
+                    className="p-1 text-primary hover:bg-primary/10 rounded"
                     title="Edit"
                   >
                     <i className="ri-edit-line"></i>
@@ -240,19 +240,19 @@ const CategoriesManagement = () => {
               
               <div className="flex justify-between items-center text-sm">
                 <div className="flex items-center gap-4">
-                  <span className="text-gray-600">
+                  <span className="text-muted-foreground">
                     <i className="ri-book-line mr-1"></i>
                     {category.book_count || 0} books
                   </span>
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                     category.status === 'active' 
                       ? 'bg-green-100 text-green-800' 
-                      : 'bg-gray-100 text-gray-800'
+                      : 'bg-muted text-gray-800'
                   }`}>
                     {category.status === 'active' ? 'Active' : 'Inactive'}
                   </span>
                 </div>
-                <span className="text-gray-500">
+                <span className="text-muted-foreground">
                   {category.created_at ? new Date(category.created_at).toLocaleDateString() : 'N/A'}
                 </span>
               </div>
@@ -264,15 +264,15 @@ const CategoriesManagement = () => {
       {/* Add/Edit Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full">
+          <div className="bg-card rounded-xl shadow-2xl max-w-md w-full">
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-bold text-gray-900">
+                <h3 className="text-xl font-bold text-foreground">
                   {editingCategory ? 'Edit Category' : 'Add Category'}
                 </h3>
                 <button
                   onClick={handleModalClose}
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-gray-400 hover:text-muted-foreground"
                 >
                   <i className="ri-close-line text-2xl"></i>
                 </button>
@@ -280,27 +280,27 @@ const CategoriesManagement = () => {
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Name *
                   </label>
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Description
                   </label>
                   <textarea
                     value={formData.description}
                     onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
 
@@ -309,23 +309,23 @@ const CategoriesManagement = () => {
                     type="checkbox"
                     checked={formData.status === 'active'}
                     onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.checked ? 'active' : 'inactive' }))}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
                   />
-                  <label className="ml-2 text-sm text-gray-700">Active</label>
+                  <label className="ml-2 text-sm text-foreground">Active</label>
                 </div>
 
                 <div className="flex gap-3 pt-4">
                   <button
                     type="button"
                     onClick={handleModalClose}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex-1 px-4 py-2 border border-input rounded-lg hover:bg-muted transition-colors"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSaving}
-                    className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSaving && <i className="ri-loader-4-line animate-spin"></i>}
                     {isSaving ? 'Saving...' : (editingCategory ? 'Update' : 'Create')}

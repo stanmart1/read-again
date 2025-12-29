@@ -22,7 +22,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
       {/* Books - Mobile Cards */}
       <div className="xl:hidden space-y-4">
         {books.map((book) => (
-          <div key={book.id} className="bg-white rounded-lg shadow-md p-4 space-y-3">
+          <div key={book.id} className="bg-card rounded-lg shadow-md p-4 space-y-3">
             {/* Book Header */}
             <div className="flex items-start justify-between">
               <div className="flex items-center space-x-3">
@@ -30,9 +30,9 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                   type="checkbox"
                   checked={selectedBooks.includes(book.id)}
                   onChange={(e) => handleSelectBook(book.id, e.target.checked)}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
                 />
-                <div className="w-12 h-16 bg-gray-100 rounded overflow-hidden relative flex-shrink-0">
+                <div className="w-12 h-16 bg-muted rounded overflow-hidden relative flex-shrink-0">
                   <img
                     src={getImageUrl(book.cover_image_url || book.cover_image)}
                     alt={book.title}
@@ -45,10 +45,10 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm font-semibold text-gray-900 break-words">
+                  <div className="text-sm font-semibold text-foreground break-words">
                     {book.title}
                   </div>
-                  <div className="text-sm text-gray-500 break-words">by {book.author_name}</div>
+                  <div className="text-sm text-muted-foreground break-words">by {book.author_name}</div>
                 </div>
               </div>
               <div className="flex flex-col items-end space-y-1 ml-2">
@@ -58,7 +58,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full text-white ${
                   book.status === 'published' ? 'bg-green-500' :
                   book.status === 'draft' ? 'bg-yellow-500' :
-                  'bg-gray-500'
+                  'bg-muted0'
                 }`}>
                   {book.status}
                 </span>
@@ -68,14 +68,14 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
             {/* Book Details */}
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-gray-500">Category:</span>
-                <span className="ml-1 font-medium text-gray-900 break-words">
+                <span className="text-muted-foreground">Category:</span>
+                <span className="ml-1 font-medium text-foreground break-words">
                   {book.category_name}
                 </span>
               </div>
               <div>
-                <span className="text-gray-500">Format:</span>
-                <span className="ml-1 font-medium text-gray-900 break-words">
+                <span className="text-muted-foreground">Format:</span>
+                <span className="ml-1 font-medium text-foreground break-words">
                   {book.format === 'ebook' ? 'Ebook' : 
                    book.format === 'physical' ? 'Physical' :
                    book.format === 'hybrid' ? 'Hybrid' :
@@ -83,14 +83,14 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                 </span>
               </div>
               <div>
-                <span className="text-gray-500">Stock:</span>
-                <span className="ml-1 font-medium text-gray-900">
+                <span className="text-muted-foreground">Stock:</span>
+                <span className="ml-1 font-medium text-foreground">
                   {book.stock_quantity}
                 </span>
               </div>
               <div>
-                <span className="text-gray-500">Created:</span>
-                <span className="ml-1 font-medium text-gray-900">
+                <span className="text-muted-foreground">Created:</span>
+                <span className="ml-1 font-medium text-foreground">
                   {new Date(book.created_at).toLocaleDateString()}
                 </span>
               </div>
@@ -100,7 +100,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
             <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-100">
               <button
                 onClick={() => onBookAction('view', book)}
-                className="text-blue-600 hover:text-blue-800 flex items-center text-sm whitespace-nowrap"
+                className="text-primary hover:text-blue-800 flex items-center text-sm whitespace-nowrap"
               >
                 <i className="ri-eye-line mr-1"></i>
                 View
@@ -151,54 +151,54 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
       </div>
 
       {/* Books - Desktop Table */}
-      <div className="hidden xl:block bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="hidden xl:block bg-card rounded-lg shadow-md overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-muted">
               <tr>
                 <th className="px-4 py-3 text-left">
                   <input
                     type="checkbox"
                     checked={selectedBooks.length === books.length && books.length > 0}
                     onChange={(e) => handleSelectAll(e.target.checked)}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded cursor-pointer"
+                    className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded cursor-pointer"
                   />
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   Book
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   Author
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   Price
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
 
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-card divide-y divide-gray-200">
               {books.map((book) => (
-                <tr key={book.id} className="hover:bg-gray-50 transition-colors duration-200">
+                <tr key={book.id} className="hover:bg-muted transition-colors duration-200">
                   <td className="px-4 py-4">
                     <input
                       type="checkbox"
                       checked={selectedBooks.includes(book.id)}
                       onChange={(e) => handleSelectBook(book.id, e.target.checked)}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded cursor-pointer"
+                      className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded cursor-pointer"
                     />
                   </td>
                   <td className="px-4 py-4">
                     <div className="flex items-center">
-                      <div className="w-10 h-14 bg-gray-100 rounded overflow-hidden relative flex-shrink-0">
+                      <div className="w-10 h-14 bg-muted rounded overflow-hidden relative flex-shrink-0">
                         <img
                           src={getImageUrl(book.cover_image_url || book.cover_image)}
                           alt={book.title}
@@ -211,10 +211,10 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                         )}
                       </div>
                       <div className="ml-4 flex-1 min-w-0">
-                        <div className="text-sm font-medium text-gray-900 break-words">
+                        <div className="text-sm font-medium text-foreground break-words">
                           {book.title}
                         </div>
-                        <div className="text-sm text-gray-500 break-words">
+                        <div className="text-sm text-muted-foreground break-words">
                           {book.format === 'ebook' ? 'Ebook' : 
                            book.format === 'physical' ? 'Physical' :
                            book.format === 'hybrid' ? 'Hybrid' :
@@ -224,12 +224,12 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                     </div>
                   </td>
                   <td className="px-4 py-4">
-                    <div className="text-sm text-gray-900 break-words">
+                    <div className="text-sm text-foreground break-words">
                       {book.author_name}
                     </div>
                   </td>
                   <td className="px-4 py-4">
-                    <div className="text-sm text-gray-500 break-words">
+                    <div className="text-sm text-muted-foreground break-words">
                       {book.category_name}
                     </div>
                   </td>
@@ -242,7 +242,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                     <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full text-white ${
                       book.status === 'published' ? 'bg-green-500' :
                       book.status === 'draft' ? 'bg-yellow-500' :
-                      'bg-gray-500'
+                      'bg-muted0'
                     }`}>
                       {book.status}
                     </span>
@@ -251,7 +251,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                     <div className="flex flex-wrap items-center gap-2">
                       <button
                         onClick={() => onBookAction('view', book)}
-                        className="text-blue-600 hover:text-blue-800 cursor-pointer transition-colors duration-200"
+                        className="text-primary hover:text-blue-800 cursor-pointer transition-colors duration-200"
                         title="View Book"
                       >
                         <i className="ri-eye-line"></i>

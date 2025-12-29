@@ -7,8 +7,8 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
     switch (role) {
       case 'admin': return 'bg-purple-500';
       case 'super_admin': return 'bg-red-500';
-      case 'user': return 'bg-blue-500';
-      default: return 'bg-gray-500';
+      case 'user': return 'bg-primary/100';
+      default: return 'bg-muted0';
     }
   };
 
@@ -17,11 +17,11 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white rounded-lg shadow-xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto"
+        className="bg-card rounded-lg shadow-xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto"
       >
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-2xl font-bold text-gray-900">User Details</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <h3 className="text-2xl font-bold text-foreground">User Details</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-muted-foreground">
             <i className="ri-close-line text-2xl"></i>
           </button>
         </div>
@@ -33,15 +33,15 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h4 className="text-xl font-bold text-gray-900">{user.first_name} {user.last_name}</h4>
+              <h4 className="text-xl font-bold text-foreground">{user.first_name} {user.last_name}</h4>
               {user.school_name && (
-                <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded" title="Student">
+                <span className="inline-flex items-center px-2 py-1 bg-primary/20 text-primary text-xs font-semibold rounded" title="Student">
                   <i className="ri-graduation-cap-line mr-1"></i>
                   Student
                 </span>
               )}
             </div>
-            <p className="text-gray-600">@{user.username}</p>
+            <p className="text-muted-foreground">@{user.username}</p>
             <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full text-white mt-2 ${getRoleColor(user.role?.name)}`}>
               {user.role?.display_name || 'No Role'}
             </span>
@@ -52,63 +52,63 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
         <div className="space-y-6">
           {/* Contact Information */}
           <div>
-            <h5 className="text-lg font-semibold text-gray-900 mb-3">Contact Information</h5>
+            <h5 className="text-lg font-semibold text-foreground mb-3">Contact Information</h5>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Email</p>
-                <p className="font-medium text-gray-900">{user.email}</p>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Email</p>
+                <p className="font-medium text-foreground">{user.email}</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Username</p>
-                <p className="font-medium text-gray-900">{user.username}</p>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Username</p>
+                <p className="font-medium text-foreground">{user.username}</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Phone Number</p>
-                <p className="font-medium text-gray-900">{user.phone_number || 'N/A'}</p>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Phone Number</p>
+                <p className="font-medium text-foreground">{user.phone_number || 'N/A'}</p>
               </div>
             </div>
           </div>
 
           {/* Educational Information */}
           <div>
-            <h5 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
+            <h5 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
               <i className="ri-graduation-cap-line"></i>
               Educational Information
             </h5>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">School Name</p>
-                <p className="font-medium text-gray-900">{user.school_name || 'N/A'}</p>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">School Name</p>
+                <p className="font-medium text-foreground">{user.school_name || 'N/A'}</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">School Category</p>
-                <p className="font-medium text-gray-900">{user.school_category || 'N/A'}</p>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">School Category</p>
+                <p className="font-medium text-foreground">{user.school_category || 'N/A'}</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Class Level</p>
-                <p className="font-medium text-gray-900">{user.class_level || 'N/A'}</p>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Class Level</p>
+                <p className="font-medium text-foreground">{user.class_level || 'N/A'}</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Department</p>
-                <p className="font-medium text-gray-900">{user.department || 'N/A'}</p>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Department</p>
+                <p className="font-medium text-foreground">{user.department || 'N/A'}</p>
               </div>
             </div>
           </div>
 
           {/* Account Status */}
           <div>
-            <h5 className="text-lg font-semibold text-gray-900 mb-3">Account Status</h5>
+            <h5 className="text-lg font-semibold text-foreground mb-3">Account Status</h5>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Status</p>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Status</p>
                 <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full ${
                   user.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
                 }`}>
                   {user.status || 'Active'}
                 </span>
               </div>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Email Verified</p>
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Email Verified</p>
                 <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full ${
                   user.email_verified ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
                 }`}>
@@ -120,11 +120,11 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
 
           {/* Activity */}
           <div>
-            <h5 className="text-lg font-semibold text-gray-900 mb-3">Activity</h5>
+            <h5 className="text-lg font-semibold text-foreground mb-3">Activity</h5>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Joined</p>
-                <p className="font-medium text-gray-900">
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Joined</p>
+                <p className="font-medium text-foreground">
                   {new Date(user.created_at).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -132,9 +132,9 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
                   })}
                 </p>
               </div>
-              <div className="p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600 mb-1">Last Login</p>
-                <p className="font-medium text-gray-900">
+              <div className="p-4 bg-muted rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Last Login</p>
+                <p className="font-medium text-foreground">
                   {user.last_login ? new Date(user.last_login).toLocaleDateString() : 'Never'}
                 </p>
               </div>
@@ -143,27 +143,27 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
 
           {/* Statistics */}
           <div>
-            <h5 className="text-lg font-semibold text-gray-900 mb-3">Statistics</h5>
+            <h5 className="text-lg font-semibold text-foreground mb-3">Statistics</h5>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="p-4 bg-blue-50 rounded-lg text-center">
-                <i className="ri-book-line text-3xl text-blue-600 mb-2"></i>
-                <p className="text-2xl font-bold text-gray-900">{user.books_count || 0}</p>
-                <p className="text-sm text-gray-600">Books</p>
+              <div className="p-4 bg-primary/10 rounded-lg text-center">
+                <i className="ri-book-line text-3xl text-primary mb-2"></i>
+                <p className="text-2xl font-bold text-foreground">{user.books_count || 0}</p>
+                <p className="text-sm text-muted-foreground">Books</p>
               </div>
               <div className="p-4 bg-green-50 rounded-lg text-center">
                 <i className="ri-shopping-cart-line text-3xl text-green-600 mb-2"></i>
-                <p className="text-2xl font-bold text-gray-900">{user.orders_count || 0}</p>
-                <p className="text-sm text-gray-600">Orders</p>
+                <p className="text-2xl font-bold text-foreground">{user.orders_count || 0}</p>
+                <p className="text-sm text-muted-foreground">Orders</p>
               </div>
               <div className="p-4 bg-purple-50 rounded-lg text-center">
                 <i className="ri-star-line text-3xl text-purple-600 mb-2"></i>
-                <p className="text-2xl font-bold text-gray-900">{user.reviews_count || 0}</p>
-                <p className="text-sm text-gray-600">Reviews</p>
+                <p className="text-2xl font-bold text-foreground">{user.reviews_count || 0}</p>
+                <p className="text-sm text-muted-foreground">Reviews</p>
               </div>
               <div className="p-4 bg-yellow-50 rounded-lg text-center">
                 <i className="ri-time-line text-3xl text-yellow-600 mb-2"></i>
-                <p className="text-2xl font-bold text-gray-900">{user.reading_hours || 0}h</p>
-                <p className="text-sm text-gray-600">Reading</p>
+                <p className="text-2xl font-bold text-foreground">{user.reading_hours || 0}h</p>
+                <p className="text-sm text-muted-foreground">Reading</p>
               </div>
             </div>
           </div>

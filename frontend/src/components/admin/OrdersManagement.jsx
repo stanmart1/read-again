@@ -164,25 +164,25 @@ const OrdersManagement = () => {
   const getStatusColor = (status) => {
     const colors = {
       pending: 'bg-yellow-100 text-yellow-800',
-      confirmed: 'bg-blue-100 text-blue-800',
+      confirmed: 'bg-primary/20 text-blue-800',
       processing: 'bg-purple-100 text-purple-800',
       shipped: 'bg-indigo-100 text-indigo-800',
       delivered: 'bg-green-100 text-green-800',
       cancelled: 'bg-red-100 text-red-800',
-      refunded: 'bg-gray-100 text-gray-800'
+      refunded: 'bg-muted text-gray-800'
     };
-    return colors[status?.toLowerCase()] || 'bg-gray-100 text-gray-800';
+    return colors[status?.toLowerCase()] || 'bg-muted text-gray-800';
   };
 
   const getPaymentStatusColor = (status) => {
     const colors = {
       pending: 'bg-yellow-100 text-yellow-800',
       completed: 'bg-green-100 text-green-800',
-      awaiting_approval: 'bg-blue-100 text-blue-800',
+      awaiting_approval: 'bg-primary/20 text-blue-800',
       failed: 'bg-red-100 text-red-800',
-      refunded: 'bg-gray-100 text-gray-800'
+      refunded: 'bg-muted text-gray-800'
     };
-    return colors[status?.toLowerCase()] || 'bg-gray-100 text-gray-800';
+    return colors[status?.toLowerCase()] || 'bg-muted text-gray-800';
   };
 
   const formatCurrency = (amount) => {
@@ -232,11 +232,11 @@ const OrdersManagement = () => {
 
   if (loading && orders.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="min-h-screen bg-muted">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-6">
           <div className="text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-2 text-gray-600">Loading orders...</p>
+            <p className="mt-2 text-muted-foreground">Loading orders...</p>
           </div>
         </div>
       </div>
@@ -284,21 +284,21 @@ const OrdersManagement = () => {
       )}
 
       {/* Header */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="bg-card rounded-lg shadow-sm border border-border p-4 sm:p-6">
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Order Management</h1>
-            <p className="text-sm sm:text-base text-gray-600 mt-1">Manage and process customer orders</p>
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">Order Management</h1>
+            <p className="text-sm sm:text-base text-muted-foreground mt-1">Manage and process customer orders</p>
           </div>
           <div className="flex items-center space-x-4">
             <div className="text-center sm:text-right">
-              <p className="text-sm text-gray-600">Total Orders</p>
-              <p className="text-xl sm:text-2xl font-bold text-gray-900">{totalItems}</p>
+              <p className="text-sm text-muted-foreground">Total Orders</p>
+              <p className="text-xl sm:text-2xl font-bold text-foreground">{totalItems}</p>
             </div>
             <button
               onClick={loadOrders}
               disabled={refreshing}
-              className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+              className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
               title="Refresh orders"
             >
               {refreshing ? (
@@ -314,7 +314,7 @@ const OrdersManagement = () => {
 
       {/* Batch Actions */}
       {selectedOrders.size > 0 && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <div className="bg-primary/10 border border-blue-200 rounded-lg p-4">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-blue-900">
               {selectedOrders.size} order{selectedOrders.size > 1 ? 's' : ''} selected
@@ -348,12 +348,12 @@ const OrdersManagement = () => {
       {/* Mobile Cards */}
       <div className="xl:hidden space-y-4">
         {orders.length === 0 && !loading ? (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-8 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-muted rounded-full flex items-center justify-center">
               <i className="ri-shopping-bag-line text-2xl text-gray-400"></i>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No orders found</h3>
-            <p className="text-gray-500 mb-4">
+            <h3 className="text-lg font-medium text-foreground mb-2">No orders found</h3>
+            <p className="text-muted-foreground mb-4">
               {searchTerm || statusFilter || paymentStatusFilter || paymentMethodFilter || dateFilter !== 'all' 
                 ? 'No orders match your current filters. Try adjusting your search criteria.'
                 : 'No orders have been placed yet. Orders will appear here once customers start making purchases.'
@@ -362,7 +362,7 @@ const OrdersManagement = () => {
             {(searchTerm || statusFilter || paymentStatusFilter || paymentMethodFilter || dateFilter !== 'all') && (
               <button
                 onClick={clearFilters}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
               >
                 Clear Filters
               </button>
@@ -391,12 +391,12 @@ const OrdersManagement = () => {
       {/* Desktop Table */}
       <div className="hidden xl:block">
         {orders.length === 0 && !loading ? (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-8 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-muted rounded-full flex items-center justify-center">
               <i className="ri-shopping-bag-line text-2xl text-gray-400"></i>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No orders found</h3>
-            <p className="text-gray-500 mb-4">
+            <h3 className="text-lg font-medium text-foreground mb-2">No orders found</h3>
+            <p className="text-muted-foreground mb-4">
               {searchTerm || statusFilter || paymentStatusFilter || paymentMethodFilter || dateFilter !== 'all' 
                 ? 'No orders match your current filters. Try adjusting your search criteria.'
                 : 'No orders have been placed yet. Orders will appear here once customers start making purchases.'
@@ -405,7 +405,7 @@ const OrdersManagement = () => {
             {(searchTerm || statusFilter || paymentStatusFilter || paymentMethodFilter || dateFilter !== 'all') && (
               <button
                 onClick={clearFilters}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
               >
                 Clear Filters
               </button>
@@ -432,38 +432,38 @@ const OrdersManagement = () => {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-4">
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-700">Show</span>
+              <span className="text-sm text-foreground">Show</span>
               <select
                 value={itemsPerPage}
                 onChange={(e) => handleItemsPerPageChange(parseInt(e.target.value))}
-                className="px-3 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-1 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
               >
                 <option value={10}>10</option>
                 <option value={20}>20</option>
                 <option value={50}>50</option>
                 <option value={100}>100</option>
               </select>
-              <span className="text-sm text-gray-700">per page</span>
+              <span className="text-sm text-foreground">per page</span>
             </div>
             
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 border border-input rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Previous
               </button>
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-foreground">
                 Page {currentPage} of {totalPages}
               </span>
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 border border-input rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Next
               </button>
@@ -475,15 +475,15 @@ const OrdersManagement = () => {
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Confirm Delete</h3>
-            <p className="text-gray-600 mb-6">
+          <div className="bg-card rounded-xl shadow-2xl max-w-md w-full p-6">
+            <h3 className="text-xl font-bold text-foreground mb-4">Confirm Delete</h3>
+            <p className="text-muted-foreground mb-6">
               Are you sure you want to delete order #{orderToDelete?.order_number}? This action cannot be undone.
             </p>
             <div className="flex gap-3">
               <button
                 onClick={cancelDeleteOrder}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                className="flex-1 px-4 py-2 border border-input rounded-lg hover:bg-muted"
               >
                 Cancel
               </button>
@@ -502,15 +502,15 @@ const OrdersManagement = () => {
       {/* Batch Delete Confirmation Modal */}
       {showBatchDeleteModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Confirm Batch Delete</h3>
-            <p className="text-gray-600 mb-6">
+          <div className="bg-card rounded-xl shadow-2xl max-w-md w-full p-6">
+            <h3 className="text-xl font-bold text-foreground mb-4">Confirm Batch Delete</h3>
+            <p className="text-muted-foreground mb-6">
               Are you sure you want to delete {selectedOrders.size} order{selectedOrders.size > 1 ? 's' : ''}? This action cannot be undone.
             </p>
             <div className="flex gap-3">
               <button
                 onClick={cancelBatchDelete}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                className="flex-1 px-4 py-2 border border-input rounded-lg hover:bg-muted"
               >
                 Cancel
               </button>

@@ -48,20 +48,20 @@ export default function ImageOptimization() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-lg shadow p-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Image Optimization</h2>
-        <p className="text-gray-600 mb-6">
+      <div className="bg-card rounded-lg shadow p-6">
+        <h2 className="text-xl font-semibold text-foreground mb-4">Image Optimization</h2>
+        <p className="text-muted-foreground mb-6">
           Compress images to reduce file sizes without changing format or losing quality.
         </p>
 
         {status && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Cover Images Stats */}
-            <div className="bg-blue-50 rounded-lg p-4">
+            <div className="bg-primary/10 rounded-lg p-4">
               <h3 className="font-medium text-blue-900 mb-3">Book Cover Images</h3>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-blue-700">Total Images:</span>
+                  <span className="text-primary">Total Images:</span>
                   <span className="font-medium">{status.stats.covers.total}</span>
                 </div>
                 <div className="flex justify-between">
@@ -124,7 +124,7 @@ export default function ImageOptimization() {
           <button
             onClick={startOptimization}
             disabled={optimizing || !status?.optimization_needed}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center gap-2"
+            className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {optimizing ? (
               <>
@@ -150,9 +150,9 @@ export default function ImageOptimization() {
         </div>
 
         {/* Information */}
-        <div className="mt-6 bg-gray-50 rounded-lg p-4">
-          <h4 className="font-medium text-gray-900 mb-2">What happens during optimization?</h4>
-          <ul className="text-sm text-gray-600 space-y-1">
+        <div className="mt-6 bg-muted rounded-lg p-4">
+          <h4 className="font-medium text-foreground mb-2">What happens during optimization?</h4>
+          <ul className="text-sm text-muted-foreground space-y-1">
             <li>• Images are compressed without changing format (JPEG stays JPEG, PNG stays PNG)</li>
             <li>• Quality is set to 85% for JPEG/WebP (minimal visual loss)</li>
             <li>• PNG images use maximum compression level</li>

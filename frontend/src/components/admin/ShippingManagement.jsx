@@ -216,19 +216,19 @@ const ShippingManagement = () => {
 
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Shipping Management</h1>
-        <p className="text-gray-600 mt-1">Manage shipping methods, zones, and their associations</p>
+        <h1 className="text-2xl font-bold text-foreground">Shipping Management</h1>
+        <p className="text-muted-foreground mt-1">Manage shipping methods, zones, and their associations</p>
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-gray-200 mb-6">
+      <div className="border-b border-border mb-6">
         <nav className="-mb-px flex space-x-8">
           <button
             onClick={() => setActiveTab('methods')}
             className={`py-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'methods'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground hover:border-input'
             }`}
           >
             <i className="ri-truck-line mr-2"></i>
@@ -238,8 +238,8 @@ const ShippingManagement = () => {
             onClick={() => setActiveTab('zones')}
             className={`py-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'zones'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground hover:border-input'
             }`}
           >
             <i className="ri-map-pin-line mr-2"></i>
@@ -249,8 +249,8 @@ const ShippingManagement = () => {
             onClick={() => setActiveTab('associations')}
             className={`py-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'associations'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground hover:border-input'
             }`}
           >
             <i className="ri-links-line mr-2"></i>
@@ -268,48 +268,48 @@ const ShippingManagement = () => {
                 setEditingMethod(null);
                 setShowMethodModal(true);
               }}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2"
             >
               <i className="ri-add-line"></i>
               Add Shipping Method
             </button>
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+          <div className="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead className="bg-muted">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Method</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cost</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Free Threshold</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Delivery</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Method</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Cost</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Free Threshold</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Delivery</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Status</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-card divide-y divide-gray-200">
                   {shippingMethods.length > 0 ? (
                     shippingMethods.map((method) => (
-                      <tr key={method.id} className="hover:bg-gray-50">
+                      <tr key={method.id} className="hover:bg-muted">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div>
-                            <div className="text-sm font-medium text-gray-900">{method.name}</div>
-                            <div className="text-sm text-gray-500">{method.description}</div>
+                            <div className="text-sm font-medium text-foreground">{method.name}</div>
+                            <div className="text-sm text-muted-foreground">{method.description}</div>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">
+                          <div className="text-sm text-foreground">
                             <div>Base: {formatCurrency(method.base_cost)}</div>
                             <div>Per Item: {formatCurrency(method.cost_per_item)}</div>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
                           {method.free_shipping_threshold 
                             ? formatCurrency(method.free_shipping_threshold)
                             : 'No threshold'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
                           {method.estimated_days_min}-{method.estimated_days_max} days
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -327,7 +327,7 @@ const ShippingManagement = () => {
                               setEditingMethod(method);
                               setShowMethodModal(true);
                             }}
-                            className="text-blue-600 hover:text-blue-900 mr-3"
+                            className="text-primary hover:text-blue-900 mr-3"
                             title="Edit"
                           >
                             <i className="ri-edit-line text-lg"></i>
@@ -346,8 +346,8 @@ const ShippingManagement = () => {
                     <tr>
                       <td colSpan={6} className="px-6 py-12 text-center">
                         <i className="ri-truck-line text-6xl text-gray-300 mb-4"></i>
-                        <h3 className="text-lg font-medium text-gray-900">No shipping methods found</h3>
-                        <p className="text-gray-500 mt-1">Add your first shipping method to get started</p>
+                        <h3 className="text-lg font-medium text-foreground">No shipping methods found</h3>
+                        <p className="text-muted-foreground mt-1">Add your first shipping method to get started</p>
                       </td>
                     </tr>
                   )}
@@ -367,7 +367,7 @@ const ShippingManagement = () => {
                 setEditingZone(null);
                 setShowZoneModal(true);
               }}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2"
             >
               <i className="ri-add-line"></i>
               Add Shipping Zone
@@ -377,11 +377,11 @@ const ShippingManagement = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {shippingZones.length > 0 ? (
               shippingZones.map((zone) => (
-                <div key={zone.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+                <div key={zone.id} className="bg-card rounded-lg shadow-sm border border-border p-4">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-gray-900">{zone.name}</h3>
-                      <p className="text-sm text-gray-600 mt-1">{zone.description}</p>
+                      <h3 className="text-lg font-semibold text-foreground">{zone.name}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{zone.description}</p>
                     </div>
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                       zone.is_active 
@@ -393,15 +393,15 @@ const ShippingManagement = () => {
                   </div>
                   
                   <div className="mb-3">
-                    <p className="text-sm font-medium text-gray-700 mb-1">States ({zone.states?.length || 0}):</p>
+                    <p className="text-sm font-medium text-foreground mb-1">States ({zone.states?.length || 0}):</p>
                     <div className="flex flex-wrap gap-1">
                       {zone.states?.slice(0, 5).map((state, idx) => (
-                        <span key={idx} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                        <span key={idx} className="px-2 py-1 bg-muted text-foreground text-xs rounded">
                           {state}
                         </span>
                       ))}
                       {zone.states?.length > 5 && (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                        <span className="px-2 py-1 bg-muted text-foreground text-xs rounded">
                           +{zone.states.length - 5} more
                         </span>
                       )}
@@ -414,7 +414,7 @@ const ShippingManagement = () => {
                         setEditingZone(zone);
                         setShowZoneModal(true);
                       }}
-                      className="flex-1 px-3 py-2 text-sm bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                      className="flex-1 px-3 py-2 text-sm bg-primary/20 text-primary rounded-lg hover:bg-blue-200 transition-colors"
                     >
                       Edit
                     </button>
@@ -430,8 +430,8 @@ const ShippingManagement = () => {
             ) : (
               <div className="col-span-full text-center py-12">
                 <i className="ri-map-pin-line text-6xl text-gray-300 mb-4"></i>
-                <h3 className="text-lg font-medium text-gray-900">No shipping zones found</h3>
-                <p className="text-gray-500 mt-1">Add your first shipping zone to get started</p>
+                <h3 className="text-lg font-medium text-foreground">No shipping zones found</h3>
+                <p className="text-muted-foreground mt-1">Add your first shipping zone to get started</p>
               </div>
             )}
           </div>
@@ -440,27 +440,27 @@ const ShippingManagement = () => {
 
       {/* Method-Zone Associations Tab */}
       {activeTab === 'associations' && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-muted">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                     Shipping Method
                   </th>
                   {shippingZones.map((zone) => (
-                    <th key={zone.id} className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th key={zone.id} className="px-6 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">
                       {zone.name}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-card divide-y divide-gray-200">
                 {shippingMethods.length > 0 && shippingZones.length > 0 ? (
                   shippingMethods.map((method) => (
-                    <tr key={method.id} className="hover:bg-gray-50">
+                    <tr key={method.id} className="hover:bg-muted">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">{method.name}</div>
+                        <div className="text-sm font-medium text-foreground">{method.name}</div>
                       </td>
                       {shippingZones.map((zone) => (
                         <td key={zone.id} className="px-6 py-4 text-center">
@@ -469,7 +469,7 @@ const ShippingManagement = () => {
                             className={`inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
                               isMethodAvailableInZone(method.id, zone.id)
                                 ? 'bg-green-100 text-green-600 hover:bg-green-200'
-                                : 'bg-gray-100 text-gray-400 hover:bg-gray-200'
+                                : 'bg-muted text-gray-400 hover:bg-gray-200'
                             }`}
                             title={isMethodAvailableInZone(method.id, zone.id) ? 'Available' : 'Not Available'}
                           >
@@ -483,8 +483,8 @@ const ShippingManagement = () => {
                   <tr>
                     <td colSpan={shippingZones.length + 1} className="px-6 py-12 text-center">
                       <i className="ri-links-line text-6xl text-gray-300 mb-4"></i>
-                      <h3 className="text-lg font-medium text-gray-900">No data available</h3>
-                      <p className="text-gray-500 mt-1">Add shipping methods and zones first</p>
+                      <h3 className="text-lg font-medium text-foreground">No data available</h3>
+                      <p className="text-muted-foreground mt-1">Add shipping methods and zones first</p>
                     </td>
                   </tr>
                 )}

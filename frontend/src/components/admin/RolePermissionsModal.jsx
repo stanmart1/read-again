@@ -70,16 +70,16 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-white rounded-xl shadow-2xl max-w-6xl w-full max-h-[85vh] overflow-hidden flex flex-col"
+            className="bg-card rounded-xl shadow-2xl max-w-6xl w-full max-h-[85vh] overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-purple-50">
+            <div className="p-6 border-b border-border bg-gradient-to-r from-blue-50 to-purple-50">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">
+                  <h2 className="text-2xl font-bold text-foreground">
                     Permissions for {role.display_name}
                   </h2>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-muted-foreground mt-1">
                     {isEditingPermissions
                       ? "Select permissions to assign to this role"
                       : "View current permissions"}
@@ -115,7 +115,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                       </button>
                       <button
                         onClick={handleCancel}
-                        className="px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors duration-200"
+                        className="px-4 py-2 border border-input rounded-full hover:bg-muted transition-colors duration-200"
                       >
                         Cancel
                       </button>
@@ -123,7 +123,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                   )}
                   <button
                     onClick={onClose}
-                    className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                    className="text-gray-400 hover:text-muted-foreground transition-colors duration-200"
                   >
                     <i className="ri-close-line text-2xl"></i>
                   </button>
@@ -141,8 +141,8 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                       onClick={() => handlePermissionToggle(permission.id)}
                       className={`rounded-lg p-4 border-2 transition-all duration-200 cursor-pointer ${
                         selectedPermissions.includes(permission.id)
-                          ? "bg-blue-50 border-blue-200"
-                          : "bg-gray-50 border-gray-200"
+                          ? "bg-primary/10 border-blue-200"
+                          : "bg-muted border-border"
                       }`}
                     >
                       <div className="flex items-start space-x-3">
@@ -150,21 +150,21 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                           type="checkbox"
                           checked={selectedPermissions.includes(permission.id)}
                           onChange={() => handlePermissionToggle(permission.id)}
-                          className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded cursor-pointer"
+                          className="mt-1 h-4 w-4 text-primary focus:ring-blue-500 border-input rounded cursor-pointer"
                         />
                         <div className="flex-1">
                           <div className="flex items-center justify-between mb-2">
-                            <h4 className="font-medium text-gray-900">
+                            <h4 className="font-medium text-foreground">
                               {permission.display_name}
                             </h4>
-                            <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                            <span className="px-2 py-1 bg-primary/20 text-blue-800 rounded-full text-xs">
                               {permission.resource}
                             </span>
                           </div>
-                          <p className="text-sm text-gray-600 mb-2">
+                          <p className="text-sm text-muted-foreground mb-2">
                             {permission.description}
                           </p>
-                          <div className="flex items-center text-xs text-gray-500">
+                          <div className="flex items-center text-xs text-muted-foreground">
                             <span className="mr-2">
                               Action: {permission.action}
                             </span>
@@ -180,20 +180,20 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                   {rolePermissions.map((permission) => (
                     <div
                       key={permission.id}
-                      className="bg-gray-50 rounded-lg p-4"
+                      className="bg-muted rounded-lg p-4"
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-medium text-gray-900">
+                        <h4 className="font-medium text-foreground">
                           {permission.display_name}
                         </h4>
-                        <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                        <span className="px-2 py-1 bg-primary/20 text-blue-800 rounded-full text-xs">
                           {permission.resource}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 mb-2">
+                      <p className="text-sm text-muted-foreground mb-2">
                         {permission.description}
                       </p>
-                      <div className="flex items-center text-xs text-gray-500">
+                      <div className="flex items-center text-xs text-muted-foreground">
                         <span className="mr-2">
                           Action: {permission.action}
                         </span>
@@ -207,7 +207,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
               {!isEditingPermissions && rolePermissions.length === 0 && (
                 <div className="text-center py-12">
                   <i className="ri-shield-line text-6xl text-gray-300 mb-4"></i>
-                  <p className="text-gray-600 text-lg">
+                  <p className="text-muted-foreground text-lg">
                     No permissions assigned to this role
                   </p>
                   <button
@@ -222,8 +222,8 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
 
             {/* Footer Stats */}
             {!isEditingPermissions && rolePermissions.length > 0 && (
-              <div className="p-4 border-t border-gray-200 bg-gray-50">
-                <div className="flex items-center justify-between text-sm text-gray-600">
+              <div className="p-4 border-t border-border bg-muted">
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
                   <span>
                     Total Permissions: <strong>{rolePermissions.length}</strong>
                   </span>

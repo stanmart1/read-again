@@ -7,13 +7,13 @@ const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAs
     switch (roleName) {
       case 'admin': return 'bg-purple-500';
       case 'super_admin': return 'bg-red-500';
-      case 'user': return 'bg-blue-500';
-      default: return 'bg-gray-500';
+      case 'user': return 'bg-primary/100';
+      default: return 'bg-muted0';
     }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 space-y-3">
+    <div className="bg-card rounded-lg shadow-md p-4 space-y-3">
       {/* User Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center space-x-3">
@@ -24,17 +24,17 @@ const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAs
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <div className="text-sm font-semibold text-gray-900 break-words">
+              <div className="text-sm font-semibold text-foreground break-words">
                 {user.first_name} {user.last_name}
               </div>
               {user.school_name && (
-                <span className="inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded bg-blue-100 text-blue-700" title="Student">
+                <span className="inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded bg-primary/20 text-primary" title="Student">
                   <i className="ri-graduation-cap-line mr-1"></i>
                   Student
                 </span>
               )}
             </div>
-            <div className="text-sm text-gray-500 break-words">{user.email}</div>
+            <div className="text-sm text-muted-foreground break-words">{user.email}</div>
           </div>
         </div>
         <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full text-white ${getStatusColor(user.is_active)}`}>
@@ -45,14 +45,14 @@ const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAs
       {/* User Details */}
       <div className="grid grid-cols-2 gap-4 text-sm">
         <div>
-          <span className="text-gray-500">Joined:</span>
-          <span className="ml-1 font-medium text-gray-900 break-words">
+          <span className="text-muted-foreground">Joined:</span>
+          <span className="ml-1 font-medium text-foreground break-words">
             {new Date(user.created_at).toLocaleDateString()}
           </span>
         </div>
         <div>
-          <span className="text-gray-500">Username:</span>
-          <span className="ml-1 font-medium text-gray-900 break-words">
+          <span className="text-muted-foreground">Username:</span>
+          <span className="ml-1 font-medium text-foreground break-words">
             {user.username}
           </span>
         </div>
@@ -61,7 +61,7 @@ const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAs
       {/* Roles */}
       <div className="border-t pt-3">
         <div className="text-sm">
-          <span className="font-medium text-gray-700">Role:</span>
+          <span className="font-medium text-foreground">Role:</span>
           <div className="mt-1 flex flex-wrap gap-1">
             <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full text-white ${getRoleColor(user.role?.name)}`}>
               {user.role?.display_name || 'No Role'}
@@ -74,7 +74,7 @@ const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAs
       <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-100">
         <button
           onClick={() => onView(user)}
-          className="text-blue-600 hover:text-blue-800 flex items-center text-sm"
+          className="text-primary hover:text-blue-800 flex items-center text-sm"
         >
           <i className="ri-eye-line mr-1"></i>
           View

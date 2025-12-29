@@ -136,14 +136,14 @@ const ReviewManagement = () => {
             }`}
           />
         ))}
-        <span className="ml-1 text-sm text-gray-600">({rating})</span>
+        <span className="ml-1 text-sm text-muted-foreground">({rating})</span>
       </div>
     );
   };
 
   const ReviewCard = ({ review }) => (
     <div 
-      className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow cursor-pointer"
+      className="bg-card rounded-lg shadow-sm border border-border p-4 hover:shadow-md transition-shadow cursor-pointer"
       onClick={() => handleReviewClick(review)}
     >
       {/* Header */}
@@ -155,11 +155,11 @@ const ReviewManagement = () => {
             className="w-12 h-16 object-cover rounded flex-shrink-0"
           />
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-gray-900 truncate">
+            <h3 className="text-sm font-semibold text-foreground truncate">
               {review.book_title}
             </h3>
             {review.book_author && (
-              <p className="text-xs text-gray-600 truncate">by {review.book_author}</p>
+              <p className="text-xs text-muted-foreground truncate">by {review.book_author}</p>
             )}
           </div>
         </div>
@@ -174,15 +174,15 @@ const ReviewManagement = () => {
       {/* Review Content */}
       <div className="mb-3">
         {review.title && (
-          <h4 className="text-sm font-medium text-gray-900 mb-1">{review.title}</h4>
+          <h4 className="text-sm font-medium text-foreground mb-1">{review.title}</h4>
         )}
         {review.review_text && (
-          <p className="text-sm text-gray-600 line-clamp-3">{review.review_text}</p>
+          <p className="text-sm text-muted-foreground line-clamp-3">{review.review_text}</p>
         )}
       </div>
 
       {/* User Info */}
-      <div className="flex items-center justify-between mb-3 text-xs text-gray-500">
+      <div className="flex items-center justify-between mb-3 text-xs text-muted-foreground">
         <span>{review.first_name} {review.last_name}</span>
         <span>{new Date(review.created_at).toLocaleDateString()}</span>
       </div>
@@ -234,7 +234,7 @@ const ReviewManagement = () => {
         {review.is_featured && (
           <button
             onClick={() => handleAction(review, 'unfeature')}
-            className="px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors"
+            className="px-3 py-1 text-xs bg-muted text-foreground rounded-full hover:bg-gray-200 transition-colors"
           >
             Unfeature
           </button>
@@ -253,56 +253,56 @@ const ReviewManagement = () => {
     <div className="p-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 mb-6">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-600">Total</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+              <p className="text-xs text-muted-foreground">Total</p>
+              <p className="text-2xl font-bold text-foreground">{stats.total}</p>
             </div>
             <i className="ri-star-line text-2xl text-gray-400"></i>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-600">Pending</p>
+              <p className="text-xs text-muted-foreground">Pending</p>
               <p className="text-2xl font-bold text-yellow-600">{stats.pending}</p>
             </div>
             <i className="ri-time-line text-2xl text-yellow-400"></i>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-600">Approved</p>
+              <p className="text-xs text-muted-foreground">Approved</p>
               <p className="text-2xl font-bold text-green-600">{stats.approved}</p>
             </div>
             <i className="ri-check-line text-2xl text-green-400"></i>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-600">Rejected</p>
+              <p className="text-xs text-muted-foreground">Rejected</p>
               <p className="text-2xl font-bold text-red-600">{stats.rejected}</p>
             </div>
             <i className="ri-close-line text-2xl text-red-400"></i>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-600">Featured</p>
+              <p className="text-xs text-muted-foreground">Featured</p>
               <p className="text-2xl font-bold text-purple-600">{stats.featured}</p>
             </div>
             <i className="ri-star-fill text-2xl text-purple-400"></i>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-600">Avg Rating</p>
-              <p className="text-2xl font-bold text-blue-600">{stats.averageRating?.toFixed(1) || '0.0'}</p>
+              <p className="text-xs text-muted-foreground">Avg Rating</p>
+              <p className="text-2xl font-bold text-primary">{stats.averageRating?.toFixed(1) || '0.0'}</p>
             </div>
             <i className="ri-star-half-line text-2xl text-blue-400"></i>
           </div>
@@ -310,7 +310,7 @@ const ReviewManagement = () => {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
+      <div className="bg-card rounded-lg shadow-sm border border-border p-4 mb-6">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
             <input
@@ -318,13 +318,13 @@ const ReviewManagement = () => {
               placeholder="Search reviews..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
           >
             <option value="all">All Status</option>
             <option value="pending">Pending</option>
@@ -335,13 +335,13 @@ const ReviewManagement = () => {
           <div className="flex gap-2">
             <button
               onClick={() => setViewMode('grid')}
-              className={`px-3 py-2 rounded-lg ${viewMode === 'grid' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}`}
+              className={`px-3 py-2 rounded-lg ${viewMode === 'grid' ? 'bg-primary text-white' : 'bg-muted text-foreground'}`}
             >
               <i className="ri-grid-line"></i>
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`px-3 py-2 rounded-lg ${viewMode === 'list' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}`}
+              className={`px-3 py-2 rounded-lg ${viewMode === 'list' ? 'bg-primary text-white' : 'bg-muted text-foreground'}`}
             >
               <i className="ri-list-check"></i>
             </button>
@@ -353,7 +353,7 @@ const ReviewManagement = () => {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 animate-pulse">
+            <div key={i} className="bg-card rounded-lg shadow-sm border border-border p-4 animate-pulse">
               <div className="h-20 bg-gray-200 rounded mb-3"></div>
               <div className="h-4 bg-gray-200 rounded mb-2"></div>
               <div className="h-4 bg-gray-200 rounded w-2/3"></div>
@@ -361,10 +361,10 @@ const ReviewManagement = () => {
           ))}
         </div>
       ) : reviews.length === 0 ? (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-12 text-center">
           <i className="ri-star-line text-6xl text-gray-300 mb-4"></i>
-          <h3 className="text-lg font-medium text-gray-900">No reviews found</h3>
-          <p className="text-gray-500 mt-1">
+          <h3 className="text-lg font-medium text-foreground">No reviews found</h3>
+          <p className="text-muted-foreground mt-1">
             {searchQuery || filterStatus !== 'all' ? 'Try adjusting your filters' : 'No reviews yet'}
           </p>
         </div>
@@ -382,17 +382,17 @@ const ReviewManagement = () => {
           <button
             onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2 border border-input rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Previous
           </button>
-          <span className="px-4 py-2 text-gray-700">
+          <span className="px-4 py-2 text-foreground">
             Page {currentPage} of {totalPages}
           </span>
           <button
             onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2 border border-input rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Next
           </button>
@@ -402,25 +402,25 @@ const ReviewManagement = () => {
       {/* Action Confirmation Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+          <div className="bg-card rounded-xl shadow-2xl max-w-md w-full p-6">
+            <h3 className="text-xl font-bold text-foreground mb-4">
               Confirm {modalAction.charAt(0).toUpperCase() + modalAction.slice(1)}
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-muted-foreground mb-6">
               Are you sure you want to {modalAction} this review?
             </p>
             <div className="flex gap-3">
               <button
                 onClick={() => setShowModal(false)}
                 disabled={isProcessing}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-4 py-2 border border-input rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Cancel
               </button>
               <button
                 onClick={confirmAction}
                 disabled={isProcessing}
-                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isProcessing && <i className="ri-loader-4-line animate-spin"></i>}
                 {isProcessing ? 'Processing...' : 'Confirm'}
@@ -433,12 +433,12 @@ const ReviewManagement = () => {
       {/* Review Detail Modal */}
       {showReviewDetail && selectedReviewDetail && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
+          <div className="bg-card rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-gray-900">Review Details</h3>
+              <h3 className="text-xl font-bold text-foreground">Review Details</h3>
               <button
                 onClick={() => setShowReviewDetail(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-muted-foreground"
               >
                 <i className="ri-close-line text-2xl"></i>
               </button>
@@ -452,9 +452,9 @@ const ReviewManagement = () => {
                 className="w-24 h-32 object-cover rounded"
               />
                 <div className="flex-1">
-                  <h4 className="text-lg font-semibold text-gray-900">{selectedReviewDetail.book_title}</h4>
+                  <h4 className="text-lg font-semibold text-foreground">{selectedReviewDetail.book_title}</h4>
                   {selectedReviewDetail.book_author && (
-                    <p className="text-gray-600">by {selectedReviewDetail.book_author}</p>
+                    <p className="text-muted-foreground">by {selectedReviewDetail.book_author}</p>
                   )}
                   <div className="mt-2">
                     {getRatingStars(selectedReviewDetail.rating)}
@@ -467,25 +467,25 @@ const ReviewManagement = () => {
 
               {selectedReviewDetail.title && (
                 <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Review Title</h5>
-                  <p className="text-gray-700">{selectedReviewDetail.title}</p>
+                  <h5 className="font-semibold text-foreground mb-1">Review Title</h5>
+                  <p className="text-foreground">{selectedReviewDetail.title}</p>
                 </div>
               )}
 
               {selectedReviewDetail.review_text && (
                 <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Review</h5>
-                  <p className="text-gray-700 whitespace-pre-wrap">{selectedReviewDetail.review_text}</p>
+                  <h5 className="font-semibold text-foreground mb-1">Review</h5>
+                  <p className="text-foreground whitespace-pre-wrap">{selectedReviewDetail.review_text}</p>
                 </div>
               )}
 
               <div className="border-t pt-4">
-                <h5 className="font-semibold text-gray-900 mb-2">Reviewer Information</h5>
-                <p className="text-gray-700">
+                <h5 className="font-semibold text-foreground mb-2">Reviewer Information</h5>
+                <p className="text-foreground">
                   {selectedReviewDetail.first_name} {selectedReviewDetail.last_name}
                 </p>
-                <p className="text-gray-600 text-sm">{selectedReviewDetail.user_email}</p>
-                <p className="text-gray-500 text-sm mt-1">
+                <p className="text-muted-foreground text-sm">{selectedReviewDetail.user_email}</p>
+                <p className="text-muted-foreground text-sm mt-1">
                   Reviewed on {new Date(selectedReviewDetail.created_at).toLocaleDateString()}
                 </p>
                 {selectedReviewDetail.is_verified_purchase && (

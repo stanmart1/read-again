@@ -75,20 +75,20 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white rounded-lg shadow-xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto"
+        className="bg-card rounded-lg shadow-xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto"
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-gray-900">Assign Books</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <h3 className="text-xl font-bold text-foreground">Assign Books</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-muted-foreground">
             <i className="ri-close-line text-2xl"></i>
           </button>
         </div>
 
-        <div className="mb-4 p-4 bg-blue-50 rounded-lg">
-          <p className="text-sm text-gray-700">
+        <div className="mb-4 p-4 bg-primary/10 rounded-lg">
+          <p className="text-sm text-foreground">
             Assigning book to: <span className="font-semibold">{user.first_name} {user.last_name}</span>
           </p>
-          <p className="text-xs text-gray-600 mt-1">
+          <p className="text-xs text-muted-foreground mt-1">
             Current library: {userLibrary.length} book(s)
           </p>
         </div>
@@ -102,7 +102,7 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
               placeholder="Search books..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
         </div>
@@ -118,8 +118,8 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
               onClick={() => setSelectedFormat('ebook')}
               className={`p-3 rounded-lg border-2 transition-all ${
                 selectedFormat === 'ebook'
-                  ? 'border-blue-500 bg-blue-50 text-blue-700'
-                  : 'border-gray-200 hover:border-gray-300'
+                  ? 'border-primary bg-primary/10 text-primary'
+                  : 'border-border hover:border-input'
               }`}
             >
               <i className="ri-smartphone-line text-xl mb-1 block"></i>
@@ -130,8 +130,8 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
               onClick={() => setSelectedFormat('physical')}
               className={`p-3 rounded-lg border-2 transition-all ${
                 selectedFormat === 'physical'
-                  ? 'border-blue-500 bg-blue-50 text-blue-700'
-                  : 'border-gray-200 hover:border-gray-300'
+                  ? 'border-primary bg-primary/10 text-primary'
+                  : 'border-border hover:border-input'
               }`}
             >
               <i className="ri-book-line text-xl mb-1 block"></i>
@@ -143,7 +143,7 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
         {/* Books List */}
         <div className="space-y-2 max-h-96 overflow-y-auto mb-4">
           {filteredBooks.length === 0 ? (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-muted-foreground">
               <i className="ri-book-line text-4xl mb-2"></i>
               <p>No books found</p>
             </div>
@@ -155,10 +155,10 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
                   key={book.id}
                   className={`p-3 border rounded-lg transition-colors ${
                     assigned
-                      ? 'border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed'
+                      ? 'border-border bg-muted opacity-60 cursor-not-allowed'
                       : selectedBook === book.id
-                      ? 'border-blue-500 bg-blue-50 cursor-pointer'
-                      : 'border-gray-200 hover:border-gray-300 cursor-pointer'
+                      ? 'border-primary bg-primary/10 cursor-pointer'
+                      : 'border-border hover:border-input cursor-pointer'
                   }`}
                   onClick={() => {
                     if (!assigned) {
@@ -169,18 +169,18 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <p className="font-medium text-gray-900">{book.title}</p>
+                        <p className="font-medium text-foreground">{book.title}</p>
                         {assigned && (
                           <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full">
                             Assigned
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-gray-500">{book.author_name}</p>
+                      <p className="text-sm text-muted-foreground">{book.author_name}</p>
                     </div>
                     <div className="ml-4">
                       {selectedBook === book.id && !assigned && (
-                        <i className="ri-checkbox-circle-fill text-blue-600 text-xl"></i>
+                        <i className="ri-checkbox-circle-fill text-primary text-xl"></i>
                       )}
                     </div>
                   </div>
@@ -193,7 +193,7 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
         <div className="flex justify-end space-x-3">
           <button
             onClick={onClose}
-            className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+            className="px-4 py-2 border border-input rounded-lg hover:bg-muted"
             disabled={loading}
           >
             Cancel

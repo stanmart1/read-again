@@ -119,11 +119,11 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {/* Account Type */}
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">Account Type</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Account Type</label>
               <select 
                 value={advancedFilters.accountType}
                 onChange={(e) => handleAdvancedFilterChange('accountType', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Users</option>
                 <option value="students">Students Only</option>
@@ -133,11 +133,11 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
 
             {/* School Category */}
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">School Category</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">School Category</label>
               <select 
                 value={advancedFilters.schoolCategory}
                 onChange={(e) => handleAdvancedFilterChange('schoolCategory', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Categories</option>
                 <option value="Primary">Primary</option>
@@ -148,47 +148,47 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
 
             {/* School Name */}
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">School Name</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">School Name</label>
               <input
                 type="text"
                 value={advancedFilters.schoolName}
                 onChange={(e) => handleAdvancedFilterChange('schoolName', e.target.value)}
                 placeholder="Search by school name..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Class Level */}
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">Class Level</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Class Level</label>
               <input
                 type="text"
                 value={advancedFilters.classLevel}
                 onChange={(e) => handleAdvancedFilterChange('classLevel', e.target.value)}
                 placeholder="e.g., SS1, Primary 3..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Department */}
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">Department</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Department</label>
               <input
                 type="text"
                 value={advancedFilters.department}
                 onChange={(e) => handleAdvancedFilterChange('department', e.target.value)}
                 placeholder="e.g., Computer Science..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Registration Date */}
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">Registration Date</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Registration Date</label>
               <select 
                 value={advancedFilters.registrationDate}
                 onChange={(e) => handleAdvancedFilterChange('registrationDate', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Time</option>
                 <option value="today">Today</option>
@@ -201,11 +201,11 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
 
           {/* Filter Summary */}
           {hasActiveFilters && (
-            <div className="mt-3 pt-3 border-t border-gray-200">
-              <p className="text-xs text-gray-600 mb-2">Active Filters:</p>
+            <div className="mt-3 pt-3 border-t border-border">
+              <p className="text-xs text-muted-foreground mb-2">Active Filters:</p>
               <div className="flex flex-wrap gap-2">
                 {advancedFilters.accountType !== 'all' && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Type: {advancedFilters.accountType}
                     <button onClick={() => handleAdvancedFilterChange('accountType', 'all')} className="hover:text-blue-900">
                       <i className="ri-close-line"></i>
@@ -213,7 +213,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                   </span>
                 )}
                 {advancedFilters.schoolCategory !== 'all' && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Category: {advancedFilters.schoolCategory}
                     <button onClick={() => handleAdvancedFilterChange('schoolCategory', 'all')} className="hover:text-blue-900">
                       <i className="ri-close-line"></i>
@@ -221,7 +221,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                   </span>
                 )}
                 {advancedFilters.schoolName && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     School: {advancedFilters.schoolName}
                     <button onClick={() => handleAdvancedFilterChange('schoolName', '')} className="hover:text-blue-900">
                       <i className="ri-close-line"></i>
@@ -229,7 +229,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                   </span>
                 )}
                 {advancedFilters.classLevel && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Class: {advancedFilters.classLevel}
                     <button onClick={() => handleAdvancedFilterChange('classLevel', '')} className="hover:text-blue-900">
                       <i className="ri-close-line"></i>
@@ -237,7 +237,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                   </span>
                 )}
                 {advancedFilters.department && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Dept: {advancedFilters.department}
                     <button onClick={() => handleAdvancedFilterChange('department', '')} className="hover:text-blue-900">
                       <i className="ri-close-line"></i>
@@ -245,7 +245,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                   </span>
                 )}
                 {advancedFilters.registrationDate !== 'all' && (
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Date: {advancedFilters.registrationDate}
                     <button onClick={() => handleAdvancedFilterChange('registrationDate', 'all')} className="hover:text-blue-900">
                       <i className="ri-close-line"></i>

@@ -188,12 +188,12 @@ const WorksManagement = () => {
 
   if (loading && works.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-muted">
         <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-6 lg:py-8">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sm:p-8 md:p-12">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-6 sm:p-8 md:p-12">
             <div className="flex flex-col items-center justify-center py-8 sm:py-12">
               <div className="animate-spin rounded-full h-8 sm:h-10 md:h-12 w-8 sm:w-10 md:w-12 border-b-2 border-blue-600"></div>
-              <span className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-600 text-center">
+              <span className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground text-center">
                 Loading works...
               </span>
             </div>
@@ -204,7 +204,7 @@ const WorksManagement = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-muted">
       <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-3 lg:py-4">
         {/* Error Display */}
         {error && (
@@ -226,15 +226,15 @@ const WorksManagement = () => {
         )}
 
         {/* Header */}
-        <div className="bg-white rounded-xl shadow-md overflow-hidden mb-4 sm:mb-6">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-4 border-b border-gray-200">
+        <div className="bg-card rounded-xl shadow-md overflow-hidden mb-4 sm:mb-6">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-4 border-b border-border">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 flex items-center gap-2">
-                  <i className="ri-gallery-line text-blue-600"></i>
+                <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
+                  <i className="ri-gallery-line text-primary"></i>
                   Works Management
                 </h1>
-                <p className="text-gray-600 mt-1">Manage portfolio works and images</p>
+                <p className="text-muted-foreground mt-1">Manage portfolio works and images</p>
               </div>
               <button
                 onClick={() => {
@@ -252,51 +252,51 @@ const WorksManagement = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-4 sm:mb-6">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3 sm:p-4 md:p-6">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-3 sm:p-4 md:p-6">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-primary/100 rounded-lg flex items-center justify-center flex-shrink-0">
                 <i className="ri-image-line text-white text-sm sm:text-base md:text-xl"></i>
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-xs sm:text-sm text-gray-600 truncate">Total Works</p>
-                <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">{works.length}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground truncate">Total Works</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">{works.length}</p>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3 sm:p-4 md:p-6">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-3 sm:p-4 md:p-6">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
               <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
                 <i className="ri-check-line text-white text-sm sm:text-base md:text-xl"></i>
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-xs sm:text-sm text-gray-600 truncate">Active</p>
-                <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
+                <p className="text-xs sm:text-sm text-muted-foreground truncate">Active</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">
                   {works.filter(w => w.is_active).length}
                 </p>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3 sm:p-4 md:p-6">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-3 sm:p-4 md:p-6">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-gray-500 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-muted0 rounded-lg flex items-center justify-center flex-shrink-0">
                 <i className="ri-close-line text-white text-sm sm:text-base md:text-xl"></i>
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-xs sm:text-sm text-gray-600 truncate">Inactive</p>
-                <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
+                <p className="text-xs sm:text-sm text-muted-foreground truncate">Inactive</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">
                   {works.filter(w => !w.is_active).length}
                 </p>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3 sm:p-4 md:p-6">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-3 sm:p-4 md:p-6">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
               <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
                 <i className="ri-gallery-line text-white text-sm sm:text-base md:text-xl"></i>
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-xs sm:text-sm text-gray-600 truncate">Portfolio</p>
-                <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">Ready</p>
+                <p className="text-xs sm:text-sm text-muted-foreground truncate">Portfolio</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">Ready</p>
               </div>
             </div>
           </div>
@@ -314,7 +314,7 @@ const WorksManagement = () => {
             const plainDescription = stripHtml(work.description || '');
             
             return (
-            <div key={work.id} className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+            <div key={work.id} className="bg-card rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
               {/* Image - Fixed Height */}
               <div className="relative flex-shrink-0">
                 <img
@@ -339,17 +339,17 @@ const WorksManagement = () => {
               {/* Content - Flexible with Fixed Elements */}
               <div className="p-4 flex flex-col flex-1">
                 {/* Title - Fixed 2 Lines */}
-                <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 break-words h-14">
+                <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2 break-words h-14">
                   {work.title}
                 </h3>
                 
                 {/* Description - Fixed 3 Lines */}
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3 break-words h-16">
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-3 break-words h-16">
                   {plainDescription}
                 </p>
                 
                 {/* Metadata - Fixed Height */}
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-4 gap-2 h-5">
+                <div className="flex items-center justify-between text-xs text-muted-foreground mb-4 gap-2 h-5">
                   <span className="truncate">Order: {work.order_index}</span>
                   <span className="truncate">ID: {work.id}</span>
                 </div>
@@ -358,7 +358,7 @@ const WorksManagement = () => {
                 <div className="mt-auto grid grid-cols-3 gap-2">
                   <button
                     onClick={() => handleEditClick(work)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-1"
+                    className="bg-primary hover:bg-primary/90 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-1"
                     title="Edit work"
                   >
                     <i className="ri-edit-line"></i>
@@ -399,20 +399,20 @@ const WorksManagement = () => {
         </div>
 
         {works.length === 0 && (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-12 text-center">
             <i className="ri-image-line text-6xl text-gray-300 mb-4"></i>
-            <h3 className="text-lg font-medium text-gray-900">No works found</h3>
-            <p className="text-gray-500 mt-1">Upload your first work</p>
+            <h3 className="text-lg font-medium text-foreground">No works found</h3>
+            <p className="text-muted-foreground mt-1">Upload your first work</p>
           </div>
         )}
 
         {/* Upload/Edit Modal */}
         {(showUploadForm || showEditForm) && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">
-            <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[95vh] overflow-y-auto">
+            <div className="bg-card rounded-lg shadow-xl max-w-2xl w-full max-h-[95vh] overflow-y-auto">
               <div className="p-3 xs:p-4 sm:p-6">
                 <div className="flex items-start xs:items-center justify-between mb-4 xs:mb-6">
-                  <h2 className="text-base xs:text-lg sm:text-xl font-semibold text-gray-900 leading-tight break-words pr-2">
+                  <h2 className="text-base xs:text-lg sm:text-xl font-semibold text-foreground leading-tight break-words pr-2">
                     {showEditForm ? 'Edit Work' : 'Upload Work'}
                   </h2>
                   <button
@@ -421,7 +421,7 @@ const WorksManagement = () => {
                       setShowEditForm(false);
                       resetForm();
                     }}
-                    className="text-gray-400 hover:text-gray-600 flex-shrink-0 p-1"
+                    className="text-gray-400 hover:text-muted-foreground flex-shrink-0 p-1"
                   >
                     <i className="ri-close-line text-lg xs:text-xl sm:text-2xl"></i>
                   </button>
@@ -461,7 +461,7 @@ const WorksManagement = () => {
                       theme="snow"
                       value={formData.description}
                       onChange={(value) => setFormData({ ...formData, description: value })}
-                      className="bg-white rounded-lg"
+                      className="bg-card rounded-lg"
                       modules={{
                         toolbar: [
                           [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
@@ -505,7 +505,7 @@ const WorksManagement = () => {
                         type="checkbox"
                         checked={formData.is_active}
                         onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
-                        className="h-4 w-4 text-blue-600 rounded"
+                        className="h-4 w-4 text-primary rounded"
                       />
                       <label className="ml-2 text-sm">Active</label>
                     </div>
@@ -519,14 +519,14 @@ const WorksManagement = () => {
                         setShowEditForm(false);
                         resetForm();
                       }}
-                      className="flex-1 px-4 py-2 border rounded-lg hover:bg-gray-50"
+                      className="flex-1 px-4 py-2 border rounded-lg hover:bg-muted"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
                       disabled={uploading}
-                      className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+                      className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
                     >
                       {uploading ? 'Uploading...' : (showEditForm ? 'Update' : 'Upload')}
                     </button>

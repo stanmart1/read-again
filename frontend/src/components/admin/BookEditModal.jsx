@@ -207,19 +207,19 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-hidden">
+      <div className="bg-card rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-hidden">
         <div className="px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-orange-50 to-amber-50">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Edit Book</h2>
-              <p className="text-xs sm:text-sm text-gray-600 mt-1">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground">Edit Book</h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                 Step {currentStep} of 2 - {currentStep === 1 ? 'Book Information' : 'Upload Files'}
               </p>
             </div>
             <button
               onClick={handleClose}
               disabled={isSubmitting}
-              className="text-gray-400 hover:text-gray-600 disabled:opacity-50"
+              className="text-gray-400 hover:text-muted-foreground disabled:opacity-50"
             >
               <i className="ri-close-line text-2xl"></i>
             </button>
@@ -229,16 +229,16 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
         <div className="px-4 sm:px-6 py-3">
           <div className="flex items-center space-x-2 mb-2">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${
-              currentStep >= 1 ? 'bg-orange-600 text-white' : 'bg-gray-200 text-gray-600'
+              currentStep >= 1 ? 'bg-orange-600 text-white' : 'bg-gray-200 text-muted-foreground'
             }`}>1</div>
             <div className={`flex-1 h-1 rounded-full ${
               currentStep >= 2 ? 'bg-orange-600' : 'bg-gray-200'
             }`}></div>
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${
-              currentStep >= 2 ? 'bg-orange-600 text-white' : 'bg-gray-200 text-gray-600'
+              currentStep >= 2 ? 'bg-orange-600 text-white' : 'bg-gray-200 text-muted-foreground'
             }`}>2</div>
           </div>
-          <div className="flex justify-between text-xs text-gray-600">
+          <div className="flex justify-between text-xs text-muted-foreground">
             <span>Book Details</span>
             <span>Upload Files</span>
           </div>
@@ -255,7 +255,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                     value={formData.title}
                     onChange={(e) => handleInputChange('title', e.target.value)}
                     className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all ${
-                      errors.title ? 'border-red-400 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                      errors.title ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                     }`}
                     placeholder="Enter the book title"
                   />
@@ -267,8 +267,8 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                   <select
                     value={formData.author_id}
                     onChange={(e) => handleInputChange('author_id', e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all appearance-none bg-white ${
-                      errors.author_id ? 'border-red-400 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all appearance-none bg-card ${
+                      errors.author_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                     }`}
                   >
                     <option value="">Select an author</option>
@@ -284,8 +284,8 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                   <select
                     value={formData.category_id}
                     onChange={(e) => handleInputChange('category_id', e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all appearance-none bg-white ${
-                      errors.category_id ? 'border-red-400 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all appearance-none bg-card ${
+                      errors.category_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                     }`}
                   >
                     <option value="">Select a category</option>
@@ -305,7 +305,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                     value={formData.price}
                     onChange={(e) => handleInputChange('price', e.target.value)}
                     className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all ${
-                      errors.price ? 'border-red-400 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                      errors.price ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                     }`}
                     placeholder="0.00"
                   />
@@ -321,7 +321,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                       className={`p-3 rounded-xl border-2 transition-all text-center ${
                         formData.format === 'ebook'
                           ? 'border-orange-500 bg-orange-50 text-orange-700'
-                          : 'border-gray-200 hover:border-gray-300 text-gray-600'
+                          : 'border-border hover:border-input text-muted-foreground'
                       }`}
                     >
                       <i className="ri-smartphone-line text-xl mb-1 block"></i>
@@ -333,7 +333,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                       className={`p-3 rounded-xl border-2 transition-all text-center ${
                         formData.format === 'physical'
                           ? 'border-orange-500 bg-orange-50 text-orange-700'
-                          : 'border-gray-200 hover:border-gray-300 text-gray-600'
+                          : 'border-border hover:border-input text-muted-foreground'
                       }`}
                     >
                       <i className="ri-book-line text-xl mb-1 block"></i>
@@ -343,23 +343,23 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">ISBN</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">ISBN</label>
                   <input
                     type="text"
                     value={formData.isbn}
                     onChange={(e) => handleInputChange('isbn', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     placeholder="978-0-000-00000-0"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">Description</label>
                   <textarea
                     value={formData.description}
                     onChange={(e) => handleInputChange('description', e.target.value)}
                     rows={3}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     placeholder="Book description..."
                   />
                 </div>
@@ -377,7 +377,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 </div>
               </div>
               <div className="flex justify-between gap-3 pt-4 border-t">
-                <button type="button" onClick={handleClose} className="px-6 py-2.5 border-2 border-gray-300 rounded-xl hover:bg-gray-50 transition-colors font-medium">
+                <button type="button" onClick={handleClose} className="px-6 py-2.5 border-2 border-input rounded-xl hover:bg-muted transition-colors font-medium">
                   Cancel
                 </button>
                 <button type="button" onClick={handleNext} className="px-6 py-2.5 bg-gradient-to-r from-orange-600 to-amber-600 text-white rounded-xl hover:from-orange-700 hover:to-amber-700 transition-colors font-medium">
@@ -390,8 +390,8 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
           {currentStep === 2 && (
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Cover Image * {formData.cover_image && <span className="text-green-600">✓ New</span>} {book?.cover_image_url && !formData.cover_image && <span className="text-blue-600">(keeping current)</span>}
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Cover Image * {formData.cover_image && <span className="text-green-600">✓ New</span>} {book?.cover_image_url && !formData.cover_image && <span className="text-primary">(keeping current)</span>}
                 </label>
                 <div
                   onDragEnter={(e) => handleDrag(e, 'cover')}
@@ -400,13 +400,13 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                   onDrop={(e) => handleDrop(e, 'cover')}
                   className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
                     dragActive.cover ? 'border-orange-500 bg-orange-50' : 
-                    errors.cover_image ? 'border-red-500' : 'border-gray-300 hover:border-orange-400'
+                    errors.cover_image ? 'border-red-500' : 'border-input hover:border-orange-400'
                   }`}
                   onClick={() => coverInputRef.current?.click()}
                 >
                   <i className="ri-image-add-line text-4xl text-gray-400 mb-2"></i>
-                  <p className="text-sm text-gray-600">{formData.cover_image ? formData.cover_image.name : 'Drag & drop cover or click to browse'}</p>
-                  <p className="text-xs text-gray-500 mt-1">PNG, JPG, JPEG, WebP, GIF up to 10MB</p>
+                  <p className="text-sm text-muted-foreground">{formData.cover_image ? formData.cover_image.name : 'Drag & drop cover or click to browse'}</p>
+                  <p className="text-xs text-muted-foreground mt-1">PNG, JPG, JPEG, WebP, GIF up to 10MB</p>
                   <input
                     ref={coverInputRef}
                     type="file"
@@ -420,8 +420,8 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
 
               {formData.format === 'ebook' && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Book File {formData.ebook_file && <span className="text-green-600">✓ New</span>} {book?.file_path && !formData.ebook_file && <span className="text-blue-600">(keeping current)</span>}
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Book File {formData.ebook_file && <span className="text-green-600">✓ New</span>} {book?.file_path && !formData.ebook_file && <span className="text-primary">(keeping current)</span>}
                   </label>
                   <div
                     onDragEnter={(e) => handleDrag(e, 'ebook')}
@@ -430,13 +430,13 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                     onDrop={(e) => handleDrop(e, 'ebook')}
                     className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
                       dragActive.ebook ? 'border-orange-500 bg-orange-50' : 
-                      errors.ebook_file ? 'border-red-500' : 'border-gray-300 hover:border-orange-400'
+                      errors.ebook_file ? 'border-red-500' : 'border-input hover:border-orange-400'
                     }`}
                     onClick={() => ebookInputRef.current?.click()}
                   >
                     <i className="ri-file-pdf-line text-4xl text-gray-400 mb-2"></i>
-                    <p className="text-sm text-gray-600">{formData.ebook_file ? formData.ebook_file.name : 'Drag & drop book file or click'}</p>
-                    <p className="text-xs text-gray-500 mt-1">PDF, EPUB, MOBI, HTML up to 500MB</p>
+                    <p className="text-sm text-muted-foreground">{formData.ebook_file ? formData.ebook_file.name : 'Drag & drop book file or click'}</p>
+                    <p className="text-xs text-muted-foreground mt-1">PDF, EPUB, MOBI, HTML up to 500MB</p>
                     <input
                       ref={ebookInputRef}
                       type="file"
@@ -462,7 +462,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
               )}
 
               <div className="flex justify-between gap-3 pt-4">
-                <button type="button" onClick={handlePrevious} disabled={isSubmitting} className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50">
+                <button type="button" onClick={handlePrevious} disabled={isSubmitting} className="px-6 py-2 border border-input rounded-lg hover:bg-muted transition-colors disabled:opacity-50">
                   Previous
                 </button>
                 <button type="button" onClick={handleSubmit} disabled={isSubmitting} className="px-6 py-2 bg-gradient-to-r from-orange-600 to-purple-600 text-white rounded-lg hover:from-orange-700 hover:to-purple-700 transition-colors disabled:opacity-50">

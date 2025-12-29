@@ -225,20 +225,20 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-hidden">
+      <div className="bg-card rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-hidden">
         {/* Header */}
         <div className="px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-indigo-50">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Add New Book</h2>
-              <p className="text-xs sm:text-sm text-gray-600 mt-1">
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground">Add New Book</h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                 Step {currentStep} of 2 - {currentStep === 1 ? 'Book Information' : 'Upload Files'}
               </p>
             </div>
             <button
               onClick={handleClose}
               disabled={isSubmitting}
-              className="text-gray-400 hover:text-gray-600 disabled:opacity-50"
+              className="text-gray-400 hover:text-muted-foreground disabled:opacity-50"
             >
               <i className="ri-close-line text-2xl"></i>
             </button>
@@ -248,14 +248,14 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
         {/* Progress Bar */}
         <div className="px-4 sm:px-6 py-3">
           <div className="flex items-center space-x-2 mb-2">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${currentStep >= 1 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${currentStep >= 1 ? 'bg-primary text-white' : 'bg-gray-200 text-muted-foreground'
               }`}>1</div>
-            <div className={`flex-1 h-1 rounded-full ${currentStep >= 2 ? 'bg-blue-600' : 'bg-gray-200'
+            <div className={`flex-1 h-1 rounded-full ${currentStep >= 2 ? 'bg-primary' : 'bg-gray-200'
               }`}></div>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${currentStep >= 2 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium ${currentStep >= 2 ? 'bg-primary text-white' : 'bg-gray-200 text-muted-foreground'
               }`}>2</div>
           </div>
-          <div className="flex justify-between text-xs text-gray-600">
+          <div className="flex justify-between text-xs text-muted-foreground">
             <span>Book Details</span>
             <span>Upload Files</span>
           </div>
@@ -277,7 +277,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     type="text"
                     value={formData.title}
                     onChange={(e) => handleInputChange('title', e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${errors.title ? 'border-red-400 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all ${errors.title ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                       }`}
                     placeholder="Enter the book title"
                   />
@@ -299,7 +299,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                           handleInputChange('author_id', e.target.value);
                         }
                       }}
-                      className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all appearance-none bg-white ${errors.author_id ? 'border-red-400 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                      className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all appearance-none bg-card ${errors.author_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                         }`}
                     >
                       <option value="">Select an author</option>
@@ -308,7 +308,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                           {author.name}
                         </option>
                       ))}
-                      <option value="add_new" className="font-medium text-blue-600">
+                      <option value="add_new" className="font-medium text-primary">
                         + Add New Author
                       </option>
                     </select>
@@ -319,21 +319,21 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                   {errors.author_id && <p className="text-red-500 text-sm mt-1 flex items-center"><i className="ri-error-warning-line mr-1"></i>{errors.author_id}</p>}
 
                   {showAddAuthor && (
-                    <div className="mt-3 p-4 bg-blue-50 rounded-xl border border-blue-200">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">New Author Name</label>
+                    <div className="mt-3 p-4 bg-primary/10 rounded-xl border border-blue-200">
+                      <label className="block text-sm font-medium text-foreground mb-2">New Author Name</label>
                       <div className="flex gap-2">
                         <input
                           type="text"
                           value={newAuthorName}
                           onChange={(e) => setNewAuthorName(e.target.value)}
                           placeholder="Enter author name"
-                          className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                          className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
                         />
                         <button
                           type="button"
                           onClick={handleAddAuthor}
                           disabled={addingAuthor || !newAuthorName.trim()}
-                          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+                          className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
                         >
                           {addingAuthor ? 'Adding...' : 'Add'}
                         </button>
@@ -343,7 +343,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                             setShowAddAuthor(false);
                             setNewAuthorName('');
                           }}
-                          className="px-3 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
+                          className="px-3 py-2 bg-gray-200 text-foreground rounded-lg hover:bg-gray-300"
                         >
                           <i className="ri-close-line"></i>
                         </button>
@@ -360,7 +360,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                   <select
                     value={formData.category_id}
                     onChange={(e) => handleInputChange('category_id', e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all appearance-none bg-white ${errors.category_id ? 'border-red-400 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all appearance-none bg-card ${errors.category_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                       }`}
                   >
                     <option value="">Select a category</option>
@@ -384,7 +384,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     min="0"
                     value={formData.price}
                     onChange={(e) => handleInputChange('price', e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${errors.price ? 'border-red-400 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all ${errors.price ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
                       }`}
                     placeholder="0.00"
                   />
@@ -401,10 +401,10 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                       type="button"
                       onClick={() => handleInputChange('format', 'ebook')}
                       className={`p-3 rounded-xl border-2 transition-all text-center ${formData.format === 'ebook'
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
+                        ? 'border-primary bg-primary/10 text-primary'
                         : errors.format
-                          ? 'border-red-400 hover:border-red-300 text-gray-600'
-                          : 'border-gray-200 hover:border-gray-300 text-gray-600'
+                          ? 'border-red-400 hover:border-red-300 text-muted-foreground'
+                          : 'border-border hover:border-input text-muted-foreground'
                         }`}
                     >
                       <i className="ri-smartphone-line text-xl mb-1 block"></i>
@@ -414,10 +414,10 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                       type="button"
                       onClick={() => handleInputChange('format', 'physical')}
                       className={`p-3 rounded-xl border-2 transition-all text-center ${formData.format === 'physical'
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
+                        ? 'border-primary bg-primary/10 text-primary'
                         : errors.format
-                          ? 'border-red-400 hover:border-red-300 text-gray-600'
-                          : 'border-gray-200 hover:border-gray-300 text-gray-600'
+                          ? 'border-red-400 hover:border-red-300 text-muted-foreground'
+                          : 'border-border hover:border-input text-muted-foreground'
                         }`}
                     >
                       <i className="ri-book-line text-xl mb-1 block"></i>
@@ -429,14 +429,14 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
                 {/* ISBN */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-foreground mb-2">
                     ISBN
                   </label>
                   <input
                     type="text"
                     value={formData.isbn}
                     onChange={(e) => handleInputChange('isbn', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
                     placeholder="978-0-000-00000-0"
                   />
                 </div>
@@ -452,7 +452,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                       onClick={() => handleInputChange('status', 'published')}
                       className={`p-3 rounded-xl border-2 transition-all text-center ${formData.status === 'published'
                         ? 'border-green-500 bg-green-50 text-green-700'
-                        : 'border-gray-200 hover:border-gray-300 text-gray-600'
+                        : 'border-border hover:border-input text-muted-foreground'
                         }`}
                     >
                       <i className="ri-check-line text-xl mb-1 block"></i>
@@ -463,7 +463,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                       onClick={() => handleInputChange('status', 'draft')}
                       className={`p-3 rounded-xl border-2 transition-all text-center ${formData.status === 'draft'
                         ? 'border-orange-500 bg-orange-50 text-orange-700'
-                        : 'border-gray-200 hover:border-gray-300 text-gray-600'
+                        : 'border-border hover:border-input text-muted-foreground'
                         }`}
                     >
                       <i className="ri-draft-line text-xl mb-1 block"></i>
@@ -475,14 +475,14 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                 {/* Publisher (for physical books) */}
                 {formData.format === 'physical' && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-foreground mb-2">
                       Publisher
                     </label>
                     <input
                       type="text"
                       value={formData.publisher}
                       onChange={(e) => handleInputChange('publisher', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
                       placeholder="Publisher name"
                     />
                   </div>
@@ -499,7 +499,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                         <label className="block text-sm font-semibold text-gray-800">
                           Featured Book
                         </label>
-                        <p className="text-xs text-gray-600">
+                        <p className="text-xs text-muted-foreground">
                           Featured books appear prominently on the homepage
                         </p>
                       </div>
@@ -513,7 +513,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                       />
                       <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.is_featured ? 'bg-purple-600' : 'bg-gray-300'
                         }`}>
-                        <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${formData.is_featured ? 'translate-x-6' : 'translate-x-1'
+                        <span className={`inline-block h-4 w-4 transform rounded-full bg-card transition-transform ${formData.is_featured ? 'translate-x-6' : 'translate-x-1'
                           }`} />
                       </div>
                     </label>
@@ -524,7 +524,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                 {formData.format === 'physical' && (
                   <div className="sm:col-span-2">
                     <div className="flex items-center justify-between mb-3">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-foreground">
                         Inventory Management
                       </label>
                       <label className="flex items-center cursor-pointer">
@@ -534,9 +534,9 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                           onChange={(e) => handleInputChange('track_inventory', e.target.checked)}
                           className="sr-only"
                         />
-                        <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.track_inventory ? 'bg-blue-600' : 'bg-gray-200'
+                        <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.track_inventory ? 'bg-primary' : 'bg-gray-200'
                           }`}>
-                          <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${formData.track_inventory ? 'translate-x-6' : 'translate-x-1'
+                          <span className={`inline-block h-4 w-4 transform rounded-full bg-card transition-transform ${formData.track_inventory ? 'translate-x-6' : 'translate-x-1'
                             }`} />
                         </div>
                       </label>
@@ -546,7 +546,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                         type="number"
                         value={formData.stock_quantity}
                         onChange={(e) => handleInputChange('stock_quantity', e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
                         placeholder="Stock quantity"
                         min="0"
                       />
@@ -559,7 +559,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="px-6 py-2.5 border-2 border-gray-300 rounded-xl hover:bg-gray-50 transition-colors font-medium"
+                  className="px-6 py-2.5 border-2 border-input rounded-xl hover:bg-muted transition-colors font-medium"
                 >
                   Cancel
                 </button>
@@ -579,7 +579,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
             <div className="space-y-6">
               {/* Cover Image Upload */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Cover Image * {formData.cover_image && <span className="text-green-600">✓ Uploaded</span>}
                 </label>
                 <div
@@ -587,16 +587,16 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                   onDragLeave={(e) => handleDrag(e, 'cover')}
                   onDragOver={(e) => handleDrag(e, 'cover')}
                   onDrop={(e) => handleDrop(e, 'cover')}
-                  className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${dragActive.cover ? 'border-blue-500 bg-blue-50' :
-                    errors.cover_image ? 'border-red-500' : 'border-gray-300 hover:border-blue-400'
+                  className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${dragActive.cover ? 'border-primary bg-primary/10' :
+                    errors.cover_image ? 'border-red-500' : 'border-input hover:border-blue-400'
                     }`}
                   onClick={() => coverInputRef.current?.click()}
                 >
                   <i className="ri-image-add-line text-4xl text-gray-400 mb-2"></i>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-muted-foreground">
                     {formData.cover_image ? formData.cover_image.name : 'Drag & drop cover image or click to browse'}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">PNG, JPG, JPEG, WebP, GIF up to 10MB</p>
+                  <p className="text-xs text-muted-foreground mt-1">PNG, JPG, JPEG, WebP, GIF up to 10MB</p>
                   <input
                     ref={coverInputRef}
                     type="file"
@@ -611,7 +611,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
               {/* Ebook File Upload (conditional) */}
               {(formData.format === 'ebook' || formData.format === 'hybrid') && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-foreground mb-2">
                     Ebook File {formData.format === 'ebook' && '*'} {formData.ebook_file && <span className="text-green-600">✓ Uploaded</span>}
                   </label>
                   <div
@@ -619,16 +619,16 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     onDragLeave={(e) => handleDrag(e, 'ebook')}
                     onDragOver={(e) => handleDrag(e, 'ebook')}
                     onDrop={(e) => handleDrop(e, 'ebook')}
-                    className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${dragActive.ebook ? 'border-blue-500 bg-blue-50' :
-                      errors.ebook_file ? 'border-red-500' : 'border-gray-300 hover:border-blue-400'
+                    className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${dragActive.ebook ? 'border-primary bg-primary/10' :
+                      errors.ebook_file ? 'border-red-500' : 'border-input hover:border-blue-400'
                       }`}
                     onClick={() => ebookInputRef.current?.click()}
                   >
                     <i className="ri-file-pdf-line text-4xl text-gray-400 mb-2"></i>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-muted-foreground">
                       {formData.ebook_file ? formData.ebook_file.name : 'Drag & drop ebook file or click to browse'}
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">PDF, EPUB, MOBI, HTML up to 500MB</p>
+                    <p className="text-xs text-muted-foreground mt-1">PDF, EPUB, MOBI, HTML up to 500MB</p>
                     <input
                       ref={ebookInputRef}
                       type="file"
@@ -643,14 +643,14 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
               {/* Upload Progress */}
               {isSubmitting && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="bg-primary/10 border border-blue-200 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-blue-900">Uploading...</span>
                     <span className="text-sm font-medium text-blue-900">{uploadProgress}%</span>
                   </div>
                   <div className="w-full bg-blue-200 rounded-full h-2">
                     <div
-                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                      className="bg-primary h-2 rounded-full transition-all duration-300"
                       style={{ width: `${uploadProgress}%` }}
                     ></div>
                   </div>
@@ -662,7 +662,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                   type="button"
                   onClick={handlePrevious}
                   disabled={isSubmitting}
-                  className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+                  className="px-6 py-2 border border-input rounded-lg hover:bg-muted transition-colors disabled:opacity-50"
                 >
                   Previous
                 </button>
