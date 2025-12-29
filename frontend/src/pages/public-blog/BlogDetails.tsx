@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { Header } from "@/components/public-layout/Header";
+import Header from "@/components/Header";
 import { Footer } from "@/components/public-layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

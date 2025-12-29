@@ -1,4 +1,4 @@
-import { Header } from "@/components/public-layout/Header";
+import Header from "@/components/Header";
 import { Footer } from "@/components/public-layout/Footer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Search, Filter, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Header } from "@/components/public-layout/Header";
+import Header from "@/components/Header";
 import { Footer } from "@/components/public-layout/Footer";
 import { BookCard } from "@/components/PublicBookCard";
 import { useBooks } from "@/hooks/useBooks";
