@@ -70,7 +70,7 @@ export default function Header() {
                     onClick={() => setIsProfileOpen(!isProfileOpen)}
                     className="flex items-center gap-2 px-3 py-2 hover:bg-muted rounded-lg transition-all"
                   >
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
+                    <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary rounded-full flex items-center justify-center text-white font-semibold">
                       {user?.first_name?.[0] || 'U'}
                     </div>
                     <span className="hidden md:block font-medium text-foreground">{user?.first_name}</span>
@@ -110,7 +110,7 @@ export default function Header() {
                   <Link to="/login" className="hidden md:block px-6 py-2 text-primary hover:bg-primary/10 rounded-lg transition-all font-medium">
                     Login
                   </Link>
-                  <Link to="/signup" className="hidden md:block px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium">
+                  <Link to="/signup" className="hidden md:block px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium">
                     Sign Up
                   </Link>
                 </>
@@ -176,14 +176,14 @@ export default function Header() {
           <div className="p-4 border-t border-border space-y-3">
             <Link
               to="/login"
-              className="block w-full text-center px-4 py-2 text-primary border border-blue-600 rounded-lg font-medium hover:bg-primary/10 transition-all"
+              className="block w-full text-center px-4 py-2 text-primary border border-primary rounded-lg font-medium hover:bg-primary/10 transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
               Login
             </Link>
             <Link
               to="/signup"
-              className="block w-full text-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
+              className="block w-full text-center px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
               Sign Up
