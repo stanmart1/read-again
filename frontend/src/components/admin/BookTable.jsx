@@ -100,7 +100,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
             <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-100">
               <button
                 onClick={() => onBookAction('view', book)}
-                className="text-primary hover:text-blue-800 flex items-center text-sm whitespace-nowrap"
+                className="text-primary hover:text-primary/90 flex items-center text-sm whitespace-nowrap"
               >
                 <i className="ri-eye-line mr-1"></i>
                 View
@@ -251,7 +251,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                     <div className="flex flex-wrap items-center gap-2">
                       <button
                         onClick={() => onBookAction('view', book)}
-                        className="text-primary hover:text-blue-800 cursor-pointer transition-colors duration-200"
+                        className="text-primary hover:text-primary/90 cursor-pointer transition-colors duration-200"
                         title="View Book"
                       >
                         <i className="ri-eye-line"></i>

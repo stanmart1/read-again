@@ -211,7 +211,7 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
         {steps.map((step, index) => (
           <div key={step.id} className="flex items-center">
             <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
-              currentStep === step.id ? 'border-blue-600 bg-blue-600 text-white' :
+              currentStep === step.id ? 'border-primary bg-blue-600 text-white' :
               currentStep > step.id ? 'border-green-600 bg-green-600 text-white' :
               'border-gray-300 bg-gray-100 text-gray-500'
             }`}>
@@ -252,7 +252,7 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
       <div className={`border-2 rounded-lg p-4 mb-6 ${
         analytics.isEbookOnly 
           ? 'bg-green-50 border-green-200' 
-          : 'bg-blue-50 border-blue-200'
+          : 'bg-blue-50 border-primary/30'
       }`}>
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -374,7 +374,7 @@ function CustomerInformationStep({ formData, updateFormData }) {
           <input
             type="text"
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
             value={formData.shipping.first_name}
             onChange={(e) => updateFormData('shipping', { first_name: e.target.value })}
           />
@@ -385,7 +385,7 @@ function CustomerInformationStep({ formData, updateFormData }) {
           <input
             type="text"
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
             value={formData.shipping.last_name}
             onChange={(e) => updateFormData('shipping', { last_name: e.target.value })}
           />
@@ -400,7 +400,7 @@ function CustomerInformationStep({ formData, updateFormData }) {
             type="email"
             inputMode="email"
             required
-            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
             value={formData.shipping.email}
             onChange={(e) => updateFormData('shipping', { email: e.target.value })}
           />
@@ -414,7 +414,7 @@ function CustomerInformationStep({ formData, updateFormData }) {
           <input
             type="text"
             inputMode="tel"
-            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
             value={formData.shipping.phone}
             onChange={(e) => updateFormData('shipping', { phone: e.target.value })}
             placeholder="+234 801 234 5678"
@@ -437,7 +437,7 @@ function ShippingAddressStep({ formData, updateFormData }) {
           <input
             type="text"
             required
-            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
             value={formData.shipping.address}
             onChange={(e) => updateFormData('shipping', { address: e.target.value })}
             placeholder="123 Main Street, Apartment 4B"
@@ -453,7 +453,7 @@ function ShippingAddressStep({ formData, updateFormData }) {
             <input
               type="text"
               required
-              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
               value={formData.shipping.city}
               onChange={(e) => updateFormData('shipping', { city: e.target.value })}
               placeholder="Lagos"
@@ -466,7 +466,7 @@ function ShippingAddressStep({ formData, updateFormData }) {
           <input
             type="text"
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
             value={formData.shipping.state}
             onChange={(e) => updateFormData('shipping', { state: e.target.value })}
           />
@@ -478,7 +478,7 @@ function ShippingAddressStep({ formData, updateFormData }) {
           <label className="block text-sm font-medium text-gray-700 mb-2">ZIP/Postal Code</label>
           <input
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
             value={formData.shipping.zip_code}
             onChange={(e) => updateFormData('shipping', { zip_code: e.target.value })}
             placeholder="Optional"
@@ -490,7 +490,7 @@ function ShippingAddressStep({ formData, updateFormData }) {
           <input
             type="text"
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-primary"
             value={formData.shipping.country}
             onChange={(e) => updateFormData('shipping', { country: e.target.value })}
           />
@@ -541,8 +541,8 @@ function ShippingMethodStep({ formData, updateFormData, shippingMethods, analyti
               key={method.id}
               className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
                 formData.shipping_method?.id === method.id 
-                  ? 'border-blue-500 bg-blue-50 shadow-md' 
-                  : 'border-gray-200 hover:border-blue-300 hover:shadow-sm'
+                  ? 'border-primary bg-blue-50 shadow-md' 
+                  : 'border-gray-200 hover:border-primary/50 hover:shadow-sm'
               }`}
               onClick={() => updateFormData('shipping_method', method)}
             >
@@ -550,7 +550,7 @@ function ShippingMethodStep({ formData, updateFormData, shippingMethods, analyti
                 <div className="flex items-start space-x-3">
                   <div className={`mt-1 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                     formData.shipping_method?.id === method.id
-                      ? 'border-blue-500 bg-blue-500'
+                      ? 'border-primary bg-blue-500'
                       : 'border-gray-300'
                   }`}>
                     {formData.shipping_method?.id === method.id && (
@@ -640,7 +640,7 @@ function PaymentStep({ formData, updateFormData, paymentGateways, analytics }) {
             key={gateway.id}
             className={`border rounded-lg p-4 cursor-pointer transition-all ${
               formData.payment.method === gateway.id 
-                ? 'border-blue-500 bg-blue-50' 
+                ? 'border-primary bg-blue-50' 
                 : 'border-gray-200 hover:border-gray-300'
             }`}
             onClick={() => updateFormData('payment', { method: gateway.id })}

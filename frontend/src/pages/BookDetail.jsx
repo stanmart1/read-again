@@ -67,7 +67,7 @@ export default function BookDetail() {
       <div className="min-h-screen bg-gray-50">
         <Header />
         <div className="flex justify-center items-center py-20">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
         </div>
         <Footer />
       </div>
@@ -80,7 +80,7 @@ export default function BookDetail() {
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-20 text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Book not found</h2>
-          <Link to="/books" className="text-blue-600 hover:text-purple-600">
+          <Link to="/books" className="text-blue-600 hover:text-primary">
             Browse all books
           </Link>
         </div>

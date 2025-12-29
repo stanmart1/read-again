@@ -97,7 +97,7 @@ export default function Checkout() {
       <div className="min-h-screen bg-gray-50">
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-16 pt-24 text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading checkout...</p>
         </div>
       </div>
@@ -144,7 +144,7 @@ export default function Checkout() {
           <div className={`mb-6 rounded-lg p-4 ${
             paymentStatus.type === 'warning' ? 'bg-yellow-50 border border-yellow-200' :
             paymentStatus.type === 'error' ? 'bg-red-50 border border-red-200' :
-            'bg-blue-50 border border-blue-200'
+            'bg-blue-50 border border-primary/30'
           }`}>
             <div className="flex items-start">
               <i className={`text-xl mr-3 ${
@@ -169,7 +169,7 @@ export default function Checkout() {
                 className={`transition-colors ${
                   paymentStatus.type === 'warning' ? 'text-yellow-600 hover:text-yellow-800' :
                   paymentStatus.type === 'error' ? 'text-red-600 hover:text-red-800' :
-                  'text-blue-600 hover:text-blue-800'
+                  'text-blue-600 hover:text-primary/90'
                 }`}
               >
                 <i className="ri-close-line text-xl"></i>
@@ -200,7 +200,7 @@ export default function Checkout() {
         <div className="mb-6">
           <button
             onClick={() => navigate('/cart')}
-            className="flex items-center text-gray-600 hover:text-blue-600 transition-colors font-medium"
+            className="flex items-center text-gray-600 hover:text-primary transition-colors font-medium"
           >
             <i className="ri-arrow-left-line mr-2"></i>
             Back to Cart ({cartItems.length} items)
@@ -222,7 +222,7 @@ export default function Checkout() {
 
         {isProcessing ? (
           <div className="text-center py-16">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
             <p className="mt-4 text-gray-600">Processing your order...</p>
           </div>
         ) : (

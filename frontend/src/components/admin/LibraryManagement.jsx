@@ -441,7 +441,7 @@ const LibraryManagement = () => {
           </button>
           <button
             onClick={() => setShowBulkModal(true)}
-            className="px-3 sm:px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600 transition-colors text-sm flex items-center gap-2"
+            className="px-3 sm:px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 dark:hover:bg-primary transition-colors text-sm flex items-center gap-2"
           >
             <i className="ri-group-line"></i>
             <span className="hidden sm:inline">Bulk Assign</span>
@@ -555,7 +555,7 @@ const LibraryManagement = () => {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleViewDetails(library.id)}
-                          className="text-primary hover:text-blue-800"
+                          className="text-primary hover:text-primary/90"
                           title="View Details"
                         >
                           <i className="ri-eye-line"></i>
@@ -998,7 +998,7 @@ const LibraryManagement = () => {
                   <button
                     type="button"
                     onClick={() => setBulkFormat('ebook')}
-                    className={`p-3 rounded-xl border-2 ${bulkFormat === 'ebook' ? 'border-purple-500 bg-purple-50' : 'border-border'}`}
+                    className={`p-3 rounded-xl border-2 ${bulkFormat === 'ebook' ? 'border-primary bg-purple-50' : 'border-border'}`}
                   >
                     <i className="ri-smartphone-line text-xl mb-1 block"></i>
                     <span className="text-sm font-medium">Ebook</span>
@@ -1006,7 +1006,7 @@ const LibraryManagement = () => {
                   <button
                     type="button"
                     onClick={() => setBulkFormat('physical')}
-                    className={`p-3 rounded-xl border-2 ${bulkFormat === 'physical' ? 'border-purple-500 bg-purple-50' : 'border-border'}`}
+                    className={`p-3 rounded-xl border-2 ${bulkFormat === 'physical' ? 'border-primary bg-purple-50' : 'border-border'}`}
                   >
                     <i className="ri-book-line text-xl mb-1 block"></i>
                     <span className="text-sm font-medium">Physical</span>
@@ -1081,7 +1081,7 @@ const LibraryManagement = () => {
             <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
               {detailsLoading ? (
                 <div className="flex items-center justify-center py-12">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
                 </div>
               ) : assignmentDetails ? (
                 <div className="space-y-6">
@@ -1264,7 +1264,7 @@ const LibraryManagement = () => {
                     ) : (
                       <div className="space-y-3">
                         {assignmentDetails.notes.map((note) => (
-                          <div key={note.id} className="bg-primary/10 border-l-4 border-blue-400 p-4 rounded-r-lg">
+                          <div key={note.id} className="bg-primary/10 border-l-4 border-primary p-4 rounded-r-lg">
                             <p className="text-foreground mb-2">{note.content}</p>
                             <div className="flex items-center justify-between text-xs text-muted-foreground">
                               <span>{note.highlight_id ? 'Attached to highlight' : 'Standalone note'}</span>

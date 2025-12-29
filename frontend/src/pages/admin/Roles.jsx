@@ -61,7 +61,7 @@ const Roles = () => {
     return (
       <AdminLayout>
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
         </div>
       </AdminLayout>
     );
@@ -119,7 +119,7 @@ const Roles = () => {
                 <div className="flex space-x-2">
                   <button
                     onClick={() => handleViewPermissions(role)}
-                    className="p-2 text-primary hover:text-blue-800 transition-colors duration-200"
+                    className="p-2 text-primary hover:text-primary/90 transition-colors duration-200"
                     title="Manage Permissions"
                   >
                     <i className="ri-settings-line"></i>

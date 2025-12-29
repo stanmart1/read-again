@@ -414,7 +414,7 @@ export default function PaymentGatewayManagement() {
           )}
 
           {gateway.id === 'bank_transfer' && (
-            <div className="bg-primary/10 border border-blue-200 rounded-lg p-4">
+            <div className="bg-primary/10 border border-primary/30 rounded-lg p-4">
               <div className="flex items-start space-x-3 mb-4">
                 <i className="ri-information-line text-primary text-lg mt-0.5"></i>
                 <div>
@@ -571,7 +571,7 @@ export default function PaymentGatewayManagement() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
       </div>
     );
   }

@@ -207,7 +207,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                 {advancedFilters.accountType !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Type: {advancedFilters.accountType}
-                    <button onClick={() => handleAdvancedFilterChange('accountType', 'all')} className="hover:text-blue-900">
+                    <button onClick={() => handleAdvancedFilterChange('accountType', 'all')} className="hover:text-primary/90">
                       <i className="ri-close-line"></i>
                     </button>
                   </span>
@@ -215,7 +215,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                 {advancedFilters.schoolCategory !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Category: {advancedFilters.schoolCategory}
-                    <button onClick={() => handleAdvancedFilterChange('schoolCategory', 'all')} className="hover:text-blue-900">
+                    <button onClick={() => handleAdvancedFilterChange('schoolCategory', 'all')} className="hover:text-primary/90">
                       <i className="ri-close-line"></i>
                     </button>
                   </span>
@@ -223,7 +223,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                 {advancedFilters.schoolName && (
                   <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     School: {advancedFilters.schoolName}
-                    <button onClick={() => handleAdvancedFilterChange('schoolName', '')} className="hover:text-blue-900">
+                    <button onClick={() => handleAdvancedFilterChange('schoolName', '')} className="hover:text-primary/90">
                       <i className="ri-close-line"></i>
                     </button>
                   </span>
@@ -231,7 +231,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                 {advancedFilters.classLevel && (
                   <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Class: {advancedFilters.classLevel}
-                    <button onClick={() => handleAdvancedFilterChange('classLevel', '')} className="hover:text-blue-900">
+                    <button onClick={() => handleAdvancedFilterChange('classLevel', '')} className="hover:text-primary/90">
                       <i className="ri-close-line"></i>
                     </button>
                   </span>
@@ -239,7 +239,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                 {advancedFilters.department && (
                   <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Dept: {advancedFilters.department}
-                    <button onClick={() => handleAdvancedFilterChange('department', '')} className="hover:text-blue-900">
+                    <button onClick={() => handleAdvancedFilterChange('department', '')} className="hover:text-primary/90">
                       <i className="ri-close-line"></i>
                     </button>
                   </span>
@@ -247,7 +247,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
                 {advancedFilters.registrationDate !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-2 py-1 bg-primary/20 text-primary text-xs rounded">
                     Date: {advancedFilters.registrationDate}
-                    <button onClick={() => handleAdvancedFilterChange('registrationDate', 'all')} className="hover:text-blue-900">
+                    <button onClick={() => handleAdvancedFilterChange('registrationDate', 'all')} className="hover:text-primary/90">
                       <i className="ri-close-line"></i>
                     </button>
                   </span>

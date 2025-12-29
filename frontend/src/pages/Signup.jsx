@@ -603,11 +603,11 @@ export default function Signup() {
                     <input type="checkbox" required className="mt-1 mr-2" />
                     <span className="text-sm text-gray-600">
                       I agree to the{' '}
-                      <Link to="/terms" className="text-blue-600 hover:text-purple-600">
+                      <Link to="/terms" className="text-blue-600 hover:text-primary">
                         Terms of Service
                       </Link>{' '}
                       and{' '}
-                      <Link to="/privacy" className="text-blue-600 hover:text-purple-600">
+                      <Link to="/privacy" className="text-blue-600 hover:text-primary">
                         Privacy Policy
                       </Link>
                     </span>
@@ -648,7 +648,7 @@ export default function Signup() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Already have an account?{' '}
-              <Link to="/login" className="text-blue-600 hover:text-purple-600 font-semibold">
+              <Link to="/login" className="text-blue-600 hover:text-primary font-semibold">
                 Login
               </Link>
             </p>

@@ -116,7 +116,7 @@ export default function FAQManagementPage() {
     return (
       <AdminLayout>
         <div className="min-h-screen bg-muted flex items-center justify-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
         </div>
       </AdminLayout>
     );
@@ -208,7 +208,7 @@ export default function FAQManagementPage() {
           </div>
 
           {selectedFAQs.length > 0 && (
-            <div className="bg-primary/10 border border-blue-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+            <div className="bg-primary/10 border border-primary/30 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <div className="text-xs sm:text-sm text-blue-800">{selectedFAQs.length} FAQ(s) selected</div>
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-2">

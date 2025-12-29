@@ -112,7 +112,7 @@ export default function CategoryForm({ category, onSubmit, onCancel }) {
                   type="button"
                   onClick={() => handleChange('icon', icon)}
                   className={`p-3 border rounded-md text-center hover:bg-muted ${
-                    formData.icon === icon ? 'border-blue-500 bg-primary/10' : 'border-input'
+                    formData.icon === icon ? 'border-primary bg-primary/10' : 'border-input'
                   }`}
                 >
                   <i className={`${icon} text-xl`} style={{ color: formData.color }}></i>

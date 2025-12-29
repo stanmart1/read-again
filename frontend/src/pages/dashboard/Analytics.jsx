@@ -221,7 +221,7 @@ export default function Analytics() {
             <h2 className="text-xl font-bold text-foreground">Reading Goals</h2>
             <button 
               onClick={() => setShowGoalModal(true)}
-              className="text-primary hover:text-purple-600 font-semibold"
+              className="text-primary hover:text-primary font-semibold"
             >
               <i className="ri-add-line mr-1"></i>
               Set Goal
@@ -373,7 +373,7 @@ export default function Analytics() {
                       onClick={() => setGoalForm({...goalForm, goal_type: 'books'})}
                       className={`p-4 border-2 rounded-lg text-left transition-all ${
                         goalForm.goal_type === 'books' 
-                          ? 'border-blue-600 bg-primary/10' 
+                          ? 'border-primary bg-primary/10' 
                           : 'border-border hover:border-input'
                       }`}
                     >
@@ -385,7 +385,7 @@ export default function Analytics() {
                       onClick={() => setGoalForm({...goalForm, goal_type: 'pages'})}
                       className={`p-4 border-2 rounded-lg text-left transition-all ${
                         goalForm.goal_type === 'pages' 
-                          ? 'border-blue-600 bg-primary/10' 
+                          ? 'border-primary bg-primary/10' 
                           : 'border-border hover:border-input'
                       }`}
                     >
@@ -397,7 +397,7 @@ export default function Analytics() {
                       onClick={() => setGoalForm({...goalForm, goal_type: 'minutes'})}
                       className={`p-4 border-2 rounded-lg text-left transition-all ${
                         goalForm.goal_type === 'minutes' 
-                          ? 'border-blue-600 bg-primary/10' 
+                          ? 'border-primary bg-primary/10' 
                           : 'border-border hover:border-input'
                       }`}
                     >
@@ -409,7 +409,7 @@ export default function Analytics() {
                       onClick={() => setGoalForm({...goalForm, goal_type: 'streak'})}
                       className={`p-4 border-2 rounded-lg text-left transition-all ${
                         goalForm.goal_type === 'streak' 
-                          ? 'border-blue-600 bg-primary/10' 
+                          ? 'border-primary bg-primary/10' 
                           : 'border-border hover:border-input'
                       }`}
                     >

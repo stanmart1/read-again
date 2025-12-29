@@ -645,7 +645,7 @@ export default function EpubReader({ bookId, onClose }) {
       {loading && (
         <div className="absolute inset-0 bg-gray-900 flex items-center justify-center z-50">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto mb-4"></div>
             <p className="text-white text-lg">Loading book...</p>
           </div>
         </div>
@@ -780,7 +780,7 @@ export default function EpubReader({ bookId, onClose }) {
               </div>
               <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
                 <div 
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 h-full transition-all duration-300"
+                  className="bg-gradient-to-r from-primary to-primary h-full transition-all duration-300"
                   style={{ width: `${progressData.percentage}%` }}
                 />
               </div>
@@ -1102,7 +1102,7 @@ export default function EpubReader({ bookId, onClose }) {
                                 <div className="flex gap-2">
                                   <button
                                     onClick={() => setEditingNote(note.id)}
-                                    className="text-primary hover:text-blue-800"
+                                    className="text-primary hover:text-primary/90"
                                   >
                                     <i className="ri-edit-line"></i>
                                   </button>
@@ -1229,7 +1229,7 @@ export default function EpubReader({ bookId, onClose }) {
                   key={font}
                   onClick={() => changeFontFamily(font)}
                   className={`px-3 py-2 rounded-lg border-2 transition-all text-sm ${fontFamily === font
-                    ? 'border-blue-500 bg-blue-50 text-blue-700'
+                    ? 'border-primary bg-blue-50 text-blue-700'
                     : 'border-border hover:border-input'
                     }`}
                   style={{ fontFamily: font }}
@@ -1246,7 +1246,7 @@ export default function EpubReader({ bookId, onClose }) {
             <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => changeTheme('light')}
-                className={`p-3 rounded-lg border-2 transition-all ${theme === 'light' ? 'border-blue-500 bg-blue-50' : 'border-border'
+                className={`p-3 rounded-lg border-2 transition-all ${theme === 'light' ? 'border-primary bg-blue-50' : 'border-border'
                   }`}
               >
                 <div className="w-full h-8 bg-card border border-input rounded mb-2"></div>
@@ -1254,7 +1254,7 @@ export default function EpubReader({ bookId, onClose }) {
               </button>
               <button
                 onClick={() => changeTheme('sepia')}
-                className={`p-3 rounded-lg border-2 transition-all ${theme === 'sepia' ? 'border-blue-500 bg-blue-50' : 'border-border'
+                className={`p-3 rounded-lg border-2 transition-all ${theme === 'sepia' ? 'border-primary bg-blue-50' : 'border-border'
                   }`}
               >
                 <div className="w-full h-8 bg-amber-50 border border-amber-200 rounded mb-2"></div>
@@ -1262,7 +1262,7 @@ export default function EpubReader({ bookId, onClose }) {
               </button>
               <button
                 onClick={() => changeTheme('dark')}
-                className={`p-3 rounded-lg border-2 transition-all ${theme === 'dark' ? 'border-blue-500 bg-blue-50' : 'border-border'
+                className={`p-3 rounded-lg border-2 transition-all ${theme === 'dark' ? 'border-primary bg-blue-50' : 'border-border'
                   }`}
               >
                 <div className="w-full h-8 bg-gray-900 border border-gray-700 rounded mb-2"></div>

@@ -101,7 +101,7 @@ export default function Cart() {
         icon: "ri-box-3-line",
         color: "text-blue-600",
         bgColor: "bg-blue-50",
-        borderColor: "border-blue-200"
+        borderColor: "border-primary/30"
       };
     } else {
       return {
@@ -266,7 +266,7 @@ export default function Cart() {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: 20 }}
-                          className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 p-4 sm:p-5 bg-gradient-to-r from-white to-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+                          className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 p-4 sm:p-5 bg-gradient-to-r from-white to-gray-50 border-l-4 border-primary rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
                         >
                           {/* Book Cover and Details */}
                           <div className="flex items-start space-x-3 sm:space-x-4 flex-1">
@@ -338,7 +338,7 @@ export default function Cart() {
                               <div className="flex items-center space-x-1 bg-white border-2 border-gray-200 rounded-lg p-1 shadow-sm">
                                 <button
                                   onClick={() => handleUpdateQuantity(item.book_id, item.quantity - 1)}
-                                  className="p-2 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                  className="p-2 rounded-md hover:bg-blue-50 hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                   disabled={item.quantity <= 1}
                                 >
                                   <i className="ri-subtract-line text-lg"></i>
@@ -348,7 +348,7 @@ export default function Cart() {
                                 </span>
                                 <button
                                   onClick={() => handleUpdateQuantity(item.book_id, item.quantity + 1)}
-                                  className="p-2 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                  className="p-2 rounded-md hover:bg-blue-50 hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                   disabled={item.book?.format === 'physical' && (item.book?.stock_quantity || 0) <= item.quantity}
                                 >
                                   <i className="ri-add-line text-lg"></i>

@@ -223,7 +223,7 @@ export default function FeaturedBooks() {
         {/* Books Grid/Carousel */}
         {loading ? (
           <div className="flex justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
           </div>
         ) : books.length === 0 ? (
           <div className="text-center py-20">
@@ -308,7 +308,7 @@ export default function FeaturedBooks() {
 
                   {/* Book Info */}
                   <div className="p-4">
-                    <h3 className="font-bold text-lg text-gray-900 mb-1 line-clamp-1 group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-bold text-lg text-gray-900 mb-1 line-clamp-1 group-hover:text-primary transition-colors">
                       {book.title}
                     </h3>
                     <p className="text-gray-600 text-sm mb-3 line-clamp-1">

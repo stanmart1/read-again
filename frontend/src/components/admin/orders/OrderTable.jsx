@@ -104,7 +104,7 @@ const OrderTable = ({
                     <div className="flex space-x-2">
                       <button
                         onClick={() => onView(order)}
-                        className="text-primary hover:text-blue-800"
+                        className="text-primary hover:text-primary/90"
                         title="View details"
                       >
                         <i className="ri-eye-line text-lg"></i>

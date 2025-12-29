@@ -32,7 +32,7 @@ export default function SystemSettings() {
     return (
       <AdminLayout>
         <div className="flex items-center justify-center h-96">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
         </div>
       </AdminLayout>
     );
@@ -248,7 +248,7 @@ export default function SystemSettings() {
         </div>
       </div>
       
-      <div className="bg-primary/10 border border-blue-200 rounded-lg p-4 mb-6">
+      <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 mb-6">
         <h4 className="font-medium text-blue-800 mb-4">Image Cache Management</h4>
         <ImageCacheManager />
       </div>

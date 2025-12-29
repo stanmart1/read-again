@@ -56,7 +56,7 @@ export default function Blog() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="flex justify-center py-20">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
           ) : posts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -100,7 +100,7 @@ export default function Blog() {
                         {(post.excerpt || post.content)?.replace(/<[^>]*>/g, '').substring(0, 150) + '...'}
                       </p>
 
-                      <span className="inline-flex items-center text-blue-600 hover:text-purple-600 font-semibold">
+                      <span className="inline-flex items-center text-blue-600 hover:text-primary font-semibold">
                         Read More
                         <i className="ri-arrow-right-line ml-2"></i>
                       </span>

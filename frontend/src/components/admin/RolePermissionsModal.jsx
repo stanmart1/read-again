@@ -141,7 +141,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                       onClick={() => handlePermissionToggle(permission.id)}
                       className={`rounded-lg p-4 border-2 transition-all duration-200 cursor-pointer ${
                         selectedPermissions.includes(permission.id)
-                          ? "bg-primary/10 border-blue-200"
+                          ? "bg-primary/10 border-primary/30"
                           : "bg-muted border-border"
                       }`}
                     >

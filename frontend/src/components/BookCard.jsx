@@ -100,7 +100,7 @@ export default function BookCard({ book }) {
         
         <div className="p-6 flex-1 flex flex-col">
           <Link to={`/books/${book.id}`}>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2 h-14">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors line-clamp-2 h-14">
               {book.title}
             </h3>
           </Link>

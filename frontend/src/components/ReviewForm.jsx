@@ -102,7 +102,7 @@ export default function ReviewForm({ bookId, bookTitle, onSuccess, onCancel }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Give your review a catchy title..."
-            className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-muted focus:bg-card"
+            className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all bg-muted focus:bg-card"
             maxLength={100}
           />
         </div>

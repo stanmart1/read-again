@@ -133,7 +133,7 @@ export default function ResetPassword() {
               <p className="text-gray-600 mb-6">
                 Your password has been successfully reset. Redirecting to login...
               </p>
-              <div className="animate-spin inline-block w-6 h-6 border-3 border-blue-600 border-t-transparent rounded-full"></div>
+              <div className="animate-spin inline-block w-6 h-6 border-3 border-primary border-t-transparent rounded-full"></div>
             </div>
           ) : (
             <>
@@ -228,7 +228,7 @@ export default function ResetPassword() {
               </form>
 
               <div className="mt-6 text-center">
-                <Link to="/login" className="text-blue-600 hover:text-purple-600 font-semibold">
+                <Link to="/login" className="text-blue-600 hover:text-primary font-semibold">
                   <i className="ri-arrow-left-line mr-2"></i>
                   Back to Login
                 </Link>

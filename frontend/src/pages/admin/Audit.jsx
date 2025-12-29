@@ -34,7 +34,7 @@ const Audit = () => {
     if (action.includes('update')) return 'bg-gradient-to-r from-blue-500 to-cyan-500';
     if (action.includes('delete')) return 'bg-gradient-to-r from-red-500 to-pink-500';
     if (action.includes('login')) return 'bg-gradient-to-r from-purple-500 to-pink-500';
-    if (action.includes('assign')) return 'bg-gradient-to-r from-indigo-500 to-purple-500';
+    if (action.includes('assign')) return 'bg-gradient-to-r from-primary to-primary';
     return 'bg-gradient-to-r from-yellow-500 to-orange-500';
   };
 
@@ -306,7 +306,7 @@ const Audit = () => {
                         setSelectedLog(log);
                         setShowDetailsModal(true);
                       }}
-                      className="text-primary hover:text-blue-800 text-sm font-medium flex items-center gap-1"
+                      className="text-primary hover:text-primary/90 text-sm font-medium flex items-center gap-1"
                     >
                       <i className="ri-information-line"></i>
                       View Full Details
@@ -387,7 +387,7 @@ const Audit = () => {
                             setSelectedLog(log);
                             setShowDetailsModal(true);
                           }}
-                          className="text-primary hover:text-blue-800 text-sm font-medium flex items-center gap-1"
+                          className="text-primary hover:text-primary/90 text-sm font-medium flex items-center gap-1"
                         >
                           <i className="ri-information-line"></i>
                           Details
@@ -563,7 +563,7 @@ const Audit = () => {
 
         {loading && (
           <div className="flex items-center justify-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
           </div>
         )}
 

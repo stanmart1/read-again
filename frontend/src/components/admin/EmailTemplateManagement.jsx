@@ -167,7 +167,7 @@ const EmailTemplateManagement = () => {
         <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-6 lg:py-8">
           <div className="bg-card rounded-lg shadow-sm border border-border p-6 sm:p-8 md:p-12">
             <div className="flex flex-col items-center justify-center py-8 sm:py-12">
-              <div className="animate-spin rounded-full h-8 sm:h-10 md:h-12 w-8 sm:w-10 md:w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-8 sm:h-10 md:h-12 w-8 sm:w-10 md:w-12 border-b-2 border-primary"></div>
               <span className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground text-center">
                 Loading email templates...
               </span>
@@ -375,7 +375,7 @@ const EmailTemplateManagement = () => {
                         <div className="flex items-center gap-1 sm:gap-2">
                           <button
                             onClick={() => handlePreviewTemplate(template)}
-                            className="text-primary hover:text-blue-900 flex-shrink-0 p-1"
+                            className="text-primary hover:text-primary/90 flex-shrink-0 p-1"
                             title="Preview"
                           >
                             <i className="ri-eye-line text-lg"></i>
@@ -441,7 +441,7 @@ const EmailTemplateManagement = () => {
 
                 <div className="space-y-4 xs:space-y-6">
                   {/* Tips Section */}
-                  <div className="bg-primary/10 border border-blue-200 rounded-lg p-3 xs:p-4">
+                  <div className="bg-primary/10 border border-primary/30 rounded-lg p-3 xs:p-4">
                     <div className="flex items-start gap-2">
                       <i className="ri-lightbulb-line text-primary text-lg flex-shrink-0 mt-0.5"></i>
                       <div>
@@ -551,7 +551,7 @@ const EmailTemplateManagement = () => {
                         <button
                           type="button"
                           onClick={() => setShowVariables(!showVariables)}
-                          className="text-xs text-primary hover:text-blue-800 flex items-center gap-1"
+                          className="text-xs text-primary hover:text-primary/90 flex items-center gap-1"
                         >
                           <i className="ri-code-line"></i>
                           Show Variables
@@ -559,7 +559,7 @@ const EmailTemplateManagement = () => {
                         <button
                           type="button"
                           onClick={() => setShowPreviewInModal(!showPreviewInModal)}
-                          className="text-xs text-primary hover:text-blue-800 flex items-center gap-1"
+                          className="text-xs text-primary hover:text-primary/90 flex items-center gap-1"
                         >
                           <i className="ri-eye-line"></i>
                           Show Preview

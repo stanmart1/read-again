@@ -74,7 +74,7 @@ const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAs
       <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-100">
         <button
           onClick={() => onView(user)}
-          className="text-primary hover:text-blue-800 flex items-center text-sm"
+          className="text-primary hover:text-primary/90 flex items-center text-sm"
         >
           <i className="ri-eye-line mr-1"></i>
           View

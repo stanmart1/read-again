@@ -327,7 +327,7 @@ export default function EmailGatewayManagement() {
             gateways.map((gateway) => (
               <div
                 key={gateway.id}
-                className={`p-2 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${activeGateway === gateway.id ? 'border-blue-500 bg-primary/10' : 'border-border hover:border-input'}`}
+                className={`p-2 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${activeGateway === gateway.id ? 'border-primary bg-primary/10' : 'border-border hover:border-input'}`}
                 onClick={() => handleGatewayChange(gateway.id)}
               >
                 <div className="flex items-center justify-between gap-2 mb-2">

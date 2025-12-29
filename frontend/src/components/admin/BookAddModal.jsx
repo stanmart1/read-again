@@ -319,7 +319,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                   {errors.author_id && <p className="text-red-500 text-sm mt-1 flex items-center"><i className="ri-error-warning-line mr-1"></i>{errors.author_id}</p>}
 
                   {showAddAuthor && (
-                    <div className="mt-3 p-4 bg-primary/10 rounded-xl border border-blue-200">
+                    <div className="mt-3 p-4 bg-primary/10 rounded-xl border border-primary/30">
                       <label className="block text-sm font-medium text-foreground mb-2">New Author Name</label>
                       <div className="flex gap-2">
                         <input
@@ -588,7 +588,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                   onDragOver={(e) => handleDrag(e, 'cover')}
                   onDrop={(e) => handleDrop(e, 'cover')}
                   className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${dragActive.cover ? 'border-primary bg-primary/10' :
-                    errors.cover_image ? 'border-red-500' : 'border-input hover:border-blue-400'
+                    errors.cover_image ? 'border-red-500' : 'border-input hover:border-primary'
                     }`}
                   onClick={() => coverInputRef.current?.click()}
                 >
@@ -620,7 +620,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     onDragOver={(e) => handleDrag(e, 'ebook')}
                     onDrop={(e) => handleDrop(e, 'ebook')}
                     className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${dragActive.ebook ? 'border-primary bg-primary/10' :
-                      errors.ebook_file ? 'border-red-500' : 'border-input hover:border-blue-400'
+                      errors.ebook_file ? 'border-red-500' : 'border-input hover:border-primary'
                       }`}
                     onClick={() => ebookInputRef.current?.click()}
                   >
@@ -643,7 +643,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
               {/* Upload Progress */}
               {isSubmitting && (
-                <div className="bg-primary/10 border border-blue-200 rounded-lg p-4">
+                <div className="bg-primary/10 border border-primary/30 rounded-lg p-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-blue-900">Uploading...</span>
                     <span className="text-sm font-medium text-blue-900">{uploadProgress}%</span>

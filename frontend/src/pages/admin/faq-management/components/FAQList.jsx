@@ -157,7 +157,7 @@ export default function FAQList({
                     </button>
                     <button
                       onClick={() => onEditFAQ(faq)}
-                      className="text-primary hover:text-blue-900"
+                      className="text-primary hover:text-primary/90"
                       title="Edit FAQ"
                     >
                       <i className="ri-edit-line"></i>

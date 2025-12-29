@@ -121,7 +121,7 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
                 <button
                   type="button"
                   onClick={handleSelectAllStates}
-                  className="text-sm text-primary hover:text-blue-800"
+                  className="text-sm text-primary hover:text-primary/90"
                 >
                   {formData.states.length === NIGERIAN_STATES.length ? 'Deselect All' : 'Select All'}
                 </button>

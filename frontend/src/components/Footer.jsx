@@ -14,7 +14,7 @@ export default function Footer() {
             className="lg:col-span-1"
           >
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary rounded-lg flex items-center justify-center">
                 <i className="ri-book-line text-white text-lg"></i>
               </div>
               <span className="text-xl font-bold font-pacifico">ReadAgain</span>

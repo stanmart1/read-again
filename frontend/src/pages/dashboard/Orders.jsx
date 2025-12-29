@@ -98,7 +98,7 @@ export default function Orders() {
                 <div className="mt-6 pt-4 border-t flex justify-between items-center">
                   <button 
                     onClick={() => setSelectedOrder(order)}
-                    className="text-primary hover:text-purple-600 font-semibold"
+                    className="text-primary hover:text-primary font-semibold"
                   >
                     View Details
                   </button>

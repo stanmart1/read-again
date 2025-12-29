@@ -80,7 +80,7 @@ export default function BankTransferProof() {
       <div className="min-h-screen bg-gray-50">
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-16 pt-24 text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading...</p>
         </div>
       </div>
@@ -95,7 +95,7 @@ export default function BankTransferProof() {
         <div className="mb-6">
           <button
             onClick={() => navigate('/cart')}
-            className="flex items-center text-gray-600 hover:text-blue-600 transition-colors"
+            className="flex items-center text-gray-600 hover:text-primary transition-colors"
           >
             <i className="ri-arrow-left-line mr-2"></i>
             Back to Cart
@@ -122,7 +122,7 @@ export default function BankTransferProof() {
 
           {/* Bank Account Details */}
           {bankDetails && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+            <div className="bg-blue-50 border border-primary/30 rounded-lg p-6 mb-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Transfer to this account</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">

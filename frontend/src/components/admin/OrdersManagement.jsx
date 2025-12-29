@@ -235,7 +235,7 @@ const OrdersManagement = () => {
       <div className="min-h-screen bg-muted">
         <div className="bg-card rounded-lg shadow-sm border border-border p-6">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
             <p className="mt-2 text-muted-foreground">Loading orders...</p>
           </div>
         </div>
@@ -314,7 +314,7 @@ const OrdersManagement = () => {
 
       {/* Batch Actions */}
       {selectedOrders.size > 0 && (
-        <div className="bg-primary/10 border border-blue-200 rounded-lg p-4">
+        <div className="bg-primary/10 border border-primary/30 rounded-lg p-4">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-blue-900">
               {selectedOrders.size} order{selectedOrders.size > 1 ? 's' : ''} selected

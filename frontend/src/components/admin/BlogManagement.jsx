@@ -437,7 +437,7 @@ const BlogManagement = () => {
         <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-6 lg:py-8">
           <div className="bg-card rounded-lg shadow-sm border border-border p-6 sm:p-8 md:p-12">
             <div className="flex flex-col items-center justify-center py-8 sm:py-12">
-              <div className="animate-spin rounded-full h-8 sm:h-10 md:h-12 w-8 sm:w-10 md:w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-8 sm:h-10 md:h-12 w-8 sm:w-10 md:w-12 border-b-2 border-primary"></div>
               <span className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground text-center">
                 Loading blog posts...
               </span>
@@ -631,7 +631,7 @@ const BlogManagement = () => {
 
         {/* Bulk Actions */}
         {selectedPosts.length > 0 && (
-          <div className="bg-primary/10 border border-blue-200 rounded-lg p-4 mb-4 flex items-center justify-between">
+          <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 mb-4 flex items-center justify-between">
             <span className="text-sm font-medium text-blue-900">
               {selectedPosts.length} post{selectedPosts.length > 1 ? 's' : ''} selected
             </span>
@@ -796,7 +796,7 @@ const BlogManagement = () => {
                           </button>
                           <button
                             onClick={() => handleEditPost(post)}
-                            className="text-primary hover:text-blue-900 flex-shrink-0"
+                            className="text-primary hover:text-primary/90 flex-shrink-0"
                             title="Edit"
                           >
                             <i className="ri-edit-line text-lg"></i>
@@ -1200,7 +1200,7 @@ const BlogManagement = () => {
                         {formData.tags.map(tag => (
                           <span key={tag} className="px-3 py-1 bg-primary/20 text-blue-800 rounded-full flex items-center gap-1 text-sm">
                             {tag}
-                            <button onClick={() => removeTag(tag)} type="button" className="text-primary hover:text-blue-800">
+                            <button onClick={() => removeTag(tag)} type="button" className="text-primary hover:text-primary/90">
                               <i className="ri-close-line"></i>
                             </button>
                           </span>

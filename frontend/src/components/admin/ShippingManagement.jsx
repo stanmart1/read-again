@@ -168,7 +168,7 @@ const ShippingManagement = () => {
     return (
       <div className="p-6">
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
         </div>
       </div>
     );
@@ -327,7 +327,7 @@ const ShippingManagement = () => {
                               setEditingMethod(method);
                               setShowMethodModal(true);
                             }}
-                            className="text-primary hover:text-blue-900 mr-3"
+                            className="text-primary hover:text-primary/90 mr-3"
                             title="Edit"
                           >
                             <i className="ri-edit-line text-lg"></i>

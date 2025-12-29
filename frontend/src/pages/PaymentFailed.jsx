@@ -102,7 +102,7 @@ export default function PaymentFailed() {
                     to={action.path}
                     className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all group"
                   >
-                    <i className={`${action.icon} text-4xl text-blue-600 group-hover:text-purple-600 transition-colors mb-3`}></i>
+                    <i className={`${action.icon} text-4xl text-blue-600 group-hover:text-primary transition-colors mb-3`}></i>
                     <p className="font-semibold text-gray-900">{action.name}</p>
                   </Link>
                 ))}

@@ -65,7 +65,7 @@ export default function BlogSection() {
         {/* Blog Posts */}
         {loading ? (
           <div className="flex justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
           </div>
         ) : posts.length === 0 ? (
           <motion.div
@@ -154,7 +154,7 @@ export default function BlogSection() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                        <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary rounded-full flex items-center justify-center text-white font-semibold text-sm">
                           {post.author_name?.[0] || 'A'}
                         </div>
                         <span className="text-sm font-medium text-foreground">
@@ -164,7 +164,7 @@ export default function BlogSection() {
 
                       <Link
                         to={`/blog/${post.slug || post.id}`}
-                        className="text-primary hover:text-blue-700 font-semibold text-sm flex items-center space-x-1"
+                        className="text-primary hover:text-primary/90 font-semibold text-sm flex items-center space-x-1"
                       >
                         <span>Read More</span>
                         <i className="ri-arrow-right-line"></i>

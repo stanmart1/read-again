@@ -116,7 +116,7 @@ export default function Login() {
                 <input type="checkbox" className="mr-2" />
                 <span className="text-sm text-gray-600">Remember me</span>
               </label>
-              <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-purple-600">
+              <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-primary">
                 Forgot password?
               </Link>
             </div>
@@ -133,7 +133,7 @@ export default function Login() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-blue-600 hover:text-purple-600 font-semibold">
+              <Link to="/signup" className="text-blue-600 hover:text-primary font-semibold">
                 Sign up
               </Link>
             </p>

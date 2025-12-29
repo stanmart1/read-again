@@ -143,7 +143,7 @@ export default function Settings() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-3 font-medium transition-colors border-b-2 whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'border-blue-600 text-primary'
+                    ? 'border-primary text-primary'
                     : 'border-transparent text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -493,7 +493,7 @@ export default function Settings() {
                         {['Fiction', 'Non-Fiction', 'Mystery', 'Romance', 'Sci-Fi', 'Biography'].map((genre) => (
                           <button
                             key={genre}
-                            className="px-4 py-2 border border-input rounded-full hover:bg-primary/10 hover:border-blue-600"
+                            className="px-4 py-2 border border-input rounded-full hover:bg-primary/10 hover:border-primary"
                           >
                             {genre}
                           </button>
