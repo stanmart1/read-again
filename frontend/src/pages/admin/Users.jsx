@@ -150,7 +150,7 @@ const AdminUsers = () => {
     return (
       <AdminLayout>
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
         </div>
       </AdminLayout>
     );
@@ -161,18 +161,18 @@ const AdminUsers = () => {
       <div className="space-y-6 relative">
         {/* Loading Overlay */}
         {loading && users.length > 0 && (
-          <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50 rounded-lg">
-            <div className="bg-white rounded-lg p-8 flex flex-col items-center gap-4">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-              <p className="text-gray-600 font-medium">Loading users...</p>
+          <div className="fixed inset-0 bg-black/20 dark:bg-black/40 flex items-center justify-center z-50 rounded-lg">
+            <div className="bg-card rounded-lg p-8 flex flex-col items-center gap-4">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+              <p className="text-muted-foreground font-medium">Loading users...</p>
             </div>
           </div>
         )}
 
         {/* Page Title */}
-        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">User Management</h1>
-          <p className="text-sm sm:text-base text-gray-600 mt-1">Manage user accounts and permissions</p>
+        <div className="bg-card rounded-lg shadow-md p-4 sm:p-6">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">User Management</h1>
+          <p className="text-sm sm:text-base text-muted-foreground mt-1">Manage user accounts and permissions</p>
         </div>
 
         {/* Filters */}
@@ -190,11 +190,11 @@ const AdminUsers = () => {
 
         {/* Batch Actions Bar */}
         {selectedUsers.length > 0 && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                <i className="ri-checkbox-multiple-line text-blue-600 text-xl"></i>
-                <span className="font-semibold text-blue-900">
+                <i className="ri-checkbox-multiple-line text-primary text-xl"></i>
+                <span className="font-semibold text-foreground">
                   {selectedUsers.length} user{selectedUsers.length > 1 ? 's' : ''} selected
                 </span>
               </div>
@@ -205,7 +205,7 @@ const AdminUsers = () => {
                       selectedUsers.forEach(userId => handleStatusChange(userId, true));
                     }
                   }}
-                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm flex items-center gap-2"
+                  className="px-4 py-2 bg-green-600 dark:bg-green-700 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-800 transition-colors text-sm flex items-center gap-2"
                 >
                   <i className="ri-check-line"></i>
                   Activate All
@@ -216,7 +216,7 @@ const AdminUsers = () => {
                       selectedUsers.forEach(userId => handleStatusChange(userId, false));
                     }
                   }}
-                  className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors text-sm flex items-center gap-2"
+                  className="px-4 py-2 bg-yellow-600 dark:bg-yellow-700 text-white rounded-lg hover:bg-yellow-700 dark:hover:bg-yellow-800 transition-colors text-sm flex items-center gap-2"
                 >
                   <i className="ri-pause-line"></i>
                   Deactivate All
