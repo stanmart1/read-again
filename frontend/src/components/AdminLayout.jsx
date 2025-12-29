@@ -65,15 +65,15 @@ const AdminLayout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
       <Header />
       
       {/* Mobile Menu Button - Fixed position */}
-      <div className="lg:hidden fixed top-16 left-0 right-0 bg-white border-b border-gray-200 p-3 z-30 shadow-sm">
+      <div className="lg:hidden fixed top-16 left-0 right-0 bg-card border-b border-border p-3 z-30 shadow-sm">
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+          className="flex items-center gap-2 px-3 py-2 text-foreground hover:bg-muted rounded-lg transition-colors"
         >
           <i className={`ri-${mobileOpen ? 'close' : 'menu'}-line text-xl`}></i>
           <span className="text-sm font-medium">Admin Menu</span>
@@ -97,37 +97,37 @@ const AdminLayout = ({ children }) => {
       <motion.aside
         initial={false}
         animate={{ width: collapsed ? 80 : 288 }}
-        className={`fixed left-0 bg-white shadow-lg z-50 transform transition-all duration-300 ${
+        className={`fixed left-0 bg-card shadow-lg z-50 transform transition-all duration-300 ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 overflow-y-auto overflow-x-hidden border-r border-gray-200`}
+        } lg:translate-x-0 overflow-y-auto overflow-x-hidden border-r border-border`}
         style={{ top: '64px', height: 'calc(100vh - 64px)' }}
       >
         {/* User Profile Section */}
-        <div className="p-4 border-b border-gray-200">
+        <div className="p-4 border-b border-border">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                <i className="ri-user-line text-blue-600 text-lg"></i>
+              <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                <i className="ri-user-line text-primary text-lg"></i>
               </div>
               {!collapsed && (
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                  <p className="text-sm font-medium text-foreground truncate">
                     {user?.name || 'Admin User'}
                   </p>
-                  <p className="text-xs text-gray-600 truncate">Administrator</p>
+                  <p className="text-xs text-muted-foreground truncate">Administrator</p>
                 </div>
               )}
             </div>
             <button
               onClick={() => setCollapsed(!collapsed)}
-              className="hidden lg:block p-1 text-gray-400 hover:text-gray-600 transition-colors"
+              className="hidden lg:block p-1 text-muted-foreground hover:text-muted-foreground transition-colors"
               title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             >
               <i className={`ri-arrow-left-s-line text-lg transition-transform ${collapsed ? 'rotate-180' : ''}`}></i>
             </button>
             <button
               onClick={() => setMobileOpen(false)}
-              className="lg:hidden p-1 text-gray-400 hover:text-gray-600 transition-colors"
+              className="lg:hidden p-1 text-muted-foreground hover:text-muted-foreground transition-colors"
               title="Close sidebar"
             >
               <i className="ri-arrow-left-s-line text-lg"></i>
@@ -146,8 +146,8 @@ const AdminLayout = ({ children }) => {
                     onClick={() => setMobileOpen(false)}
                     className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                       location.pathname === item.path
-                        ? 'bg-blue-100 text-blue-700 border-r-2 border-blue-500'
-                        : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                        ? 'bg-primary/10 text-primary border-r-2 border-primary'
+                        : 'text-foreground hover:bg-muted hover:text-foreground'
                     }`}
                     title={!collapsed ? '' : item.label}
                   >
@@ -158,7 +158,7 @@ const AdminLayout = ({ children }) => {
               ))
             ) : (
               <li className="px-3 py-2">
-                <p className="text-xs text-gray-500 text-center">
+                <p className="text-xs text-muted-foreground text-center">
                   No access to menu items
                 </p>
               </li>
@@ -167,10 +167,10 @@ const AdminLayout = ({ children }) => {
         </nav>
 
         {/* Footer */}
-        <div className="p-4 border-t border-gray-200">
+        <div className="p-4 border-t border-border">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+            className="w-full flex items-center px-3 py-2 text-sm font-medium text-foreground hover:bg-muted rounded-md transition-colors"
           >
             <i className="ri-logout-box-r-line mr-3 text-lg"></i>
             {!collapsed && <span>Sign Out</span>}
