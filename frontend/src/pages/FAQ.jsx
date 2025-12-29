@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Footer } from '../components/public-layout/Footer';
 import { useFAQ } from '../hooks/useFAQ';
 
 export default function FAQ() {

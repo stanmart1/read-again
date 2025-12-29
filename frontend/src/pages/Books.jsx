@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Footer } from '../components/public-layout/Footer';
 import BookCard from '../components/BookCard';
 import { useBooks } from '../hooks';
 

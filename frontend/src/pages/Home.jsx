@@ -6,7 +6,7 @@ import EReaderShowcase from '../components/EReaderShowcase';
 import WorksCarousel from '../components/WorksCarousel';
 import BlogSection from '../components/BlogSection';
 import TestimonialsSection from '../components/TestimonialsSection';
-import Footer from '../components/Footer';
+import { Footer } from '../components/public-layout/Footer';
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Footer } from '../components/public-layout/Footer';
 
 export default function PaymentFailed() {
   const navigate = useNavigate();

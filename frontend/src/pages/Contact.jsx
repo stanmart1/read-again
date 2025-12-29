@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Footer } from '../components/public-layout/Footer';
 import { useContact } from '../hooks';
 import api from '../lib/api';
 

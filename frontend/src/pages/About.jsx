@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Footer } from '../components/public-layout/Footer';
 import { useAbout } from '../hooks';
 import { getFileUrl } from '../lib/fileService';
 import { createHTMLProps } from '../utils/htmlUtils';
