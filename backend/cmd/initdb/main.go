@@ -33,6 +33,8 @@ func main() {
 		&models.User{},
 		&models.Role{},
 		&models.Permission{},
+		&models.AuthLog{},
+		&models.TokenBlacklist{},
 		
 		// Books & Content
 		&models.Book{},
@@ -40,12 +42,10 @@ func main() {
 		&models.Author{},
 		&models.Review{},
 		
-		// Orders & Payments
+		// Orders & Cart
 		&models.Order{},
 		&models.OrderItem{},
-		&models.Payment{},
 		&models.Cart{},
-		&models.CartItem{},
 		
 		// Reading
 		&models.ReadingSession{},
@@ -58,7 +58,7 @@ func main() {
 		&models.Blog{},
 		&models.FAQ{},
 		&models.Testimonial{},
-		&models.AboutContent{},
+		&models.AboutPage{},
 		&models.ContactMessage{},
 		&models.Work{},
 		
@@ -69,9 +69,7 @@ func main() {
 		&models.Activity{},
 		&models.AuditLog{},
 		&models.SystemSettings{},
-		&models.EmailTemplate{},
-		&models.ShippingSettings{},
-		&models.PaymentSettings{},
+		&models.Wishlist{},
 	)
 
 	if err != nil {
