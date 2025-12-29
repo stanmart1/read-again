@@ -31,17 +31,17 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
   );
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+    <div className="bg-card rounded-lg shadow-md p-4 sm:p-6">
       {/* Search - Full width on mobile */}
       <div className="mb-4">
         <div className="relative">
-          <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"></i>
           <input
             type="text"
             placeholder="Search by email, username, or name..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background text-foreground"
           />
         </div>
       </div>
@@ -53,7 +53,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
           <select
             value={filterRole}
             onChange={(e) => setFilterRole(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent text-sm bg-background text-foreground"
           >
             <option value="all">All Roles</option>
             {roles.map((role) => (
@@ -66,7 +66,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent text-sm bg-background text-foreground"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -75,7 +75,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
 
           <button
             onClick={() => setShowAdvanced(!showAdvanced)}
-            className="px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center gap-2"
+            className="px-3 py-2 border border-input rounded-lg hover:bg-muted transition-colors text-sm flex items-center gap-2 text-foreground"
           >
             <i className={`ri-filter-${showAdvanced ? 'off' : '3'}-line`}></i>
             {showAdvanced ? 'Hide' : 'Advanced'}
@@ -85,7 +85,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
         {/* Button - full width on mobile */}
         <button
           onClick={onCreateUser}
-          className="w-full sm:w-auto px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center sm:justify-start gap-2 flex-shrink-0"
+          className="w-full sm:w-auto px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 flex items-center justify-center sm:justify-start gap-2 flex-shrink-0"
         >
           <i className="ri-user-add-line"></i>
           <span className="sm:block">Add User</span>
@@ -94,13 +94,13 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
 
       {/* Advanced Filters */}
       {showAdvanced && (
-        <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="mt-4 p-4 bg-muted rounded-lg border border-border">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
               <i className="ri-filter-3-line"></i>
               Advanced Filters
               {hasActiveFilters && (
-                <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded-full">
+                <span className="px-2 py-0.5 bg-primary/20 text-primary text-xs rounded-full">
                   Active
                 </span>
               )}
