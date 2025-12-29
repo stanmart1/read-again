@@ -239,7 +239,7 @@ const AdminBooks = () => {
   if (error) {
     return (
       <AdminLayout>
-        <div className="min-h-screen bg-gray-50 p-6">
+        <div className="min-h-screen bg-muted p-6">
           <div className="max-w-4xl mx-auto">
             <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
               <div className="flex items-center gap-3 mb-4">
@@ -254,8 +254,8 @@ const AdminBooks = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg p-4 mb-4">
-                <h4 className="font-medium text-gray-900 mb-2">Troubleshooting Steps:</h4>
+              <div className="bg-card rounded-lg p-4 mb-4">
+                <h4 className="font-medium text-foreground mb-2">Troubleshooting Steps:</h4>
                 <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
                   <li>Check if the database is running and accessible</li>
                   <li>Verify your environment variables are set correctly</li>
@@ -281,20 +281,20 @@ const AdminBooks = () => {
 
   return (
     <AdminLayout>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-muted">
         <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-3 lg:py-4">
           <div className="mb-4 sm:mb-6 md:mb-8">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-tight break-words">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground leading-tight break-words">
               Book Management
             </h1>
-            <p className="mt-2 text-sm sm:text-base text-gray-600 leading-relaxed break-words">
+            <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed break-words">
               Manage your digital library collection
             </p>
           </div>
 
           {loading && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-              <div className="bg-white rounded-lg p-6 shadow-xl">
+              <div className="bg-card rounded-lg p-6 shadow-xl">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
                 <p className="mt-4 text-gray-700">Loading books...</p>
               </div>
@@ -303,15 +303,15 @@ const AdminBooks = () => {
 
           {loadingStates.editLoading && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-              <div className="bg-white rounded-lg p-6 shadow-xl">
+              <div className="bg-card rounded-lg p-6 shadow-xl">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto"></div>
                 <p className="mt-4 text-gray-700">Loading book details...</p>
               </div>
             </div>
           )}
 
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div className="border-b border-gray-200">
+          <div className="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
+            <div className="border-b border-border">
               <nav className="-mb-px flex overflow-x-auto scrollbar-thin px-3 sm:px-4 md:px-6">
                 {['books', 'categories', 'authors'].map((section) => (
                   <button
@@ -319,8 +319,8 @@ const AdminBooks = () => {
                     onClick={() => setActiveSection(section)}
                     className={`flex-shrink-0 mr-3 sm:mr-4 md:mr-6 lg:mr-8 py-3 sm:py-4 px-2 border-b-2 font-medium text-sm sm:text-base capitalize whitespace-nowrap transition-colors duration-200 ${
                       activeSection === section
-                        ? 'border-blue-500 text-blue-600'
-                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                        ? 'border-primary text-primary'
+                        : 'border-transparent text-muted-foreground hover:text-gray-700 hover:border-input'
                     }`}
                   >
                     {section}
@@ -333,13 +333,13 @@ const AdminBooks = () => {
               {activeSection === 'books' && (
                 <div className="space-y-6">
                   <div className="flex justify-between items-center">
-                    <h2 className="text-xl font-semibold text-gray-900">All Books</h2>
+                    <h2 className="text-xl font-semibold text-foreground">All Books</h2>
                     <div className="flex items-center gap-3">
                       {selection.books.length > 0 && (
                         <>
                           <button
                             onClick={() => setModals(prev => ({ ...prev, batchUpdate: true }))}
-                            className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 flex items-center"
+                            className="px-4 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-all duration-300 flex items-center"
                           >
                             <i className="ri-edit-box-line mr-2"></i>
                             Batch Update ({selection.books.length})
@@ -370,10 +370,10 @@ const AdminBooks = () => {
                   />
 
                   {books.length === 0 && !loading ? (
-                    <div className="text-center py-12 bg-white rounded-lg shadow-md">
+                    <div className="text-center py-12 bg-card rounded-lg shadow-md">
                       <i className="ri-book-line text-6xl text-gray-300 mb-4"></i>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">No Books Found</h3>
-                      <p className="text-gray-500">
+                      <h3 className="text-xl font-semibold text-foreground mb-2">No Books Found</h3>
+                      <p className="text-muted-foreground">
                         {filters.search || filters.status || filters.category_id
                           ? 'Try adjusting your filters'
                           : 'Start by adding your first book'}
@@ -391,7 +391,7 @@ const AdminBooks = () => {
 
                   {/* Pagination */}
                   {books.length > 0 && (
-                    <div className="flex items-center justify-between bg-white rounded-lg shadow-md p-4">
+                    <div className="flex items-center justify-between bg-card rounded-lg shadow-md p-4">
                       <div className="text-sm text-gray-700">
                         Showing <span className="font-medium">{(pagination.page - 1) * pagination.limit + 1}</span> to{' '}
                         <span className="font-medium">{Math.min(pagination.page * pagination.limit, pagination.total)}</span> of{' '}
@@ -401,14 +401,14 @@ const AdminBooks = () => {
                         <button
                           onClick={() => setPagination(prev => ({ ...prev, page: prev.page - 1 }))}
                           disabled={pagination.page === 1}
-                          className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-4 py-2 border border-input rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           Previous
                         </button>
                         <button
                           onClick={() => setPagination(prev => ({ ...prev, page: prev.page + 1 }))}
                           disabled={pagination.page === pagination.pages}
-                          className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-4 py-2 border border-input rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           Next
                         </button>
@@ -431,20 +431,20 @@ const AdminBooks = () => {
           {/* Delete Confirmation Modal */}
           {modals.deleteConfirm && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-              <div className="bg-white rounded-xl shadow-2xl max-w-md w-full">
+              <div className="bg-card rounded-xl shadow-2xl max-w-md w-full">
                 <div className="p-6">
                   <div className="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4">
                     <i className="ri-error-warning-line text-2xl text-red-600"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 text-center mb-2">Delete Book</h3>
-                  <p className="text-gray-600 text-center mb-6">
+                  <h3 className="text-xl font-bold text-foreground text-center mb-2">Delete Book</h3>
+                  <p className="text-muted-foreground text-center mb-6">
                     Are you sure you want to delete this book? This action cannot be undone.
                   </p>
                   <div className="flex gap-3">
                     <button
                       onClick={() => setModals(prev => ({ ...prev, deleteConfirm: false }))}
                       disabled={loadingStates.delete}
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex-1 px-4 py-2 border border-input rounded-lg hover:bg-muted transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Cancel
                     </button>
@@ -465,9 +465,9 @@ const AdminBooks = () => {
           {/* Batch Update Modal */}
           {modals.batchUpdate && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-              <div className="bg-white rounded-xl shadow-2xl max-w-md w-full">
+              <div className="bg-card rounded-xl shadow-2xl max-w-md w-full">
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Batch Update Books</h3>
+                  <h3 className="text-xl font-bold text-foreground mb-4">Batch Update Books</h3>
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
@@ -477,7 +477,7 @@ const AdminBooks = () => {
                           ...prev, 
                           batchUpdate: { ...prev.batchUpdate, status: e.target.value } 
                         }))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
                       >
                         <option value="">Don't change</option>
                         <option value="published">Published</option>
@@ -493,7 +493,7 @@ const AdminBooks = () => {
                           ...prev, 
                           batchUpdate: { ...prev.batchUpdate, category_id: e.target.value } 
                         }))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
                       >
                         <option value="">Don't change</option>
                         {data.categories.map(cat => (
@@ -514,7 +514,7 @@ const AdminBooks = () => {
                               price_adjustment: { ...prev.batchUpdate.price_adjustment, value: e.target.value } 
                             } 
                           }))}
-                          className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                          className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
                           placeholder="0"
                         />
                         <select
@@ -526,7 +526,7 @@ const AdminBooks = () => {
                               price_adjustment: { ...prev.batchUpdate.price_adjustment, type: e.target.value } 
                             } 
                           }))}
-                          className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                          className="px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500"
                         >
                           <option value="percentage">%</option>
                           <option value="fixed">₦</option>
@@ -537,13 +537,13 @@ const AdminBooks = () => {
                   <div className="flex gap-3 mt-6">
                     <button
                       onClick={() => setModals(prev => ({ ...prev, batchUpdate: false }))}
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                      className="flex-1 px-4 py-2 border border-input rounded-lg hover:bg-muted transition-colors"
                     >
                       Cancel
                     </button>
                     <button
                       onClick={handleBatchUpdate}
-                      className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
                     >
                       Update Books
                     </button>
@@ -556,13 +556,13 @@ const AdminBooks = () => {
           {/* Book Details Modal */}
           {modals.details && selection.bookForAction && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-              <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="bg-card rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-xl font-bold text-gray-900">Book Details</h3>
+                    <h3 className="text-xl font-bold text-foreground">Book Details</h3>
                     <button
                       onClick={() => setModals(prev => ({ ...prev, details: false }))}
-                      className="text-gray-400 hover:text-gray-600"
+                      className="text-gray-400 hover:text-muted-foreground"
                     >
                       <i className="ri-close-line text-2xl"></i>
                     </button>
@@ -575,13 +575,13 @@ const AdminBooks = () => {
                         className="w-32 h-48 object-cover rounded-lg shadow-md"
                       />
                       <div className="flex-1">
-                        <h4 className="text-2xl font-bold text-gray-900 mb-2">{selection.bookForAction.title}</h4>
-                        <p className="text-gray-600 mb-2">by {selection.bookForAction.author_name}</p>
+                        <h4 className="text-2xl font-bold text-foreground mb-2">{selection.bookForAction.title}</h4>
+                        <p className="text-muted-foreground mb-2">by {selection.bookForAction.author_name}</p>
                         <div className="flex items-center gap-2 mb-2">
                           <span className={`px-3 py-1 text-xs font-semibold rounded-full text-white ${
                             selection.bookForAction.status === 'published' ? 'bg-green-500' :
                             selection.bookForAction.status === 'draft' ? 'bg-yellow-500' :
-                            'bg-gray-500'
+                            'bg-muted0'
                           }`}>
                             {selection.bookForAction.status}
                           </span>
@@ -596,28 +596,28 @@ const AdminBooks = () => {
                     </div>
                     <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                       <div>
-                        <span className="text-sm text-gray-500">Category</span>
-                        <p className="font-medium text-gray-900">{selection.bookForAction.category_name}</p>
+                        <span className="text-sm text-muted-foreground">Category</span>
+                        <p className="font-medium text-foreground">{selection.bookForAction.category_name}</p>
                       </div>
                       <div>
-                        <span className="text-sm text-gray-500">Format</span>
-                        <p className="font-medium text-gray-900">{selection.bookForAction.format}</p>
+                        <span className="text-sm text-muted-foreground">Format</span>
+                        <p className="font-medium text-foreground">{selection.bookForAction.format}</p>
                       </div>
                       <div>
-                        <span className="text-sm text-gray-500">Stock</span>
-                        <p className="font-medium text-gray-900">{selection.bookForAction.stock_quantity}</p>
+                        <span className="text-sm text-muted-foreground">Stock</span>
+                        <p className="font-medium text-foreground">{selection.bookForAction.stock_quantity}</p>
                       </div>
                       <div>
-                        <span className="text-sm text-gray-500">Created</span>
-                        <p className="font-medium text-gray-900">
+                        <span className="text-sm text-muted-foreground">Created</span>
+                        <p className="font-medium text-foreground">
                           {new Date(selection.bookForAction.created_at).toLocaleDateString()}
                         </p>
                       </div>
                     </div>
                     {selection.bookForAction.description && (
                       <div className="pt-4 border-t">
-                        <span className="text-sm text-gray-500">Description</span>
-                        <p className="mt-1 text-gray-900">{selection.bookForAction.description}</p>
+                        <span className="text-sm text-muted-foreground">Description</span>
+                        <p className="mt-1 text-foreground">{selection.bookForAction.description}</p>
                       </div>
                     )}
                   </div>
@@ -655,7 +655,7 @@ const AdminBooks = () => {
           {/* Book Assign Modal */}
           {modals.bookAssign && selection.bookForAction && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-              <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full transform transition-all">
+              <div className="bg-card rounded-2xl shadow-2xl max-w-lg w-full transform transition-all">
                 {/* Header */}
                 <div className="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-t-2xl">
                   <div className="flex items-center justify-between">
@@ -664,8 +664,8 @@ const AdminBooks = () => {
                         <i className="ri-book-line text-white text-lg"></i>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900">Assign Book to Users</h3>
-                        <p className="text-sm text-gray-600">Grant access to a book for multiple users</p>
+                        <h3 className="text-xl font-bold text-foreground">Assign Book to Users</h3>
+                        <p className="text-sm text-muted-foreground">Grant access to a book for multiple users</p>
                       </div>
                     </div>
                     <button
@@ -676,7 +676,7 @@ const AdminBooks = () => {
                         setUserAssignments({});
                         setForms(prev => ({ ...prev, selectedFormat: 'ebook', userSearch: '' }));
                       }}
-                      className="text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-white/50"
+                      className="text-gray-400 hover:text-muted-foreground transition-colors p-1 rounded-full hover:bg-card/50"
                     >
                       <i className="ri-close-line text-2xl"></i>
                     </button>
@@ -697,12 +697,12 @@ const AdminBooks = () => {
                           value={forms.userSearch}
                           onChange={(e) => setForms(prev => ({ ...prev, userSearch: e.target.value }))}
                           className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
-                            errors.users ? 'border-red-500' : 'border-gray-300'
+                            errors.users ? 'border-red-500' : 'border-input'
                           }`}
                           placeholder="Search and select users..."
                         />
                         {forms.userSearch && (
-                          <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-48 overflow-y-auto">
+                          <div className="absolute z-10 w-full mt-1 bg-card border border-input rounded-lg shadow-lg max-h-48 overflow-y-auto">
                             {data.users
                               .filter(u => {
                                 const fullName = `${u.first_name || ''} ${u.last_name || ''}`.trim();
@@ -726,13 +726,13 @@ const AdminBooks = () => {
                                       setErrors(prev => ({ ...prev, users: '' }));
                                     }}
                                     className={`w-full text-left px-3 py-2 border-b border-gray-100 last:border-b-0 ${
-                                      alreadyAssigned ? 'bg-gray-50 opacity-60 cursor-not-allowed' : 'hover:bg-blue-50'
+                                      alreadyAssigned ? 'bg-muted opacity-60 cursor-not-allowed' : 'hover:bg-blue-50'
                                     }`}
                                   >
                                     <div className="flex items-center justify-between">
                                       <div className="flex-1">
-                                        <div className="font-medium text-gray-900">{fullName}</div>
-                                        <div className="text-sm text-gray-500">{user.email}</div>
+                                        <div className="font-medium text-foreground">{fullName}</div>
+                                        <div className="text-sm text-muted-foreground">{user.email}</div>
                                       </div>
                                       {alreadyAssigned && (
                                         <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full">
@@ -759,8 +759,8 @@ const AdminBooks = () => {
                               return (
                                 <div key={user.id} className="flex items-center justify-between bg-blue-50 px-3 py-2 rounded-lg">
                                   <div>
-                                    <span className="font-medium text-gray-900">{fullName}</span>
-                                    <span className="text-sm text-gray-500 ml-2">({user.email})</span>
+                                    <span className="font-medium text-foreground">{fullName}</span>
+                                    <span className="text-sm text-muted-foreground ml-2">({user.email})</span>
                                   </div>
                                   <button
                                     onClick={() => {
@@ -792,45 +792,45 @@ const AdminBooks = () => {
                         onClick={() => setForms(prev => ({ ...prev, selectedFormat: 'ebook' }))}
                         className={`p-4 rounded-xl border-2 transition-all text-center group ${
                           forms.selectedFormat === 'ebook'
-                            ? 'border-blue-500 bg-blue-50 text-blue-700'
-                            : 'border-gray-200 hover:border-gray-300 text-gray-600 hover:bg-gray-50'
+                            ? 'border-primary bg-blue-50 text-blue-700'
+                            : 'border-border hover:border-input text-muted-foreground hover:bg-muted'
                         }`}
                       >
                         <i className={`ri-smartphone-line text-2xl mb-2 block ${
-                          forms.selectedFormat === 'ebook' ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'
+                          forms.selectedFormat === 'ebook' ? 'text-primary' : 'text-gray-400 group-hover:text-muted-foreground'
                         }`}></i>
                         <span className="text-sm font-medium">Digital Ebook</span>
-                        <p className="text-xs text-gray-500 mt-1">Instant access</p>
+                        <p className="text-xs text-muted-foreground mt-1">Instant access</p>
                       </button>
                       <button
                         type="button"
                         onClick={() => setForms(prev => ({ ...prev, selectedFormat: 'physical' }))}
                         className={`p-4 rounded-xl border-2 transition-all text-center group ${
                           forms.selectedFormat === 'physical'
-                            ? 'border-blue-500 bg-blue-50 text-blue-700'
-                            : 'border-gray-200 hover:border-gray-300 text-gray-600 hover:bg-gray-50'
+                            ? 'border-primary bg-blue-50 text-blue-700'
+                            : 'border-border hover:border-input text-muted-foreground hover:bg-muted'
                         }`}
                       >
                         <i className={`ri-book-line text-2xl mb-2 block ${
-                          forms.selectedFormat === 'physical' ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'
+                          forms.selectedFormat === 'physical' ? 'text-primary' : 'text-gray-400 group-hover:text-muted-foreground'
                         }`}></i>
                         <span className="text-sm font-medium">Physical Book</span>
-                        <p className="text-xs text-gray-500 mt-1">Hardcopy access</p>
+                        <p className="text-xs text-muted-foreground mt-1">Hardcopy access</p>
                       </button>
                     </div>
                   </div>
 
                     {/* Assignment Summary */}
                     {selection.users.length > 0 && (
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-medium text-gray-900 mb-2">Assignment Summary</h4>
-                        <p className="text-sm text-gray-600">
+                      <div className="bg-muted p-4 rounded-lg">
+                        <h4 className="font-medium text-foreground mb-2">Assignment Summary</h4>
+                        <p className="text-sm text-muted-foreground">
                           Book: <span className="font-medium">{selection.bookForAction.title}</span>
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-muted-foreground">
                           Format: <span className="font-medium capitalize">{forms.selectedFormat}</span>
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-muted-foreground">
                           Users: <span className="font-medium">{selection.users.length} selected</span>
                         </p>
                       </div>
@@ -852,7 +852,7 @@ const AdminBooks = () => {
                   </div>
 
                 {/* Footer */}
-                <div className="px-6 py-4 border-t border-gray-100 bg-gray-50 rounded-b-2xl">
+                <div className="px-6 py-4 border-t border-gray-100 bg-muted rounded-b-2xl">
                   <div className="flex gap-3">
                     <button
                       onClick={() => {
@@ -864,7 +864,7 @@ const AdminBooks = () => {
                         setForms(prev => ({ ...prev, selectedFormat: 'ebook', userSearch: '' }));
                       }}
                       disabled={loadingStates.assign}
-                      className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl hover:bg-gray-100 transition-colors font-medium text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex-1 px-4 py-3 border-2 border-input rounded-xl hover:bg-gray-100 transition-colors font-medium text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Cancel
                     </button>
@@ -901,20 +901,20 @@ const AdminBooks = () => {
           {/* Assignment Confirmation Modal */}
           {modals.assignConfirm && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-              <div className="bg-white rounded-xl shadow-2xl max-w-md w-full">
+              <div className="bg-card rounded-xl shadow-2xl max-w-md w-full">
                 <div className="p-6">
                   <div className="flex items-center justify-center w-12 h-12 mx-auto bg-blue-100 rounded-full mb-4">
-                    <i className="ri-question-line text-2xl text-blue-600"></i>
+                    <i className="ri-question-line text-2xl text-primary"></i>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 text-center mb-2">Confirm Assignment</h3>
-                  <p className="text-gray-600 text-center mb-6">
+                  <h3 className="text-xl font-bold text-foreground text-center mb-2">Confirm Assignment</h3>
+                  <p className="text-muted-foreground text-center mb-6">
                     Are you sure you want to assign "{selection.bookForAction?.title}" ({forms.selectedFormat}) to {selection.users.length} user{selection.users.length !== 1 ? 's' : ''}?
                   </p>
                   <div className="flex gap-3">
                     <button
                       onClick={() => setModals(prev => ({ ...prev, assignConfirm: false }))}
                       disabled={loadingStates.assign}
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex-1 px-4 py-2 border border-input rounded-lg hover:bg-muted transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Cancel
                     </button>
@@ -945,7 +945,7 @@ const AdminBooks = () => {
                         }
                       }}
                       disabled={loadingStates.assign}
-                      className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {loadingStates.assign && <i className="ri-loader-4-line animate-spin"></i>}
                       {loadingStates.assign ? 'Assigning...' : 'Confirm Assignment'}
