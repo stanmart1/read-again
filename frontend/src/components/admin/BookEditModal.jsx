@@ -16,7 +16,6 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
     pages: '',
     publication_date: '',
     publisher: '',
-    format: 'ebook',
     stock_quantity: '0',
     track_inventory: true,
     is_featured: false,
@@ -43,7 +42,6 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
         pages: book.pages?.toString() || '',
         publication_date: book.publication_date || '',
         publisher: book.publisher || '',
-        format: book.format || 'ebook',
         stock_quantity: book.stock_quantity?.toString() || '0',
         track_inventory: book.inventory_enabled || false,
         is_featured: book.is_featured || false,
@@ -69,7 +67,6 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
       pages: '',
       publication_date: '',
       publisher: '',
-      format: 'ebook',
       stock_quantity: '0',
       track_inventory: true,
       is_featured: false,
@@ -313,37 +310,6 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2">Book Type *</label>
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      type="button"
-                      onClick={() => handleInputChange('format', 'ebook')}
-                      className={`p-3 rounded-xl border-2 transition-all text-center ${
-                        formData.format === 'ebook'
-                          ? 'border-orange-500 bg-orange-50 text-orange-700'
-                          : 'border-border hover:border-input text-muted-foreground'
-                      }`}
-                    >
-                      <i className="ri-smartphone-line text-xl mb-1 block"></i>
-                      <span className="text-sm font-medium">Digital Ebook</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleInputChange('format', 'physical')}
-                      className={`p-3 rounded-xl border-2 transition-all text-center ${
-                        formData.format === 'physical'
-                          ? 'border-orange-500 bg-orange-50 text-orange-700'
-                          : 'border-border hover:border-input text-muted-foreground'
-                      }`}
-                    >
-                      <i className="ri-book-line text-xl mb-1 block"></i>
-                      <span className="text-sm font-medium">Physical Book</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">ISBN</label>
                   <input
                     type="text"
                     value={formData.isbn}
