@@ -48,26 +48,11 @@ export default function NotFound() {
               </p>
             </motion.div>
 
-            >
-              <div className="max-w-md mx-auto">
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Search for books, blog posts..."
-                    className="w-full px-6 py-4 rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                  <button className="absolute right-2 top-2 bg-primary text-primary-foreground px-6 py-2 rounded-full hover:bg-primary/90">
-                    <i className="ri-search-line"></i>
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-
             {/* Popular Pages */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.3 }}
             >
               <h3 className="text-lg font-semibold text-foreground mb-6">
                 Try these popular pages instead:
@@ -90,7 +75,7 @@ export default function NotFound() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.4 }}
               className="mt-12"
             >
               <Link
