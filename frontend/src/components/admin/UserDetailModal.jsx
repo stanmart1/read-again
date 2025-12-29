@@ -155,8 +155,8 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
                 <p className="text-2xl font-bold text-foreground">{user.orders_count || 0}</p>
                 <p className="text-sm text-muted-foreground">Orders</p>
               </div>
-              <div className="p-4 bg-purple-50 rounded-lg text-center">
-                <i className="ri-star-line text-3xl text-purple-600 mb-2"></i>
+              <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg text-center">
+                <i className="ri-star-line text-3xl text-purple-600 dark:text-purple-400 mb-2"></i>
                 <p className="text-2xl font-bold text-foreground">{user.reviews_count || 0}</p>
                 <p className="text-sm text-muted-foreground">Reviews</p>
               </div>
