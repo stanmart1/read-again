@@ -75,7 +75,7 @@ export default function NotFound() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.5 }}
               className="mt-12"
             >
               <Link
