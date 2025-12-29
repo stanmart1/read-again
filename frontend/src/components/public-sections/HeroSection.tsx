@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { Link } from "react-router-dom";
 
 const floatingShapes = [
   { size: "w-32 h-32", position: "top-20 left-[10%]", color: "bg-primary/20", delay: "0s", duration: "20s" },
@@ -91,14 +92,18 @@ export const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up delay-300">
-            <Button variant="hero" size="xl" className="group">
-              Get Started
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button variant="heroOutline" size="xl">
-              <BookOpen className="w-5 h-5" />
-              Browse Collection
-            </Button>
+            <Link to="/signup">
+              <Button variant="hero" size="xl" className="group">
+                Get Started
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+            <Link to="/books">
+              <Button variant="heroOutline" size="xl">
+                <BookOpen className="w-5 h-5" />
+                Browse Collection
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

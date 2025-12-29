@@ -1,53 +1,66 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/public-layout/Header";
 import { Footer } from "@/components/public-layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, ArrowLeft, ShoppingCart, Heart, Share2, Download } from "lucide-react";
-import book1 from "@/public-assets/images/book-1.png";
-import book2 from "@/public-assets/images/book-2.png";
-import book3 from "@/public-assets/images/book-3.png";
-import book4 from "@/public-assets/images/book-4.png";
+import axios from "axios";
 
-const allBooks = [
-  { 
-    id: 1, 
-    slug: "the-golden-legacy", 
-    img: book1, 
-    title: "The Golden Legacy", 
-    author: "Amara Okonkwo", 
-    price: "₦4,500", 
-    rating: 4.8, 
-    badge: "Featured", 
-    category: "Fiction",
-    description: "A captivating tale of family secrets, ancient traditions, and the power of legacy that spans generations in colonial Nigeria.",
-    pages: 324,
-    language: "English",
-    publisher: "ReadAgain Publishing",
-    publishDate: "2025",
-    isbn: "978-0-123456-78-9"
-  },
-  { 
-    id: 2, 
-    slug: "emerald-dreams", 
-    img: book2, 
-    title: "Emerald Dreams", 
-    author: "Chidi Nwosu", 
-    price: "₦3,500", 
-    rating: 4.6, 
-    badge: "Bestseller", 
-    category: "Romance",
-    description: "A heartwarming romance set against the backdrop of modern Lagos, exploring love, ambition, and cultural identity.",
-    pages: 298,
-    language: "English",
-    publisher: "ReadAgain Publishing",
-    publishDate: "2025",
-    isbn: "978-0-123456-79-0"
-  },
-  { 
-    id: 3, 
-    slug: "silent-waters", 
-    img: book3, 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+const BookDetails = () => {
+  const { slug } = useParams();
+  const [book, setBook] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchBook();
+  }, [slug]);
+
+  const fetchBook = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/books`);
+      const books = response.data.books || response.data;
+      const foundBook = books.find(b => b.slug === slug || b.id === parseInt(slug));
+      setBook(foundBook);
+    } catch (error) {
+      console.error('Error fetching book:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="flex justify-center items-center min-h-[60vh]">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (!book) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="container mx-auto px-4 py-32 text-center">
+          <h1 className="text-3xl font-bold mb-4">Book Not Found</h1>
+          <p className="text-muted-foreground mb-8">The book you're looking for doesn't exist.</p>
+          <Link to="/books">
+            <Button variant="goldOutline">Browse All Books</Button>
+          </Link>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  const coverImage = book.cover_image ? `${API_URL}${book.cover_image}` : null;
+  const price = typeof book.price === 'number' ? `₦${book.price.toLocaleString()}` : book.price; 
     title: "Silent Waters", 
     author: "Ngozi Adeyemi", 
     price: "₦2,800", 
@@ -115,63 +128,77 @@ export default function BookDetails() {
           {/* Book Image */}
           <div className="relative">
             <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-secondary/50">
-              <img
-                src={book.img}
-                alt={book.title}
-                className="w-full h-full object-cover"
-              />
+              {coverImage && (
+                <img
+                  src={coverImage}
+                  alt={book.title}
+                  className="w-full h-full object-cover"
+                />
+              )}
             </div>
-            <Badge className="absolute top-4 left-4">
-              {book.badge}
-            </Badge>
+            {(book.is_featured || book.is_bestseller || book.is_new_release) && (
+              <Badge className="absolute top-4 left-4">
+                {book.is_featured ? 'Featured' : book.is_bestseller ? 'Bestseller' : 'New'}
+              </Badge>
+            )}
           </div>
 
           {/* Book Details */}
           <div className="space-y-6">
             <div>
-              <Badge variant="secondary" className="mb-3">
-                {book.category}
-              </Badge>
+              {book.category && (
+                <Badge variant="secondary" className="mb-3">
+                  {typeof book.category === 'object' ? book.category.name : book.category}
+                </Badge>
+              )}
               <h1 className="text-4xl font-bold mb-2">{book.title}</h1>
               <p className="text-xl text-muted-foreground mb-4">by {book.author}</p>
               
               <div className="flex items-center gap-4 mb-6">
                 <div className="flex items-center gap-1">
                   <Star className="w-5 h-5 text-primary fill-primary" />
-                  <span className="font-medium">{book.rating}</span>
+                  <span className="font-medium">{book.rating || 4.5}</span>
                   <span className="text-muted-foreground">(124 reviews)</span>
                 </div>
               </div>
 
               <div className="text-3xl font-bold text-primary mb-6">
-                {book.price}
+                {price}
               </div>
             </div>
 
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Description</h3>
               <p className="text-muted-foreground leading-relaxed">
-                {book.description}
+                {book.description || book.short_description || 'No description available.'}
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 py-6 border-y border-border/50">
-              <div>
-                <span className="text-sm text-muted-foreground">Pages</span>
-                <p className="font-medium">{book.pages}</p>
-              </div>
-              <div>
-                <span className="text-sm text-muted-foreground">Language</span>
-                <p className="font-medium">{book.language}</p>
-              </div>
-              <div>
-                <span className="text-sm text-muted-foreground">Publisher</span>
-                <p className="font-medium">{book.publisher}</p>
-              </div>
-              <div>
-                <span className="text-sm text-muted-foreground">Year</span>
-                <p className="font-medium">{book.publishDate}</p>
-              </div>
+              {book.pages && (
+                <div>
+                  <span className="text-sm text-muted-foreground">Pages</span>
+                  <p className="font-medium">{book.pages}</p>
+                </div>
+              )}
+              {book.language && (
+                <div>
+                  <span className="text-sm text-muted-foreground">Language</span>
+                  <p className="font-medium">{book.language}</p>
+                </div>
+              )}
+              {book.publisher && (
+                <div>
+                  <span className="text-sm text-muted-foreground">Publisher</span>
+                  <p className="font-medium">{book.publisher}</p>
+                </div>
+              )}
+              {book.publication_date && (
+                <div>
+                  <span className="text-sm text-muted-foreground">Year</span>
+                  <p className="font-medium">{new Date(book.publication_date).getFullYear()}</p>
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -187,10 +214,12 @@ export default function BookDetails() {
               </Button>
             </div>
 
-            <Button variant="outline" className="w-full">
-              <Download className="w-5 h-5 mr-2" />
-              Download Sample
-            </Button>
+            {book.sample_path && (
+              <Button variant="outline" className="w-full">
+                <Download className="w-5 h-5 mr-2" />
+                Download Sample
+              </Button>
+            )}
           </div>
         </div>
       </main>
@@ -199,3 +228,5 @@ export default function BookDetails() {
     </div>
   );
 }
+
+export default BookDetails;
