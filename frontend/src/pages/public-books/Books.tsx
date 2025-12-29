@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Header } from "@/components/public-layout/Header";
 import { Footer } from "@/components/public-layout/Footer";
 import { BookCard } from "@/components/PublicBookCard";
+import { useBooks } from "@/hooks/useBooks";
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -12,41 +13,26 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 const Books = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState(["All"]);
-  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const { books, loading } = useBooks({ page, limit: 20, status: 'published' });
+  const [allBooks, setAllBooks] = useState([]);
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    fetchBooks();
+    if (books.length > 0) {
+      if (page === 1) {
+        setAllBooks(books);
+      } else {
+        setAllBooks(prev => [...prev, ...books]);
+      }
+      setHasMore(books.length === 20);
+    }
+  }, [books, page]);
+
+  useEffect(() => {
     fetchCategories();
   }, []);
-
-  const fetchBooks = async (pageNum = 1) => {
-    try {
-      setLoading(true);
-      const response = await axios.get(`${API_URL}/api/books`, {
-        params: {
-          page: pageNum,
-          limit: 20,
-          status: 'published'
-        }
-      });
-      
-      if (pageNum === 1) {
-        setBooks(response.data.books || response.data);
-      } else {
-        setBooks(prev => [...prev, ...(response.data.books || response.data)]);
-      }
-      
-      setHasMore(response.data.books?.length === 20);
-    } catch (error) {
-      console.error('Error fetching books:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const fetchCategories = async () => {
     try {
@@ -58,7 +44,7 @@ const Books = () => {
     }
   };
 
-  const filteredBooks = books.filter((book) => {
+  const filteredBooks = allBooks.filter((book) => {
     const matchesSearch = book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       book.author.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === "All" || book.category?.name === selectedCategory;
@@ -66,9 +52,7 @@ const Books = () => {
   });
 
   const loadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    fetchBooks(nextPage);
+    setPage(prev => prev + 1);
   };
 
   return (

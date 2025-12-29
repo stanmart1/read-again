@@ -5,31 +5,21 @@ import { Footer } from "@/components/public-layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, ArrowLeft, ShoppingCart, Heart, Share2, Download } from "lucide-react";
-import axios from "axios";
+import { useBooks } from "@/hooks/useBooks";
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const BookDetails = () => {
   const { slug } = useParams();
+  const { books, loading } = useBooks();
   const [book, setBook] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchBook();
-  }, [slug]);
-
-  const fetchBook = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/api/books`);
-      const books = response.data.books || response.data;
+    if (books.length > 0) {
       const foundBook = books.find(b => b.slug === slug || b.id === parseInt(slug));
       setBook(foundBook);
-    } catch (error) {
-      console.error('Error fetching book:', error);
-    } finally {
-      setLoading(false);
     }
-  };
+  }, [books, slug]);
 
   if (loading) {
     return (

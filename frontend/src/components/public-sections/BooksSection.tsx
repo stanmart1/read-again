@@ -3,34 +3,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { BookCard } from "@/components/PublicBookCard";
 import { BookOpen } from "lucide-react";
-import axios from "axios";
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+import { useBooks } from "@/hooks/useBooks";
 
 export const BooksSection = () => {
-  const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchFeaturedBooks();
-  }, []);
-
-  const fetchFeaturedBooks = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/api/books`, {
-        params: {
-          limit: 4,
-          is_featured: true,
-          status: 'published'
-        }
-      });
-      setBooks(response.data.books || response.data);
-    } catch (error) {
-      console.error('Error fetching featured books:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { books, loading } = useBooks({ limit: 4, is_featured: true, status: 'published' });
 
   return (
     <section id="books" className="relative py-24 lg:py-32 bg-card/50">
