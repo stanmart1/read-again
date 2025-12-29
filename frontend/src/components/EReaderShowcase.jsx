@@ -39,7 +39,7 @@ The digital age has transformed how we consume literature, but the essence of re
 Our advanced e-reader technology bridges the gap between traditional book reading and modern convenience. With features designed to enhance your reading experience, every page becomes an opportunity to learn, grow, and be inspired.`;
 
   const themes = {
-    light: { bg: 'bg-white', text: 'text-gray-900', border: 'border-gray-200' },
+    light: { bg: 'bg-card', text: 'text-foreground', border: 'border-border' },
     dark: { bg: 'bg-gray-900', text: 'text-gray-100', border: 'border-gray-700' },
     sepia: { bg: 'bg-amber-50', text: 'text-amber-900', border: 'border-amber-200' }
   };
@@ -64,10 +64,10 @@ Our advanced e-reader technology bridges the gap between traditional book readin
             <i className="ri-tablet-line mr-2"></i>
             E-Reader Technology
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Advanced E-Reader Experience
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Experience the future of reading with our cutting-edge e-reader technology. 
             Designed for comfort, productivity, and pure reading joy.
           </p>
@@ -83,16 +83,16 @@ Our advanced e-reader technology bridges the gap between traditional book readin
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start space-x-4 p-4 rounded-xl hover:bg-white/50 transition-all duration-300"
+                className="flex items-start space-x-4 p-4 rounded-xl hover:bg-card/50 transition-all duration-300"
               >
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-r ${benefit.color} shadow-lg flex-shrink-0`}>
                   <i className={`${benefit.icon} text-white text-xl`}></i>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
@@ -111,20 +111,20 @@ Our advanced e-reader technology bridges the gap between traditional book readin
               {/* Reader Header */}
               <div className={`${currentTheme.bg} ${currentTheme.border} border-b px-3 md:px-4 py-2 md:py-3 flex items-center justify-between`}>
                 <div className="flex items-center space-x-2 md:space-x-3">
-                  <i className="ri-book-line text-base md:text-lg text-blue-600"></i>
+                  <i className="ri-book-line text-base md:text-lg text-primary"></i>
                   <span className={`font-medium text-sm md:text-base ${currentTheme.text}`}>Sample Book</span>
                 </div>
                 <div className="flex items-center space-x-1 md:space-x-2">
                   <button
                     onClick={() => setFontSize(Math.max(12, fontSize - 2))}
-                    className={`p-1 rounded text-sm md:text-base ${currentTheme.text} hover:bg-gray-100 transition-colors`}
+                    className={`p-1 rounded text-sm md:text-base ${currentTheme.text} hover:bg-muted transition-colors`}
                   >
                     <i className="ri-subtract-line"></i>
                   </button>
                   <span className={`text-xs md:text-sm ${currentTheme.text}`}>{fontSize}px</span>
                   <button
                     onClick={() => setFontSize(Math.min(24, fontSize + 2))}
-                    className={`p-1 rounded text-sm md:text-base ${currentTheme.text} hover:bg-gray-100 transition-colors`}
+                    className={`p-1 rounded text-sm md:text-base ${currentTheme.text} hover:bg-muted transition-colors`}
                   >
                     <i className="ri-add-line"></i>
                   </button>
@@ -146,15 +146,15 @@ Our advanced e-reader technology bridges the gap between traditional book readin
                 <div className="flex items-center space-x-2 md:space-x-4">
                   <button
                     onClick={cycleTheme}
-                    className={`p-1.5 md:p-2 rounded-lg text-sm md:text-base ${currentTheme.text} hover:bg-gray-100 transition-colors`}
+                    className={`p-1.5 md:p-2 rounded-lg text-sm md:text-base ${currentTheme.text} hover:bg-muted transition-colors`}
                     title="Change theme"
                   >
                     <i className="ri-contrast-2-line"></i>
                   </button>
-                  <button className={`p-1.5 md:p-2 rounded-lg text-sm md:text-base ${currentTheme.text} hover:bg-gray-100 transition-colors`} title="Bookmark">
+                  <button className={`p-1.5 md:p-2 rounded-lg text-sm md:text-base ${currentTheme.text} hover:bg-muted transition-colors`} title="Bookmark">
                     <i className="ri-bookmark-line"></i>
                   </button>
-                  <button className={`p-1.5 md:p-2 rounded-lg text-sm md:text-base ${currentTheme.text} hover:bg-gray-100 transition-colors`} title="Highlight">
+                  <button className={`p-1.5 md:p-2 rounded-lg text-sm md:text-base ${currentTheme.text} hover:bg-muted transition-colors`} title="Highlight">
                     <i className="ri-edit-line"></i>
                   </button>
                 </div>

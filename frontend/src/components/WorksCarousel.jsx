@@ -83,7 +83,7 @@ export default function WorksCarousel() {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -96,10 +96,10 @@ export default function WorksCarousel() {
             <i className="ri-briefcase-line mr-2"></i>
             Our Portfolio
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Some of Our Works
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Explore our innovative projects and solutions that are transforming the digital reading experience
           </p>
         </motion.div>
@@ -110,7 +110,7 @@ export default function WorksCarousel() {
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           </div>
         ) : works.length === 0 ? (
-          <div className="text-center py-20 text-gray-500">
+          <div className="text-center py-20 text-muted-foreground">
             <i className="ri-image-line text-6xl mb-4"></i>
             <p>No works available</p>
           </div>
@@ -126,17 +126,17 @@ export default function WorksCarousel() {
             {/* Navigation Buttons */}
             <button
               onClick={prevSlide}
-              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm shadow-lg rounded-full p-2 md:p-3 hover:bg-white transition-all"
+              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-sm shadow-lg rounded-full p-2 md:p-3 hover:bg-card transition-all"
               aria-label="Previous slide"
             >
-              <i className="ri-arrow-left-line text-lg md:text-xl text-gray-700"></i>
+              <i className="ri-arrow-left-line text-lg md:text-xl text-foreground"></i>
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm shadow-lg rounded-full p-2 md:p-3 hover:bg-white transition-all"
+              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-card/90 backdrop-blur-sm shadow-lg rounded-full p-2 md:p-3 hover:bg-card transition-all"
               aria-label="Next slide"
             >
-              <i className="ri-arrow-right-line text-lg md:text-xl text-gray-700"></i>
+              <i className="ri-arrow-right-line text-lg md:text-xl text-foreground"></i>
             </button>
 
             {/* Carousel Container */}
@@ -153,7 +153,7 @@ export default function WorksCarousel() {
                 {[...works, ...works, ...works].map((work, index) => (
                   <motion.div
                     key={`${work.id}-${index}`}
-                    className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer hover:shadow-2xl transition-all duration-300"
+                    className="flex-shrink-0 w-80 bg-card rounded-xl shadow-lg overflow-hidden group cursor-pointer hover:shadow-2xl transition-all duration-300"
                     onClick={() => setSelectedWork(work)}
                     whileHover={{ scale: 1.02 }}
                   >
@@ -173,7 +173,7 @@ export default function WorksCarousel() {
                     onClick={() => goToSlide(index)}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       index === activeIndex
-                        ? 'w-8 bg-blue-600' 
+                        ? 'w-8 bg-primary' 
                         : 'w-2 bg-gray-300 hover:bg-gray-400'
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
@@ -202,7 +202,7 @@ export default function WorksCarousel() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-white rounded-2xl max-w-2xl w-full overflow-hidden max-h-[90vh] overflow-y-auto"
+                className="bg-card rounded-2xl max-w-2xl w-full overflow-hidden max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="relative h-64">
@@ -215,16 +215,16 @@ export default function WorksCarousel() {
                   />
                   <button
                     onClick={() => setSelectedWork(null)}
-                    className="absolute top-4 right-4 bg-white rounded-full p-2 hover:bg-gray-100 shadow-lg"
+                    className="absolute top-4 right-4 bg-card rounded-full p-2 hover:bg-muted shadow-lg"
                   >
                     <i className="ri-close-line text-xl"></i>
                   </button>
                 </div>
                 <div className="p-6 sm:p-8">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
                     {selectedWork.title}
                   </h3>
-                  <p className="text-gray-600 text-base sm:text-lg leading-relaxed whitespace-pre-wrap">
+                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed whitespace-pre-wrap">
                     {plainDescription}
                   </p>
                   {selectedWork.category && (
@@ -269,13 +269,13 @@ function WorkCard({ work }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
           <div className="absolute bottom-4 left-4 right-4">
-            <button className="w-full bg-white text-gray-900 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-all">
+            <button className="w-full bg-card text-foreground py-2 rounded-lg font-semibold hover:bg-muted transition-all">
               View Details
             </button>
           </div>
         </div>
         {work.category && (
-          <div className="absolute top-2 right-2 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+          <div className="absolute top-2 right-2 bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold">
             {work.category}
           </div>
         )}
@@ -283,10 +283,10 @@ function WorkCard({ work }) {
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
           {work.title}
         </h3>
-        <p className="text-gray-600 line-clamp-3">
+        <p className="text-muted-foreground line-clamp-3">
           {plainDescription}
         </p>
       </div>

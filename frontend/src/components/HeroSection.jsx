@@ -78,7 +78,7 @@ export default function HeroSection() {
               loading="lazy"
               decoding="async"
             />
-            <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
+            <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-primary to-primary text-white text-sm font-semibold px-3 py-1 rounded-full">
               {book.title}
             </div>
           </motion.div>
@@ -91,7 +91,7 @@ export default function HeroSection() {
           key={i}
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 2, repeat: Infinity, delay: i * 0.7 }}
-          className={`absolute w-${3 + i} h-${3 + i} bg-white/20 rounded-full`}
+          className={`absolute w-${3 + i} h-${3 + i} bg-card/20 rounded-full`}
           style={{
             top: `${25 + i * 25}%`,
             left: `${25 + i * 15}%`

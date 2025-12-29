@@ -653,26 +653,26 @@ export default function EpubReader({ bookId, onClose }) {
 
       {error && (
         <div className="absolute inset-0 bg-gray-900 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-8 max-w-md mx-4">
+          <div className="bg-card rounded-xl p-8 max-w-md mx-4">
             <div className="text-center">
               <i className="ri-error-warning-line text-5xl text-red-500 mb-4"></i>
               <h3 className="text-xl font-bold mb-2">Unable to Load Book</h3>
-              <p className="text-gray-600 mb-2">{error}</p>
+              <p className="text-muted-foreground mb-2">{error}</p>
               {error.includes('400') && (
-                <p className="text-sm text-gray-500 mb-6">This book may not be in EPUB format or the file is missing.</p>
+                <p className="text-sm text-muted-foreground mb-6">This book may not be in EPUB format or the file is missing.</p>
               )}
               {error.includes('404') && (
-                <p className="text-sm text-gray-500 mb-6">The book file could not be found on the server.</p>
+                <p className="text-sm text-muted-foreground mb-6">The book file could not be found on the server.</p>
               )}
               {error.includes('403') && (
-                <p className="text-sm text-gray-500 mb-6">You don't have access to this book.</p>
+                <p className="text-sm text-muted-foreground mb-6">You don't have access to this book.</p>
               )}
               {!error.includes('400') && !error.includes('404') && !error.includes('403') && (
-                <p className="text-sm text-gray-500 mb-6">Please try again or contact support if the problem persists.</p>
+                <p className="text-sm text-muted-foreground mb-6">Please try again or contact support if the problem persists.</p>
               )}
               <button
                 onClick={onClose}
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90"
               >
                 Back to Library
               </button>
@@ -693,7 +693,7 @@ export default function EpubReader({ bookId, onClose }) {
             </button>
             <div>
               <h1 className="font-semibold text-lg">{bookInfo?.title || 'Reading'}</h1>
-              <p className="text-sm text-gray-400">{bookInfo?.author || ''}</p>
+              <p className="text-sm text-muted-foreground">{bookInfo?.author || ''}</p>
             </div>
           </div>
 
@@ -767,7 +767,7 @@ export default function EpubReader({ bookId, onClose }) {
           <div className="flex items-center justify-between px-4 py-4">
             <button
               onClick={prevPage}
-              className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="p-2 hover:bg-card/10 rounded-lg transition-colors"
               title="Previous page"
             >
               <i className="ri-arrow-left-s-line text-2xl"></i>
@@ -788,7 +788,7 @@ export default function EpubReader({ bookId, onClose }) {
             
             <button
               onClick={nextPage}
-              className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="p-2 hover:bg-card/10 rounded-lg transition-colors"
               title="Next page"
             >
               <i className="ri-arrow-right-s-line text-2xl"></i>
@@ -799,12 +799,12 @@ export default function EpubReader({ bookId, onClose }) {
 
       {/* Table of Contents Sidebar */}
       {showToc && (
-        <div className="absolute top-0 left-0 bottom-0 w-80 bg-white shadow-2xl z-10 overflow-y-auto">
-          <div className="p-4 border-b border-gray-200 flex items-center justify-between">
+        <div className="absolute top-0 left-0 bottom-0 w-80 bg-card shadow-2xl z-10 overflow-y-auto">
+          <div className="p-4 border-b border-border flex items-center justify-between">
             <h2 className="text-lg font-bold">Table of Contents</h2>
             <button
               onClick={() => setShowToc(false)}
-              className="p-2 hover:bg-gray-100 rounded-lg"
+              className="p-2 hover:bg-muted rounded-lg"
             >
               <i className="ri-close-line text-xl"></i>
             </button>
@@ -814,9 +814,9 @@ export default function EpubReader({ bookId, onClose }) {
               <button
                 key={index}
                 onClick={() => goToChapter(chapter.href)}
-                className="w-full text-left px-4 py-3 hover:bg-gray-100 rounded-lg transition-colors"
+                className="w-full text-left px-4 py-3 hover:bg-muted rounded-lg transition-colors"
               >
-                <p className="font-medium text-gray-900">{chapter.label}</p>
+                <p className="font-medium text-foreground">{chapter.label}</p>
               </button>
             ))}
           </div>
@@ -825,24 +825,24 @@ export default function EpubReader({ bookId, onClose }) {
 
       {/* Selection Menu - Choose Note or Highlight */}
       {showSelectionMenu && selectedText && !showHighlightColors && !showNoteInput && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl z-20 p-6 min-w-[320px]">
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-card rounded-xl shadow-2xl z-20 p-6 min-w-[320px]">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-gray-900">Selected Text</h3>
+            <h3 className="font-bold text-foreground">Selected Text</h3>
             <button
               onClick={() => {
                 setShowSelectionMenu(false);
                 setSelectedText(null);
               }}
-              className="p-1 hover:bg-gray-100 rounded"
+              className="p-1 hover:bg-muted rounded"
             >
               <i className="ri-close-line text-xl"></i>
             </button>
           </div>
-          <p className="text-sm text-gray-600 mb-6 max-w-md line-clamp-3 italic">"{selectedText.text}"</p>
+          <p className="text-sm text-muted-foreground mb-6 max-w-md line-clamp-3 italic">"{selectedText.text}"</p>
           <div className="flex gap-3">
             <button
               onClick={() => setShowNoteInput(true)}
-              className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              className="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
             >
               <i className="ri-sticky-note-line text-lg"></i>
               Add Note
@@ -860,27 +860,27 @@ export default function EpubReader({ bookId, onClose }) {
 
       {/* Highlight Color Picker */}
       {showHighlightColors && selectedText && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl z-20 p-6 min-w-[320px]">
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-card rounded-xl shadow-2xl z-20 p-6 min-w-[320px]">
           <div className="flex items-center justify-between mb-4">
             <button
               onClick={() => setShowHighlightColors(false)}
-              className="p-1 hover:bg-gray-100 rounded"
+              className="p-1 hover:bg-muted rounded"
             >
               <i className="ri-arrow-left-line text-xl"></i>
             </button>
-            <h3 className="font-bold text-gray-900">Choose Color</h3>
+            <h3 className="font-bold text-foreground">Choose Color</h3>
             <button
               onClick={() => {
                 setShowSelectionMenu(false);
                 setShowHighlightColors(false);
                 setSelectedText(null);
               }}
-              className="p-1 hover:bg-gray-100 rounded"
+              className="p-1 hover:bg-muted rounded"
             >
               <i className="ri-close-line text-xl"></i>
             </button>
           </div>
-          <p className="text-sm text-gray-600 mb-4 max-w-md line-clamp-3 italic">"{selectedText.text}"</p>
+          <p className="text-sm text-muted-foreground mb-4 max-w-md line-clamp-3 italic">"{selectedText.text}"</p>
           <div className="grid grid-cols-5 gap-3">
             <button
               onClick={() => createHighlight('#ffeb3b')}
@@ -913,15 +913,15 @@ export default function EpubReader({ bookId, onClose }) {
 
       {/* Note Input */}
       {showNoteInput && selectedText && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl z-20 p-6 min-w-[400px]">
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-card rounded-xl shadow-2xl z-20 p-6 min-w-[400px]">
           <div className="flex items-center justify-between mb-4">
             <button
               onClick={() => setShowNoteInput(false)}
-              className="p-1 hover:bg-gray-100 rounded"
+              className="p-1 hover:bg-muted rounded"
             >
               <i className="ri-arrow-left-line text-xl"></i>
             </button>
-            <h3 className="font-bold text-gray-900">Add Note</h3>
+            <h3 className="font-bold text-foreground">Add Note</h3>
             <button
               onClick={() => {
                 setShowSelectionMenu(false);
@@ -929,24 +929,24 @@ export default function EpubReader({ bookId, onClose }) {
                 setSelectedText(null);
                 setNoteContent('');
               }}
-              className="p-1 hover:bg-gray-100 rounded"
+              className="p-1 hover:bg-muted rounded"
             >
               <i className="ri-close-line text-xl"></i>
             </button>
           </div>
-          <p className="text-sm text-gray-600 mb-4 max-w-md line-clamp-3 italic bg-gray-50 p-3 rounded">"{selectedText.text}"</p>
+          <p className="text-sm text-muted-foreground mb-4 max-w-md line-clamp-3 italic bg-muted p-3 rounded">"{selectedText.text}"</p>
           <textarea
             value={noteContent}
             onChange={(e) => setNoteContent(e.target.value)}
             placeholder="Write your note about this text..."
-            className="w-full p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
+            className="w-full p-3 border border-input rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
             rows="4"
             autoFocus
           />
           <button
             onClick={() => createNote()}
             disabled={!noteContent.trim() || isSavingNote}
-            className="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+            className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
           >
             {isSavingNote ? (
               <>
@@ -965,53 +965,53 @@ export default function EpubReader({ bookId, onClose }) {
 
       {/* Annotations Panel with Tabs */}
       {showAnnotationsPanel && (
-        <div className="absolute top-0 right-0 bottom-0 w-96 bg-white shadow-2xl z-10 flex flex-col">
+        <div className="absolute top-0 right-0 bottom-0 w-96 bg-card shadow-2xl z-10 flex flex-col">
           {/* Header */}
-          <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-white">
+          <div className="p-4 border-b border-border flex items-center justify-between bg-card">
             <h2 className="text-lg font-bold">Annotations</h2>
             <button
               onClick={() => setShowAnnotationsPanel(false)}
-              className="p-2 hover:bg-gray-100 rounded-lg"
+              className="p-2 hover:bg-muted rounded-lg"
             >
               <i className="ri-close-line text-xl"></i>
             </button>
           </div>
 
           {/* Tabs */}
-          <div className="flex border-b border-gray-200 bg-white">
+          <div className="flex border-b border-border bg-card">
             <button
               onClick={() => setActiveTab('notes')}
               className={`flex-1 px-4 py-3 font-semibold transition-colors relative ${activeTab === 'notes'
-                ? 'text-blue-600 bg-blue-50'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                ? 'text-primary bg-blue-50'
+                : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
             >
               <div className="flex items-center justify-center gap-2">
                 <i className="ri-sticky-note-line"></i>
                 Notes
                 {notes.length > 0 && (
-                  <span className={`px-2 py-0.5 rounded-full text-xs ${activeTab === 'notes' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+                  <span className={`px-2 py-0.5 rounded-full text-xs ${activeTab === 'notes' ? 'bg-primary text-white' : 'bg-muted text-muted-foreground'
                     }`}>
                     {notes.length}
                   </span>
                 )}
               </div>
               {activeTab === 'notes' && (
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"></div>
               )}
             </button>
             <button
               onClick={() => setActiveTab('highlights')}
               className={`flex-1 px-4 py-3 font-semibold transition-colors relative ${activeTab === 'highlights'
                 ? 'text-yellow-600 bg-yellow-50'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
             >
               <div className="flex items-center justify-center gap-2">
                 <i className="ri-mark-pen-line"></i>
                 Highlights
                 {highlights.length > 0 && (
-                  <span className={`px-2 py-0.5 rounded-full text-xs ${activeTab === 'highlights' ? 'bg-yellow-600 text-white' : 'bg-gray-200 text-gray-600'
+                  <span className={`px-2 py-0.5 rounded-full text-xs ${activeTab === 'highlights' ? 'bg-yellow-600 text-white' : 'bg-muted text-muted-foreground'
                     }`}>
                     {highlights.length}
                   </span>
@@ -1030,19 +1030,19 @@ export default function EpubReader({ bookId, onClose }) {
               <div>
 
                 {/* Add Note Section */}
-                <div className="p-4 border-b border-gray-200 bg-blue-50">
-                  <h3 className="font-semibold mb-2 text-sm text-gray-700">Add New Note</h3>
+                <div className="p-4 border-b border-border bg-blue-50">
+                  <h3 className="font-semibold mb-2 text-sm text-foreground">Add New Note</h3>
                   <textarea
                     value={noteContent}
                     onChange={(e) => setNoteContent(e.target.value)}
                     placeholder="Write your note here..."
-                    className="w-full p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-3 border border-input rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     rows="3"
                   />
                   <button
                     onClick={() => createNote()}
                     disabled={!noteContent.trim() || isSavingNote}
-                    className="mt-2 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="mt-2 w-full px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSavingNote ? (
                       <>
@@ -1061,7 +1061,7 @@ export default function EpubReader({ bookId, onClose }) {
                 {/* Notes List */}
                 {notes.length > 0 && (
                   <div className="p-4">
-                    <h3 className="font-semibold mb-3 text-sm text-gray-700 flex items-center">
+                    <h3 className="font-semibold mb-3 text-sm text-foreground flex items-center">
                       <i className="ri-sticky-note-line mr-2"></i>
                       Notes ({notes.length})
                     </h3>
@@ -1072,7 +1072,7 @@ export default function EpubReader({ bookId, onClose }) {
                             <div>
                               <textarea
                                 defaultValue={note.content}
-                                className="w-full p-2 border border-gray-300 rounded resize-none"
+                                className="w-full p-2 border border-input rounded resize-none"
                                 rows="3"
                                 id={`note-edit-${note.id}`}
                               />
@@ -1082,13 +1082,13 @@ export default function EpubReader({ bookId, onClose }) {
                                     const content = document.getElementById(`note-edit-${note.id}`).value;
                                     updateNote(note.id, content);
                                   }}
-                                  className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
+                                  className="px-3 py-1 bg-primary text-white text-sm rounded hover:bg-primary/90"
                                 >
                                   Save
                                 </button>
                                 <button
                                   onClick={() => setEditingNote(null)}
-                                  className="px-3 py-1 bg-gray-300 text-gray-700 text-sm rounded hover:bg-gray-400"
+                                  className="px-3 py-1 bg-gray-300 text-foreground text-sm rounded hover:bg-gray-400"
                                 >
                                   Cancel
                                 </button>
@@ -1096,13 +1096,13 @@ export default function EpubReader({ bookId, onClose }) {
                             </div>
                           ) : (
                             <div>
-                              <p className="text-sm text-gray-800 whitespace-pre-wrap">{note.content}</p>
-                              <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
+                              <p className="text-sm text-foreground whitespace-pre-wrap">{note.content}</p>
+                              <div className="flex items-center justify-between mt-2 text-xs text-muted-foreground">
                                 <span>{new Date(note.created_at).toLocaleDateString()}</span>
                                 <div className="flex gap-2">
                                   <button
                                     onClick={() => setEditingNote(note.id)}
-                                    className="text-blue-600 hover:text-blue-800"
+                                    className="text-primary hover:text-blue-800"
                                   >
                                     <i className="ri-edit-line"></i>
                                   </button>
@@ -1129,7 +1129,7 @@ export default function EpubReader({ bookId, onClose }) {
 
                 {/* Empty State */}
                 {notes.length === 0 && (
-                  <div className="p-8 text-center text-gray-500">
+                  <div className="p-8 text-center text-muted-foreground">
                     <i className="ri-sticky-note-line text-4xl mb-2"></i>
                     <p className="text-sm">No notes yet</p>
                     <p className="text-xs mt-1">Select text and choose "Add Note"</p>
@@ -1146,15 +1146,15 @@ export default function EpubReader({ bookId, onClose }) {
                   <div className="p-4">
                     <div className="space-y-3">
                       {highlights.map(highlight => (
-                        <div key={highlight.id} className="border border-gray-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                        <div key={highlight.id} className="border border-border rounded-lg p-3 hover:shadow-md transition-shadow">
                           <div className="flex items-start gap-2">
                             <div
                               className="w-4 h-4 rounded-full flex-shrink-0 mt-1"
                               style={{ backgroundColor: highlight.color }}
                             />
                             <div className="flex-1">
-                              <p className="text-sm text-gray-800">"{highlight.text}"</p>
-                              <div className="flex items-center justify-between mt-2 text-xs text-gray-500">
+                              <p className="text-sm text-foreground">"{highlight.text}"</p>
+                              <div className="flex items-center justify-between mt-2 text-xs text-muted-foreground">
                                 <span>{new Date(highlight.created_at).toLocaleDateString()}</span>
                                 <button
                                   onClick={() => deleteHighlight(highlight.id)}
@@ -1175,7 +1175,7 @@ export default function EpubReader({ bookId, onClose }) {
                     </div>
                   </div>
                 ) : (
-                  <div className="p-8 text-center text-gray-500">
+                  <div className="p-8 text-center text-muted-foreground">
                     <i className="ri-mark-pen-line text-4xl mb-2"></i>
                     <p className="text-sm">No highlights yet</p>
                     <p className="text-xs mt-1">Select text and choose "Highlight"</p>
@@ -1189,12 +1189,12 @@ export default function EpubReader({ bookId, onClose }) {
 
       {/* Settings Panel */}
       {showSettings && (
-        <div className="absolute top-16 right-4 w-80 bg-white rounded-xl shadow-2xl z-10 p-6">
+        <div className="absolute top-16 right-4 w-80 bg-card rounded-xl shadow-2xl z-10 p-6">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-bold">Reading Settings</h3>
             <button
               onClick={() => setShowSettings(false)}
-              className="p-2 hover:bg-gray-100 rounded-lg"
+              className="p-2 hover:bg-muted rounded-lg"
             >
               <i className="ri-close-line text-xl"></i>
             </button>
@@ -1202,18 +1202,18 @@ export default function EpubReader({ bookId, onClose }) {
 
           {/* Font Size */}
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-3">Font Size</label>
+            <label className="block text-sm font-medium text-foreground mb-3">Font Size</label>
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => changeFontSize(-10)}
-                className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg"
+                className="p-2 bg-muted hover:bg-muted rounded-lg"
               >
                 <i className="ri-subtract-line"></i>
               </button>
               <span className="flex-1 text-center font-medium">{fontSize}%</span>
               <button
                 onClick={() => changeFontSize(10)}
-                className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg"
+                className="p-2 bg-muted hover:bg-muted rounded-lg"
               >
                 <i className="ri-add-line"></i>
               </button>
@@ -1222,7 +1222,7 @@ export default function EpubReader({ bookId, onClose }) {
 
           {/* Font Family */}
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-3">Font Family</label>
+            <label className="block text-sm font-medium text-foreground mb-3">Font Family</label>
             <div className="grid grid-cols-2 gap-2">
               {['Georgia', 'Arial', 'Times New Roman', 'Verdana'].map(font => (
                 <button
@@ -1230,7 +1230,7 @@ export default function EpubReader({ bookId, onClose }) {
                   onClick={() => changeFontFamily(font)}
                   className={`px-3 py-2 rounded-lg border-2 transition-all text-sm ${fontFamily === font
                     ? 'border-blue-500 bg-blue-50 text-blue-700'
-                    : 'border-gray-200 hover:border-gray-300'
+                    : 'border-border hover:border-input'
                     }`}
                   style={{ fontFamily: font }}
                 >
@@ -1242,19 +1242,19 @@ export default function EpubReader({ bookId, onClose }) {
 
           {/* Theme */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">Theme</label>
+            <label className="block text-sm font-medium text-foreground mb-3">Theme</label>
             <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => changeTheme('light')}
-                className={`p-3 rounded-lg border-2 transition-all ${theme === 'light' ? 'border-blue-500 bg-blue-50' : 'border-gray-200'
+                className={`p-3 rounded-lg border-2 transition-all ${theme === 'light' ? 'border-blue-500 bg-blue-50' : 'border-border'
                   }`}
               >
-                <div className="w-full h-8 bg-white border border-gray-300 rounded mb-2"></div>
+                <div className="w-full h-8 bg-card border border-input rounded mb-2"></div>
                 <p className="text-xs font-medium">Light</p>
               </button>
               <button
                 onClick={() => changeTheme('sepia')}
-                className={`p-3 rounded-lg border-2 transition-all ${theme === 'sepia' ? 'border-blue-500 bg-blue-50' : 'border-gray-200'
+                className={`p-3 rounded-lg border-2 transition-all ${theme === 'sepia' ? 'border-blue-500 bg-blue-50' : 'border-border'
                   }`}
               >
                 <div className="w-full h-8 bg-amber-50 border border-amber-200 rounded mb-2"></div>
@@ -1262,7 +1262,7 @@ export default function EpubReader({ bookId, onClose }) {
               </button>
               <button
                 onClick={() => changeTheme('dark')}
-                className={`p-3 rounded-lg border-2 transition-all ${theme === 'dark' ? 'border-blue-500 bg-blue-50' : 'border-gray-200'
+                className={`p-3 rounded-lg border-2 transition-all ${theme === 'dark' ? 'border-blue-500 bg-blue-50' : 'border-border'
                   }`}
               >
                 <div className="w-full h-8 bg-gray-900 border border-gray-700 rounded mb-2"></div>

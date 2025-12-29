@@ -92,7 +92,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -100,10 +100,10 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             What Our Readers Say
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Discover what our community thinks about their favorite books and reading experiences.
           </p>
         </motion.div>
@@ -114,11 +114,11 @@ export default function TestimonialsSection() {
           </div>
         ) : testimonials.length === 0 ? (
           <div className="text-center py-20">
-            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <i className="ri-star-line text-4xl text-gray-400"></i>
+            <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
+              <i className="ri-star-line text-4xl text-muted-foreground"></i>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">No reviews available</h3>
-            <p className="text-gray-600">Check back soon for reader reviews and testimonials.</p>
+            <h3 className="text-2xl font-semibold text-foreground mb-2">No reviews available</h3>
+            <p className="text-muted-foreground">Check back soon for reader reviews and testimonials.</p>
           </div>
         ) : (
           <div 
@@ -128,15 +128,15 @@ export default function TestimonialsSection() {
           >
             <button
               onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all border border-gray-200"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-card rounded-full p-3 shadow-lg hover:shadow-xl transition-all border border-border"
             >
-              <i className="ri-arrow-left-s-line text-2xl text-gray-700"></i>
+              <i className="ri-arrow-left-s-line text-2xl text-foreground"></i>
             </button>
             <button
               onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all border border-gray-200"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-card rounded-full p-3 shadow-lg hover:shadow-xl transition-all border border-border"
             >
-              <i className="ri-arrow-right-s-line text-2xl text-gray-700"></i>
+              <i className="ri-arrow-right-s-line text-2xl text-foreground"></i>
             </button>
 
             <div
@@ -152,7 +152,7 @@ export default function TestimonialsSection() {
                   transition={{ delay: index * 0.1 }}
                   className="flex-shrink-0 w-80 md:w-96"
                 >
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 min-h-[400px] flex flex-col">
+                  <div className="bg-card rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 min-h-[400px] flex flex-col">
                     <div className="p-6 flex flex-col flex-1">
                       {/* Book Info */}
                       <div className="flex items-center mb-4">
@@ -168,11 +168,11 @@ export default function TestimonialsSection() {
                           </div>
                         )}
                         <div className="flex-1">
-                          <h3 className="text-sm font-semibold text-gray-900 line-clamp-2">
+                          <h3 className="text-sm font-semibold text-foreground line-clamp-2">
                             {testimonial.bookTitle}
                           </h3>
                           {testimonial.bookAuthor && (
-                            <p className="text-xs text-gray-600">by {testimonial.bookAuthor}</p>
+                            <p className="text-xs text-muted-foreground">by {testimonial.bookAuthor}</p>
                           )}
                         </div>
                       </div>
@@ -184,29 +184,29 @@ export default function TestimonialsSection() {
 
                       {/* Review Title */}
                       {testimonial.title && (
-                        <h4 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+                        <h4 className="text-lg font-semibold text-foreground mb-3 line-clamp-2">
                           {testimonial.title}
                         </h4>
                       )}
 
                       {/* Review Text */}
-                      <blockquote className="text-gray-700 mb-6 italic line-clamp-4 flex-1">
+                      <blockquote className="text-foreground mb-6 italic line-clamp-4 flex-1">
                         "{testimonial.content}"
                       </blockquote>
 
                       {/* Reviewer Info */}
                       <div className="flex items-center justify-between mt-auto">
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                          <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary rounded-full flex items-center justify-center">
                             <span className="text-white font-semibold text-sm">
                               {testimonial.firstName.charAt(0)}{testimonial.lastName.charAt(0)}
                             </span>
                           </div>
                           <div>
-                            <p className="font-medium text-gray-900 text-sm">
+                            <p className="font-medium text-foreground text-sm">
                               {testimonial.name}
                             </p>
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-muted-foreground">
                               {formatDate(testimonial.createdAt)}
                             </p>
                           </div>

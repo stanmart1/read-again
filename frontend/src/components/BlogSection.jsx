@@ -35,13 +35,13 @@ export default function BlogSection() {
       'Literature': 'bg-purple-100 text-purple-800',
       'Reviews': 'bg-red-100 text-red-800',
       'Reading Tips': 'bg-cyan-100 text-cyan-800',
-      'default': 'bg-gray-100 text-gray-800'
+      'default': 'bg-muted text-foreground'
     };
     return colors[category] || colors.default;
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -54,10 +54,10 @@ export default function BlogSection() {
             <i className="ri-article-line mr-2"></i>
             Latest Insights
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             From Our Blog
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Discover reading tips, book reviews, and insights from our community
           </p>
         </motion.div>
@@ -73,11 +73,11 @@ export default function BlogSection() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-20"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 mb-6">
-              <i className="ri-article-line text-4xl text-gray-400"></i>
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-6">
+              <i className="ri-article-line text-4xl text-muted-foreground"></i>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">No Blog Posts Yet</h3>
-            <p className="text-gray-600 max-w-md mx-auto mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-3">No Blog Posts Yet</h3>
+            <p className="text-muted-foreground max-w-md mx-auto mb-8">
               We're working on creating amazing content for you. Check back soon for insightful articles and reading tips!
             </p>
           </motion.div>
@@ -86,15 +86,15 @@ export default function BlogSection() {
             {/* Navigation Buttons */}
             <button
               onClick={() => scroll('left')}
-              className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100 transition-all"
+              className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-card shadow-lg rounded-full p-3 hover:bg-muted transition-all"
             >
-              <i className="ri-arrow-left-line text-xl text-gray-700"></i>
+              <i className="ri-arrow-left-line text-xl text-foreground"></i>
             </button>
             <button
               onClick={() => scroll('right')}
-              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100 transition-all"
+              className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-card shadow-lg rounded-full p-3 hover:bg-muted transition-all"
             >
-              <i className="ri-arrow-right-line text-xl text-gray-700"></i>
+              <i className="ri-arrow-right-line text-xl text-foreground"></i>
             </button>
 
             {/* Carousel */}
@@ -110,7 +110,7 @@ export default function BlogSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex-shrink-0 w-80 md:w-96 bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer hover:shadow-2xl transition-all duration-300 snap-center"
+                  className="flex-shrink-0 w-80 md:w-96 bg-card rounded-xl shadow-lg overflow-hidden group cursor-pointer hover:shadow-2xl transition-all duration-300 snap-center"
                 >
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
@@ -136,7 +136,7 @@ export default function BlogSection() {
 
                   {/* Content */}
                   <div className="p-6">
-                    <div className="flex items-center text-sm text-gray-500 mb-3">
+                    <div className="flex items-center text-sm text-muted-foreground mb-3">
                       <i className="ri-calendar-line mr-1"></i>
                       <span>{formatDate(post.created_at)}</span>
                       <span className="mx-2">•</span>
@@ -144,11 +144,11 @@ export default function BlogSection() {
                       <span>{post.read_time || 5} min read</span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
                       {post.title}
                     </h3>
 
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+                    <p className="text-muted-foreground mb-4 line-clamp-3">
                       {stripHTML(post.excerpt || post.content)?.substring(0, 150) + '...'}
                     </p>
 
@@ -157,14 +157,14 @@ export default function BlogSection() {
                         <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold text-sm">
                           {post.author_name?.[0] || 'A'}
                         </div>
-                        <span className="text-sm font-medium text-gray-700">
+                        <span className="text-sm font-medium text-foreground">
                           {post.author_name || 'Admin'}
                         </span>
                       </div>
 
                       <Link
                         to={`/blog/${post.slug || post.id}`}
-                        className="text-blue-600 hover:text-blue-700 font-semibold text-sm flex items-center space-x-1"
+                        className="text-primary hover:text-blue-700 font-semibold text-sm flex items-center space-x-1"
                       >
                         <span>Read More</span>
                         <i className="ri-arrow-right-line"></i>
@@ -187,7 +187,7 @@ export default function BlogSection() {
           >
             <Link
               to="/blog"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-primary text-white px-8 py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               <span>View All Posts</span>
               <i className="ri-arrow-right-line"></i>

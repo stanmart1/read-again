@@ -19,7 +19,7 @@ export default function Footer() {
               </div>
               <span className="text-xl font-bold font-pacifico">ReadAgain</span>
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-muted-foreground mb-6 leading-relaxed">
               The ultimate digital and social reading platform that promotes the reading culture amongst young African youths through incentive programs.
             </p>
             <div className="flex space-x-4">
@@ -28,7 +28,7 @@ export default function Footer() {
                   key={social}
                   whileHover={{ scale: 1.1, y: -2 }}
                   href="#"
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
                 >
                   <i className={`ri-${social}-fill text-lg`}></i>
                 </motion.a>
@@ -49,22 +49,22 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Legal & Info</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/terms" className="text-muted-foreground hover:text-white transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/privacy" className="text-muted-foreground hover:text-white transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/about" className="text-muted-foreground hover:text-white transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/contact" className="text-muted-foreground hover:text-white transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -74,14 +74,14 @@ export default function Footer() {
         
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">
+          <p className="text-muted-foreground text-sm">
             © 2025 ReadAgain. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">
+            <Link to="/privacy" className="text-muted-foreground hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">
+            <Link to="/terms" className="text-muted-foreground hover:text-white transition-colors">
               Terms of Service
             </Link>
           </div>
@@ -89,7 +89,7 @@ export default function Footer() {
         
         {/* Created with Love */}
         <div className="border-t border-gray-800 mt-4 pt-4 flex justify-center">
-          <p className="text-gray-400 text-sm flex items-center space-x-1">
+          <p className="text-muted-foreground text-sm flex items-center space-x-1">
             <span>Created with</span>
             <motion.i
               animate={{ scale: [1, 1.2, 1] }}

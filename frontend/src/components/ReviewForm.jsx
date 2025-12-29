@@ -48,8 +48,8 @@ export default function ReviewForm({ bookId, bookTitle, onSuccess, onCancel }) {
         <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
           <i className="ri-check-line text-white text-3xl"></i>
         </div>
-        <h3 className="text-xl font-bold text-gray-900 mb-3">Review Published!</h3>
-        <p className="text-gray-600 mb-4">Thank you for sharing your thoughts about {bookTitle}.</p>
+        <h3 className="text-xl font-bold text-foreground mb-3">Review Published!</h3>
+        <p className="text-muted-foreground mb-4">Thank you for sharing your thoughts about {bookTitle}.</p>
         <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
           <i className="ri-time-line mr-2"></i>
           Under admin review
@@ -59,11 +59,11 @@ export default function ReviewForm({ bookId, bookTitle, onSuccess, onCancel }) {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-card">
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Rating */}
         <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-xl border border-green-200">
-          <label className="block text-sm font-semibold text-gray-800 mb-3">
+          <label className="block text-sm font-semibold text-foreground mb-3">
             <i className="ri-star-line mr-2 text-green-600"></i>
             How would you rate this book? *
           </label>
@@ -92,8 +92,8 @@ export default function ReviewForm({ bookId, bookTitle, onSuccess, onCancel }) {
 
         {/* Review Title */}
         <div>
-          <label htmlFor="title" className="block text-sm font-semibold text-gray-800 mb-2">
-            <i className="ri-text mr-2 text-blue-600"></i>
+          <label htmlFor="title" className="block text-sm font-semibold text-foreground mb-2">
+            <i className="ri-text mr-2 text-primary"></i>
             Review Title (Optional)
           </label>
           <input
@@ -102,14 +102,14 @@ export default function ReviewForm({ bookId, bookTitle, onSuccess, onCancel }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Give your review a catchy title..."
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-50 focus:bg-white"
+            className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-muted focus:bg-card"
             maxLength={100}
           />
         </div>
 
         {/* Review Text */}
         <div>
-          <label htmlFor="reviewText" className="block text-sm font-semibold text-gray-800 mb-2">
+          <label htmlFor="reviewText" className="block text-sm font-semibold text-foreground mb-2">
             <i className="ri-chat-3-line mr-2 text-green-600"></i>
             Share your thoughts *
           </label>
@@ -120,11 +120,11 @@ export default function ReviewForm({ bookId, bookTitle, onSuccess, onCancel }) {
               onChange={(e) => setReviewText(e.target.value)}
               placeholder="What did you think about this book? Share your experience..."
               rows={5}
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all bg-gray-50 focus:bg-white resize-none"
+              className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all bg-muted focus:bg-card resize-none"
               maxLength={10000}
               required
             />
-            <div className="absolute bottom-3 right-3 text-xs text-gray-400 bg-white px-2 py-1 rounded-full">
+            <div className="absolute bottom-3 right-3 text-xs text-muted-foreground bg-card px-2 py-1 rounded-full">
               {reviewText.length}/10000
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function ReviewForm({ bookId, bookTitle, onSuccess, onCancel }) {
             <button
               type="button"
               onClick={onCancel}
-              className="px-6 py-4 border-2 border-gray-300 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
+              className="px-6 py-4 border-2 border-input rounded-xl font-semibold hover:bg-muted transition-colors"
             >
               Cancel
             </button>
