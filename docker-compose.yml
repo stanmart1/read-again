@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:17-alpine
-    container_name: readagain-postgres
+    container_name: readagain
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
