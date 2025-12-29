@@ -142,6 +142,31 @@ const Books = () => {
             <div className="flex justify-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
+          ) : filteredBooks.length === 0 ? (
+            <div className="text-center py-20">
+              <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/10 mb-8">
+                <BookOpen className="w-12 h-12 text-primary" />
+              </div>
+              <h3 className="font-display text-3xl font-semibold mb-4">
+                {searchQuery || selectedCategory !== "All" ? "No Books Found" : "No Books Available"}
+              </h3>
+              <p className="text-muted-foreground text-lg mb-8 max-w-md mx-auto">
+                {searchQuery || selectedCategory !== "All" 
+                  ? "Try adjusting your search or filters to find what you're looking for."
+                  : "We're currently building our collection. Check back soon for amazing books!"}
+              </p>
+              {(searchQuery || selectedCategory !== "All") && (
+                <Button 
+                  variant="goldOutline" 
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedCategory("All");
+                  }}
+                >
+                  Clear Filters
+                </Button>
+              )}
+            </div>
           ) : (
             <>
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -149,12 +174,6 @@ const Books = () => {
                   <BookCard key={book.id} book={book} index={index} />
                 ))}
               </div>
-
-              {filteredBooks.length === 0 && (
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground">No books found</p>
-                </div>
-              )}
 
               {/* Load More */}
               {hasMore && filteredBooks.length > 0 && (

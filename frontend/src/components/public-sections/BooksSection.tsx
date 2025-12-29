@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { BookCard } from "@/components/PublicBookCard";
+import { BookOpen } from "lucide-react";
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -51,6 +52,16 @@ export const BooksSection = () => {
         {loading ? (
           <div className="flex justify-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          </div>
+        ) : books.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
+              <BookOpen className="w-10 h-10 text-primary" />
+            </div>
+            <h3 className="font-display text-2xl font-semibold mb-3">No Books Available Yet</h3>
+            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+              We're currently building our collection. Check back soon for amazing books!
+            </p>
           </div>
         ) : (
           <>
