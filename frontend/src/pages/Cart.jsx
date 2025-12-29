@@ -242,7 +242,7 @@ export default function Cart() {
             <div className="mt-4 sm:mt-6">
               <Link
                 to="/books"
-                className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-primary/90 hover:to-primary/90 transition-all duration-200"
+                className="inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 transition-all duration-200"
               >
                 Browse Books
               </Link>
