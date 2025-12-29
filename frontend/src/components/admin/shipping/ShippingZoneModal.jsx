@@ -66,15 +66,15 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center p-4">
-      <div className="relative bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-gray-200 p-6 z-10">
+      <div className="relative bg-card rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="sticky top-0 bg-card border-b border-border p-6 z-10">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-bold text-gray-900">
+            <h3 className="text-xl font-bold text-foreground">
               {editingZone ? 'Edit Shipping Zone' : 'Add Shipping Zone'}
             </h3>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600"
+              className="text-gray-400 hover:text-muted-foreground"
             >
               <i className="ri-close-line text-2xl"></i>
             </button>
@@ -85,14 +85,14 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
           <div className="space-y-4">
             {/* Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Zone Name *
               </label>
               <input
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="e.g., Lagos & Surrounding Areas"
                 required
               />
@@ -100,13 +100,13 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
 
             {/* Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 Description
               </label>
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 rows={2}
                 placeholder="Brief description of this shipping zone"
               />
@@ -115,28 +115,28 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
             {/* States Selection */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-foreground">
                   States ({formData.states.length} selected)
                 </label>
                 <button
                   type="button"
                   onClick={handleSelectAllStates}
-                  className="text-sm text-blue-600 hover:text-blue-800"
+                  className="text-sm text-primary hover:text-blue-800"
                 >
                   {formData.states.length === NIGERIAN_STATES.length ? 'Deselect All' : 'Select All'}
                 </button>
               </div>
-              <div className="border border-gray-300 rounded-lg p-4 max-h-60 overflow-y-auto">
+              <div className="border border-input rounded-lg p-4 max-h-60 overflow-y-auto">
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {NIGERIAN_STATES.map((state) => (
-                    <label key={state} className="flex items-center space-x-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                    <label key={state} className="flex items-center space-x-2 cursor-pointer hover:bg-muted p-2 rounded">
                       <input
                         type="checkbox"
                         checked={formData.states.includes(state)}
                         onChange={() => handleStateToggle(state)}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                        className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
                       />
-                      <span className="text-sm text-gray-700">{state}</span>
+                      <span className="text-sm text-foreground">{state}</span>
                     </label>
                   ))}
                 </div>
@@ -149,9 +149,9 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
                 type="checkbox"
                 checked={formData.is_active}
                 onChange={(e) => setFormData(prev => ({ ...prev, is_active: e.target.checked }))}
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
               />
-              <label className="ml-2 text-sm text-gray-700">
+              <label className="ml-2 text-sm text-foreground">
                 Active (visible to customers)
               </label>
             </div>
@@ -161,13 +161,13 @@ const ShippingZoneModal = ({ isOpen, onClose, onSubmit, editingZone }) => {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex-1 px-4 py-2 border border-input rounded-lg hover:bg-muted transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               {editingZone ? 'Update' : 'Create'}
             </button>

@@ -12,7 +12,7 @@ const OrderCard = ({
   getCustomerName
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 space-y-3">
+    <div className="bg-card rounded-lg shadow-sm border border-border p-4 space-y-3">
       {/* Order Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-start space-x-3">
@@ -20,11 +20,11 @@ const OrderCard = ({
             type="checkbox"
             checked={isSelected}
             onChange={() => onSelect(order.id)}
-            className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            className="mt-1 h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
           />
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">#{order.order_number}</h3>
-            <p className="text-xs text-gray-600 mt-1">{getCustomerName(order)}</p>
+            <h3 className="text-sm font-semibold text-foreground">#{order.order_number}</h3>
+            <p className="text-xs text-muted-foreground mt-1">{getCustomerName(order)}</p>
           </div>
         </div>
         <div className="flex flex-col items-end space-y-1">
@@ -40,20 +40,20 @@ const OrderCard = ({
       {/* Order Details */}
       <div className="grid grid-cols-2 gap-3 text-sm">
         <div>
-          <p className="text-gray-600">Amount</p>
-          <p className="font-semibold text-gray-900">{formatCurrency(order.total_amount)}</p>
+          <p className="text-muted-foreground">Amount</p>
+          <p className="font-semibold text-foreground">{formatCurrency(order.total_amount)}</p>
         </div>
         <div>
-          <p className="text-gray-600">Items</p>
-          <p className="font-semibold text-gray-900">{order.total_items || 0}</p>
+          <p className="text-muted-foreground">Items</p>
+          <p className="font-semibold text-foreground">{order.total_items || 0}</p>
         </div>
         <div>
-          <p className="text-gray-600">Date</p>
-          <p className="font-semibold text-gray-900">{formatDate(order.created_at)}</p>
+          <p className="text-muted-foreground">Date</p>
+          <p className="font-semibold text-foreground">{formatDate(order.created_at)}</p>
         </div>
         <div>
-          <p className="text-gray-600">Time</p>
-          <p className="font-semibold text-gray-900">{formatTime(order.created_at)}</p>
+          <p className="text-muted-foreground">Time</p>
+          <p className="font-semibold text-foreground">{formatTime(order.created_at)}</p>
         </div>
       </div>
 
@@ -61,7 +61,7 @@ const OrderCard = ({
       {order.payment_method && (
         <div className="flex items-center space-x-2 text-sm">
           <i className="ri-bank-card-line text-gray-400"></i>
-          <span className="text-gray-600">{order.payment_method}</span>
+          <span className="text-muted-foreground">{order.payment_method}</span>
         </div>
       )}
 
@@ -69,7 +69,7 @@ const OrderCard = ({
       <div className="flex space-x-2 pt-2 border-t">
         <button
           onClick={() => onView(order)}
-          className="flex-1 px-3 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          className="flex-1 px-3 py-2 text-sm bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors"
         >
           View Details
         </button>

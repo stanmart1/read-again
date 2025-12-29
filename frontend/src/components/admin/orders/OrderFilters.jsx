@@ -17,7 +17,7 @@ const OrderFilters = ({
   const [showFilters, setShowFilters] = useState(false);
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
+    <div className="bg-card rounded-lg shadow-sm border border-border p-4 sm:p-6">
       <div className="space-y-4">
         {/* Search Bar */}
         <div className="relative">
@@ -30,16 +30,16 @@ const OrderFilters = ({
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && onSearch()}
-            className="w-full pl-10 pr-4 py-3 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+            className="w-full pl-10 pr-4 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
           />
         </div>
 
         {/* Filter Toggle */}
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
+          <h3 className="text-lg font-semibold text-foreground">Filters</h3>
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center space-x-2 px-3 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+            className="flex items-center space-x-2 px-3 py-2 text-sm bg-muted hover:bg-gray-200 rounded-lg transition-colors"
           >
             <i className={`ri-${showFilters ? 'eye-off' : 'eye'}-line`}></i>
             <span>{showFilters ? 'Hide' : 'Show'} Filters</span>
@@ -52,11 +52,11 @@ const OrderFilters = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Status Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Order Status</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Order Status</label>
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                 >
                   <option value="">All Statuses</option>
                   <option value="pending">Pending</option>
@@ -71,11 +71,11 @@ const OrderFilters = ({
 
               {/* Payment Status Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Payment Status</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Payment Status</label>
                 <select
                   value={paymentStatusFilter}
                   onChange={(e) => setPaymentStatusFilter(e.target.value)}
-                  className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                 >
                   <option value="">All Payment Statuses</option>
                   <option value="pending">Payment Pending</option>
@@ -87,11 +87,11 @@ const OrderFilters = ({
 
               {/* Payment Method Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Payment Method</label>
                 <select
                   value={paymentMethodFilter}
                   onChange={(e) => setPaymentMethodFilter(e.target.value)}
-                  className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                 >
                   <option value="">All Payment Methods</option>
                   <option value="flutterwave">Flutterwave</option>
@@ -102,11 +102,11 @@ const OrderFilters = ({
 
               {/* Date Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Date Range</label>
                 <select
                   value={dateFilter}
                   onChange={(e) => setDateFilter(e.target.value)}
-                  className="w-full px-3 py-3 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
+                  className="w-full px-3 py-3 sm:py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                 >
                   <option value="all">All Time</option>
                   <option value="today">Today</option>
@@ -121,7 +121,7 @@ const OrderFilters = ({
             <div className="flex justify-end">
               <button
                 onClick={onClearFilters}
-                className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                className="px-4 py-2 text-sm bg-muted hover:bg-gray-200 text-foreground rounded-lg transition-colors"
               >
                 Clear All Filters
               </button>
