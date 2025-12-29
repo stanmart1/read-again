@@ -17,9 +17,6 @@ export default function Cart() {
     error,
     updateQuantity,
     removeFromCart,
-    isEbookOnly,
-    isPhysicalOnly,
-    isMixedCart,
     getSubtotal,
     getTotalSavings,
     getTotalItems,
@@ -73,49 +70,6 @@ export default function Cart() {
     localStorage.setItem('redirectAfterLogin', '/checkout');
     navigate('/signup?redirect=/checkout');
   };
-
-  // Get cart type info
-  const getCartTypeInfo = () => {
-    if (cartItems.length === 0) {
-      return {
-        title: "Empty Cart",
-        message: "Your cart is empty. Add some books to get started!",
-        icon: "ri-shopping-bag-line",
-        color: "text-muted-foreground",
-        bgColor: "bg-gray-50",
-        borderColor: "border-gray-200"
-      };
-    } else if (isEbookOnly()) {
-      return {
-        title: "Digital Books Only",
-        message: "Your cart contains only digital books. No shipping required!",
-        icon: "ri-download-line",
-        color: "text-green-600",
-        bgColor: "bg-green-50",
-        borderColor: "border-green-200"
-      };
-    } else if (isPhysicalOnly()) {
-      return {
-        title: "Physical Books Only",
-        message: "Your cart contains only physical books. Shipping address required.",
-        icon: "ri-box-3-line",
-        color: "text-primary",
-        bgColor: "bg-blue-50",
-        borderColor: "border-primary/30"
-      };
-    } else {
-      return {
-        title: "Mixed Cart",
-        message: "Your cart contains both digital and physical books.",
-        icon: "ri-shopping-bag-line",
-        color: "text-purple-600",
-        bgColor: "bg-purple-50",
-        borderColor: "border-purple-200"
-      };
-    }
-  };
-
-  const cartTypeInfo = getCartTypeInfo();
 
   if (isLoading) {
     return (
@@ -213,23 +167,6 @@ export default function Cart() {
           </motion.div>
         )}
 
-        {/* Cart Type Info */}
-        {cartItems.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-lg border ${cartTypeInfo.bgColor} ${cartTypeInfo.borderColor}`}
-          >
-            <div className="flex items-start sm:items-center">
-              <i className={`${cartTypeInfo.icon} ${cartTypeInfo.color} text-xl mr-2 sm:mr-3`}></i>
-              <div className="min-w-0">
-                <h3 className={`text-sm sm:text-base font-medium ${cartTypeInfo.color}`}>{cartTypeInfo.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">{cartTypeInfo.message}</p>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
         {cartItems.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -291,23 +228,6 @@ export default function Cart() {
                                 by {item.book?.author_name}
                               </p>
                               <div className="flex items-center gap-2">
-                                <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${
-                                  item.book?.format === 'ebook' 
-                                    ? 'bg-gradient-to-r from-green-400 to-green-500 text-white' 
-                                    : 'bg-gradient-to-r from-blue-400 to-blue-500 text-white'
-                                }`}>
-                                  {item.book?.format === 'ebook' ? (
-                                    <>
-                                      <i className="ri-download-cloud-line mr-1"></i>
-                                      Digital
-                                    </>
-                                  ) : (
-                                    <>
-                                      <i className="ri-book-3-line mr-1"></i>
-                                      Physical
-                                    </>
-                                  )}
-                                </span>
                                 {item.book?.original_price && item.book.original_price > (item.book?.price || 0) && (
                                   <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">
                                     <i className="ri-price-tag-3-line mr-1"></i>
@@ -348,8 +268,7 @@ export default function Cart() {
                                 </span>
                                 <button
                                   onClick={() => handleUpdateQuantity(item.book_id, item.quantity + 1)}
-                                  className="p-2 rounded-md hover:bg-primary/10 hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                                  disabled={item.book?.format === 'physical' && (item.book?.stock_quantity || 0) <= item.quantity}
+                                  className="p-2 rounded-md hover:bg-primary/10 hover:text-primary transition-colors"
                                 >
                                   <i className="ri-add-line text-lg"></i>
                                 </button>
@@ -396,27 +315,13 @@ export default function Cart() {
                     </div>
                   )}
 
-                  {!isEbookOnly() && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Shipping</span>
-                      <span className="font-medium text-xs sm:text-sm">
-                        {isAuthenticated ? 'Based on delivery address' : 'Requires sign in'}
-                      </span>
-                    </div>
-                  )}
-
                   <div className="border-t pt-2 sm:pt-3">
                     <div className="flex justify-between text-sm sm:text-base font-medium">
                       <span>Total</span>
                       <span>₦{getSubtotal().toLocaleString()}</span>
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">
-                      {isEbookOnly() 
-                        ? 'Digital delivery - no shipping fees' 
-                        : isAuthenticated() 
-                          ? 'Shipping fees added at checkout based on location'
-                          : 'Sign in to calculate shipping and final total'
-                      }
+                      Digital delivery - no shipping fees
                     </p>
                   </div>
                 </div>
