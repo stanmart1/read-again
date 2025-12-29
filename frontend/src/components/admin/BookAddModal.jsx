@@ -16,8 +16,6 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
     pages: '',
     publication_date: '',
     publisher: '',
-    stock_quantity: '0',
-    track_inventory: true,
     is_featured: false,
     status: 'published',
     cover_image: null,
@@ -110,7 +108,6 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
       // Map frontend fields to backend expected fields
       const fieldMapping = {
-        'track_inventory': 'inventory_enabled',
         'format': 'book_type'
       };
       
@@ -198,8 +195,6 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
       publication_date: '',
       publisher: '',
       format: '',
-      stock_quantity: '0',
-      track_inventory: true,
       is_featured: false,
       status: 'published',
       cover_image: null,
@@ -481,40 +476,6 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     </label>
                   </div>
                 </div>
-
-                {/* Inventory Management (for physical books) */}
-                {formData.format === 'physical' && (
-                  <div className="sm:col-span-2">
-                    <div className="flex items-center justify-between mb-3">
-                      <label className="block text-sm font-medium text-foreground">
-                        Inventory Management
-                      </label>
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={formData.track_inventory}
-                          onChange={(e) => handleInputChange('track_inventory', e.target.checked)}
-                          className="sr-only"
-                        />
-                        <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.track_inventory ? 'bg-primary' : 'bg-muted'
-                          }`}>
-                          <span className={`inline-block h-4 w-4 transform rounded-full bg-card transition-transform ${formData.track_inventory ? 'translate-x-6' : 'translate-x-1'
-                            }`} />
-                        </div>
-                      </label>
-                    </div>
-                    {formData.track_inventory && (
-                      <input
-                        type="number"
-                        value={formData.stock_quantity}
-                        onChange={(e) => handleInputChange('stock_quantity', e.target.value)}
-                        className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-primary"
-                        placeholder="Stock quantity"
-                        min="0"
-                      />
-                    )}
-                  </div>
-                )}
               </div>
 
               <div className="flex justify-between gap-3 pt-4 border-t">
