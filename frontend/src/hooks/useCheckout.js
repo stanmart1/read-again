@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import api from '../lib/api';
 
-export function useCheckout(isEbookOnly) {
-  const [shippingMethods, setShippingMethods] = useState([]);
+export function useCheckout() {
   const [paymentGateways, setPaymentGateways] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,22 +11,8 @@ export function useCheckout(isEbookOnly) {
       try {
         setIsLoading(true);
         setError(null);
-        
-        // Only fetch shipping methods if not ebook-only
-        if (!isEbookOnly) {
-          try {
-            const shippingRes = await api.get('/shipping/methods');
-            setShippingMethods(shippingRes.data.methods || shippingRes.data || []);
-          } catch (shippingErr) {
-            console.error('Failed to load shipping methods:', shippingErr);
-            // Don't fail the entire checkout if shipping fails
-            setShippingMethods([]);
-          }
-        } else {
-          setShippingMethods([]);
-        }
 
-        // Always fetch payment gateways
+        // Fetch payment gateways
         try {
           const paymentRes = await api.get('/payment-gateways');
           setPaymentGateways(paymentRes.data.gateways || paymentRes.data || []);
@@ -48,7 +33,7 @@ export function useCheckout(isEbookOnly) {
     };
     
     loadData();
-  }, [isEbookOnly]);
+  }, []);
 
-  return { shippingMethods, paymentGateways, isLoading, error };
+  return { paymentGateways, isLoading, error };
 }
