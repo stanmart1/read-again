@@ -143,7 +143,7 @@ const Roles = () => {
 
               <div className="flex items-center justify-end text-sm">
                 {role.id <= 4 && (
-                  <span className="px-2 py-1 bg-primary/20 text-blue-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-primary text-primary-foreground rounded-full text-xs font-medium">
                     System Role
                   </span>
                 )}
