@@ -27,6 +27,8 @@ const PublicLogin = lazy(() => import('./pages/public-auth/Login'));
 const PublicSignup = lazy(() => import('./pages/public-auth/Signup'));
 const PublicResetPassword = lazy(() => import('./pages/public-auth/ResetPassword'));
 const PublicNotFound = lazy(() => import('./pages/public-common/NotFound'));
+const Privacy = lazy(() => import('./pages/public-legal/Privacy'));
+const Terms = lazy(() => import('./pages/public-legal/Terms'));
 
 // Existing Pages (Keep as is)
 const Cart = lazy(() => import('./pages/Cart'));
@@ -35,8 +37,6 @@ const BankTransferProof = lazy(() => import('./pages/BankTransferProof'));
 const OrderConfirmation = lazy(() => import('./pages/OrderConfirmation'));
 const PaymentFailed = lazy(() => import('./pages/PaymentFailed'));
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
-const Privacy = lazy(() => import('./pages/Privacy'));
-const Terms = lazy(() => import('./pages/Terms'));
 
 // Dashboard Pages
 const DashboardOverview = lazy(() => import('./pages/dashboard/Overview'));
@@ -98,6 +98,8 @@ function App() {
               <Route path="/signup" element={<PublicSignup />} />
               <Route path="/register" element={<PublicSignup />} />
               <Route path="/reset-password" element={<PublicResetPassword />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
               
               {/* Existing Routes */}
               <Route path="/cart" element={<Cart />} />
