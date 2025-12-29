@@ -13,12 +13,12 @@ export default function DashboardLayout({ children }) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20 lg:pb-0">
+    <div className="min-h-screen bg-background pb-20 lg:pb-0">
       <Header />
 
       <div className="flex relative">
         {/* Desktop Sidebar */}
-        <aside className="hidden lg:block w-64 h-screen sticky top-0 bg-white border-r border-gray-200 overflow-y-auto">
+        <aside className="hidden lg:block w-64 h-screen sticky top-0 bg-card border-r border-border overflow-y-auto">
           <nav className="p-4 space-y-2 mt-20">
             {menuItems.map((item) => (
               <Link
@@ -27,7 +27,7 @@ export default function DashboardLayout({ children }) {
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                   location.pathname === item.path
                     ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    : 'text-foreground hover:bg-muted'
                 }`}
               >
                 <i className={`${item.icon} text-xl`}></i>
@@ -44,7 +44,7 @@ export default function DashboardLayout({ children }) {
       </div>
 
       {/* Mobile Bottom Navigation Bar */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-border shadow-lg z-50">
         <div className="flex items-center justify-around px-2 py-2">
           {menuItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -55,7 +55,7 @@ export default function DashboardLayout({ children }) {
                 className={`flex flex-col items-center justify-center min-w-0 flex-1 px-2 py-2 rounded-xl transition-all duration-200 ${
                   isActive
                     ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md scale-105'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    : 'text-muted-foreground hover:bg-muted'
                 }`}
               >
                 <i className={`${item.icon} text-xl mb-1`}></i>

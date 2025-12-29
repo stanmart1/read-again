@@ -15,8 +15,8 @@ export default function Wishlist() {
     <DashboardLayout>
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">My Wishlist</h1>
-          <p className="text-gray-600">{wishlistItems.length} books saved for later</p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">My Wishlist</h1>
+          <p className="text-muted-foreground">{wishlistItems.length} books saved for later</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -29,18 +29,18 @@ export default function Wishlist() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+                className="bg-card rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
               >
                 <div className="relative">
-                  <div className="h-64 bg-gradient-to-br from-blue-600 to-purple-600"></div>
+                  <div className="h-64 bg-gradient-to-br from-primary to-primary"></div>
                   <button 
                     onClick={() => handleRemove(item.id)}
-                    className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-red-50 transition-colors"
+                    className="absolute top-4 right-4 w-10 h-10 bg-card rounded-full flex items-center justify-center hover:bg-red-50 dark:bg-red-900/20 transition-colors"
                   >
                     <i className="ri-heart-fill text-red-500"></i>
                   </button>
                   {!item.inStock && (
-                    <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute top-4 left-4 bg-red-50 dark:bg-red-900/200 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       Out of Stock
                     </div>
                   )}
@@ -48,12 +48,12 @@ export default function Wishlist() {
 
                 <div className="p-4">
                   <h3 className="font-bold text-lg mb-1">{item.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{item.author}</p>
+                  <p className="text-muted-foreground text-sm mb-3">{item.author}</p>
                   
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-bold text-blue-600">${item.price}</span>
+                    <span className="text-2xl font-bold text-primary">${item.price}</span>
                     {item.inStock && (
-                      <span className="text-green-600 text-sm font-semibold">
+                      <span className="text-green-600 dark:text-green-400 text-sm font-semibold">
                         <i className="ri-check-line"></i> In Stock
                       </span>
                     )}
@@ -64,8 +64,8 @@ export default function Wishlist() {
                       disabled={!item.inStock}
                       className={`flex-1 py-2 rounded-lg text-sm font-semibold ${
                         item.inStock
-                          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-md'
-                          : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                          ? 'bg-gradient-to-r from-primary to-primary text-white hover:shadow-md'
+                          : 'bg-gray-200 text-muted-foreground cursor-not-allowed'
                       }`}
                     >
                       <i className="ri-shopping-cart-line mr-2"></i>
@@ -73,7 +73,7 @@ export default function Wishlist() {
                     </button>
                     <Link
                       to={`/books/${item.id}`}
-                      className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                      className="px-4 py-2 border border-input rounded-lg hover:bg-muted"
                     >
                       <i className="ri-eye-line"></i>
                     </Link>
@@ -85,13 +85,13 @@ export default function Wishlist() {
         </div>
 
         {!loading && wishlistItems.length === 0 && (
-          <div className="bg-white rounded-xl shadow-md p-12 text-center">
+          <div className="bg-card rounded-xl shadow-md p-12 text-center">
             <i className="ri-heart-line text-6xl text-gray-300 mb-4"></i>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">Your wishlist is empty</h3>
-            <p className="text-gray-500 mb-6">Save books you love for later</p>
+            <h3 className="text-xl font-semibold text-foreground mb-2">Your wishlist is empty</h3>
+            <p className="text-muted-foreground mb-6">Save books you love for later</p>
             <Link
               to="/books"
-              className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold"
+              className="inline-block bg-gradient-to-r from-primary to-primary text-white px-6 py-3 rounded-lg font-semibold"
             >
               Browse Books
             </Link>

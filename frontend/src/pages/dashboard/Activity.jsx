@@ -8,34 +8,34 @@ export default function Activity() {
 
   const getIconBg = (color) => {
     const colors = {
-      green: 'bg-green-100',
-      yellow: 'bg-yellow-100',
-      blue: 'bg-blue-100',
+      green: 'bg-green-100 dark:bg-green-900/30',
+      yellow: 'bg-yellow-100 dark:bg-yellow-900/30',
+      blue: 'bg-primary/20',
       purple: 'bg-purple-100',
       pink: 'bg-pink-100',
       orange: 'bg-orange-100'
     };
-    return colors[color] || 'bg-gray-100';
+    return colors[color] || 'bg-muted';
   };
 
   const getIconColor = (color) => {
     const colors = {
-      green: 'text-green-600',
-      yellow: 'text-yellow-600',
-      blue: 'text-blue-600',
+      green: 'text-green-600 dark:text-green-400',
+      yellow: 'text-yellow-600 dark:text-yellow-400',
+      blue: 'text-primary',
       purple: 'text-purple-600',
       pink: 'text-pink-600',
       orange: 'text-orange-600'
     };
-    return colors[color] || 'text-gray-600';
+    return colors[color] || 'text-muted-foreground';
   };
 
   return (
     <DashboardLayout>
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Activity Feed</h1>
-          <p className="text-gray-600">Your recent reading activities and achievements</p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Activity Feed</h1>
+          <p className="text-muted-foreground">Your recent reading activities and achievements</p>
         </div>
 
         {/* Activity Timeline */}
@@ -62,19 +62,19 @@ export default function Activity() {
                 </div>
 
                 {/* Content */}
-                <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div className="bg-card rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-bold text-gray-900">{activity.title}</h3>
-                    <span className="text-sm text-gray-500">{activity.time}</span>
+                    <h3 className="font-bold text-foreground">{activity.title}</h3>
+                    <span className="text-sm text-muted-foreground">{activity.time}</span>
                   </div>
-                  <p className="text-gray-600">{activity.description}</p>
+                  <p className="text-muted-foreground">{activity.description}</p>
                 </div>
               </motion.div>
             ))
             ) : (
               <div className="text-center py-12">
                 <i className="ri-time-line text-6xl text-gray-300 mb-4"></i>
-                <p className="text-gray-600">No activities yet</p>
+                <p className="text-muted-foreground">No activities yet</p>
               </div>
             )}
           </div>
@@ -85,7 +85,7 @@ export default function Activity() {
           <div className="text-center mt-8">
             <button 
               onClick={loadMore}
-              className="px-6 py-3 bg-white border-2 border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50"
+              className="px-6 py-3 bg-card border-2 border-input rounded-lg font-semibold text-foreground hover:bg-muted"
             >
               Load More Activities
             </button>
