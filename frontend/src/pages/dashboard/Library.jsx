@@ -121,7 +121,7 @@ export default function Library() {
         {/* Empty State */}
         {filteredBooks.length === 0 ? (
           <div className="bg-card rounded-2xl shadow-lg border border-gray-100 text-center py-20">
-            <div className="w-28 h-28 mx-auto mb-8 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-28 h-28 mx-auto mb-8 bg-gradient-to-br from-primary/10 to-primary/20 rounded-full flex items-center justify-center shadow-lg">
               <i className="ri-book-line text-4xl text-primary"></i>
             </div>
             <h3 className="text-2xl font-bold text-foreground mb-3">
@@ -135,7 +135,7 @@ export default function Library() {
             {books.length === 0 && (
               <Link 
                 to="/books"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-primary text-white text-lg font-semibold rounded-2xl hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-primary text-white text-lg font-semibold rounded-2xl hover:from-primary/90 hover:to-primary/90 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
               >
                 <i className="ri-search-line mr-2 text-lg"></i>
                 Explore Books
@@ -165,7 +165,7 @@ export default function Library() {
                   <div className="absolute top-3 right-3">
                     <span className={`px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm shadow-lg ${
                       book.format === 'ebook' 
-                        ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white' 
+                        ? 'bg-gradient-to-r from-primary to-primary text-white' 
                         : 'bg-gradient-to-r from-amber-600 to-orange-600 text-white'
                     }`}>
                       {book.format === 'ebook' ? 'Digital' : 'Physical'}
@@ -211,7 +211,7 @@ export default function Library() {
                     {(book.format || book.book?.format) === 'ebook' ? (
                       <Link
                         to={`/reading/${book.book_id}`}
-                        className="w-full inline-flex items-center justify-center px-4 py-3 bg-gradient-to-r from-primary to-primary text-white text-sm font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+                        className="w-full inline-flex items-center justify-center px-4 py-3 bg-gradient-to-r from-primary to-primary text-white text-sm font-semibold rounded-xl hover:from-primary/90 hover:to-primary/90 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
                       >
                         <i className={`${book.progress > 0 ? 'ri-play-line' : 'ri-book-open-line'} mr-2 text-base`}></i>
                         {book.progress > 0 ? 'Continue Reading' : 'Start Reading'}
