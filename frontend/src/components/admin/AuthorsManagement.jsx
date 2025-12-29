@@ -225,7 +225,7 @@ const AuthorsManagement = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">{author.books_count || 0}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-                        author.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-muted text-gray-800'
+                        author.status === 'active' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-muted text-gray-800'
                       }`}>
                         {author.status}
                       </span>
@@ -238,7 +238,7 @@ const AuthorsManagement = () => {
                         <button
                           onClick={() => toggleStatus(author.id, author.status)}
                           disabled={isTogglingStatus}
-                          className={`p-1 rounded transition-opacity ${author.status === 'active' ? 'text-yellow-600 hover:bg-yellow-50' : 'text-green-600 hover:bg-green-50'} ${isTogglingStatus ? 'opacity-50 cursor-not-allowed' : ''}`}
+                          className={`p-1 rounded transition-opacity ${author.status === 'active' ? 'text-yellow-600 dark:text-yellow-400 hover:bg-yellow-50 dark:bg-yellow-900/20' : 'text-green-600 dark:text-green-400 hover:bg-green-50 dark:bg-green-900/20'} ${isTogglingStatus ? 'opacity-50 cursor-not-allowed' : ''}`}
                           title={author.status === 'active' ? 'Deactivate' : 'Activate'}
                         >
                           {isTogglingStatus ? (
@@ -257,7 +257,7 @@ const AuthorsManagement = () => {
                         <button
                           onClick={() => handleDelete(author.id)}
                           disabled={isDeleting}
-                          className={`p-1 text-red-600 hover:bg-red-50 rounded transition-opacity ${isDeleting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                          className={`p-1 text-red-600 dark:text-red-400 hover:bg-red-50 dark:bg-red-900/20 rounded transition-opacity ${isDeleting ? 'opacity-50 cursor-not-allowed' : ''}`}
                           title="Delete"
                         >
                           {isDeleting ? (

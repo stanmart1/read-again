@@ -126,7 +126,7 @@ const Roles = () => {
                   </button>
                   <button
                     onClick={() => handleEditRole(role)}
-                    className="p-2 text-green-600 hover:text-green-800 transition-colors duration-200"
+                    className="p-2 text-green-600 dark:text-green-400 hover:text-green-800 dark:text-green-200 transition-colors duration-200"
                     title="Edit Role"
                   >
                     <i className="ri-edit-line"></i>

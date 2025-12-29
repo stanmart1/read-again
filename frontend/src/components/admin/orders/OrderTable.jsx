@@ -111,7 +111,7 @@ const OrderTable = ({
                       </button>
                       <button
                         onClick={() => onDelete(order)}
-                        className="text-red-600 hover:text-red-800"
+                        className="text-red-600 dark:text-red-400 hover:text-red-800 dark:text-red-200"
                         title="Delete order"
                       >
                         <i className="ri-delete-bin-line text-lg"></i>

@@ -32,8 +32,8 @@ const AdminContact = () => {
   if (error) {
     return (
       <AdminLayout>
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-800">Error: {error}</p>
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-4">
+          <p className="text-red-800 dark:text-red-200">Error: {error}</p>
         </div>
       </AdminLayout>
     );
@@ -111,7 +111,7 @@ const AdminContact = () => {
                           <h3 className="font-medium">Method {idx + 1}</h3>
                           <button
                             onClick={() => setContactMethods(contactMethods.filter((_, i) => i !== idx))}
-                            className="text-red-600"
+                            className="text-red-600 dark:text-red-400"
                           >
                             <i className="ri-delete-bin-line"></i>
                           </button>

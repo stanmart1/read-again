@@ -402,8 +402,8 @@ const BlogManagement = () => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'published': return 'bg-green-100 text-green-800';
-      case 'draft': return 'bg-yellow-100 text-yellow-800';
+      case 'published': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200';
+      case 'draft': return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200';
       case 'archived': return 'bg-muted text-gray-800';
       default: return 'bg-muted text-gray-800';
     }
@@ -454,8 +454,8 @@ const BlogManagement = () => {
         {/* Toast Notification */}
         {toast && (
           <div className={`fixed top-4 right-4 z-50 px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 animate-slide-in ${
-            toast.type === 'success' ? 'bg-green-500 text-white' :
-            toast.type === 'error' ? 'bg-red-500 text-white' :
+            toast.type === 'success' ? 'bg-green-50 dark:bg-green-900/200 text-white' :
+            toast.type === 'error' ? 'bg-red-50 dark:bg-red-900/200 text-white' :
             'bg-primary/100 text-white'
           }`}>
             <i className={`text-xl ${
@@ -479,16 +479,16 @@ const BlogManagement = () => {
 
         {/* Error Display */}
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
             <div className="flex items-start gap-2 sm:gap-3">
               <i className="ri-error-warning-line text-red-400 text-lg sm:text-xl flex-shrink-0 mt-0.5"></i>
               <div>
-                <h3 className="text-sm font-medium text-red-800">Error</h3>
+                <h3 className="text-sm font-medium text-red-800 dark:text-red-200">Error</h3>
                 <p className="text-sm text-red-700 mt-1 break-words">{error}</p>
               </div>
               <button
                 onClick={() => setError('')}
-                className="ml-auto text-red-400 hover:text-red-600"
+                className="ml-auto text-red-400 hover:text-red-600 dark:text-red-400"
               >
                 <i className="ri-close-line text-xl"></i>
               </button>
@@ -511,7 +511,7 @@ const BlogManagement = () => {
                 {localStorage.getItem('blog_draft') && (
                   <button
                     onClick={loadDraft}
-                    className="px-4 py-2 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600 transition-all flex items-center gap-2"
+                    className="px-4 py-2 bg-yellow-50 dark:bg-yellow-900/200 text-white rounded-full font-semibold hover:bg-yellow-600 transition-all flex items-center gap-2"
                     title="Recover auto-saved draft"
                   >
                     <i className="ri-file-recover-line"></i>
@@ -548,7 +548,7 @@ const BlogManagement = () => {
           </div>
           <div className="bg-card rounded-lg shadow-sm border border-border p-3 sm:p-4 md:p-6">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-green-50 dark:bg-green-900/200 rounded-lg flex items-center justify-center flex-shrink-0">
                 <i className="ri-check-line text-white text-sm sm:text-base md:text-xl"></i>
               </div>
               <div className="min-w-0 flex-1">
@@ -559,7 +559,7 @@ const BlogManagement = () => {
           </div>
           <div className="bg-card rounded-lg shadow-sm border border-border p-3 sm:p-4 md:p-6">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-yellow-50 dark:bg-yellow-900/200 rounded-lg flex items-center justify-center flex-shrink-0">
                 <i className="ri-draft-line text-white text-sm sm:text-base md:text-xl"></i>
               </div>
               <div className="min-w-0 flex-1">
@@ -721,7 +721,7 @@ const BlogManagement = () => {
                             <div className="flex items-center gap-1 sm:gap-2">
                               <div className="text-xs sm:text-sm font-medium text-foreground truncate">{post.title}</div>
                               {post.featured && (
-                                <span className="px-1.5 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded flex-shrink-0">
+                                <span className="px-1.5 py-0.5 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 text-xs rounded flex-shrink-0">
                                   Featured
                                 </span>
                               )}
@@ -804,7 +804,7 @@ const BlogManagement = () => {
                           <button
                             onClick={() => handleDeletePost(post.id)}
                             disabled={isDeleting}
-                            className="text-red-600 hover:text-red-900 flex-shrink-0 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="text-red-600 dark:text-red-400 hover:text-red-900 flex-shrink-0 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                             title="Delete"
                           >
                             {isDeleting ? (
@@ -895,7 +895,7 @@ const BlogManagement = () => {
                       />
                     </div>
                     {post.featured && (
-                      <span className="inline-block px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded mb-1">
+                      <span className="inline-block px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 text-xs rounded mb-1">
                         Featured
                       </span>
                     )}
@@ -966,7 +966,7 @@ const BlogManagement = () => {
                   <button
                     onClick={() => handleDeletePost(post.id)}
                     disabled={isDeleting}
-                    className="flex-1 px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-1"
+                    className="flex-1 px-3 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:bg-red-900/20 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-1"
                   >
                     <i className={isDeleting ? "ri-loader-4-line animate-spin" : "ri-delete-bin-line"}></i>
                     Delete
@@ -1150,7 +1150,7 @@ const BlogManagement = () => {
                           />
                           <button
                             onClick={() => { setImagePreview(null); setFormData({ ...formData, featured_image: null }); }}
-                            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600"
+                            className="absolute -top-2 -right-2 bg-red-50 dark:bg-red-900/200 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600"
                             type="button"
                           >
                             <i className="ri-close-line text-sm"></i>
@@ -1311,9 +1311,9 @@ const BlogManagement = () => {
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {formData.seo_keywords.map(keyword => (
-                          <span key={keyword} className="px-3 py-1 bg-green-100 text-green-800 rounded-full flex items-center gap-1 text-sm">
+                          <span key={keyword} className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full flex items-center gap-1 text-sm">
                             {keyword}
-                            <button onClick={() => removeKeyword(keyword)} type="button" className="text-green-600 hover:text-green-800">
+                            <button onClick={() => removeKeyword(keyword)} type="button" className="text-green-600 dark:text-green-400 hover:text-green-800 dark:text-green-200">
                               <i className="ri-close-line"></i>
                             </button>
                           </span>
@@ -1447,7 +1447,7 @@ const BlogManagement = () => {
                         type="text"
                         value={formData.title}
                         onChange={(e) => { handleTitleChange(e.target.value); setHasUnsavedChanges(true); }}
-                        className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all ${validationErrors.title ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'}`}
+                        className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all ${validationErrors.title ? 'border-red-400 bg-red-50 dark:bg-red-900/20' : 'border-border hover:border-input'}`}
                         placeholder="Enter post title"
                       />
                       {validationErrors.title && <p className="text-red-500 text-sm mt-1"><i className="ri-error-warning-line mr-1"></i>{validationErrors.title}</p>}
@@ -1482,7 +1482,7 @@ const BlogManagement = () => {
                       {imagePreview && (
                         <div className="mt-3 relative inline-block">
                           <img src={getImageUrl(imagePreview)} alt="Preview" className="h-32 w-48 object-cover rounded-xl shadow-md" onError={(e) => e.target.style.display = 'none'} />
-                          <button onClick={() => { setImagePreview(null); setFormData({ ...formData, featured_image: null }); }} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-red-600 transition-colors shadow-lg" type="button">
+                          <button onClick={() => { setImagePreview(null); setFormData({ ...formData, featured_image: null }); }} className="absolute -top-2 -right-2 bg-red-50 dark:bg-red-900/200 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-red-600 transition-colors shadow-lg" type="button">
                             <i className="ri-close-line text-sm"></i>
                           </button>
                         </div>
@@ -1561,7 +1561,7 @@ const BlogManagement = () => {
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {formData.seo_keywords.map(keyword => (
-                          <span key={keyword} className="px-3 py-1 bg-green-100 text-green-800 rounded-full flex items-center gap-1 text-sm">
+                          <span key={keyword} className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full flex items-center gap-1 text-sm">
                             {keyword}
                             <button onClick={() => removeKeyword(keyword)} type="button"><i className="ri-close-line"></i></button>
                           </span>

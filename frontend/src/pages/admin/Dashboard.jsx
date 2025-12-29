@@ -89,7 +89,7 @@ const AdminDashboard = () => {
                 <div className="flex-1 min-w-0">
                   <p className="text-xs sm:text-sm text-muted-foreground truncate">{stat.label}</p>
                   <p className="text-lg sm:text-2xl font-bold text-foreground truncate">{stat.value}</p>
-                  <p className="text-xs sm:text-sm text-green-600 dark:text-green-400 truncate">{stat.change} from last month</p>
+                  <p className="text-xs sm:text-sm text-green-600 dark:text-green-400 dark:text-green-400 truncate">{stat.change} from last month</p>
                 </div>
               </div>
             </motion.div>
@@ -159,7 +159,7 @@ const AdminDashboard = () => {
                 <div key={i} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors duration-200">
                   <div className={`w-7 sm:w-8 h-7 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                     activity.type === 'user' ? 'bg-primary/20 dark:bg-blue-900/30 text-primary dark:text-blue-400' :
-                    activity.type === 'book' ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' :
+                    activity.type === 'book' ? 'bg-green-100 dark:bg-green-900/30 dark:bg-green-900/30 text-green-600 dark:text-green-400 dark:text-green-400' :
                     activity.type === 'order' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400' :
                     'bg-muted text-muted-foreground'
                   }`}>

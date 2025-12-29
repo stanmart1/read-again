@@ -112,8 +112,8 @@ export default function RedisManagement() {
             <span className="text-sm text-muted-foreground">Enabled:</span>
             <span className={`px-2 py-1 rounded-full text-xs font-medium ${
               redisStatus?.enabled 
-                ? 'bg-green-100 text-green-800' 
-                : 'bg-red-100 text-red-800'
+                ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' 
+                : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
             }`}>
               {redisStatus?.enabled ? 'Yes' : 'No'}
             </span>
@@ -123,8 +123,8 @@ export default function RedisManagement() {
             <span className="text-sm text-muted-foreground">Connected:</span>
             <span className={`px-2 py-1 rounded-full text-xs font-medium ${
               redisStatus?.connected 
-                ? 'bg-green-100 text-green-800' 
-                : 'bg-red-100 text-red-800'
+                ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' 
+                : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
             }`}>
               {redisStatus?.connected ? 'Yes' : 'No'}
             </span>
@@ -159,7 +159,7 @@ export default function RedisManagement() {
           )}
           
           {redisStatus?.error && (
-            <div className="text-sm text-red-600 bg-red-50 p-2 rounded">
+            <div className="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 p-2 rounded">
               Error: {redisStatus.error}
             </div>
           )}

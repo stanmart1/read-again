@@ -78,7 +78,7 @@ const ReportsSection = () => {
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="font-medium text-foreground">{report.title}</h4>
                   <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                    report.status === 'ready' ? 'bg-green-100 text-green-800' :
+                    report.status === 'ready' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' :
                     report.status === 'generating' ? 'bg-primary/20 text-blue-800' :
                     'bg-muted text-foreground'
                   }`}>

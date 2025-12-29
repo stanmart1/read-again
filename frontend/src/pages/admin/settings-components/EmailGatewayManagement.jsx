@@ -312,7 +312,7 @@ export default function EmailGatewayManagement() {
   return (
     <div className="space-y-3 sm:space-y-6">
       {message && (
-        <div className={`p-3 sm:p-4 rounded-lg text-sm sm:text-base ${message.type === 'success' ? 'bg-green-50 border border-green-200 text-green-800' : 'bg-red-50 border border-red-200 text-red-800'}`}>
+        <div className={`p-3 sm:p-4 rounded-lg text-sm sm:text-base ${message.type === 'success' ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 text-green-800 dark:text-green-200' : 'bg-red-50 dark:bg-red-900/20 border border-red-200 text-red-800 dark:text-red-200'}`}>
           {message.text}
           <button onClick={() => setMessage(null)} className="float-right text-xs sm:text-sm font-medium hover:underline">
             Dismiss

@@ -17,8 +17,8 @@ const ConfirmDialog = ({ isOpen, onClose, onConfirm, title, message, confirmText
         className="bg-card rounded-2xl shadow-xl max-w-md w-full p-6"
       >
         <div className="flex items-center gap-4 mb-4">
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${type === 'danger' ? 'bg-red-100' : 'bg-yellow-100'}`}>
-            <i className={`${type === 'danger' ? 'ri-error-warning-line text-red-600' : 'ri-alert-line text-yellow-600'} text-2xl`}></i>
+          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${type === 'danger' ? 'bg-red-100 dark:bg-red-900/30' : 'bg-yellow-100 dark:bg-yellow-900/30'}`}>
+            <i className={`${type === 'danger' ? 'ri-error-warning-line text-red-600 dark:text-red-400' : 'ri-alert-line text-yellow-600 dark:text-yellow-400'} text-2xl`}></i>
           </div>
           <h3 className="text-xl font-bold text-foreground">{title}</h3>
         </div>

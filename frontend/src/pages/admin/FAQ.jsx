@@ -125,8 +125,8 @@ export default function FAQManagementPage() {
   if (error) {
     return (
       <AdminLayout>
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-800">Error: {error}</p>
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-4">
+          <p className="text-red-800 dark:text-red-200">Error: {error}</p>
         </div>
       </AdminLayout>
     );
@@ -220,13 +220,13 @@ export default function FAQManagementPage() {
                   </button>
                   <button
                     onClick={() => handleBulkToggleStatus(false)}
-                    className="inline-flex items-center justify-center px-3 py-1 border border-transparent text-xs sm:text-sm font-medium rounded text-yellow-700 bg-yellow-100 hover:bg-yellow-200 w-full sm:w-auto"
+                    className="inline-flex items-center justify-center px-3 py-1 border border-transparent text-xs sm:text-sm font-medium rounded text-yellow-700 bg-yellow-100 dark:bg-yellow-900/30 hover:bg-yellow-200 w-full sm:w-auto"
                   >
                     Deactivate
                   </button>
                   <button
                     onClick={handleBulkDelete}
-                    className="inline-flex items-center justify-center px-3 py-1 border border-transparent text-xs sm:text-sm font-medium rounded text-red-700 bg-red-100 hover:bg-red-200 w-full sm:w-auto"
+                    className="inline-flex items-center justify-center px-3 py-1 border border-transparent text-xs sm:text-sm font-medium rounded text-red-700 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 w-full sm:w-auto"
                   >
                     Delete
                   </button>

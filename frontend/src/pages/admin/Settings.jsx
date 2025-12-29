@@ -41,8 +41,8 @@ export default function SystemSettings() {
   if (error) {
     return (
       <AdminLayout>
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-800">Error: {error}</p>
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-4">
+          <p className="text-red-800 dark:text-red-200">Error: {error}</p>
         </div>
       </AdminLayout>
     );
@@ -253,8 +253,8 @@ export default function SystemSettings() {
         <ImageCacheManager />
       </div>
       
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-        <h4 className="font-medium text-red-800 mb-2">Danger Zone</h4>
+      <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-4">
+        <h4 className="font-medium text-red-800 dark:text-red-200 mb-2">Danger Zone</h4>
         <div className="space-y-2">
           <button className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
             Clear All Cache

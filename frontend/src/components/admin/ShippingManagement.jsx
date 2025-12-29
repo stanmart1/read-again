@@ -178,16 +178,16 @@ const ShippingManagement = () => {
     <div className="p-6">
       {/* Success Message */}
       {successMessage && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 animate-fade-in">
+        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-4 mb-6 animate-fade-in">
           <div className="flex">
             <i className="ri-check-line text-green-400 text-xl"></i>
             <div className="ml-3">
-              <h3 className="text-sm font-medium text-green-800">Success</h3>
+              <h3 className="text-sm font-medium text-green-800 dark:text-green-200">Success</h3>
               <p className="text-sm text-green-700 mt-1">{successMessage}</p>
             </div>
             <button
               onClick={() => setSuccessMessage('')}
-              className="ml-auto text-green-400 hover:text-green-600"
+              className="ml-auto text-green-400 hover:text-green-600 dark:text-green-400"
             >
               <i className="ri-close-line text-xl"></i>
             </button>
@@ -197,16 +197,16 @@ const ShippingManagement = () => {
 
       {/* Error Message */}
       {errorMessage && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 animate-fade-in">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-4 mb-6 animate-fade-in">
           <div className="flex">
             <i className="ri-error-warning-line text-red-400 text-xl"></i>
             <div className="ml-3">
-              <h3 className="text-sm font-medium text-red-800">Error</h3>
+              <h3 className="text-sm font-medium text-red-800 dark:text-red-200">Error</h3>
               <p className="text-sm text-red-700 mt-1">{errorMessage}</p>
             </div>
             <button
               onClick={() => setErrorMessage('')}
-              className="ml-auto text-red-400 hover:text-red-600"
+              className="ml-auto text-red-400 hover:text-red-600 dark:text-red-400"
             >
               <i className="ri-close-line text-xl"></i>
             </button>
@@ -315,8 +315,8 @@ const ShippingManagement = () => {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                             method.is_active 
-                              ? 'bg-green-100 text-green-800' 
-                              : 'bg-red-100 text-red-800'
+                              ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' 
+                              : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
                           }`}>
                             {method.is_active ? 'Active' : 'Inactive'}
                           </span>
@@ -334,7 +334,7 @@ const ShippingManagement = () => {
                           </button>
                           <button
                             onClick={() => handleDeleteMethod(method.id)}
-                            className="text-red-600 hover:text-red-900"
+                            className="text-red-600 dark:text-red-400 hover:text-red-900"
                             title="Delete"
                           >
                             <i className="ri-delete-bin-line text-lg"></i>
@@ -385,8 +385,8 @@ const ShippingManagement = () => {
                     </div>
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                       zone.is_active 
-                        ? 'bg-green-100 text-green-800' 
-                        : 'bg-red-100 text-red-800'
+                        ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' 
+                        : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
                     }`}>
                       {zone.is_active ? 'Active' : 'Inactive'}
                     </span>
@@ -420,7 +420,7 @@ const ShippingManagement = () => {
                     </button>
                     <button
                       onClick={() => handleDeleteZone(zone.id)}
-                      className="flex-1 px-3 py-2 text-sm bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
+                      className="flex-1 px-3 py-2 text-sm bg-red-100 dark:bg-red-900/30 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
                     >
                       Delete
                     </button>
@@ -468,7 +468,7 @@ const ShippingManagement = () => {
                             onClick={() => handleToggleMethodZone(method.id, zone.id)}
                             className={`inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
                               isMethodAvailableInZone(method.id, zone.id)
-                                ? 'bg-green-100 text-green-600 hover:bg-green-200'
+                                ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 hover:bg-green-200'
                                 : 'bg-muted text-gray-400 hover:bg-gray-200'
                             }`}
                             title={isMethodAvailableInZone(method.id, zone.id) ? 'Available' : 'Not Available'}

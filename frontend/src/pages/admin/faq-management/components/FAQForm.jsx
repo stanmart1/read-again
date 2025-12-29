@@ -91,7 +91,7 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
               placeholder="Enter the question..."
               modules={{ toolbar: [['bold', 'italic'], ['clean']] }}
             />
-            {errors.question && <p className="mt-1 text-sm text-red-600">{errors.question}</p>}
+            {errors.question && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.question}</p>}
           </div>
 
           <div>
@@ -113,7 +113,7 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
               }}
               style={{ height: '200px', marginBottom: '50px' }}
             />
-            {errors.answer && <p className="mt-1 text-sm text-red-600">{errors.answer}</p>}
+            {errors.answer && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.answer}</p>}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -131,7 +131,7 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
                   <option key={category.id} value={category.name}>{category.name}</option>
                 ))}
               </select>
-              {errors.category && <p className="mt-1 text-sm text-red-600">{errors.category}</p>}
+              {errors.category && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.category}</p>}
             </div>
 
             <div>
@@ -146,7 +146,7 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
                 }`}
                 placeholder="0"
               />
-              {errors.priority && <p className="mt-1 text-sm text-red-600">{errors.priority}</p>}
+              {errors.priority && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.priority}</p>}
               <p className="mt-1 text-xs text-muted-foreground">Higher numbers appear first</p>
             </div>
           </div>

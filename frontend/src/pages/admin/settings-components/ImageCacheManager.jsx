@@ -36,7 +36,7 @@ export default function ImageCacheManager() {
           <div className="text-sm text-muted-foreground">Hit Rate</div>
         </div>
         <div className="bg-card p-3 rounded-lg border">
-          <div className="text-2xl font-bold text-green-600">{stats.cache_size_mb}</div>
+          <div className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.cache_size_mb}</div>
           <div className="text-sm text-muted-foreground">Cache Size (MB)</div>
         </div>
         <div className="bg-card p-3 rounded-lg border">
@@ -54,11 +54,11 @@ export default function ImageCacheManager() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
           <div>
             <span className="text-muted-foreground">Cache Hits:</span>
-            <span className="ml-2 font-medium text-green-600">{stats.cache_hits.toLocaleString()}</span>
+            <span className="ml-2 font-medium text-green-600 dark:text-green-400">{stats.cache_hits.toLocaleString()}</span>
           </div>
           <div>
             <span className="text-muted-foreground">Cache Misses:</span>
-            <span className="ml-2 font-medium text-red-600">{stats.cache_misses.toLocaleString()}</span>
+            <span className="ml-2 font-medium text-red-600 dark:text-red-400">{stats.cache_misses.toLocaleString()}</span>
           </div>
           <div>
             <span className="text-muted-foreground">Total Requests:</span>
@@ -107,18 +107,18 @@ export default function ImageCacheManager() {
           <div className="flex items-center gap-2">
             {stats.hit_rate >= 80 ? (
               <>
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm text-green-600">Excellent</span>
+                <div className="w-2 h-2 bg-green-50 dark:bg-green-900/200 rounded-full"></div>
+                <span className="text-sm text-green-600 dark:text-green-400">Excellent</span>
               </>
             ) : stats.hit_rate >= 60 ? (
               <>
-                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                <span className="text-sm text-yellow-600">Good</span>
+                <div className="w-2 h-2 bg-yellow-50 dark:bg-yellow-900/200 rounded-full"></div>
+                <span className="text-sm text-yellow-600 dark:text-yellow-400">Good</span>
               </>
             ) : (
               <>
-                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                <span className="text-sm text-red-600">Needs Attention</span>
+                <div className="w-2 h-2 bg-red-50 dark:bg-red-900/200 rounded-full"></div>
+                <span className="text-sm text-red-600 dark:text-red-400">Needs Attention</span>
               </>
             )}
           </div>
@@ -127,8 +127,8 @@ export default function ImageCacheManager() {
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div 
               className={`h-2 rounded-full ${
-                stats.hit_rate >= 80 ? 'bg-green-500' : 
-                stats.hit_rate >= 60 ? 'bg-yellow-500' : 'bg-red-500'
+                stats.hit_rate >= 80 ? 'bg-green-50 dark:bg-green-900/200' : 
+                stats.hit_rate >= 60 ? 'bg-yellow-50 dark:bg-yellow-900/200' : 'bg-red-50 dark:bg-red-900/200'
               }`}
               style={{ width: `${Math.min(stats.hit_rate, 100)}%` }}
             ></div>

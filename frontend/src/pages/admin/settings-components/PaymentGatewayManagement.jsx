@@ -233,10 +233,10 @@ export default function PaymentGatewayManagement() {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800';
+      case 'active': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200';
       case 'inactive': return 'bg-muted text-gray-800';
-      case 'error': return 'bg-red-100 text-red-800';
-      case 'testing': return 'bg-yellow-100 text-yellow-800';
+      case 'error': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200';
+      case 'testing': return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200';
       default: return 'bg-muted text-gray-800';
     }
   };
@@ -344,7 +344,7 @@ export default function PaymentGatewayManagement() {
                   </button>
                 </div>
                 {validationErrors[gateway.id]?.publicKey && (
-                  <p className="mt-1 text-sm text-red-600 flex items-center">
+                  <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center">
                     <i className="ri-error-warning-line mr-1"></i>
                     {validationErrors[gateway.id].publicKey}
                   </p>
@@ -374,7 +374,7 @@ export default function PaymentGatewayManagement() {
                   </button>
                 </div>
                 {validationErrors[gateway.id]?.secretKey && (
-                  <p className="mt-1 text-sm text-red-600 flex items-center">
+                  <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center">
                     <i className="ri-error-warning-line mr-1"></i>
                     {validationErrors[gateway.id].secretKey}
                   </p>
@@ -404,7 +404,7 @@ export default function PaymentGatewayManagement() {
                   </button>
                 </div>
                 {validationErrors[gateway.id]?.hash && (
-                  <p className="mt-1 text-sm text-red-600 flex items-center">
+                  <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center">
                     <i className="ri-error-warning-line mr-1"></i>
                     {validationErrors[gateway.id].hash}
                   </p>
@@ -437,7 +437,7 @@ export default function PaymentGatewayManagement() {
                     placeholder="Enter Bank Name"
                   />
                   {validationErrors[gateway.id]?.bankName && (
-                    <p className="mt-1 text-sm text-red-600 flex items-center">
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center">
                       <i className="ri-error-warning-line mr-1"></i>
                       {validationErrors[gateway.id].bankName}
                     </p>
@@ -456,7 +456,7 @@ export default function PaymentGatewayManagement() {
                     placeholder="Enter Account Number"
                   />
                   {validationErrors[gateway.id]?.accountNumber && (
-                    <p className="mt-1 text-sm text-red-600 flex items-center">
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center">
                       <i className="ri-error-warning-line mr-1"></i>
                       {validationErrors[gateway.id].accountNumber}
                     </p>
@@ -475,7 +475,7 @@ export default function PaymentGatewayManagement() {
                     placeholder="Enter Account Name"
                   />
                   {validationErrors[gateway.id]?.accountName && (
-                    <p className="mt-1 text-sm text-red-600 flex items-center">
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400 flex items-center">
                       <i className="ri-error-warning-line mr-1"></i>
                       {validationErrors[gateway.id].accountName}
                     </p>
@@ -504,7 +504,7 @@ export default function PaymentGatewayManagement() {
         <div className="flex items-center justify-between pt-4 border-t border-border">
           <div className="flex items-center space-x-2">
             {paymentSettings.defaultGateway === gateway.id && (
-              <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
+              <span className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 text-xs rounded-full">
                 <i className="ri-star-fill mr-1"></i>
                 Default
               </span>
@@ -541,7 +541,7 @@ export default function PaymentGatewayManagement() {
               disabled={savingGateway === gateway.id}
               className={`px-3 py-1 text-sm rounded-lg transition-all duration-200 flex items-center ${
                 savedGateways.has(gateway.id)
-                  ? 'bg-green-100 text-green-700 border border-green-300'
+                  ? 'bg-green-100 dark:bg-green-900/30 text-green-700 border border-green-300'
                   : 'bg-green-600 text-white hover:bg-green-700'
               } disabled:opacity-50 disabled:cursor-not-allowed`}
             >

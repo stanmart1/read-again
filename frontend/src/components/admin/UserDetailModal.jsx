@@ -6,7 +6,7 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
   const getRoleColor = (role) => {
     switch (role) {
       case 'admin': return 'bg-purple-500';
-      case 'super_admin': return 'bg-red-500';
+      case 'super_admin': return 'bg-red-50 dark:bg-red-900/200';
       case 'user': return 'bg-primary/100';
       default: return 'bg-muted0';
     }
@@ -102,7 +102,7 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
               <div className="p-4 bg-muted rounded-lg">
                 <p className="text-sm text-muted-foreground mb-1">Status</p>
                 <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full ${
-                  user.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                  user.status === 'active' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
                 }`}>
                   {user.status || 'Active'}
                 </span>
@@ -110,7 +110,7 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
               <div className="p-4 bg-muted rounded-lg">
                 <p className="text-sm text-muted-foreground mb-1">Email Verified</p>
                 <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full ${
-                  user.email_verified ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                  user.email_verified ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200'
                 }`}>
                   {user.email_verified ? 'Verified' : 'Not Verified'}
                 </span>
@@ -150,8 +150,8 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
                 <p className="text-2xl font-bold text-foreground">{user.books_count || 0}</p>
                 <p className="text-sm text-muted-foreground">Books</p>
               </div>
-              <div className="p-4 bg-green-50 rounded-lg text-center">
-                <i className="ri-shopping-cart-line text-3xl text-green-600 mb-2"></i>
+              <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg text-center">
+                <i className="ri-shopping-cart-line text-3xl text-green-600 dark:text-green-400 mb-2"></i>
                 <p className="text-2xl font-bold text-foreground">{user.orders_count || 0}</p>
                 <p className="text-sm text-muted-foreground">Orders</p>
               </div>
@@ -160,8 +160,8 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
                 <p className="text-2xl font-bold text-foreground">{user.reviews_count || 0}</p>
                 <p className="text-sm text-muted-foreground">Reviews</p>
               </div>
-              <div className="p-4 bg-yellow-50 rounded-lg text-center">
-                <i className="ri-time-line text-3xl text-yellow-600 mb-2"></i>
+              <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg text-center">
+                <i className="ri-time-line text-3xl text-yellow-600 dark:text-yellow-400 mb-2"></i>
                 <p className="text-2xl font-bold text-foreground">{user.reading_hours || 0}h</p>
                 <p className="text-sm text-muted-foreground">Reading</p>
               </div>

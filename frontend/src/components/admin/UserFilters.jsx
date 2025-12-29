@@ -108,7 +108,7 @@ const UserFilters = ({ searchTerm, setSearchTerm, filterRole, setFilterRole, fil
             {hasActiveFilters && (
               <button
                 onClick={clearAdvancedFilters}
-                className="text-xs text-red-600 hover:text-red-700 flex items-center gap-1"
+                className="text-xs text-red-600 dark:text-red-400 hover:text-red-700 flex items-center gap-1"
               >
                 <i className="ri-close-circle-line"></i>
                 Clear All

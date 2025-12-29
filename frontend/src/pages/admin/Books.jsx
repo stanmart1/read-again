@@ -241,10 +241,10 @@ const AdminBooks = () => {
       <AdminLayout>
         <div className="min-h-screen bg-muted p-6">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-6 mb-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                  <i className="ri-error-warning-line text-red-600"></i>
+                <div className="flex-shrink-0 w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center">
+                  <i className="ri-error-warning-line text-red-600 dark:text-red-400"></i>
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-red-900">Failed to Load Books</h3>
@@ -433,8 +433,8 @@ const AdminBooks = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
               <div className="bg-card rounded-xl shadow-2xl max-w-md w-full">
                 <div className="p-6">
-                  <div className="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4">
-                    <i className="ri-error-warning-line text-2xl text-red-600"></i>
+                  <div className="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 dark:bg-red-900/30 rounded-full mb-4">
+                    <i className="ri-error-warning-line text-2xl text-red-600 dark:text-red-400"></i>
                   </div>
                   <h3 className="text-xl font-bold text-foreground text-center mb-2">Delete Book</h3>
                   <p className="text-muted-foreground text-center mb-6">
@@ -579,19 +579,19 @@ const AdminBooks = () => {
                         <p className="text-muted-foreground mb-2">by {selection.bookForAction.author_name}</p>
                         <div className="flex items-center gap-2 mb-2">
                           <span className={`px-3 py-1 text-xs font-semibold rounded-full text-white ${
-                            selection.bookForAction.status === 'published' ? 'bg-green-500' :
-                            selection.bookForAction.status === 'draft' ? 'bg-yellow-500' :
+                            selection.bookForAction.status === 'published' ? 'bg-green-50 dark:bg-green-900/200' :
+                            selection.bookForAction.status === 'draft' ? 'bg-yellow-50 dark:bg-yellow-900/200' :
                             'bg-muted0'
                           }`}>
                             {selection.bookForAction.status}
                           </span>
                           {selection.bookForAction.is_featured && (
-                            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200">
                               Featured
                             </span>
                           )}
                         </div>
-                        <p className="text-2xl font-bold text-green-600">₦{selection.bookForAction.price.toLocaleString()}</p>
+                        <p className="text-2xl font-bold text-green-600 dark:text-green-400">₦{selection.bookForAction.price.toLocaleString()}</p>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4 pt-4 border-t">
@@ -735,7 +735,7 @@ const AdminBooks = () => {
                                         <div className="text-sm text-muted-foreground">{user.email}</div>
                                       </div>
                                       {alreadyAssigned && (
-                                        <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full">
+                                        <span className="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 text-xs rounded-full">
                                           Assigned ({alreadyAssigned})
                                         </span>
                                       )}
@@ -838,14 +838,14 @@ const AdminBooks = () => {
 
                     {/* Error Display */}
                     {errors.general && (
-                      <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                      <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-3">
                         <p className="text-red-700 text-sm">{errors.general}</p>
                       </div>
                     )}
 
                     {/* Success Display */}
                     {assignmentResult && (
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                      <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-3">
                         <p className="text-green-700 text-sm">{assignmentResult}</p>
                       </div>
                     )}

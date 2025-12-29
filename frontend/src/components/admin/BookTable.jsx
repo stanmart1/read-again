@@ -52,12 +52,12 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                 </div>
               </div>
               <div className="flex flex-col items-end space-y-1 ml-2">
-                <span className="text-sm font-medium text-green-600">
+                <span className="text-sm font-medium text-green-600 dark:text-green-400">
                   ₦{book.price.toLocaleString()}
                 </span>
                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full text-white ${
-                  book.status === 'published' ? 'bg-green-500' :
-                  book.status === 'draft' ? 'bg-yellow-500' :
+                  book.status === 'published' ? 'bg-green-50 dark:bg-green-900/200' :
+                  book.status === 'draft' ? 'bg-yellow-50 dark:bg-yellow-900/200' :
                   'bg-muted0'
                 }`}>
                   {book.status}
@@ -109,7 +109,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                 onClick={() => onBookAction('edit', book)}
                 disabled={editLoading}
                 className={`flex items-center text-sm whitespace-nowrap ${
-                  editLoading ? 'text-muted-foreground cursor-not-allowed' : 'text-green-600 hover:text-green-800'
+                  editLoading ? 'text-muted-foreground cursor-not-allowed' : 'text-green-600 dark:text-green-400 hover:text-green-800 dark:text-green-200'
                 }`}
               >
                 <i className={`mr-1 ${
@@ -126,7 +126,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
               </button>
               <button
                 onClick={() => onBookAction('toggleFeature', book)}
-                className="text-yellow-600 hover:text-yellow-800 flex items-center text-sm whitespace-nowrap"
+                className="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:text-yellow-200 flex items-center text-sm whitespace-nowrap"
               >
                 <i className={`ri-star-${book.is_featured ? 'fill' : 'line'} mr-1`}></i>
                 {book.is_featured ? 'Unfeature' : 'Feature'}
@@ -140,7 +140,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
               </button>
               <button
                 onClick={() => onBookAction('delete', book)}
-                className="text-red-600 hover:text-red-800 flex items-center text-sm whitespace-nowrap"
+                className="text-red-600 dark:text-red-400 hover:text-red-800 dark:text-red-200 flex items-center text-sm whitespace-nowrap"
               >
                 <i className="ri-delete-bin-line mr-1"></i>
                 Delete
@@ -234,14 +234,14 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                     </div>
                   </td>
                   <td className="px-4 py-4">
-                    <div className="text-sm font-medium text-green-600">
+                    <div className="text-sm font-medium text-green-600 dark:text-green-400">
                       ₦{book.price.toLocaleString()}
                     </div>
                   </td>
                   <td className="px-4 py-4">
                     <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full text-white ${
-                      book.status === 'published' ? 'bg-green-500' :
-                      book.status === 'draft' ? 'bg-yellow-500' :
+                      book.status === 'published' ? 'bg-green-50 dark:bg-green-900/200' :
+                      book.status === 'draft' ? 'bg-yellow-50 dark:bg-yellow-900/200' :
                       'bg-muted0'
                     }`}>
                       {book.status}
@@ -260,7 +260,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                         onClick={() => onBookAction('edit', book)}
                         disabled={editLoading}
                         className={`cursor-pointer transition-colors duration-200 ${
-                          editLoading ? 'text-muted-foreground cursor-not-allowed' : 'text-green-600 hover:text-green-800'
+                          editLoading ? 'text-muted-foreground cursor-not-allowed' : 'text-green-600 dark:text-green-400 hover:text-green-800 dark:text-green-200'
                         }`}
                         title="Edit Book"
                       >
@@ -277,7 +277,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                       </button>
                       <button
                         onClick={() => onBookAction('toggleFeature', book)}
-                        className="text-yellow-600 hover:text-yellow-800 cursor-pointer transition-colors duration-200"
+                        className="text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:text-yellow-200 cursor-pointer transition-colors duration-200"
                         title={book.is_featured ? 'Remove from Featured' : 'Add to Featured'}
                       >
                         <i className={`ri-star-${book.is_featured ? 'fill' : 'line'}`}></i>
@@ -291,7 +291,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                       </button>
                       <button
                         onClick={() => onBookAction('delete', book)}
-                        className="text-red-600 hover:text-red-800 cursor-pointer transition-colors duration-200"
+                        className="text-red-600 dark:text-red-400 hover:text-red-800 dark:text-red-200 cursor-pointer transition-colors duration-200"
                         title="Delete Book"
                       >
                         <i className="ri-delete-bin-line"></i>

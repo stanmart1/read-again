@@ -89,7 +89,7 @@ export default function CategoryForm({ category, onSubmit, onCancel }) {
               placeholder="Enter category name..."
               maxLength={100}
             />
-            {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+            {errors.name && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>}
           </div>
 
           <div>

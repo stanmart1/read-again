@@ -1,12 +1,12 @@
 const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAssignRole, onPasswordReset, onStatusChange, onDelete }) => {
   const getStatusColor = (isActive) => {
-    return isActive ? 'bg-green-500' : 'bg-red-500';
+    return isActive ? 'bg-green-50 dark:bg-green-900/200' : 'bg-red-50 dark:bg-red-900/200';
   };
 
   const getRoleColor = (roleName) => {
     switch (roleName) {
       case 'admin': return 'bg-purple-500';
-      case 'super_admin': return 'bg-red-500';
+      case 'super_admin': return 'bg-red-50 dark:bg-red-900/200';
       case 'user': return 'bg-primary/100';
       default: return 'bg-muted0';
     }
@@ -102,7 +102,7 @@ const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAs
         </button>
         <button
           onClick={() => onEdit(user)}
-          className="text-green-600 hover:text-green-800 flex items-center text-sm"
+          className="text-green-600 dark:text-green-400 hover:text-green-800 dark:text-green-200 flex items-center text-sm"
         >
           <i className="ri-edit-line mr-1"></i>
           Edit
@@ -116,7 +116,7 @@ const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAs
         </button>
         <button
           onClick={() => onDelete(user.id)}
-          className="text-red-600 hover:text-red-800 flex items-center text-sm"
+          className="text-red-600 dark:text-red-400 hover:text-red-800 dark:text-red-200 flex items-center text-sm"
         >
           <i className="ri-delete-bin-line mr-1"></i>
           Delete

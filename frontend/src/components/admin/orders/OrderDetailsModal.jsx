@@ -45,12 +45,12 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
 
   const getStatusColor = (status) => {
     const colors = {
-      pending: 'bg-yellow-100 text-yellow-800',
+      pending: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200',
       confirmed: 'bg-primary/20 text-blue-800',
       processing: 'bg-purple-100 text-purple-800',
       shipped: 'bg-indigo-100 text-indigo-800',
-      delivered: 'bg-green-100 text-green-800',
-      cancelled: 'bg-red-100 text-red-800',
+      delivered: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200',
+      cancelled: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200',
       refunded: 'bg-muted text-gray-800'
     };
     return colors[status?.toLowerCase()] || 'bg-muted text-gray-800';
@@ -58,10 +58,10 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
 
   const getPaymentStatusColor = (status) => {
     const colors = {
-      pending: 'bg-yellow-100 text-yellow-800',
-      completed: 'bg-green-100 text-green-800',
+      pending: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200',
+      completed: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200',
       awaiting_approval: 'bg-primary/20 text-blue-800',
-      failed: 'bg-red-100 text-red-800',
+      failed: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200',
       refunded: 'bg-muted text-gray-800'
     };
     return colors[status?.toLowerCase()] || 'bg-muted text-gray-800';
@@ -234,7 +234,7 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
                 </div>
               )}
               {displayOrder.discount_amount > 0 && (
-                <div className="flex justify-between text-sm text-green-600">
+                <div className="flex justify-between text-sm text-green-600 dark:text-green-400">
                   <span>Discount:</span>
                   <span>-{formatCurrency(displayOrder.discount_amount)}</span>
                 </div>

@@ -163,12 +163,12 @@ const OrdersManagement = () => {
 
   const getStatusColor = (status) => {
     const colors = {
-      pending: 'bg-yellow-100 text-yellow-800',
+      pending: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200',
       confirmed: 'bg-primary/20 text-blue-800',
       processing: 'bg-purple-100 text-purple-800',
       shipped: 'bg-indigo-100 text-indigo-800',
-      delivered: 'bg-green-100 text-green-800',
-      cancelled: 'bg-red-100 text-red-800',
+      delivered: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200',
+      cancelled: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200',
       refunded: 'bg-muted text-foreground'
     };
     return colors[status?.toLowerCase()] || 'bg-muted text-foreground';
@@ -176,10 +176,10 @@ const OrdersManagement = () => {
 
   const getPaymentStatusColor = (status) => {
     const colors = {
-      pending: 'bg-yellow-100 text-yellow-800',
-      completed: 'bg-green-100 text-green-800',
+      pending: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200',
+      completed: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200',
       awaiting_approval: 'bg-primary/20 text-blue-800',
-      failed: 'bg-red-100 text-red-800',
+      failed: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200',
       refunded: 'bg-muted text-foreground'
     };
     return colors[status?.toLowerCase()] || 'bg-muted text-foreground';
@@ -247,16 +247,16 @@ const OrdersManagement = () => {
     <div className="space-y-4 sm:space-y-6">
       {/* Success Message */}
       {successMessage && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4 animate-fade-in">
+        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 rounded-lg p-4 animate-fade-in">
           <div className="flex">
             <i className="ri-check-line text-green-400 text-xl"></i>
             <div className="ml-3">
-              <h3 className="text-sm font-medium text-green-800">Success</h3>
+              <h3 className="text-sm font-medium text-green-800 dark:text-green-200">Success</h3>
               <p className="text-sm text-green-700 mt-1">{successMessage}</p>
             </div>
             <button
               onClick={() => setSuccessMessage('')}
-              className="ml-auto text-green-400 hover:text-green-600"
+              className="ml-auto text-green-400 hover:text-green-600 dark:text-green-400"
             >
               <i className="ri-close-line text-xl"></i>
             </button>
@@ -266,16 +266,16 @@ const OrdersManagement = () => {
 
       {/* Error Message */}
       {errorMessage && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 animate-fade-in">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-4 animate-fade-in">
           <div className="flex">
             <i className="ri-error-warning-line text-red-400 text-xl"></i>
             <div className="ml-3">
-              <h3 className="text-sm font-medium text-red-800">Error</h3>
+              <h3 className="text-sm font-medium text-red-800 dark:text-red-200">Error</h3>
               <p className="text-sm text-red-700 mt-1">{errorMessage}</p>
             </div>
             <button
               onClick={() => setErrorMessage('')}
-              className="ml-auto text-red-400 hover:text-red-600"
+              className="ml-auto text-red-400 hover:text-red-600 dark:text-red-400"
             >
               <i className="ri-close-line text-xl"></i>
             </button>

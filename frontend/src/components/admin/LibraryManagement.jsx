@@ -524,7 +524,7 @@ const LibraryManagement = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <i className="ri-user-line text-green-600"></i>
+                        <i className="ri-user-line text-green-600 dark:text-green-400"></i>
                         <span className="text-sm font-semibold text-foreground">{library.active_readers || 0}</span>
                       </div>
                     </td>
@@ -541,7 +541,7 @@ const LibraryManagement = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                        library.status === 'reading' ? 'bg-green-100 text-green-800' :
+                        library.status === 'reading' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' :
                         library.status === 'completed' ? 'bg-primary/20 text-blue-800' :
                         'bg-muted text-foreground'
                       }`}>
@@ -562,7 +562,7 @@ const LibraryManagement = () => {
                         </button>
                         <button
                           onClick={() => handleRemoveAssignment(library.id)}
-                          className="text-red-600 hover:text-red-800"
+                          className="text-red-600 dark:text-red-400 hover:text-red-800 dark:text-red-200"
                           title="Remove Assignment"
                         >
                           <i className="ri-delete-bin-line"></i>
@@ -813,7 +813,7 @@ const LibraryManagement = () => {
                                   <div className="flex items-center gap-2">
                                     <p className="font-medium text-foreground">{book.title}</p>
                                     {alreadyAssigned && (
-                                      <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full">
+                                      <span className="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 text-xs rounded-full">
                                         Assigned
                                       </span>
                                     )}
@@ -1105,7 +1105,7 @@ const LibraryManagement = () => {
                       <div>
                         <p className="text-sm text-muted-foreground">Status</p>
                         <span className={`inline-block px-2 py-1 text-xs font-semibold rounded-full ${
-                          assignmentDetails.assignment.status === 'reading' ? 'bg-green-100 text-green-800' :
+                          assignmentDetails.assignment.status === 'reading' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' :
                           assignmentDetails.assignment.status === 'completed' ? 'bg-primary/20 text-blue-800' :
                           'bg-muted text-foreground'
                         }`}>
@@ -1175,7 +1175,7 @@ const LibraryManagement = () => {
                   {assignmentDetails.analytics?.goals && assignmentDetails.analytics.goals.length > 0 && (
                     <div>
                       <h4 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
-                        <i className="ri-flag-line text-green-600"></i>
+                        <i className="ri-flag-line text-green-600 dark:text-green-400"></i>
                         Reading Goals ({assignmentDetails.analytics.goals.length})
                       </h4>
                       <div className="space-y-3">
@@ -1187,7 +1187,7 @@ const LibraryManagement = () => {
                                 <p className="text-sm text-muted-foreground mt-1">{goal.description}</p>
                               </div>
                               <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                                goal.status === 'completed' ? 'bg-green-100 text-green-800' :
+                                goal.status === 'completed' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' :
                                 goal.status === 'in_progress' ? 'bg-primary/20 text-blue-800' :
                                 'bg-muted text-foreground'
                               }`}>
@@ -1202,7 +1202,7 @@ const LibraryManagement = () => {
                               <div className="w-full bg-gray-200 rounded-full h-2">
                                 <div
                                   className={`h-2 rounded-full ${
-                                    goal.status === 'completed' ? 'bg-green-500' : 'bg-primary/100'
+                                    goal.status === 'completed' ? 'bg-green-50 dark:bg-green-900/200' : 'bg-primary/100'
                                   }`}
                                   style={{ width: `${Math.min((goal.current_value / goal.target_value) * 100, 100)}%` }}
                                 ></div>
@@ -1221,7 +1221,7 @@ const LibraryManagement = () => {
                   {/* Highlights Section */}
                   <div>
                     <h4 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
-                      <i className="ri-mark-pen-line text-yellow-600"></i>
+                      <i className="ri-mark-pen-line text-yellow-600 dark:text-yellow-400"></i>
                       Highlights ({assignmentDetails.highlights.length})
                     </h4>
                     {assignmentDetails.highlights.length === 0 ? (
@@ -1232,7 +1232,7 @@ const LibraryManagement = () => {
                     ) : (
                       <div className="space-y-3">
                         {assignmentDetails.highlights.map((highlight) => (
-                          <div key={highlight.id} className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+                          <div key={highlight.id} className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-4 rounded-r-lg">
                             <p className="text-foreground italic mb-2">"{highlight.text}"</p>
                             {highlight.context && (
                               <p className="text-sm text-muted-foreground mb-2">Context: {highlight.context}</p>

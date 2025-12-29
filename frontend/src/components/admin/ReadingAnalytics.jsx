@@ -66,7 +66,7 @@ const ReadingAnalytics = () => {
   if (error) {
     return (
       <div className="bg-card rounded-lg shadow-md p-6">
-        <div className="text-center text-red-600">
+        <div className="text-center text-red-600 dark:text-red-400">
           <i className="ri-error-warning-line text-4xl mb-4"></i>
           <p>{error}</p>
           <button
@@ -304,7 +304,7 @@ const ReadingAnalytics = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Completed:</span>
-                    <span className="font-medium text-green-600">{goal.completed_goals}</span>
+                    <span className="font-medium text-green-600 dark:text-green-400">{goal.completed_goals}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Avg Progress:</span>
@@ -338,7 +338,7 @@ const ReadingAnalytics = () => {
                       {achiever.first_name} {achiever.last_name}
                     </td>
                     <td className="py-3 px-4 text-sm text-muted-foreground">{achiever.total_goals}</td>
-                    <td className="py-3 px-4 text-sm text-green-600">{achiever.completed_goals}</td>
+                    <td className="py-3 px-4 text-sm text-green-600 dark:text-green-400">{achiever.completed_goals}</td>
                     <td className="py-3 px-4 text-sm text-muted-foreground">{achiever.average_progress}%</td>
                   </tr>
                 ))}

@@ -205,7 +205,7 @@ const CategoriesManagement = () => {
                     disabled={isTogglingStatus}
                     className={`p-1 rounded transition-opacity ${
                       category.status === 'active'
-                        ? 'text-green-600 hover:bg-green-50' 
+                        ? 'text-green-600 dark:text-green-400 hover:bg-green-50 dark:bg-green-900/20' 
                         : 'text-muted-foreground hover:bg-muted'
                     } ${isTogglingStatus ? 'opacity-50 cursor-not-allowed' : ''}`}
                     title={category.status === 'active' ? 'Deactivate' : 'Activate'}
@@ -226,7 +226,7 @@ const CategoriesManagement = () => {
                   <button
                     onClick={() => handleDelete(category.id)}
                     disabled={isDeleting}
-                    className={`p-1 text-red-600 hover:bg-red-50 rounded transition-opacity ${isDeleting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`p-1 text-red-600 dark:text-red-400 hover:bg-red-50 dark:bg-red-900/20 rounded transition-opacity ${isDeleting ? 'opacity-50 cursor-not-allowed' : ''}`}
                     title="Delete"
                   >
                     {isDeleting ? (
@@ -246,7 +246,7 @@ const CategoriesManagement = () => {
                   </span>
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                     category.status === 'active' 
-                      ? 'bg-green-100 text-green-800' 
+                      ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' 
                       : 'bg-muted text-foreground'
                   }`}>
                     {category.status === 'active' ? 'Active' : 'Inactive'}

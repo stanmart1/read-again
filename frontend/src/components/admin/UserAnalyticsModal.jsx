@@ -60,13 +60,13 @@ const UserAnalyticsModal = ({ isOpen, onClose, userId }) => {
                   <i className="ri-book-line text-3xl text-primary"></i>
                 </div>
               </div>
-              <div className="bg-green-50 rounded-lg p-4">
+              <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-muted-foreground">Reading Hours</p>
                     <p className="text-2xl font-bold text-foreground">{analytics.readingHours || 0}</p>
                   </div>
-                  <i className="ri-time-line text-3xl text-green-600"></i>
+                  <i className="ri-time-line text-3xl text-green-600 dark:text-green-400"></i>
                 </div>
               </div>
               <div className="bg-purple-50 rounded-lg p-4">
@@ -78,13 +78,13 @@ const UserAnalyticsModal = ({ isOpen, onClose, userId }) => {
                   <i className="ri-fire-line text-3xl text-purple-600"></i>
                 </div>
               </div>
-              <div className="bg-yellow-50 rounded-lg p-4">
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-muted-foreground">Avg. Rating</p>
                     <p className="text-2xl font-bold text-foreground">{analytics.avgRating || 0}</p>
                   </div>
-                  <i className="ri-star-line text-3xl text-yellow-600"></i>
+                  <i className="ri-star-line text-3xl text-yellow-600 dark:text-yellow-400"></i>
                 </div>
               </div>
             </div>

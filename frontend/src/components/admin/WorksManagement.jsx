@@ -208,16 +208,16 @@ const WorksManagement = () => {
       <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-3 lg:py-4">
         {/* Error Display */}
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
             <div className="flex items-start gap-2 sm:gap-3">
               <i className="ri-error-warning-line text-red-400 text-lg sm:text-xl flex-shrink-0 mt-0.5"></i>
               <div>
-                <h3 className="text-sm font-medium text-red-800">Error</h3>
+                <h3 className="text-sm font-medium text-red-800 dark:text-red-200">Error</h3>
                 <p className="text-sm text-red-700 mt-1 break-words">{error}</p>
               </div>
               <button
                 onClick={() => setError('')}
-                className="ml-auto text-red-400 hover:text-red-600"
+                className="ml-auto text-red-400 hover:text-red-600 dark:text-red-400"
               >
                 <i className="ri-close-line text-xl"></i>
               </button>
@@ -265,7 +265,7 @@ const WorksManagement = () => {
           </div>
           <div className="bg-card rounded-lg shadow-sm border border-border p-3 sm:p-4 md:p-6">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 bg-green-50 dark:bg-green-900/200 rounded-lg flex items-center justify-center flex-shrink-0">
                 <i className="ri-check-line text-white text-sm sm:text-base md:text-xl"></i>
               </div>
               <div className="min-w-0 flex-1">
@@ -328,8 +328,8 @@ const WorksManagement = () => {
                 <div className="absolute top-2 right-2">
                   <span className={`px-2 py-1 rounded-full text-xs font-medium shadow-sm ${
                     work.is_active 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-red-100 text-red-800'
+                      ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' 
+                      : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
                   }`}>
                     {work.is_active ? 'Active' : 'Inactive'}
                   </span>

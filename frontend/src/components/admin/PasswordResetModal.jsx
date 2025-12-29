@@ -76,9 +76,9 @@ const PasswordResetModal = ({ isOpen, onClose, user, onSubmit }) => {
         </div>
 
         {errors.length > 0 && (
-          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="mb-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 rounded-lg">
             <p className="text-sm font-semibold text-red-700 mb-2">Password requirements:</p>
-            <ul className="text-sm text-red-600 space-y-1">
+            <ul className="text-sm text-red-600 dark:text-red-400 space-y-1">
               {errors.map((error, idx) => (
                 <li key={idx} className="flex items-center">
                   <i className="ri-close-line mr-2"></i>

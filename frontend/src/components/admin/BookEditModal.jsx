@@ -255,7 +255,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                     value={formData.title}
                     onChange={(e) => handleInputChange('title', e.target.value)}
                     className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all ${
-                      errors.title ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
+                      errors.title ? 'border-red-400 bg-red-50 dark:bg-red-900/20' : 'border-border hover:border-input'
                     }`}
                     placeholder="Enter the book title"
                   />
@@ -268,7 +268,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                     value={formData.author_id}
                     onChange={(e) => handleInputChange('author_id', e.target.value)}
                     className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all appearance-none bg-card ${
-                      errors.author_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
+                      errors.author_id ? 'border-red-400 bg-red-50 dark:bg-red-900/20' : 'border-border hover:border-input'
                     }`}
                   >
                     <option value="">Select an author</option>
@@ -285,7 +285,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                     value={formData.category_id}
                     onChange={(e) => handleInputChange('category_id', e.target.value)}
                     className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all appearance-none bg-card ${
-                      errors.category_id ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
+                      errors.category_id ? 'border-red-400 bg-red-50 dark:bg-red-900/20' : 'border-border hover:border-input'
                     }`}
                   >
                     <option value="">Select a category</option>
@@ -305,7 +305,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                     value={formData.price}
                     onChange={(e) => handleInputChange('price', e.target.value)}
                     className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all ${
-                      errors.price ? 'border-red-400 bg-red-50' : 'border-border hover:border-input'
+                      errors.price ? 'border-red-400 bg-red-50 dark:bg-red-900/20' : 'border-border hover:border-input'
                     }`}
                     placeholder="0.00"
                   />
@@ -391,7 +391,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
             <div className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Cover Image * {formData.cover_image && <span className="text-green-600">✓ New</span>} {book?.cover_image_url && !formData.cover_image && <span className="text-primary">(keeping current)</span>}
+                  Cover Image * {formData.cover_image && <span className="text-green-600 dark:text-green-400">✓ New</span>} {book?.cover_image_url && !formData.cover_image && <span className="text-primary">(keeping current)</span>}
                 </label>
                 <div
                   onDragEnter={(e) => handleDrag(e, 'cover')}
@@ -421,7 +421,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
               {formData.format === 'ebook' && (
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Book File {formData.ebook_file && <span className="text-green-600">✓ New</span>} {book?.file_path && !formData.ebook_file && <span className="text-primary">(keeping current)</span>}
+                    Book File {formData.ebook_file && <span className="text-green-600 dark:text-green-400">✓ New</span>} {book?.file_path && !formData.ebook_file && <span className="text-primary">(keeping current)</span>}
                   </label>
                   <div
                     onDragEnter={(e) => handleDrag(e, 'ebook')}

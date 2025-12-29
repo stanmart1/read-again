@@ -75,7 +75,7 @@ const OrderCard = ({
         </button>
         <button
           onClick={() => onDelete(order)}
-          className="px-3 py-2 text-sm bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
+          className="px-3 py-2 text-sm bg-red-100 dark:bg-red-900/30 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
         >
           <i className="ri-delete-bin-line"></i>
         </button>

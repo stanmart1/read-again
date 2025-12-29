@@ -109,9 +109,9 @@ const ReviewManagement = () => {
     }
     
     const badges = {
-      pending: 'bg-yellow-100 text-yellow-800',
-      approved: 'bg-green-100 text-green-800',
-      rejected: 'bg-red-100 text-red-800'
+      pending: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200',
+      approved: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200',
+      rejected: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
     };
     
     return (
@@ -193,13 +193,13 @@ const ReviewManagement = () => {
           <>
             <button
               onClick={() => handleAction(review, 'approve')}
-              className="px-3 py-1 text-xs bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition-colors"
+              className="px-3 py-1 text-xs bg-green-100 dark:bg-green-900/30 text-green-700 rounded-full hover:bg-green-200 transition-colors"
             >
               Approve
             </button>
             <button
               onClick={() => handleAction(review, 'reject')}
-              className="px-3 py-1 text-xs bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors"
+              className="px-3 py-1 text-xs bg-red-100 dark:bg-red-900/30 text-red-700 rounded-full hover:bg-red-200 transition-colors"
             >
               Reject
             </button>
@@ -209,7 +209,7 @@ const ReviewManagement = () => {
           <>
             <button
               onClick={() => handleAction(review, 'unapprove')}
-              className="px-3 py-1 text-xs bg-yellow-100 text-yellow-700 rounded-full hover:bg-yellow-200 transition-colors"
+              className="px-3 py-1 text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 rounded-full hover:bg-yellow-200 transition-colors"
             >
               Unapprove
             </button>
@@ -226,7 +226,7 @@ const ReviewManagement = () => {
         {review.status === 'rejected' && (
           <button
             onClick={() => handleAction(review, 'approve')}
-            className="px-3 py-1 text-xs bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition-colors"
+            className="px-3 py-1 text-xs bg-green-100 dark:bg-green-900/30 text-green-700 rounded-full hover:bg-green-200 transition-colors"
           >
             Approve
           </button>
@@ -241,7 +241,7 @@ const ReviewManagement = () => {
         )}
         <button
           onClick={() => handleAction(review, 'delete')}
-          className="px-3 py-1 text-xs bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors"
+          className="px-3 py-1 text-xs bg-red-100 dark:bg-red-900/30 text-red-700 rounded-full hover:bg-red-200 transition-colors"
         >
           Delete
         </button>
@@ -266,7 +266,7 @@ const ReviewManagement = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs text-muted-foreground">Pending</p>
-              <p className="text-2xl font-bold text-yellow-600">{stats.pending}</p>
+              <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{stats.pending}</p>
             </div>
             <i className="ri-time-line text-2xl text-yellow-400"></i>
           </div>
@@ -275,7 +275,7 @@ const ReviewManagement = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs text-muted-foreground">Approved</p>
-              <p className="text-2xl font-bold text-green-600">{stats.approved}</p>
+              <p className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.approved}</p>
             </div>
             <i className="ri-check-line text-2xl text-green-400"></i>
           </div>
@@ -284,7 +284,7 @@ const ReviewManagement = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs text-muted-foreground">Rejected</p>
-              <p className="text-2xl font-bold text-red-600">{stats.rejected}</p>
+              <p className="text-2xl font-bold text-red-600 dark:text-red-400">{stats.rejected}</p>
             </div>
             <i className="ri-close-line text-2xl text-red-400"></i>
           </div>
@@ -489,7 +489,7 @@ const ReviewManagement = () => {
                   Reviewed on {new Date(selectedReviewDetail.created_at).toLocaleDateString()}
                 </p>
                 {selectedReviewDetail.is_verified_purchase && (
-                  <span className="inline-block mt-2 px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">
+                  <span className="inline-block mt-2 px-2 py-1 text-xs bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full">
                     Verified Purchase
                   </span>
                 )}

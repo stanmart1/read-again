@@ -141,7 +141,7 @@ const UserTable = ({ users, selectedUsers, onSelectAll, onSelectUser, onView, on
                     </button>
                     <button
                       onClick={() => onEdit(user)}
-                      className="p-1.5 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 rounded transition-colors text-sm"
+                      className="p-1.5 text-green-600 dark:text-green-400 dark:text-green-400 hover:bg-green-50 dark:bg-green-900/20 dark:hover:bg-green-900/20 rounded transition-colors text-sm"
                       title="Edit"
                     >
                       <i className="ri-edit-line text-base"></i>
@@ -155,14 +155,14 @@ const UserTable = ({ users, selectedUsers, onSelectAll, onSelectUser, onView, on
                     </button>
                     <button
                       onClick={() => onStatusChange(user.id, !user.is_active)}
-                      className="p-1.5 text-yellow-600 hover:bg-yellow-50 rounded transition-colors text-sm"
+                      className="p-1.5 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-50 dark:bg-yellow-900/20 rounded transition-colors text-sm"
                       title={user.is_active ? 'Deactivate' : 'Activate'}
                     >
                       <i className={`${user.is_active ? 'ri-pause-circle-line' : 'ri-play-circle-line'} text-base`}></i>
                     </button>
                     <button
                       onClick={() => onDelete(user.id)}
-                      className="p-1.5 text-red-600 hover:bg-red-50 rounded transition-colors text-sm"
+                      className="p-1.5 text-red-600 dark:text-red-400 hover:bg-red-50 dark:bg-red-900/20 rounded transition-colors text-sm"
                       title="Delete"
                     >
                       <i className="ri-delete-bin-line text-base"></i>

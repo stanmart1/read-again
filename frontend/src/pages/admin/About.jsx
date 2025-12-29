@@ -149,7 +149,7 @@ const AdminAbout = () => {
           </div>
           <div className="px-6 py-3 bg-card flex items-center gap-4 text-sm">
             {lastSaved && (
-              <div className="flex items-center gap-2 text-green-600">
+              <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
                 <i className="ri-check-circle-line"></i>
                 <span>Last saved: {lastSaved.toLocaleTimeString()}</span>
               </div>
@@ -329,7 +329,7 @@ const AdminAbout = () => {
                                 const newFeatures = content.mission.features.filter((_, i) => i !== idx);
                                 updateContent('mission', { ...content.mission, features: newFeatures });
                               }}
-                              className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                              className="p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:bg-red-900/20 rounded-lg"
                             >
                               <i className="ri-delete-bin-line"></i>
                             </button>
@@ -356,7 +356,7 @@ const AdminAbout = () => {
                               <h3 className="font-medium">Value {idx + 1}</h3>
                               <button
                                 onClick={() => updateContent('values', content.values.filter((_, i) => i !== idx))}
-                                className="text-red-600"
+                                className="text-red-600 dark:text-red-400"
                               >
                                 <i className="ri-delete-bin-line"></i>
                               </button>
@@ -418,7 +418,7 @@ const AdminAbout = () => {
                               <h3 className="font-medium">Member {idx + 1}</h3>
                               <button
                                 onClick={() => updateContent('team', content.team.filter((_, i) => i !== idx))}
-                                className="text-red-600 hover:text-red-800"
+                                className="text-red-600 dark:text-red-400 hover:text-red-800 dark:text-red-200"
                               >
                                 <i className="ri-delete-bin-line"></i>
                               </button>

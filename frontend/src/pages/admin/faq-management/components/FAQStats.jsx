@@ -11,8 +11,8 @@ export default function FAQStats({ stats }) {
       title: 'Categories',
       value: stats.total_categories || 0,
       icon: 'ri-folder-line',
-      color: 'bg-green-500',
-      textColor: 'text-green-600'
+      color: 'bg-green-50 dark:bg-green-900/200',
+      textColor: 'text-green-600 dark:text-green-400'
     },
     {
       title: 'Total Views',
@@ -25,8 +25,8 @@ export default function FAQStats({ stats }) {
       title: 'Recent FAQs',
       value: stats.recent_faqs?.length || 0,
       icon: 'ri-time-line',
-      color: 'bg-yellow-500',
-      textColor: 'text-yellow-600'
+      color: 'bg-yellow-50 dark:bg-yellow-900/200',
+      textColor: 'text-yellow-600 dark:text-yellow-400'
     }
   ];
 

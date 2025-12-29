@@ -131,7 +131,7 @@ export default function FAQList({
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span
                     className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                      faq.is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                      faq.is_active ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200' : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200'
                     }`}
                   >
                     {faq.is_active ? 'Active' : 'Inactive'}
@@ -164,7 +164,7 @@ export default function FAQList({
                     </button>
                     <button
                       onClick={() => onDeleteFAQ(faq.id)}
-                      className="text-red-600 hover:text-red-900"
+                      className="text-red-600 dark:text-red-400 hover:text-red-900"
                       title="Delete FAQ"
                     >
                       <i className="ri-delete-bin-line"></i>

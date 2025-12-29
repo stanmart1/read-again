@@ -171,7 +171,7 @@ const AssignBooksModal = ({ isOpen, onClose, user, onSubmit }) => {
                       <div className="flex items-center gap-2">
                         <p className="font-medium text-foreground">{book.title}</p>
                         {assigned && (
-                          <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full">
+                          <span className="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 text-xs rounded-full">
                             Assigned
                           </span>
                         )}
