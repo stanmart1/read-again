@@ -56,7 +56,7 @@ export default function SystemSettings() {
           type="text"
           value={settings.site_name || ''}
           onChange={(e) => handleSettingChange('site_name', e.target.value)}
-          className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
       
@@ -66,7 +66,7 @@ export default function SystemSettings() {
           value={settings.site_description || ''}
           onChange={(e) => handleSettingChange('site_description', e.target.value)}
           rows={3}
-          className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-2 sm:px-3 py-1.5 sm:py-2 text-sm border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
       
@@ -74,7 +74,7 @@ export default function SystemSettings() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
             <label className="text-xs sm:text-sm font-medium text-gray-700">Maintenance Mode</label>
-            <p className="text-xs text-gray-500">Temporarily disable site for maintenance</p>
+            <p className="text-xs text-muted-foreground">Temporarily disable site for maintenance</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
@@ -83,14 +83,14 @@ export default function SystemSettings() {
               onChange={(e) => handleSettingChange('maintenance_mode', e.target.checked)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
             <label className="text-xs sm:text-sm font-medium text-gray-700">User Registration</label>
-            <p className="text-xs text-gray-500">Allow new users to register</p>
+            <p className="text-xs text-muted-foreground">Allow new users to register</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
@@ -99,14 +99,14 @@ export default function SystemSettings() {
               onChange={(e) => handleSettingChange('user_registration', e.target.checked)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
             <label className="text-xs sm:text-sm font-medium text-gray-700">Email Notifications</label>
-            <p className="text-xs text-gray-500">Send email notifications to users</p>
+            <p className="text-xs text-muted-foreground">Send email notifications to users</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
@@ -115,14 +115,14 @@ export default function SystemSettings() {
               onChange={(e) => handleSettingChange('email_notifications', e.target.checked)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
             <label className="text-xs sm:text-sm font-medium text-gray-700">Double Opt-In Registration</label>
-            <p className="text-xs text-gray-500">Require email verification for new user registrations</p>
+            <p className="text-xs text-muted-foreground">Require email verification for new user registrations</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
@@ -131,14 +131,14 @@ export default function SystemSettings() {
               onChange={(e) => handleSettingChange('double_opt_in', e.target.checked)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
             <label className="text-xs sm:text-sm font-medium text-gray-700">Review Moderation</label>
-            <p className="text-xs text-gray-500">Moderate reviews before publishing</p>
+            <p className="text-xs text-muted-foreground">Moderate reviews before publishing</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
@@ -147,14 +147,14 @@ export default function SystemSettings() {
               onChange={(e) => handleSettingChange('review_moderation', e.target.checked)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
             <label className="text-xs sm:text-sm font-medium text-gray-700">Redis Caching</label>
-            <p className="text-xs text-gray-500">Enable Redis for caching and rate limiting</p>
+            <p className="text-xs text-muted-foreground">Enable Redis for caching and rate limiting</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
@@ -163,7 +163,7 @@ export default function SystemSettings() {
               onChange={(e) => handleSettingChange('redis_enabled', e.target.checked)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
       </div>
@@ -180,15 +180,15 @@ export default function SystemSettings() {
           max="1440"
           value={settings.session_timeout_minutes || settings.sessionTimeoutMinutes || 40}
           onChange={(e) => handleSettingChange('session_timeout_minutes', parseInt(e.target.value))}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <p className="text-xs text-gray-500 mt-1">Users will be warned 5 minutes before timeout (5-1440 minutes)</p>
+        <p className="text-xs text-muted-foreground mt-1">Users will be warned 5 minutes before timeout (5-1440 minutes)</p>
       </div>
       
       <div className="flex items-center justify-between">
         <div>
           <label className="text-sm font-medium text-gray-700">Auto Backup</label>
-          <p className="text-sm text-gray-500">Automatically backup system data</p>
+          <p className="text-sm text-muted-foreground">Automatically backup system data</p>
         </div>
         <label className="relative inline-flex items-center cursor-pointer">
           <input
@@ -197,7 +197,7 @@ export default function SystemSettings() {
             onChange={(e) => handleSettingChange('auto_backup', e.target.checked)}
             className="sr-only peer"
           />
-          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
         </label>
       </div>
       
@@ -206,7 +206,7 @@ export default function SystemSettings() {
         <select
           value={settings.backup_frequency || 'daily'}
           onChange={(e) => handleSettingChange('backup_frequency', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="hourly">Hourly</option>
           <option value="daily">Daily</option>
@@ -221,7 +221,7 @@ export default function SystemSettings() {
           type="number"
           value={settings.max_file_size_mb || 10}
           onChange={(e) => handleSettingChange('max_file_size_mb', parseInt(e.target.value))}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
       
@@ -287,8 +287,8 @@ export default function SystemSettings() {
         animate={{ opacity: 1, y: 0 }}
         className="space-y-4 sm:space-y-6"
       >
-        <div className="bg-white rounded-lg shadow-md p-3 sm:p-6">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">System Settings</h2>
+        <div className="bg-card rounded-lg shadow-md p-3 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-bold text-foreground mb-4 sm:mb-6">System Settings</h2>
           
           {/* Tabs - scrollable on mobile */}
           <div className="overflow-x-auto -mx-3 sm:mx-0 px-3 sm:px-0 mb-4 sm:mb-6">
@@ -299,8 +299,8 @@ export default function SystemSettings() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 rounded-md font-medium text-xs sm:text-sm whitespace-nowrap ${
                     activeTab === tab.id
-                      ? 'bg-white text-blue-600 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-800'
+                      ? 'bg-card text-primary shadow-sm'
+                      : 'text-muted-foreground hover:text-gray-800'
                   }`}
                 >
                   <i className={`${tab.icon} text-sm sm:text-base`}></i>
@@ -320,16 +320,16 @@ export default function SystemSettings() {
             {activeTab === 'email' && <EmailGatewayManagement />}
           </div>
           
-          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
+          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-border">
             <div className="flex flex-col sm:flex-row gap-2 sm:space-x-4">
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="w-full sm:w-auto px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 text-sm sm:text-base"
+                className="w-full sm:w-auto px-4 sm:px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50 text-sm sm:text-base"
               >
                 {saving ? 'Saving...' : 'Save Settings'}
               </button>
-              <button className="w-full sm:w-auto px-4 sm:px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-sm sm:text-base">
+              <button className="w-full sm:w-auto px-4 sm:px-6 py-2 border border-input rounded-lg hover:bg-muted text-sm sm:text-base">
                 Cancel
               </button>
             </div>

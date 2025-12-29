@@ -71,11 +71,11 @@ const Roles = () => {
     <AdminLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+        <div className="bg-card rounded-lg shadow-md p-4 sm:p-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Role Management</h2>
-              <p className="text-sm sm:text-base text-gray-600 mt-1">Manage system roles and permissions</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground">Role Management</h2>
+              <p className="text-sm sm:text-base text-muted-foreground mt-1">Manage system roles and permissions</p>
             </div>
             <button
               onClick={() => setShowCreateModal(true)}
@@ -89,12 +89,12 @@ const Roles = () => {
 
         {/* Roles Grid */}
         {roles.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-md p-12 text-center">
+          <div className="bg-card rounded-lg shadow-md p-12 text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 mb-6">
               <i className="ri-shield-user-line text-4xl text-gray-400"></i>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">No Roles Found</h3>
-            <p className="text-gray-600 max-w-md mx-auto mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-3">No Roles Found</h3>
+            <p className="text-muted-foreground max-w-md mx-auto mb-8">
               Get started by creating your first role to manage user permissions and access control.
             </p>
             <button
@@ -110,7 +110,7 @@ const Roles = () => {
             {roles.map((role) => (
             <div
               key={role.id}
-              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
+              className="bg-card rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className={`w-12 h-12 ${getRoleColor(role.name)} rounded-full flex items-center justify-center`}>
@@ -119,7 +119,7 @@ const Roles = () => {
                 <div className="flex space-x-2">
                   <button
                     onClick={() => handleViewPermissions(role)}
-                    className="p-2 text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                    className="p-2 text-primary hover:text-blue-800 transition-colors duration-200"
                     title="Manage Permissions"
                   >
                     <i className="ri-settings-line"></i>
@@ -134,10 +134,10 @@ const Roles = () => {
                 </div>
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 {role.name}
               </h3>
-              <p className="text-sm text-gray-600 mb-3">
+              <p className="text-sm text-muted-foreground mb-3">
                 {role.description || 'No description provided'}
               </p>
 
