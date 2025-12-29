@@ -54,17 +54,10 @@ export default function BookCard({ book }) {
             alt={book.title}
             className="w-full h-72 object-cover"
           />
-          
-          {/* Book Type Badge */}
-          <div className="absolute top-4 right-4 bg-green-800 text-white rounded-full px-3 py-1">
-            <span className="text-sm font-medium">
-              {book.format === 'physical' ? 'Physical' : book.format === 'both' ? 'Hybrid' : 'Ebook'}
-            </span>
-          </div>
 
           {/* Discount Badge */}
           {displayOriginalPrice && displayOriginalPrice > book.price && (
-            <div className="absolute top-4 left-4 bg-blue-800 text-white text-xs px-2 py-1 rounded-full font-medium">
+            <div className="absolute top-4 right-4 bg-blue-800 text-white text-xs px-2 py-1 rounded-full font-medium">
               {Math.round(((displayOriginalPrice - book.price) / displayOriginalPrice) * 100)}% OFF
             </div>
           )}
