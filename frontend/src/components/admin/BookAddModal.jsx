@@ -16,7 +16,6 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
     pages: '',
     publication_date: '',
     publisher: '',
-    format: '',
     stock_quantity: '0',
     track_inventory: true,
     is_featured: false,
@@ -77,13 +76,12 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
       if (!formData.author_id) newErrors.author_id = 'Author is required';
       if (!formData.category_id) newErrors.category_id = 'Category is required';
       if (!formData.price || parseFloat(formData.price) <= 0) newErrors.price = 'Valid price is required';
-      if (!formData.format) newErrors.format = 'Book type is required';
     }
 
     if (step === 2) {
       if (!formData.cover_image) newErrors.cover_image = 'Cover image is required';
-      if (formData.format === 'ebook' && !formData.ebook_file) {
-        newErrors.ebook_file = 'Ebook file is required for digital books';
+      if (!formData.ebook_file) {
+        newErrors.ebook_file = 'Ebook file is required';
       }
     }
 
@@ -389,42 +387,6 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     placeholder="0.00"
                   />
                   {errors.price && <p className="text-red-500 text-sm mt-1 flex items-center"><i className="ri-error-warning-line mr-1"></i>{errors.price}</p>}
-                </div>
-
-                {/* Format */}
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2">
-                    Book Type *
-                  </label>
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      type="button"
-                      onClick={() => handleInputChange('format', 'ebook')}
-                      className={`p-3 rounded-xl border-2 transition-all text-center ${formData.format === 'ebook'
-                        ? 'border-primary bg-primary/10 text-primary'
-                        : errors.format
-                          ? 'border-red-400 hover:border-red-300 text-muted-foreground'
-                          : 'border-border hover:border-input text-muted-foreground'
-                        }`}
-                    >
-                      <i className="ri-smartphone-line text-xl mb-1 block"></i>
-                      <span className="text-sm font-medium">Digital Ebook</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleInputChange('format', 'physical')}
-                      className={`p-3 rounded-xl border-2 transition-all text-center ${formData.format === 'physical'
-                        ? 'border-primary bg-primary/10 text-primary'
-                        : errors.format
-                          ? 'border-red-400 hover:border-red-300 text-muted-foreground'
-                          : 'border-border hover:border-input text-muted-foreground'
-                        }`}
-                    >
-                      <i className="ri-book-line text-xl mb-1 block"></i>
-                      <span className="text-sm font-medium">Physical Book</span>
-                    </button>
-                  </div>
-                  {errors.format && <p className="text-red-500 text-sm mt-1 flex items-center"><i className="ri-error-warning-line mr-1"></i>{errors.format}</p>}
                 </div>
 
                 {/* ISBN */}
