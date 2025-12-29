@@ -16,7 +16,7 @@ const OrderTable = ({
   return (
     <div className="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="min-w-full divide-y divide-border">
           <thead className="bg-muted">
             <tr>
               <th className="px-6 py-3 text-left">
@@ -50,7 +50,7 @@ const OrderTable = ({
               </th>
             </tr>
           </thead>
-          <tbody className="bg-card divide-y divide-gray-200">
+          <tbody className="bg-card divide-y divide-border">
             {orders.length === 0 ? (
               <tr>
                 <td colSpan={8} className="px-6 py-12 text-center">

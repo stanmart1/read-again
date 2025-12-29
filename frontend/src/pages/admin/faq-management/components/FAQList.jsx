@@ -51,7 +51,7 @@ export default function FAQList({
   return (
     <div className="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="min-w-full divide-y divide-border">
           <thead className="bg-muted">
             <tr>
               <th className="px-6 py-3 text-left">
@@ -85,7 +85,7 @@ export default function FAQList({
               </th>
             </tr>
           </thead>
-          <tbody className="bg-card divide-y divide-gray-200">
+          <tbody className="bg-card divide-y divide-border">
             {faqs.map((faq) => (
               <tr key={faq.id} className="hover:bg-muted">
                 <td className="px-6 py-4 whitespace-nowrap">

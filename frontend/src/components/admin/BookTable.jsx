@@ -185,7 +185,7 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
               </tr>
             </thead>
 
-            <tbody className="bg-card divide-y divide-gray-200">
+            <tbody className="bg-card divide-y divide-border">
               {books.map((book) => (
                 <tr key={book.id} className="hover:bg-muted transition-colors duration-200">
                   <td className="px-4 py-4">

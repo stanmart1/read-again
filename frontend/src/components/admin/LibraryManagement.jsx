@@ -461,7 +461,7 @@ const LibraryManagement = () => {
       {/* Libraries Table */}
       <div className="bg-card rounded-lg shadow-md overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
+          <table className="min-w-full divide-y divide-border">
             <thead className="bg-muted">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
@@ -490,7 +490,7 @@ const LibraryManagement = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-card divide-y divide-gray-200">
+            <tbody className="bg-card divide-y divide-border">
               {loading ? (
                 Array.from({ length: 5 }).map((_, i) => (
                   <tr key={i}>

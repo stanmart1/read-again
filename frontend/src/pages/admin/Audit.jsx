@@ -344,7 +344,7 @@ const Audit = () => {
                   <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Actions</th>
                 </tr>
               </thead>
-              <tbody className="bg-card divide-y divide-gray-100">
+              <tbody className="bg-card divide-y divide-border">
                 {auditLogs.map((log) => (
                   <tr key={log.id} className="hover:bg-primary/10 transition-colors duration-200">
                     <td className="px-6 py-4">

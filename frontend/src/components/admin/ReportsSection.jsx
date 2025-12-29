@@ -181,7 +181,7 @@ const ReportsSection = () => {
                   <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase">Trend</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-border">
                 {safeData.popularBooks.map((book, index) => (
                   <tr key={index} className="hover:bg-muted">
                     <td className="px-6 py-4 text-sm font-medium text-foreground">{book.title}</td>

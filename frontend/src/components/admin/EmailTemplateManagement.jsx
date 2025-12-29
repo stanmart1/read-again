@@ -341,7 +341,7 @@ const EmailTemplateManagement = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-card divide-y divide-gray-200">
+              <tbody className="bg-card divide-y divide-border">
                 {templates.length > 0 ? (
                   templates.map((template) => (
                     <tr key={template.id} className="hover:bg-muted">
