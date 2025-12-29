@@ -10,7 +10,7 @@ export default function EReaderShowcase() {
       icon: 'ri-eye-line',
       title: 'Eye-Friendly Reading',
       description: 'Advanced e-ink technology with adjustable brightness and blue light filters for comfortable reading in any lighting condition.',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-primary to-primary'
     },
     {
       icon: 'ri-settings-3-line',

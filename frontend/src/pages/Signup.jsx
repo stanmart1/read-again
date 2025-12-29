@@ -362,7 +362,7 @@ export default function Signup() {
                   <button
                     type="button"
                     onClick={nextStep}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-primary/90 hover:to-primary/90 transition-all shadow-lg hover:shadow-xl"
                   >
                     {formData.is_student === 'yes' ? 'Continue to Education Details' : 'Continue to Security'}
                     <i className="ri-arrow-right-line ml-2"></i>
@@ -488,7 +488,7 @@ export default function Signup() {
                     <button
                       type="button"
                       onClick={nextStep}
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-primary/90 hover:to-primary/90 transition-all shadow-lg hover:shadow-xl"
                     >
                       Continue to Security
                       <i className="ri-arrow-right-line ml-2"></i>

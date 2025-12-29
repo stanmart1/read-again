@@ -31,7 +31,7 @@ const Audit = () => {
 
   const getActionColor = (action) => {
     if (action.includes('create')) return 'bg-gradient-to-r from-green-500 to-teal-500';
-    if (action.includes('update')) return 'bg-gradient-to-r from-blue-500 to-cyan-500';
+    if (action.includes('update')) return 'bg-gradient-to-r from-primary to-primary';
     if (action.includes('delete')) return 'bg-gradient-to-r from-red-500 to-pink-500';
     if (action.includes('login')) return 'bg-gradient-to-r from-purple-500 to-pink-500';
     if (action.includes('assign')) return 'bg-gradient-to-r from-primary to-primary';
@@ -177,7 +177,7 @@ const Audit = () => {
               </button>
               <button
                 onClick={handleExport}
-                className="px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center"
+                className="px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-primary/90 hover:to-primary/90 transition-all duration-300 flex items-center"
               >
                 <i className="ri-download-line mr-2"></i>
                 Export
@@ -228,7 +228,7 @@ const Audit = () => {
               <div className="flex items-end gap-2">
                 <button
                   onClick={applyFilters}
-                  className="flex-1 px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                  className="flex-1 px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-primary/90 hover:to-primary/90 transition-all duration-300"
                 >
                   Apply
                 </button>

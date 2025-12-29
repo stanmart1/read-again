@@ -187,7 +187,7 @@ export default function BlogSection() {
           >
             <Link
               to="/blog"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-primary text-white px-8 py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-primary text-white px-8 py-4 rounded-full font-semibold hover:from-primary/90 hover:to-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               <span>View All Posts</span>
               <i className="ri-arrow-right-line"></i>

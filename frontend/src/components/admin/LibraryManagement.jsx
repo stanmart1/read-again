@@ -449,7 +449,7 @@ const LibraryManagement = () => {
           </button>
           <button
             onClick={() => setShowAssignModal(true)}
-            className="px-3 sm:px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all text-sm flex items-center gap-2"
+            className="px-3 sm:px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-primary/90 hover:to-primary/90 transition-all text-sm flex items-center gap-2"
           >
             <i className="ri-add-line"></i>
             <span className="hidden sm:inline">Assign Book</span>
@@ -905,7 +905,7 @@ const LibraryManagement = () => {
                 <button
                   onClick={handleAssignBook}
                   disabled={!selectedUser || !selectedBook || assignLoading}
-                  className="flex-1 px-4 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium flex items-center justify-center space-x-2"
+                  className="flex-1 px-4 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-primary/90 hover:to-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium flex items-center justify-center space-x-2"
                 >
                   {assignLoading ? (
                     <>
@@ -932,7 +932,7 @@ const LibraryManagement = () => {
             <div className="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-primary/5 to-primary/10 rounded-t-2xl">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary rounded-full flex items-center justify-center">
                     <i className="ri-group-line text-white text-lg"></i>
                   </div>
                   <div>
@@ -1029,7 +1029,7 @@ const LibraryManagement = () => {
                 <button
                   onClick={handleBulkAssign}
                   disabled={bulkUsers.length === 0 || !bulkBook || bulkLoading}
-                  className="flex-1 px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 font-medium flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-primary/90 hover:to-primary/90 disabled:opacity-50 font-medium flex items-center justify-center gap-2"
                 >
                   {bulkLoading ? (
                     <>

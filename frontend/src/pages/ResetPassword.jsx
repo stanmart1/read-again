@@ -91,7 +91,7 @@ export default function ResetPassword() {
             </p>
             <Link
               to="/forgot-password"
-              className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700"
+              className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-primary/90 hover:to-primary/90"
             >
               Request New Reset Link
             </Link>
@@ -221,7 +221,7 @@ export default function ResetPassword() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all disabled:opacity-50"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-primary/90 hover:to-primary/90 transition-all disabled:opacity-50"
                 >
                   {loading ? 'Resetting Password...' : 'Reset Password'}
                 </button>

@@ -110,7 +110,7 @@ export default function Header() {
                   <Link to="/login" className="hidden md:block px-6 py-2 text-primary hover:bg-primary/10 rounded-lg transition-all font-medium">
                     Login
                   </Link>
-                  <Link to="/signup" className="hidden md:block px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all font-medium">
+                  <Link to="/signup" className="hidden md:block px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-primary/90 hover:to-primary/90 transition-all font-medium">
                     Sign Up
                   </Link>
                 </>
@@ -183,7 +183,7 @@ export default function Header() {
             </Link>
             <Link
               to="/signup"
-              className="block w-full text-center px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all"
+              className="block w-full text-center px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-medium hover:from-primary/90 hover:to-primary/90 transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
               Sign Up

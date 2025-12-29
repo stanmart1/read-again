@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const UserTable = ({ users, selectedUsers, onSelectAll, onSelectUser, onView, onEdit, onStatusChange, onDelete, onAnalytics, onAssignBooks, onPasswordReset, onAssignRole }) => {
   const getRoleColor = (role) => {
     switch (role) {
-      case 'super_admin': return 'bg-gradient-to-r from-purple-600 to-pink-600';
+      case 'super_admin': return 'bg-gradient-to-r from-primary to-primary';
       case 'admin': return 'bg-gradient-to-r from-primary to-primary';
       case 'moderator': return 'bg-gradient-to-r from-cyan-500 to-blue-500';
       case 'author': return 'bg-gradient-to-r from-green-500 to-teal-500';

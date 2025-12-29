@@ -355,7 +355,7 @@ const AdminBooks = () => {
                       )}
                       <button
                         onClick={() => setShowAddModal(true)}
-                        className="px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center"
+                        className="px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-primary/90 hover:to-primary/90 transition-all duration-300 flex items-center"
                       >
                         <i className="ri-add-line mr-2"></i>
                         Add Book
@@ -887,7 +887,7 @@ const AdminBooks = () => {
                         setModals(prev => ({ ...prev, assignConfirm: true }));
                       }}
                       disabled={selection.users.length === 0 || loadingStates.assign}
-                      className="flex-1 px-4 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium flex items-center justify-center space-x-2"
+                      className="flex-1 px-4 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-primary/90 hover:to-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium flex items-center justify-center space-x-2"
                     >
                       <i className="ri-user-add-line"></i>
                       <span>Assign to {selection.users.length} User{selection.users.length !== 1 ? 's' : ''}</span>

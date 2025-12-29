@@ -566,7 +566,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="px-6 py-2.5 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-colors font-medium"
+                  className="px-6 py-2.5 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-primary/90 hover:to-primary/90 transition-colors font-medium"
                 >
                   Next Step →
                 </button>
@@ -670,7 +670,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors disabled:opacity-50"
+                  className="px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-primary/90 hover:to-primary/90 transition-colors disabled:opacity-50"
                 >
                   {isSubmitting ? 'Uploading...' : 'Upload Book'}
                 </button>

@@ -147,7 +147,7 @@ export default function ReviewForm({ bookId, bookTitle, onSuccess, onCancel }) {
           <button
             type="submit"
             disabled={isSubmitting || rating === 0 || !reviewText.trim()}
-            className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 px-6 rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all font-semibold shadow-lg hover:shadow-xl transform hover:scale-[1.02] disabled:transform-none"
+            className="flex-1 bg-gradient-to-r from-primary to-primary text-white py-4 px-6 rounded-xl hover:from-primary/90 hover:to-primary/90 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all font-semibold shadow-lg hover:shadow-xl transform hover:scale-[1.02] disabled:transform-none"
           >
             {isSubmitting ? (
               <div className="flex items-center justify-center">

@@ -216,7 +216,7 @@ const EmailTemplateManagement = () => {
                 resetForm();
                 setShowCreateModal(true);
               }}
-              className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg sm:rounded-full hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 font-medium flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-primary to-primary text-white rounded-lg sm:rounded-full hover:from-primary/90 hover:to-primary/90 transition-all duration-300 transform hover:scale-105 font-medium flex items-center justify-center gap-2"
             >
               <i className="ri-add-line"></i>
               <span>Create Template</span>

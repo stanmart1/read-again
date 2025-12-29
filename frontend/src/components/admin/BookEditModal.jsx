@@ -465,7 +465,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 <button type="button" onClick={handlePrevious} disabled={isSubmitting} className="px-6 py-2 border border-input rounded-lg hover:bg-muted transition-colors disabled:opacity-50">
                   Previous
                 </button>
-                <button type="button" onClick={handleSubmit} disabled={isSubmitting} className="px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-orange-700 hover:to-purple-700 transition-colors disabled:opacity-50">
+                <button type="button" onClick={handleSubmit} disabled={isSubmitting} className="px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-primary/90 hover:to-primary/90 transition-colors disabled:opacity-50">
                   {isSubmitting ? 'Updating...' : 'Update Book'}
                 </button>
               </div>

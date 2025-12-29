@@ -523,7 +523,7 @@ const BlogManagement = () => {
                     resetForm();
                     setShowCreateModal(true);
                   }}
-                  className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
+                  className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-full font-semibold hover:from-primary/90 hover:to-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
                 >
                   <i className="ri-add-line"></i>
                   <span>Create Post</span>
@@ -1369,7 +1369,7 @@ const BlogManagement = () => {
                         setValidationErrors({});
                         setCurrentStep(currentStep + 1);
                       }}
-                      className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg font-medium order-1"
+                      className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-primary/90 hover:to-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg font-medium order-1"
                     >
                       Next
                       <i className="ri-arrow-right-line ml-2"></i>
@@ -1378,7 +1378,7 @@ const BlogManagement = () => {
                     <button
                       onClick={handleCreatePost}
                       disabled={isSaving}
-                      className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 font-medium order-1"
+                      className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-primary/90 hover:to-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 font-medium order-1"
                     >
                       {isSaving && <i className="ri-loader-4-line animate-spin"></i>}
                       {isSaving ? 'Creating...' : 'Create Post'}
@@ -1520,7 +1520,7 @@ const BlogManagement = () => {
                       <label className="block text-sm font-semibold text-foreground mb-2">Tags</label>
                       <div className="flex gap-2 mb-2">
                         <input type="text" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" placeholder="Add tag and press Enter" />
-                        <button onClick={addTag} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>
+                        <button onClick={addTag} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-primary/90 hover:to-primary/90 transition-all font-medium">Add</button>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {formData.tags.map(tag => (
@@ -1557,7 +1557,7 @@ const BlogManagement = () => {
                       <label className="block text-sm font-semibold text-foreground mb-2">SEO Keywords</label>
                       <div className="flex gap-2 mb-2">
                         <input type="text" value={keywordInput} onChange={(e) => setKeywordInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addKeyword())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all hover:border-input" placeholder="Add keyword and press Enter" />
-                        <button onClick={addKeyword} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>
+                        <button onClick={addKeyword} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-primary/90 hover:to-primary/90 transition-all font-medium">Add</button>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {formData.seo_keywords.map(keyword => (
@@ -1574,7 +1574,7 @@ const BlogManagement = () => {
                 <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-border mt-6">
                   <button onClick={() => { if (hasUnsavedChanges && !confirm('Discard changes?')) return; setShowEditModal(false); setEditMode('basic'); setHasUnsavedChanges(false); }} className="px-6 py-3 border-2 border-input rounded-xl hover:bg-muted transition-colors font-medium order-2 sm:order-1">Cancel</button>
                   <div className="flex-1 hidden sm:block"></div>
-                  <button onClick={handleUpdatePost} disabled={isSaving} className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 font-medium order-1 sm:order-2">
+                  <button onClick={handleUpdatePost} disabled={isSaving} className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-primary/90 hover:to-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 font-medium order-1 sm:order-2">
                     {isSaving && <i className="ri-loader-4-line animate-spin"></i>}
                     {isSaving ? 'Updating...' : 'Update Post'}
                   </button>

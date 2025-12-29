@@ -118,7 +118,7 @@ export default function PaymentFailed() {
             >
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-primary/90 hover:to-primary/90 transition-all"
               >
                 <i className="ri-home-line"></i>
                 Back to Home

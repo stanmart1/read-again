@@ -22,7 +22,7 @@ const Roles = () => {
   const getRoleColor = (roleName) => {
     switch (roleName) {
       case 'super_admin':
-        return 'bg-gradient-to-r from-purple-600 to-pink-600';
+        return 'bg-gradient-to-r from-primary to-primary';
       case 'admin':
         return 'bg-gradient-to-r from-primary to-primary';
       case 'moderator':
@@ -79,7 +79,7 @@ const Roles = () => {
             </div>
             <button
               onClick={() => setShowCreateModal(true)}
-              className="w-full sm:w-auto px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+              className="w-full sm:w-auto px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-primary/90 hover:to-primary/90 transition-all duration-300 transform hover:scale-105"
             >
               <i className="ri-add-line mr-2"></i>
               Create Role
@@ -99,7 +99,7 @@ const Roles = () => {
             </p>
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+              className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-primary/90 hover:to-primary/90 transition-all duration-300 transform hover:scale-105"
             >
               <i className="ri-add-line mr-2"></i>
               Create Your First Role
