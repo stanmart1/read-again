@@ -87,7 +87,7 @@ export default function Library() {
 
         {/* Filter Tabs */}
         {books.length > 0 && (
-          <div className="bg-card rounded-2xl p-6 shadow-lg border border-gray-100">
+          <div className="bg-card rounded-2xl p-6 shadow-lg border border-border">
             <div className="flex flex-wrap gap-3">
               {[
                 { key: 'all', label: 'All Books', icon: 'ri-book-line', count: counts.all },
@@ -100,7 +100,7 @@ export default function Library() {
                   className={`inline-flex items-center px-6 py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
                     filter === tab.key
                       ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg shadow-blue-600/25'
-                      : 'bg-muted text-muted-foreground hover:text-primary hover:bg-primary/10 border border-border hover:border-blue-200 hover:shadow-md'
+                      : 'bg-muted text-muted-foreground hover:text-primary hover:bg-primary/10 border border-border hover:border-primary/30 hover:shadow-md'
                   }`}
                 >
                   <i className={`${tab.icon} mr-2 text-base`}></i>
@@ -120,7 +120,7 @@ export default function Library() {
 
         {/* Empty State */}
         {filteredBooks.length === 0 ? (
-          <div className="bg-card rounded-2xl shadow-lg border border-gray-100 text-center py-20">
+          <div className="bg-card rounded-2xl shadow-lg border border-border text-center py-20">
             <div className="w-28 h-28 mx-auto mb-8 bg-gradient-to-br from-primary/10 to-primary/20 rounded-full flex items-center justify-center shadow-lg">
               <i className="ri-book-line text-4xl text-primary"></i>
             </div>
@@ -150,7 +150,7 @@ export default function Library() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="group bg-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-blue-200 transform hover:-translate-y-2 w-full sm:w-72 md:w-80 flex-shrink-0"
+                className="group bg-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-border hover:border-primary/30 transform hover:-translate-y-2 w-full sm:w-72 md:w-80 flex-shrink-0"
               >
                 {/* Cover Image */}
                 <div className="aspect-[3/5] relative overflow-hidden">

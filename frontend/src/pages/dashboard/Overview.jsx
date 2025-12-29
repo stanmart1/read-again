@@ -67,7 +67,7 @@ export default function Overview() {
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold text-foreground">Currently Reading</h2>
             {currentlyReading.length > 3 && (
-              <a href="/dashboard/library" className="text-primary hover:text-purple-600 text-sm font-medium flex items-center gap-1">
+              <a href="/dashboard/library" className="text-primary hover:text-primary/90 text-sm font-medium flex items-center gap-1">
                 View All <i className="ri-arrow-right-line"></i>
               </a>
             )}
@@ -125,7 +125,7 @@ export default function Overview() {
             <div className="text-center py-8">
               <i className="ri-book-line text-4xl text-gray-300 mb-2"></i>
               <p className="text-muted-foreground mb-4">No books in progress</p>
-              <a href="/dashboard/library" className="text-primary hover:text-purple-600 font-medium">
+              <a href="/dashboard/library" className="text-primary hover:text-primary/90 font-medium">
                 Browse Your Library
               </a>
             </div>
