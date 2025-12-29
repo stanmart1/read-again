@@ -424,7 +424,7 @@ const AdminAbout = () => {
                               </button>
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-2">Photo</label>
+                              <label className="block text-sm font-medium text-foreground mb-2">Photo</label>
                               <input
                                 type="file"
                                 accept="image/*"
@@ -476,7 +476,7 @@ const AdminAbout = () => {
                               className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
                             <div>
-                              <label className="block text-sm font-medium text-gray-700 mb-2">Bio</label>
+                              <label className="block text-sm font-medium text-foreground mb-2">Bio</label>
                               <ReactQuill
                                 theme="snow"
                                 value={member.bio || ''}

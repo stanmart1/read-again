@@ -196,7 +196,7 @@ const Audit = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">User ID</label>
+                <label className="block text-sm font-medium text-foreground mb-1">User ID</label>
                 <input
                   type="text"
                   value={filters.userId}
@@ -206,7 +206,7 @@ const Audit = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Action</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Action</label>
                 <input
                   type="text"
                   value={filters.action}
@@ -216,7 +216,7 @@ const Audit = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Resource</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Resource</label>
                 <input
                   type="text"
                   value={filters.resource}
@@ -285,16 +285,16 @@ const Audit = () => {
                 <div className="border-t border-gray-100 pt-3 space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <i className={`${getDeviceIcon(log.user_agent)} text-gray-400`}></i>
-                    <span className="text-gray-700">{getDeviceInfo(log.user_agent)}</span>
+                    <span className="text-foreground">{getDeviceInfo(log.user_agent)}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <i className="ri-map-pin-line text-gray-400"></i>
-                    <span className="text-gray-700">{getLocationInfo(log.ip_address)}</span>
+                    <span className="text-foreground">{getLocationInfo(log.ip_address)}</span>
                   </div>
                   {log.page_visited && (
                     <div className="flex items-center gap-2 text-sm">
                       <i className="ri-pages-line text-gray-400"></i>
-                      <span className="text-gray-700 truncate">{log.page_visited}</span>
+                      <span className="text-foreground truncate">{log.page_visited}</span>
                     </div>
                   )}
                 </div>
@@ -346,7 +346,7 @@ const Audit = () => {
               </thead>
               <tbody className="bg-card divide-y divide-gray-100">
                 {auditLogs.map((log) => (
-                  <tr key={log.id} className="hover:bg-blue-50 transition-colors duration-200">
+                  <tr key={log.id} className="hover:bg-primary/10 transition-colors duration-200">
                     <td className="px-6 py-4">
                       <div className="flex items-center">
                         <div className={`w-10 h-10 ${getActionColor(log.action)} rounded-xl flex items-center justify-center mr-3 shadow-sm`}>
@@ -363,7 +363,7 @@ const Audit = () => {
                       <div className="text-xs text-muted-foreground">{log.user_email || 'N/A'}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-700 mb-1">
+                      <div className="flex items-center gap-2 text-sm text-foreground mb-1">
                         <i className={`${getDeviceIcon(log.user_agent)} text-gray-400`}></i>
                         <span className="text-xs">{getDeviceInfo(log.user_agent)}</span>
                       </div>
@@ -373,12 +373,12 @@ const Audit = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm text-gray-700 max-w-xs truncate" title={log.page_visited}>
+                      <div className="text-sm text-foreground max-w-xs truncate" title={log.page_visited}>
                         {log.page_visited || 'N/A'}
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm text-gray-700">{formatDateTime(log.created_at)}</div>
+                      <div className="text-sm text-foreground">{formatDateTime(log.created_at)}</div>
                     </td>
                     <td className="px-6 py-4">
                       {log.details && (
@@ -406,7 +406,7 @@ const Audit = () => {
         {auditLogs.length > 0 && (
           <div className="bg-card rounded-lg shadow-md p-4">
             <div className="flex items-center justify-between">
-              <div className="text-sm text-gray-700">
+              <div className="text-sm text-foreground">
                 Showing <span className="font-medium">{(currentPage - 1) * 20 + 1}</span> to{' '}
                 <span className="font-medium">{Math.min(currentPage * 20, totalLogs)}</span> of{' '}
                 <span className="font-medium">{totalLogs}</span> logs
@@ -462,7 +462,7 @@ const Audit = () => {
                 <div className="space-y-6">
                   {/* User Information */}
                   <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                       <i className="ri-user-line"></i>
                       User Information
                     </h4>
@@ -480,7 +480,7 @@ const Audit = () => {
 
                   {/* Activity Information */}
                   <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-xl p-4">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                       <i className="ri-file-list-line"></i>
                       Activity Information
                     </h4>
@@ -502,7 +502,7 @@ const Audit = () => {
 
                   {/* Device & Location */}
                   <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                       <i className="ri-device-line"></i>
                       Device & Location
                     </h4>
@@ -524,7 +524,7 @@ const Audit = () => {
                       {selectedLog.user_agent && (
                         <div>
                           <p className="text-xs text-muted-foreground">User Agent</p>
-                          <p className="text-xs text-gray-700 mt-1 break-all bg-card p-2 rounded">{selectedLog.user_agent}</p>
+                          <p className="text-xs text-foreground mt-1 break-all bg-card p-2 rounded">{selectedLog.user_agent}</p>
                         </div>
                       )}
                     </div>
@@ -532,7 +532,7 @@ const Audit = () => {
 
                   {/* Timestamp */}
                   <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-4">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                       <i className="ri-time-line"></i>
                       Timestamp
                     </h4>
@@ -546,11 +546,11 @@ const Audit = () => {
                   {/* Additional Details */}
                   {selectedLog.details && (
                     <div className="bg-muted rounded-xl p-4">
-                      <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                         <i className="ri-information-line"></i>
                         Additional Details
                       </h4>
-                      <pre className="text-xs text-gray-700 overflow-x-auto bg-card p-3 rounded border border-border">
+                      <pre className="text-xs text-foreground overflow-x-auto bg-card p-3 rounded border border-border">
                         {formatDetails(selectedLog.details)}
                       </pre>
                     </div>

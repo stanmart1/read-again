@@ -281,7 +281,7 @@ const AdminUsers = () => {
         </div>
 
         {/* Pagination */}
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="bg-card rounded-lg shadow-md overflow-hidden">
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

@@ -90,7 +90,7 @@ const Roles = () => {
         {/* Roles Grid */}
         {roles.length === 0 ? (
           <div className="bg-card rounded-lg shadow-md p-12 text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 mb-6">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-6">
               <i className="ri-shield-user-line text-4xl text-gray-400"></i>
             </div>
             <h3 className="text-2xl font-bold text-foreground mb-3">No Roles Found</h3>
@@ -143,7 +143,7 @@ const Roles = () => {
 
               <div className="flex items-center justify-end text-sm">
                 {role.id <= 4 && (
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                  <span className="px-2 py-1 bg-primary/20 text-blue-800 rounded-full text-xs">
                     System Role
                   </span>
                 )}

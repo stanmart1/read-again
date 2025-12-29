@@ -145,7 +145,7 @@ export default function FAQManagementPage() {
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                 <button
                   onClick={refetch}
-                  className="inline-flex items-center justify-center sm:justify-start px-3 sm:px-4 py-2 border border-input rounded-md shadow-sm text-xs sm:text-sm font-medium text-gray-700 bg-card hover:bg-muted w-full sm:w-auto"
+                  className="inline-flex items-center justify-center sm:justify-start px-3 sm:px-4 py-2 border border-input rounded-md shadow-sm text-xs sm:text-sm font-medium text-foreground bg-card hover:bg-muted w-full sm:w-auto"
                 >
                   <i className="ri-refresh-line mr-2"></i>
                   <span className="hidden sm:inline">Refresh</span>
@@ -174,7 +174,7 @@ export default function FAQManagementPage() {
           <div className="bg-card rounded-lg shadow-sm border border-border p-3 sm:p-6 mb-4 sm:mb-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Search FAQs</label>
+                <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">Search FAQs</label>
                 <div className="relative">
                   <i className="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                   <input
@@ -187,7 +187,7 @@ export default function FAQManagementPage() {
                 </div>
               </div>
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Filter by Category</label>
+                <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">Filter by Category</label>
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
@@ -208,13 +208,13 @@ export default function FAQManagementPage() {
           </div>
 
           {selectedFAQs.length > 0 && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+            <div className="bg-primary/10 border border-blue-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <div className="text-xs sm:text-sm text-blue-800">{selectedFAQs.length} FAQ(s) selected</div>
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-2">
                   <button
                     onClick={() => handleBulkToggleStatus(true)}
-                    className="inline-flex items-center justify-center px-3 py-1 border border-transparent text-xs sm:text-sm font-medium rounded text-blue-700 bg-blue-100 hover:bg-blue-200 w-full sm:w-auto"
+                    className="inline-flex items-center justify-center px-3 py-1 border border-transparent text-xs sm:text-sm font-medium rounded text-blue-700 bg-primary/20 hover:bg-blue-200 w-full sm:w-auto"
                   >
                     Activate
                   </button>

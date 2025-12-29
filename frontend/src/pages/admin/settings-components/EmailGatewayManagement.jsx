@@ -216,31 +216,31 @@ export default function EmailGatewayManagement() {
         return (
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Resend API Key</label>
+              <label className="block text-sm font-medium text-foreground mb-2">Resend API Key</label>
               <div className="relative">
                 <input
                   type={showApiKeys['resendApiKey'] ? "text" : "password"}
                   value={gateway.resendApiKey || ''}
                   onChange={(e) => handleConfigChange(gateway.id, 'resendApiKey', e.target.value)}
-                  className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 pr-10 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
                 />
                 <button
                   type="button"
                   onClick={() => toggleApiKeyVisibility('resendApiKey')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                 >
                   <i className={`ri-${showApiKeys['resendApiKey'] ? 'eye-off' : 'eye'}-line text-lg`}></i>
                 </button>
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Domain</label>
+              <label className="block text-sm font-medium text-foreground mb-2">Domain</label>
               <input
                 type="text"
                 value={gateway.resendDomain || ''}
                 onChange={(e) => handleConfigChange(gateway.id, 'resendDomain', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="yourdomain.com"
               />
             </div>
@@ -251,51 +251,51 @@ export default function EmailGatewayManagement() {
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">SMTP Host</label>
+                <label className="block text-sm font-medium text-foreground mb-2">SMTP Host</label>
                 <input
                   type="text"
                   value={gateway.smtpHost || ''}
                   onChange={(e) => handleConfigChange(gateway.id, 'smtpHost', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="smtp.gmail.com"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">SMTP Port</label>
+                <label className="block text-sm font-medium text-foreground mb-2">SMTP Port</label>
                 <input
                   type="number"
                   value={gateway.smtpPort || ''}
                   onChange={(e) => handleConfigChange(gateway.id, 'smtpPort', parseInt(e.target.value))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="587"
                 />
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">SMTP Username</label>
+                <label className="block text-sm font-medium text-foreground mb-2">SMTP Username</label>
                 <input
                   type="text"
                   value={gateway.smtpUsername || ''}
                   onChange={(e) => handleConfigChange(gateway.id, 'smtpUsername', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="your-email@gmail.com"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">SMTP Password</label>
+                <label className="block text-sm font-medium text-foreground mb-2">SMTP Password</label>
                 <div className="relative">
                   <input
                     type={showApiKeys['smtpPassword'] ? "text" : "password"}
                     value={gateway.smtpPassword || ''}
                     onChange={(e) => handleConfigChange(gateway.id, 'smtpPassword', e.target.value)}
-                    className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 pr-10 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="your-app-password"
                   />
                   <button
                     type="button"
                     onClick={() => toggleApiKeyVisibility('smtpPassword')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   >
                     <i className={`ri-${showApiKeys['smtpPassword'] ? 'eye-off' : 'eye'}-line text-lg`}></i>
                   </button>
@@ -305,7 +305,7 @@ export default function EmailGatewayManagement() {
           </div>
         );
       default:
-        return <div className="text-gray-500">Configuration for {gateway.name} coming soon...</div>;
+        return <div className="text-muted-foreground">Configuration for {gateway.name} coming soon...</div>;
     }
   };
 
@@ -320,36 +320,36 @@ export default function EmailGatewayManagement() {
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow-md p-3 sm:p-6">
-        <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Email Gateway</h3>
+      <div className="bg-card rounded-lg shadow-md p-3 sm:p-6">
+        <h3 className="text-base sm:text-lg font-semibold text-foreground mb-3 sm:mb-4">Email Gateway</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
           {gateways && gateways.length > 0 ? (
             gateways.map((gateway) => (
               <div
                 key={gateway.id}
-                className={`p-2 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${activeGateway === gateway.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}`}
+                className={`p-2 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${activeGateway === gateway.id ? 'border-blue-500 bg-primary/10' : 'border-border hover:border-input'}`}
                 onClick={() => handleGatewayChange(gateway.id)}
               >
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-1 sm:gap-2 min-w-0">
                     <span className="text-xl sm:text-2xl flex-shrink-0">{getGatewayIcon(gateway.type)}</span>
                     <div className="min-w-0">
-                      <h4 className="font-medium text-gray-900 text-sm sm:text-base truncate">{gateway.name}</h4>
-                      <p className="text-xs text-gray-500 capitalize truncate">{gateway.type} Gateway</p>
+                      <h4 className="font-medium text-foreground text-sm sm:text-base truncate">{gateway.name}</h4>
+                      <p className="text-xs text-muted-foreground capitalize truncate">{gateway.type} Gateway</p>
                     </div>
                   </div>
-                  <div className={`w-4 h-4 rounded-full flex-shrink-0 ${activeGateway === gateway.id ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
+                  <div className={`w-4 h-4 rounded-full flex-shrink-0 ${activeGateway === gateway.id ? 'bg-primary/100' : 'bg-gray-300'}`}></div>
               </div>
-              <p className="text-xs text-gray-600 line-clamp-2">{getGatewayDescription(gateway.type)}</p>
+              <p className="text-xs text-muted-foreground line-clamp-2">{getGatewayDescription(gateway.type)}</p>
             </div>
           ))
           ) : (
             <div className="col-span-full text-center py-8">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-muted rounded-full flex items-center justify-center">
                 <i className="ri-mail-line text-2xl text-gray-400"></i>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No Email Gateways</h3>
-              <p className="text-gray-500 mb-4">
+              <h3 className="text-lg font-medium text-foreground mb-2">No Email Gateways</h3>
+              <p className="text-muted-foreground mb-4">
                 No email gateways are configured. Add an email gateway to start sending emails.
               </p>
               <button
@@ -367,7 +367,7 @@ export default function EmailGatewayManagement() {
                     envVarPrefix: 'RESEND'
                   }
                 ])}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Add Email Gateway
               </button>
@@ -377,21 +377,21 @@ export default function EmailGatewayManagement() {
       </div>
 
       {getActiveGateway() && (
-        <div className="bg-white rounded-lg shadow-md p-3 sm:p-6">
+        <div className="bg-card rounded-lg shadow-md p-3 sm:p-6">
         <div className="mb-6">
             <div className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">{getActiveGateway()?.name || 'Gateway'} Configuration</h3>
-              <p className="text-sm text-gray-500 mt-1">Configure your {getActiveGateway()?.name || 'email'} gateway settings</p>
+              <h3 className="text-lg font-semibold text-foreground">{getActiveGateway()?.name || 'Gateway'} Configuration</h3>
+              <p className="text-sm text-muted-foreground mt-1">Configure your {getActiveGateway()?.name || 'email'} gateway settings</p>
             </div>
             <div className="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-4">
               <div className="flex-1 min-w-0">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Test Email Address</label>
+                <label className="block text-sm font-medium text-foreground mb-1">Test Email Address</label>
                 <input
                   type="email"
                   value={testEmail}
                   onChange={(e) => setTestEmail(e.target.value)}
                   placeholder="Enter email to test with"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                 />
               </div>
               <button
@@ -407,29 +407,29 @@ export default function EmailGatewayManagement() {
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">From Email Address</label>
+                <label className="block text-sm font-medium text-foreground mb-2">From Email Address</label>
                 <input
                   type="email"
                   value={getActiveGateway()?.fromEmail || ''}
                   onChange={(e) => handleConfigChange(activeGateway, 'fromEmail', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="noreply@yourdomain.com"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">From Name</label>
+                <label className="block text-sm font-medium text-foreground mb-2">From Name</label>
                 <input
                   type="text"
                   value={getActiveGateway()?.fromName || ''}
                   onChange={(e) => handleConfigChange(activeGateway, 'fromName', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your Company Name"
                 />
               </div>
             </div>
 
             <div className="border-t pt-6">
-              <h4 className="text-md font-medium text-gray-900 mb-4">Gateway Configuration</h4>
+              <h4 className="text-md font-medium text-foreground mb-4">Gateway Configuration</h4>
               {renderGatewayConfig(getActiveGateway())}
             </div>
           </div>
@@ -440,7 +440,7 @@ export default function EmailGatewayManagement() {
         <button
           onClick={handleSave}
           disabled={isLoading}
-          className="w-full sm:w-auto px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 text-sm sm:text-base"
+          className="w-full sm:w-auto px-4 sm:px-6 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 text-sm sm:text-base"
         >
           {isLoading ? 'Saving...' : 'Save Configuration'}
         </button>

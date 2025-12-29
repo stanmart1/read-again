@@ -70,24 +70,24 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+      <div className="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-card">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-medium text-gray-900">
+          <h3 className="text-lg font-medium text-foreground">
             {faq ? 'Edit FAQ' : 'Create New FAQ'}
           </h3>
-          <button onClick={onCancel} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onCancel} className="text-gray-400 hover:text-muted-foreground">
             <i className="ri-close-line text-2xl"></i>
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Question *</label>
+            <label className="block text-sm font-medium text-foreground mb-2">Question *</label>
             <ReactQuill
               theme="snow"
               value={formData.question}
               onChange={(value) => handleChange('question', value)}
-              className="bg-white rounded-lg"
+              className="bg-card rounded-lg"
               placeholder="Enter the question..."
               modules={{ toolbar: [['bold', 'italic'], ['clean']] }}
             />
@@ -95,12 +95,12 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Answer *</label>
+            <label className="block text-sm font-medium text-foreground mb-2">Answer *</label>
             <ReactQuill
               theme="snow"
               value={formData.answer}
               onChange={(value) => handleChange('answer', value)}
-              className="bg-white rounded-lg"
+              className="bg-card rounded-lg"
               placeholder="Enter the answer..."
               modules={{
                 toolbar: [
@@ -118,12 +118,12 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+              <label className="block text-sm font-medium text-foreground mb-2">Category *</label>
               <select
                 value={formData.category}
                 onChange={(e) => handleChange('category', e.target.value)}
                 className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.category ? 'border-red-500' : 'border-gray-300'
+                  errors.category ? 'border-red-500' : 'border-input'
                 }`}
               >
                 <option value="">Select a category</option>
@@ -135,19 +135,19 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+              <label className="block text-sm font-medium text-foreground mb-2">Priority</label>
               <input
                 type="number"
                 value={formData.priority}
                 onChange={(e) => handleChange('priority', parseInt(e.target.value) || 0)}
                 min="0"
                 className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.priority ? 'border-red-500' : 'border-gray-300'
+                  errors.priority ? 'border-red-500' : 'border-input'
                 }`}
                 placeholder="0"
               />
               {errors.priority && <p className="mt-1 text-sm text-red-600">{errors.priority}</p>}
-              <p className="mt-1 text-xs text-gray-500">Higher numbers appear first</p>
+              <p className="mt-1 text-xs text-muted-foreground">Higher numbers appear first</p>
             </div>
           </div>
 
@@ -158,9 +158,9 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
                 id="is_active"
                 checked={formData.is_active}
                 onChange={(e) => handleChange('is_active', e.target.checked)}
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
               />
-              <label htmlFor="is_active" className="ml-2 block text-sm text-gray-900">Active</label>
+              <label htmlFor="is_active" className="ml-2 block text-sm text-foreground">Active</label>
             </div>
 
             <div className="flex items-center">
@@ -169,24 +169,24 @@ export default function FAQForm({ faq, categories, onSubmit, onCancel }) {
                 id="is_featured"
                 checked={formData.is_featured}
                 onChange={(e) => handleChange('is_featured', e.target.checked)}
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
               />
-              <label htmlFor="is_featured" className="ml-2 block text-sm text-gray-900">Featured</label>
+              <label htmlFor="is_featured" className="ml-2 block text-sm text-foreground">Featured</label>
             </div>
           </div>
 
-          <div className="flex items-center justify-end space-x-3 pt-6 border-t border-gray-200">
+          <div className="flex items-center justify-end space-x-3 pt-6 border-t border-border">
             <button
               type="button"
               onClick={onCancel}
-              className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+              className="px-4 py-2 border border-input rounded-md shadow-sm text-sm font-medium text-foreground bg-card hover:bg-muted"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-blue-700 disabled:opacity-50"
             >
               <i className="ri-save-line mr-2"></i>
               {loading ? 'Saving...' : (faq ? 'Update FAQ' : 'Create FAQ')}

@@ -22,7 +22,7 @@ export default function ImageCacheManager() {
 
   if (!stats) {
     return (
-      <div className="text-center py-8 text-gray-500">
+      <div className="text-center py-8 text-muted-foreground">
         Failed to load cache statistics
       </div>
     );
@@ -31,43 +31,43 @@ export default function ImageCacheManager() {
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white p-3 rounded-lg border">
-          <div className="text-2xl font-bold text-blue-600">{stats.hit_rate}%</div>
-          <div className="text-sm text-gray-600">Hit Rate</div>
+        <div className="bg-card p-3 rounded-lg border">
+          <div className="text-2xl font-bold text-primary">{stats.hit_rate}%</div>
+          <div className="text-sm text-muted-foreground">Hit Rate</div>
         </div>
-        <div className="bg-white p-3 rounded-lg border">
+        <div className="bg-card p-3 rounded-lg border">
           <div className="text-2xl font-bold text-green-600">{stats.cache_size_mb}</div>
-          <div className="text-sm text-gray-600">Cache Size (MB)</div>
+          <div className="text-sm text-muted-foreground">Cache Size (MB)</div>
         </div>
-        <div className="bg-white p-3 rounded-lg border">
+        <div className="bg-card p-3 rounded-lg border">
           <div className="text-2xl font-bold text-purple-600">{stats.cached_items}</div>
-          <div className="text-sm text-gray-600">Cached Items</div>
+          <div className="text-sm text-muted-foreground">Cached Items</div>
         </div>
-        <div className="bg-white p-3 rounded-lg border">
+        <div className="bg-card p-3 rounded-lg border">
           <div className="text-2xl font-bold text-orange-600">{stats.total_images}</div>
-          <div className="text-sm text-gray-600">Total Images</div>
+          <div className="text-sm text-muted-foreground">Total Images</div>
         </div>
       </div>
 
-      <div className="bg-white p-4 rounded-lg border">
-        <h5 className="font-medium text-gray-900 mb-3">Cache Performance</h5>
+      <div className="bg-card p-4 rounded-lg border">
+        <h5 className="font-medium text-foreground mb-3">Cache Performance</h5>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
           <div>
-            <span className="text-gray-600">Cache Hits:</span>
+            <span className="text-muted-foreground">Cache Hits:</span>
             <span className="ml-2 font-medium text-green-600">{stats.cache_hits.toLocaleString()}</span>
           </div>
           <div>
-            <span className="text-gray-600">Cache Misses:</span>
+            <span className="text-muted-foreground">Cache Misses:</span>
             <span className="ml-2 font-medium text-red-600">{stats.cache_misses.toLocaleString()}</span>
           </div>
           <div>
-            <span className="text-gray-600">Total Requests:</span>
+            <span className="text-muted-foreground">Total Requests:</span>
             <span className="ml-2 font-medium">{stats.total_requests.toLocaleString()}</span>
           </div>
         </div>
         
         {stats.last_cleared && (
-          <div className="mt-3 pt-3 border-t text-sm text-gray-600">
+          <div className="mt-3 pt-3 border-t text-sm text-muted-foreground">
             Last cleared: {new Date(stats.last_cleared).toLocaleString()}
           </div>
         )}
@@ -77,7 +77,7 @@ export default function ImageCacheManager() {
         <button
           onClick={loadStats}
           disabled={loading}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 text-sm font-medium"
+          className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 text-sm font-medium"
         >
           <i className="ri-refresh-line mr-1"></i>
           Refresh Stats
@@ -101,9 +101,9 @@ export default function ImageCacheManager() {
         </button>
       </div>
 
-      <div className="bg-white p-4 rounded-lg border">
+      <div className="bg-card p-4 rounded-lg border">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-gray-700">Cache Health</span>
+          <span className="text-sm font-medium text-foreground">Cache Health</span>
           <div className="flex items-center gap-2">
             {stats.hit_rate >= 80 ? (
               <>

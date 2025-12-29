@@ -51,7 +51,7 @@ export default function SystemSettings() {
   const renderGeneralSettings = () => (
     <div className="space-y-3 sm:space-y-6">
       <div>
-        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Site Name</label>
+        <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">Site Name</label>
         <input
           type="text"
           value={settings.site_name || ''}
@@ -61,7 +61,7 @@ export default function SystemSettings() {
       </div>
       
       <div>
-        <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Site Description</label>
+        <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">Site Description</label>
         <textarea
           value={settings.site_description || ''}
           onChange={(e) => handleSettingChange('site_description', e.target.value)}
@@ -73,7 +73,7 @@ export default function SystemSettings() {
       <div className="space-y-2 sm:space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
-            <label className="text-xs sm:text-sm font-medium text-gray-700">Maintenance Mode</label>
+            <label className="text-xs sm:text-sm font-medium text-foreground">Maintenance Mode</label>
             <p className="text-xs text-muted-foreground">Temporarily disable site for maintenance</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
@@ -89,7 +89,7 @@ export default function SystemSettings() {
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
-            <label className="text-xs sm:text-sm font-medium text-gray-700">User Registration</label>
+            <label className="text-xs sm:text-sm font-medium text-foreground">User Registration</label>
             <p className="text-xs text-muted-foreground">Allow new users to register</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
@@ -105,7 +105,7 @@ export default function SystemSettings() {
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
-            <label className="text-xs sm:text-sm font-medium text-gray-700">Email Notifications</label>
+            <label className="text-xs sm:text-sm font-medium text-foreground">Email Notifications</label>
             <p className="text-xs text-muted-foreground">Send email notifications to users</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
@@ -121,7 +121,7 @@ export default function SystemSettings() {
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
-            <label className="text-xs sm:text-sm font-medium text-gray-700">Double Opt-In Registration</label>
+            <label className="text-xs sm:text-sm font-medium text-foreground">Double Opt-In Registration</label>
             <p className="text-xs text-muted-foreground">Require email verification for new user registrations</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
@@ -137,7 +137,7 @@ export default function SystemSettings() {
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
-            <label className="text-xs sm:text-sm font-medium text-gray-700">Review Moderation</label>
+            <label className="text-xs sm:text-sm font-medium text-foreground">Review Moderation</label>
             <p className="text-xs text-muted-foreground">Moderate reviews before publishing</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
@@ -153,7 +153,7 @@ export default function SystemSettings() {
         
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           <div>
-            <label className="text-xs sm:text-sm font-medium text-gray-700">Redis Caching</label>
+            <label className="text-xs sm:text-sm font-medium text-foreground">Redis Caching</label>
             <p className="text-xs text-muted-foreground">Enable Redis for caching and rate limiting</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
@@ -173,7 +173,7 @@ export default function SystemSettings() {
   const renderSecuritySettings = () => (
     <div className="space-y-6">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Session Timeout (minutes)</label>
+        <label className="block text-sm font-medium text-foreground mb-2">Session Timeout (minutes)</label>
         <input
           type="number"
           min="5"
@@ -187,7 +187,7 @@ export default function SystemSettings() {
       
       <div className="flex items-center justify-between">
         <div>
-          <label className="text-sm font-medium text-gray-700">Auto Backup</label>
+          <label className="text-sm font-medium text-foreground">Auto Backup</label>
           <p className="text-sm text-muted-foreground">Automatically backup system data</p>
         </div>
         <label className="relative inline-flex items-center cursor-pointer">
@@ -202,7 +202,7 @@ export default function SystemSettings() {
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Backup Frequency</label>
+        <label className="block text-sm font-medium text-foreground mb-2">Backup Frequency</label>
         <select
           value={settings.backup_frequency || 'daily'}
           onChange={(e) => handleSettingChange('backup_frequency', e.target.value)}
@@ -216,7 +216,7 @@ export default function SystemSettings() {
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Max File Size (MB)</label>
+        <label className="block text-sm font-medium text-foreground mb-2">Max File Size (MB)</label>
         <input
           type="number"
           value={settings.max_file_size_mb || 10}
@@ -226,7 +226,7 @@ export default function SystemSettings() {
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Allowed File Types</label>
+        <label className="block text-sm font-medium text-foreground mb-2">Allowed File Types</label>
         <div className="space-y-2">
           {['pdf', 'epub', 'mobi', 'txt', 'doc', 'docx'].map(type => (
             <label key={type} className="flex items-center">
@@ -242,13 +242,13 @@ export default function SystemSettings() {
                 }}
                 className="mr-2"
               />
-              <span className="text-sm text-gray-700">{type.toUpperCase()}</span>
+              <span className="text-sm text-foreground">{type.toUpperCase()}</span>
             </label>
           ))}
         </div>
       </div>
       
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+      <div className="bg-primary/10 border border-blue-200 rounded-lg p-4 mb-6">
         <h4 className="font-medium text-blue-800 mb-4">Image Cache Management</h4>
         <ImageCacheManager />
       </div>
@@ -292,7 +292,7 @@ export default function SystemSettings() {
           
           {/* Tabs - scrollable on mobile */}
           <div className="overflow-x-auto -mx-3 sm:mx-0 px-3 sm:px-0 mb-4 sm:mb-6">
-            <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg w-fit">
+            <div className="flex space-x-1 bg-muted p-1 rounded-lg w-fit">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}

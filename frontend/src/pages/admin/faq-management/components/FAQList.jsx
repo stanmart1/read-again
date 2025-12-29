@@ -38,78 +38,78 @@ export default function FAQList({
 
   if (faqs.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
-        <div className="text-gray-500">
+      <div className="bg-card rounded-lg shadow-sm border border-border p-8 text-center">
+        <div className="text-muted-foreground">
           <i className="ri-question-line text-6xl mb-4"></i>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">No FAQs found</h3>
-          <p className="text-gray-600">Get started by creating your first FAQ.</p>
+          <h3 className="text-lg font-medium text-foreground mb-2">No FAQs found</h3>
+          <p className="text-muted-foreground">Get started by creating your first FAQ.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+    <div className="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="bg-muted">
             <tr>
               <th className="px-6 py-3 text-left">
                 <input
                   type="checkbox"
                   checked={selectedFAQs.length === faqs.length && faqs.length > 0}
                   onChange={handleSelectAll}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
                 />
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 Question
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 Category
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 Priority
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 Views
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 Created
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-card divide-y divide-gray-200">
             {faqs.map((faq) => (
-              <tr key={faq.id} className="hover:bg-gray-50">
+              <tr key={faq.id} className="hover:bg-muted">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <input
                     type="checkbox"
                     checked={selectedFAQs.includes(faq.id)}
                     onChange={() => onSelectFAQ(faq.id)}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-primary focus:ring-blue-500 border-input rounded"
                   />
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <button
                       onClick={() => toggleExpanded(faq.id)}
-                      className="mr-2 text-gray-400 hover:text-gray-600"
+                      className="mr-2 text-gray-400 hover:text-muted-foreground"
                     >
                       <i className={`ri-arrow-${expandedFAQs.includes(faq.id) ? 'up' : 'down'}-s-line`}></i>
                     </button>
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-gray-900 line-clamp-2">
+                      <div className="text-sm font-medium text-foreground line-clamp-2">
                         {faq.question}
                       </div>
                       {expandedFAQs.includes(faq.id) && (
-                        <div className="mt-2 text-sm text-gray-600 bg-gray-50 p-3 rounded">
+                        <div className="mt-2 text-sm text-muted-foreground bg-muted p-3 rounded">
                           {faq.answer}
                         </div>
                       )}
@@ -137,27 +137,27 @@ export default function FAQList({
                     {faq.is_active ? 'Active' : 'Inactive'}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
                   {faq.priority}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
                   {faq.view_count || 0}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground">
                   {new Date(faq.created_at).toLocaleDateString()}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex items-center justify-end space-x-2">
                     <button
                       onClick={() => onToggleStatus(faq.id, !faq.is_active)}
-                      className="text-gray-600 hover:text-gray-900"
+                      className="text-muted-foreground hover:text-foreground"
                       title={faq.is_active ? 'Deactivate' : 'Activate'}
                     >
                       <i className={`ri-eye${faq.is_active ? '' : '-off'}-line`}></i>
                     </button>
                     <button
                       onClick={() => onEditFAQ(faq)}
-                      className="text-blue-600 hover:text-blue-900"
+                      className="text-primary hover:text-blue-900"
                       title="Edit FAQ"
                     >
                       <i className="ri-edit-line"></i>

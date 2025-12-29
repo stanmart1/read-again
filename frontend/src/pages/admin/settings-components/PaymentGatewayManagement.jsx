@@ -234,10 +234,10 @@ export default function PaymentGatewayManagement() {
   const getStatusColor = (status) => {
     switch (status) {
       case 'active': return 'bg-green-100 text-green-800';
-      case 'inactive': return 'bg-gray-100 text-gray-800';
+      case 'inactive': return 'bg-muted text-gray-800';
       case 'error': return 'bg-red-100 text-red-800';
       case 'testing': return 'bg-yellow-100 text-yellow-800';
-      default: return 'bg-gray-100 text-gray-800';
+      default: return 'bg-muted text-gray-800';
     }
   };
 
@@ -254,15 +254,15 @@ export default function PaymentGatewayManagement() {
 
 
   const renderGatewayCard = (gateway) => (
-    <div key={gateway.id} className="bg-white border border-gray-200 rounded-lg p-6">
+    <div key={gateway.id} className="bg-card border border-border rounded-lg p-6">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-            <i className={`${gateway.icon} text-2xl text-blue-600`}></i>
+          <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+            <i className={`${gateway.icon} text-2xl text-primary`}></i>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900">{gateway.name}</h3>
-            <p className="text-sm text-gray-600">{gateway.description}</p>
+            <h3 className="text-lg font-semibold text-foreground">{gateway.name}</h3>
+            <p className="text-sm text-muted-foreground">{gateway.description}</p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
@@ -277,25 +277,25 @@ export default function PaymentGatewayManagement() {
               onChange={(e) => toggleGateway(gateway.id, e.target.checked)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
-          <h4 className="text-sm font-medium text-gray-700 mb-2">Supported Currencies</h4>
+          <h4 className="text-sm font-medium text-foreground mb-2">Supported Currencies</h4>
           <div className="flex flex-wrap gap-1">
             {gateway.supportedCurrencies.map(currency => (
-              <span key={currency} className="px-2 py-1 bg-gray-100 text-xs rounded">{currency}</span>
+              <span key={currency} className="px-2 py-1 bg-muted text-xs rounded">{currency}</span>
             ))}
           </div>
         </div>
         <div>
-          <h4 className="text-sm font-medium text-gray-700 mb-2">Features</h4>
+          <h4 className="text-sm font-medium text-foreground mb-2">Features</h4>
           <div className="flex flex-wrap gap-1">
             {gateway.features.map(feature => (
-              <span key={feature} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">{feature}</span>
+              <span key={feature} className="px-2 py-1 bg-primary/20 text-blue-800 text-xs rounded">{feature}</span>
             ))}
           </div>
         </div>
@@ -304,8 +304,8 @@ export default function PaymentGatewayManagement() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h4 className="text-sm font-medium text-gray-700">Test Mode</h4>
-            <p className="text-xs text-gray-500">Use test API keys for development</p>
+            <h4 className="text-sm font-medium text-foreground">Test Mode</h4>
+            <p className="text-xs text-muted-foreground">Use test API keys for development</p>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
@@ -314,7 +314,7 @@ export default function PaymentGatewayManagement() {
               onChange={() => toggleTestMode(gateway.id)}
               className="sr-only peer"
             />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-card after:border-input after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </div>
 
@@ -322,7 +322,7 @@ export default function PaymentGatewayManagement() {
           {gateway.id === 'flutterwave' && (
             <div className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1">
                   Public Key {gateway.testMode && '(Test)'} *
                 </label>
                 <div className="relative">
@@ -331,14 +331,14 @@ export default function PaymentGatewayManagement() {
                     value={gateway.apiKeys.publicKey}
                     onChange={(e) => updateApiKey(gateway.id, 'publicKey', e.target.value)}
                     className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${
-                      validationErrors[gateway.id]?.publicKey ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                      validationErrors[gateway.id]?.publicKey ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Flutterwave Public Key (FLWPUBK-...)"
                   />
                   <button
                     type="button"
                     onClick={() => setShowApiKeys(prev => ({ ...prev, [`${gateway.id}_publicKey`]: !prev[`${gateway.id}_publicKey`] }))}
-                    className="absolute right-2 top-2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-2 top-2 text-muted-foreground hover:text-foreground"
                   >
                     <i className={showApiKeys[`${gateway.id}_publicKey`] ? 'ri-eye-off-line' : 'ri-eye-line'}></i>
                   </button>
@@ -352,7 +352,7 @@ export default function PaymentGatewayManagement() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1">
                   Secret Key {gateway.testMode && '(Test)'} *
                 </label>
                 <div className="relative">
@@ -361,14 +361,14 @@ export default function PaymentGatewayManagement() {
                     value={gateway.apiKeys.secretKey}
                     onChange={(e) => updateApiKey(gateway.id, 'secretKey', e.target.value)}
                     className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${
-                      validationErrors[gateway.id]?.secretKey ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                      validationErrors[gateway.id]?.secretKey ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Flutterwave Secret Key (FLWSECK-...)"
                   />
                   <button
                     type="button"
                     onClick={() => setShowApiKeys(prev => ({ ...prev, [`${gateway.id}_secretKey`]: !prev[`${gateway.id}_secretKey`] }))}
-                    className="absolute right-2 top-2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-2 top-2 text-muted-foreground hover:text-foreground"
                   >
                     <i className={showApiKeys[`${gateway.id}_secretKey`] ? 'ri-eye-off-line' : 'ri-eye-line'}></i>
                   </button>
@@ -382,7 +382,7 @@ export default function PaymentGatewayManagement() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-foreground mb-1">
                   Hash {gateway.testMode && '(Test)'} *
                 </label>
                 <div className="relative">
@@ -391,14 +391,14 @@ export default function PaymentGatewayManagement() {
                     value={gateway.apiKeys.hash}
                     onChange={(e) => updateApiKey(gateway.id, 'hash', e.target.value)}
                     className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${
-                      validationErrors[gateway.id]?.hash ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                      validationErrors[gateway.id]?.hash ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Flutterwave Encryption Hash"
                   />
                   <button
                     type="button"
                     onClick={() => setShowApiKeys(prev => ({ ...prev, [`${gateway.id}_hash`]: !prev[`${gateway.id}_hash`] }))}
-                    className="absolute right-2 top-2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-2 top-2 text-muted-foreground hover:text-foreground"
                   >
                     <i className={showApiKeys[`${gateway.id}_hash`] ? 'ri-eye-off-line' : 'ri-eye-line'}></i>
                   </button>
@@ -414,9 +414,9 @@ export default function PaymentGatewayManagement() {
           )}
 
           {gateway.id === 'bank_transfer' && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-primary/10 border border-blue-200 rounded-lg p-4">
               <div className="flex items-start space-x-3 mb-4">
-                <i className="ri-information-line text-blue-600 text-lg mt-0.5"></i>
+                <i className="ri-information-line text-primary text-lg mt-0.5"></i>
                 <div>
                   <h4 className="text-sm font-medium text-blue-900 mb-1">Manual Payment Gateway</h4>
                   <p className="text-sm text-blue-700">
@@ -426,13 +426,13 @@ export default function PaymentGatewayManagement() {
               </div>
               <div className="space-y-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Bank Name *</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Bank Name *</label>
                   <input
                     type="text"
                     value={gateway.bankAccount?.bankName || ''}
                     onChange={(e) => updateBankAccount(gateway.id, 'bankName', e.target.value)}
                     className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      validationErrors[gateway.id]?.bankName ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                      validationErrors[gateway.id]?.bankName ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Enter Bank Name"
                   />
@@ -445,13 +445,13 @@ export default function PaymentGatewayManagement() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Account Number *</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Account Number *</label>
                   <input
                     type="text"
                     value={gateway.bankAccount?.accountNumber || ''}
                     onChange={(e) => updateBankAccount(gateway.id, 'accountNumber', e.target.value)}
                     className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      validationErrors[gateway.id]?.accountNumber ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                      validationErrors[gateway.id]?.accountNumber ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Enter Account Number"
                   />
@@ -464,13 +464,13 @@ export default function PaymentGatewayManagement() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Account Name *</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Account Name *</label>
                   <input
                     type="text"
                     value={gateway.bankAccount?.accountName || ''}
                     onChange={(e) => updateBankAccount(gateway.id, 'accountName', e.target.value)}
                     className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      validationErrors[gateway.id]?.accountName ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                      validationErrors[gateway.id]?.accountName ? 'border-red-300 focus:ring-red-500' : 'border-input'
                     }`}
                     placeholder="Enter Account Name"
                   />
@@ -483,15 +483,15 @@ export default function PaymentGatewayManagement() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Payment Instructions</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Payment Instructions</label>
                   <textarea
                     value={gateway.bankAccount?.instructions || ''}
                     onChange={(e) => updateBankAccount(gateway.id, 'instructions', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     rows={3}
                     placeholder="Instructions for customers making bank transfers"
                   />
-                  <div className="mt-1 text-xs text-gray-500 flex items-start">
+                  <div className="mt-1 text-xs text-muted-foreground flex items-start">
                     <i className="ri-information-line mr-1 mt-0.5"></i>
                     <span>These instructions will appear on the checkout page for Bank Transfer payments.</span>
                   </div>
@@ -501,7 +501,7 @@ export default function PaymentGatewayManagement() {
           )}
         </div>
 
-        <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+        <div className="flex items-center justify-between pt-4 border-t border-border">
           <div className="flex items-center space-x-2">
             {paymentSettings.defaultGateway === gateway.id && (
               <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">
@@ -514,7 +514,7 @@ export default function PaymentGatewayManagement() {
             <button
               onClick={() => testGatewayConnection(gateway.id)}
               disabled={testingGateway === gateway.id}
-              className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center"
+              className="px-3 py-1 text-sm bg-primary/20 text-blue-700 rounded-lg hover:bg-blue-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center"
             >
               {testingGateway === gateway.id ? (
                 <>
@@ -531,7 +531,7 @@ export default function PaymentGatewayManagement() {
             <button
               onClick={() => setAsDefault(gateway.id)}
               disabled={paymentSettings.defaultGateway === gateway.id}
-              className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center"
+              className="px-3 py-1 text-sm bg-muted text-foreground rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center"
             >
               <i className="ri-star-line mr-1"></i>
               Set Default
@@ -580,20 +580,20 @@ export default function PaymentGatewayManagement() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">Payment Gateway Management</h3>
-          <p className="text-sm text-gray-600">Configure payment gateways and processing settings</p>
+          <h3 className="text-lg font-semibold text-foreground">Payment Gateway Management</h3>
+          <p className="text-sm text-muted-foreground">Configure payment gateways and processing settings</p>
         </div>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <h4 className="text-lg font-medium text-gray-900 mb-4">Payment Configuration</h4>
+      <div className="bg-card border border-border rounded-lg p-6">
+        <h4 className="text-lg font-medium text-foreground mb-4">Payment Configuration</h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Default Gateway</label>
+            <label className="block text-sm font-medium text-foreground mb-1">Default Gateway</label>
             <select
               value={paymentSettings.defaultGateway}
               onChange={(e) => setPaymentSettings(prev => ({ ...prev, defaultGateway: e.target.value }))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {paymentGateways.filter(g => g.enabled).map(gateway => (
                 <option key={gateway.id} value={gateway.id}>{gateway.name}</option>
@@ -601,11 +601,11 @@ export default function PaymentGatewayManagement() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Currency</label>
+            <label className="block text-sm font-medium text-foreground mb-1">Currency</label>
             <select
               value={paymentSettings.currency}
               onChange={(e) => setPaymentSettings(prev => ({ ...prev, currency: e.target.value }))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="NGN">Nigerian Naira (NGN)</option>
               <option value="USD">US Dollar (USD)</option>
@@ -614,13 +614,13 @@ export default function PaymentGatewayManagement() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Tax Rate (%)</label>
+            <label className="block text-sm font-medium text-foreground mb-1">Tax Rate (%)</label>
             <input
               type="number"
               step="0.1"
               value={paymentSettings.taxRate}
               onChange={(e) => setPaymentSettings(prev => ({ ...prev, taxRate: parseFloat(e.target.value) || 0 }))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="7.5"
             />
           </div>
@@ -629,7 +629,7 @@ export default function PaymentGatewayManagement() {
 
       <div className="space-y-6">
         <div>
-          <h4 className="text-lg font-medium text-gray-900 mb-4">Payment Gateways</h4>
+          <h4 className="text-lg font-medium text-foreground mb-4">Payment Gateways</h4>
           <div className="space-y-6">
             {paymentGateways.map(renderGatewayCard)}
           </div>

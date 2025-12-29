@@ -158,7 +158,7 @@ const AdminDashboard = () => {
               recentActivities.map((activity, i) => (
                 <div key={i} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors duration-200">
                   <div className={`w-7 sm:w-8 h-7 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    activity.type === 'user' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' :
+                    activity.type === 'user' ? 'bg-primary/20 dark:bg-blue-900/30 text-primary dark:text-blue-400' :
                     activity.type === 'book' ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' :
                     activity.type === 'order' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400' :
                     'bg-muted text-muted-foreground'

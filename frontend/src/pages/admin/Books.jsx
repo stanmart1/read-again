@@ -256,7 +256,7 @@ const AdminBooks = () => {
               
               <div className="bg-card rounded-lg p-4 mb-4">
                 <h4 className="font-medium text-foreground mb-2">Troubleshooting Steps:</h4>
-                <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
+                <ol className="list-decimal list-inside space-y-1 text-sm text-foreground">
                   <li>Check if the database is running and accessible</li>
                   <li>Verify your environment variables are set correctly</li>
                   <li>Ensure you have the required permissions</li>
@@ -296,7 +296,7 @@ const AdminBooks = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
               <div className="bg-card rounded-lg p-6 shadow-xl">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                <p className="mt-4 text-gray-700">Loading books...</p>
+                <p className="mt-4 text-foreground">Loading books...</p>
               </div>
             </div>
           )}
@@ -305,7 +305,7 @@ const AdminBooks = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
               <div className="bg-card rounded-lg p-6 shadow-xl">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto"></div>
-                <p className="mt-4 text-gray-700">Loading book details...</p>
+                <p className="mt-4 text-foreground">Loading book details...</p>
               </div>
             </div>
           )}
@@ -320,7 +320,7 @@ const AdminBooks = () => {
                     className={`flex-shrink-0 mr-3 sm:mr-4 md:mr-6 lg:mr-8 py-3 sm:py-4 px-2 border-b-2 font-medium text-sm sm:text-base capitalize whitespace-nowrap transition-colors duration-200 ${
                       activeSection === section
                         ? 'border-primary text-primary'
-                        : 'border-transparent text-muted-foreground hover:text-gray-700 hover:border-input'
+                        : 'border-transparent text-muted-foreground hover:text-foreground hover:border-input'
                     }`}
                   >
                     {section}
@@ -392,7 +392,7 @@ const AdminBooks = () => {
                   {/* Pagination */}
                   {books.length > 0 && (
                     <div className="flex items-center justify-between bg-card rounded-lg shadow-md p-4">
-                      <div className="text-sm text-gray-700">
+                      <div className="text-sm text-foreground">
                         Showing <span className="font-medium">{(pagination.page - 1) * pagination.limit + 1}</span> to{' '}
                         <span className="font-medium">{Math.min(pagination.page * pagination.limit, pagination.total)}</span> of{' '}
                         <span className="font-medium">{pagination.total}</span> books
@@ -470,7 +470,7 @@ const AdminBooks = () => {
                   <h3 className="text-xl font-bold text-foreground mb-4">Batch Update Books</h3>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                      <label className="block text-sm font-medium text-foreground mb-1">Status</label>
                       <select
                         value={forms.batchUpdate.status}
                         onChange={(e) => setForms(prev => ({ 
@@ -486,7 +486,7 @@ const AdminBooks = () => {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                      <label className="block text-sm font-medium text-foreground mb-1">Category</label>
                       <select
                         value={forms.batchUpdate.category_id}
                         onChange={(e) => setForms(prev => ({ 
@@ -502,7 +502,7 @@ const AdminBooks = () => {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Price Adjustment</label>
+                      <label className="block text-sm font-medium text-foreground mb-1">Price Adjustment</label>
                       <div className="flex gap-2">
                         <input
                           type="number"
@@ -726,7 +726,7 @@ const AdminBooks = () => {
                                       setErrors(prev => ({ ...prev, users: '' }));
                                     }}
                                     className={`w-full text-left px-3 py-2 border-b border-gray-100 last:border-b-0 ${
-                                      alreadyAssigned ? 'bg-muted opacity-60 cursor-not-allowed' : 'hover:bg-blue-50'
+                                      alreadyAssigned ? 'bg-muted opacity-60 cursor-not-allowed' : 'hover:bg-primary/10'
                                     }`}
                                   >
                                     <div className="flex items-center justify-between">
@@ -752,12 +752,12 @@ const AdminBooks = () => {
                       {/* Selected Users */}
                       {selection.users.length > 0 && (
                         <div className="mt-3">
-                          <p className="text-sm font-medium text-gray-700 mb-2">Selected Users ({selection.users.length}):</p>
+                          <p className="text-sm font-medium text-foreground mb-2">Selected Users ({selection.users.length}):</p>
                           <div className="space-y-2 max-h-32 overflow-y-auto">
                             {selection.users.map(user => {
                               const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
                               return (
-                                <div key={user.id} className="flex items-center justify-between bg-blue-50 px-3 py-2 rounded-lg">
+                                <div key={user.id} className="flex items-center justify-between bg-primary/10 px-3 py-2 rounded-lg">
                                   <div>
                                     <span className="font-medium text-foreground">{fullName}</span>
                                     <span className="text-sm text-muted-foreground ml-2">({user.email})</span>
@@ -792,7 +792,7 @@ const AdminBooks = () => {
                         onClick={() => setForms(prev => ({ ...prev, selectedFormat: 'ebook' }))}
                         className={`p-4 rounded-xl border-2 transition-all text-center group ${
                           forms.selectedFormat === 'ebook'
-                            ? 'border-primary bg-blue-50 text-blue-700'
+                            ? 'border-primary bg-primary/10 text-blue-700'
                             : 'border-border hover:border-input text-muted-foreground hover:bg-muted'
                         }`}
                       >
@@ -807,7 +807,7 @@ const AdminBooks = () => {
                         onClick={() => setForms(prev => ({ ...prev, selectedFormat: 'physical' }))}
                         className={`p-4 rounded-xl border-2 transition-all text-center group ${
                           forms.selectedFormat === 'physical'
-                            ? 'border-primary bg-blue-50 text-blue-700'
+                            ? 'border-primary bg-primary/10 text-blue-700'
                             : 'border-border hover:border-input text-muted-foreground hover:bg-muted'
                         }`}
                       >
@@ -864,7 +864,7 @@ const AdminBooks = () => {
                         setForms(prev => ({ ...prev, selectedFormat: 'ebook', userSearch: '' }));
                       }}
                       disabled={loadingStates.assign}
-                      className="flex-1 px-4 py-3 border-2 border-input rounded-xl hover:bg-gray-100 transition-colors font-medium text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex-1 px-4 py-3 border-2 border-input rounded-xl hover:bg-muted transition-colors font-medium text-foreground disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Cancel
                     </button>
@@ -903,7 +903,7 @@ const AdminBooks = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
               <div className="bg-card rounded-xl shadow-2xl max-w-md w-full">
                 <div className="p-6">
-                  <div className="flex items-center justify-center w-12 h-12 mx-auto bg-blue-100 rounded-full mb-4">
+                  <div className="flex items-center justify-center w-12 h-12 mx-auto bg-primary/20 rounded-full mb-4">
                     <i className="ri-question-line text-2xl text-primary"></i>
                   </div>
                   <h3 className="text-xl font-bold text-foreground text-center mb-2">Confirm Assignment</h3>

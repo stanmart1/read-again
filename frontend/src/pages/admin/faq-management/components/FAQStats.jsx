@@ -4,8 +4,8 @@ export default function FAQStats({ stats }) {
       title: 'Total FAQs',
       value: stats.total_faqs || 0,
       icon: 'ri-question-line',
-      color: 'bg-blue-500',
-      textColor: 'text-blue-600'
+      color: 'bg-primary/100',
+      textColor: 'text-primary'
     },
     {
       title: 'Categories',
@@ -33,14 +33,14 @@ export default function FAQStats({ stats }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       {statCards.map((stat, index) => (
-        <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div key={index} className="bg-card rounded-lg shadow-sm border border-border p-6">
           <div className="flex items-center">
             <div className={`flex-shrink-0 p-3 rounded-lg ${stat.color} bg-opacity-10`}>
               <i className={`${stat.icon} text-2xl ${stat.textColor}`}></i>
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <p className="text-sm font-medium text-muted-foreground">{stat.title}</p>
+              <p className="text-2xl font-bold text-foreground">{stat.value}</p>
             </div>
           </div>
         </div>
