@@ -74,15 +74,6 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                 </span>
               </div>
               <div>
-                <span className="text-muted-foreground">Format:</span>
-                <span className="ml-1 font-medium text-foreground break-words">
-                  {book.format === 'ebook' ? 'Ebook' : 
-                   book.format === 'physical' ? 'Physical' :
-                   book.format === 'hybrid' ? 'Hybrid' :
-                   book.format}
-                </span>
-              </div>
-              <div>
                 <span className="text-muted-foreground">Stock:</span>
                 <span className="ml-1 font-medium text-foreground">
                   {book.stock_quantity}
@@ -215,10 +206,6 @@ const BookTable = ({ books, selectedBooks, onSelectionChange, onBookAction, edit
                           {book.title}
                         </div>
                         <div className="text-sm text-muted-foreground break-words">
-                          {book.format === 'ebook' ? 'Ebook' : 
-                           book.format === 'physical' ? 'Physical' :
-                           book.format === 'hybrid' ? 'Hybrid' :
-                           book.format} • Stock: {book.stock_quantity}
                         </div>
                       </div>
                     </div>
