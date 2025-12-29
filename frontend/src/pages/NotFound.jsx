@@ -48,12 +48,6 @@ export default function NotFound() {
               </p>
             </motion.div>
 
-            {/* Search Bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mb-12"
             >
               <div className="max-w-md mx-auto">
                 <div className="relative">
@@ -62,7 +56,7 @@ export default function NotFound() {
                     placeholder="Search for books, blog posts..."
                     className="w-full px-6 py-4 rounded-full border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
-                  <button className="absolute right-2 top-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:from-primary/90 hover:to-primary/90">
+                  <button className="absolute right-2 top-2 bg-primary text-primary-foreground px-6 py-2 rounded-full hover:bg-primary/90">
                     <i className="ri-search-line"></i>
                   </button>
                 </div>
@@ -85,7 +79,7 @@ export default function NotFound() {
                     to={page.path}
                     className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all group"
                   >
-                    <i className={`${page.icon} text-4xl text-blue-600 group-hover:text-primary transition-colors mb-3`}></i>
+                    <i className={`${page.icon} text-4xl text-primary group-hover:text-primary transition-colors mb-3`}></i>
                     <p className="font-semibold text-foreground">{page.name}</p>
                   </Link>
                 ))}
@@ -101,7 +95,7 @@ export default function NotFound() {
             >
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-primary/90 hover:to-primary/90 transition-all"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold hover:bg-primary/90 transition-all"
               >
                 <i className="ri-home-line"></i>
                 Back to Home
