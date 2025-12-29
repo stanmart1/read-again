@@ -23,7 +23,7 @@ const Toast = ({ message, type = 'success', onClose, duration = 3000 }) => {
   return (
     <div className="fixed top-4 right-4 z-[9999] animate-slide-in-right">
       <div className={`${styles[type]} text-white px-4 sm:px-6 py-3 sm:py-4 rounded-lg shadow-xl flex items-center gap-3 min-w-[280px] sm:min-w-[320px] max-w-md`}>
-        <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 bg-card/20 rounded-full flex items-center justify-center flex-shrink-0">
           <i className={`${icons[type]} text-lg sm:text-xl`}></i>
         </div>
         <p className="flex-1 text-sm sm:text-base font-medium">{message}</p>

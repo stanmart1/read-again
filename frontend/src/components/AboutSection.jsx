@@ -36,7 +36,7 @@ export default function AboutSection() {
 
   if (loading) {
     return (
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
@@ -47,7 +47,7 @@ export default function AboutSection() {
   }
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Image */}
@@ -104,7 +104,7 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="flex items-center space-x-3 p-3 bg-muted rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <i className={`${value.icon} text-2xl ${
                     index === 0 ? 'text-blue-600' : 'text-purple-600'

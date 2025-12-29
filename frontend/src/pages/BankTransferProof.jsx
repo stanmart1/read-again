@@ -175,7 +175,7 @@ export default function BankTransferProof() {
             </div>
 
             {file && (
-              <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+              <div className="mb-4 p-3 bg-muted rounded-lg">
                 <div className="flex items-center">
                   <i className="ri-file-line text-muted-foreground mr-2"></i>
                   <span className="text-sm text-foreground">{file.name}</span>

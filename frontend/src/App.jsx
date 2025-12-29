@@ -7,7 +7,7 @@ import { useSessionTimeout } from './hooks/useSessionTimeout';
 import { ScrollToTop } from './utils/scrollToTop';
 
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-white">
+  <div className="min-h-screen flex items-center justify-center bg-card">
     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold"></div>
   </div>
 );

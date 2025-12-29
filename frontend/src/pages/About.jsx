@@ -133,7 +133,7 @@ export default function About() {
 
       {/* Mission Section */}
       {aboutData.mission && (
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -185,7 +185,7 @@ export default function About() {
 
       {/* Values Section */}
       {aboutData.values && aboutData.values.length > 0 && (
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
@@ -210,7 +210,7 @@ export default function About() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05, duration: 0.3 }}
-                className="text-center p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow"
+                className="text-center p-6 bg-muted rounded-xl hover:shadow-lg transition-shadow"
               >
                 <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <i className={`${value.icon} text-3xl text-white`}></i>
@@ -230,7 +230,7 @@ export default function About() {
 
       {/* Team Section */}
       {aboutData.team && aboutData.team.length > 0 && (
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -264,7 +264,7 @@ export default function About() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: (index % aboutData.team.length) * 0.1 }}
-                    className="flex-shrink-0 w-[360px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer snap-center"
+                    className="flex-shrink-0 w-[360px] bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer snap-center"
                     onClick={() => setSelectedMember(member)}
                   >
                     {member.image && (
@@ -296,7 +296,7 @@ export default function About() {
               <div className="flex justify-center mt-8 gap-3 items-center">
                 <button
                   onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm font-medium text-foreground hover:bg-gray-100 transition-colors shadow-md"
+                  className="flex items-center gap-2 px-4 py-2 bg-card rounded-full text-sm font-medium text-foreground hover:bg-gray-100 transition-colors shadow-md"
                 >
                   <i className={`ri-${isAutoScrolling ? 'pause' : 'play'}-circle-line text-lg`}></i>
                   {isAutoScrolling ? 'Auto-scroll' : 'Paused'}
@@ -327,7 +327,7 @@ export default function About() {
               )}
               <button
                 onClick={() => setSelectedMember(null)}
-                className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors"
+                className="absolute top-4 right-4 w-10 h-10 bg-card rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors"
               >
                 <i className="ri-close-line text-2xl text-foreground"></i>
               </button>
@@ -368,7 +368,7 @@ export default function About() {
             {aboutData.cta?.primaryButton && (
               <a
                 href="/signup"
-                className="inline-block bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors text-lg"
+                className="inline-block bg-card text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors text-lg"
               >
                 {aboutData.cta.primaryButton}
               </a>

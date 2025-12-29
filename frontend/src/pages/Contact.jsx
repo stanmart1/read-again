@@ -186,7 +186,7 @@ export default function Contact() {
 
               <div className="space-y-6">
                 {contactInfo?.contactMethods?.filter(m => m.isActive).map((method, idx) => (
-                  <div key={idx} className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-md">
+                  <div key={idx} className="flex items-start space-x-4 p-6 bg-card rounded-xl shadow-md">
                     <div className={`w-12 h-12 ${idx % 3 === 0 ? 'bg-blue-100' : idx % 3 === 1 ? 'bg-purple-100' : 'bg-indigo-100'} rounded-full flex items-center justify-center flex-shrink-0`}>
                       <i className={`${method.icon} text-2xl ${idx % 3 === 0 ? 'text-blue-600' : idx % 3 === 1 ? 'text-purple-600' : 'text-indigo-600'}`}></i>
                     </div>
@@ -215,16 +215,16 @@ export default function Contact() {
                   Stay connected on social media
                 </p>
                 <div className="flex space-x-4">
-                  <a href="#" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <a href="#" className="w-12 h-12 bg-card/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                     <i className="ri-facebook-fill text-2xl"></i>
                   </a>
-                  <a href="#" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <a href="#" className="w-12 h-12 bg-card/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                     <i className="ri-twitter-fill text-2xl"></i>
                   </a>
-                  <a href="#" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <a href="#" className="w-12 h-12 bg-card/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                     <i className="ri-instagram-fill text-2xl"></i>
                   </a>
-                  <a href="#" className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <a href="#" className="w-12 h-12 bg-card/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                     <i className="ri-linkedin-fill text-2xl"></i>
                   </a>
                 </div>

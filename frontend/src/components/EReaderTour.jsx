@@ -176,7 +176,7 @@ export default function EReaderTour({ onComplete }) {
 
             {/* Tour Modal */}
             <div
-                className="fixed z-[10002] bg-white rounded-xl shadow-2xl p-4 sm:p-6 w-[calc(100vw-2rem)] sm:max-w-sm transform -translate-x-1/2"
+                className="fixed z-[10002] bg-card rounded-xl shadow-2xl p-4 sm:p-6 w-[calc(100vw-2rem)] sm:max-w-sm transform -translate-x-1/2"
                 style={{
                     top: `${position.top}px`,
                     left: `${position.left}px`,
@@ -186,7 +186,7 @@ export default function EReaderTour({ onComplete }) {
             >
                 {/* Arrow */}
                 <div
-                    className={`absolute w-4 h-4 bg-white transform rotate-45 ${step.placement === 'bottom'
+                    className={`absolute w-4 h-4 bg-card transform rotate-45 ${step.placement === 'bottom'
                         ? '-top-2 left-1/2 -translate-x-1/2'
                         : step.placement === 'top'
                             ? '-bottom-2 left-1/2 -translate-x-1/2'

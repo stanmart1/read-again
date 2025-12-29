@@ -101,7 +101,7 @@ export default function FAQ() {
             </p>
             <a
               href="/contact"
-              className="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+              className="inline-block bg-card text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
             >
               Contact Support
             </a>

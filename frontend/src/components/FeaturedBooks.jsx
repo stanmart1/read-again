@@ -246,7 +246,7 @@ export default function FeaturedBooks() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: (index % books.length) * 0.05 }}
-                    className="flex-shrink-0 w-[280px] bg-white rounded-xl shadow-md overflow-hidden group cursor-pointer hover:shadow-2xl transition-all duration-300"
+                    className="flex-shrink-0 w-[280px] bg-card rounded-xl shadow-md overflow-hidden group cursor-pointer hover:shadow-2xl transition-all duration-300"
                   >
 
                   {/* Book Image */}
@@ -263,7 +263,7 @@ export default function FeaturedBooks() {
                       <div className="absolute bottom-4 left-4 right-4 flex gap-2">
                         <Link
                           to={`/books/${book.id}`}
-                          className="flex-1 bg-white text-foreground py-2 rounded-lg font-semibold text-center hover:bg-gray-100 transition-all text-sm"
+                          className="flex-1 bg-card text-foreground py-2 rounded-lg font-semibold text-center hover:bg-gray-100 transition-all text-sm"
                         >
                           View Details
                         </Link>
@@ -354,13 +354,13 @@ export default function FeaturedBooks() {
               {/* Navigation Arrows */}
               <button
                 onClick={() => scroll('left')}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-card rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
               >
                 <i className="ri-arrow-left-line text-2xl text-foreground"></i>
               </button>
               <button
                 onClick={() => scroll('right')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-card rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
               >
                 <i className="ri-arrow-right-line text-2xl text-foreground"></i>
               </button>
@@ -369,7 +369,7 @@ export default function FeaturedBooks() {
               <div className="flex justify-center mt-6 gap-3 items-center">
                 <button
                   onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm font-medium text-foreground hover:bg-gray-100 transition-colors shadow-md"
+                  className="flex items-center gap-2 px-4 py-2 bg-card rounded-full text-sm font-medium text-foreground hover:bg-gray-100 transition-colors shadow-md"
                 >
                   <i className={`ri-${isAutoScrolling ? 'pause' : 'play'}-circle-line text-lg`}></i>
                   {isAutoScrolling ? 'Auto-scroll' : 'Paused'}
@@ -393,7 +393,7 @@ export default function FeaturedBooks() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: (index % books.length) * 0.1 }}
-                    className="flex-shrink-0 w-[280px] bg-white rounded-xl shadow-md overflow-hidden snap-center"
+                    className="flex-shrink-0 w-[280px] bg-card rounded-xl shadow-md overflow-hidden snap-center"
                   >
                     {/* Book Image */}
                     <div className="relative overflow-hidden h-64">

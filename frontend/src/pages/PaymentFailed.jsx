@@ -79,7 +79,7 @@ export default function PaymentFailed() {
                 transition={{ delay: 0.3 }}
                 className="mb-12"
               >
-                <div className="max-w-md mx-auto bg-white p-6 rounded-xl shadow-md border-2 border-gray-200">
+                <div className="max-w-md mx-auto bg-card p-6 rounded-xl shadow-md border-2 border-gray-200">
                   <p className="text-sm text-muted-foreground mb-2">Order Reference</p>
                   <p className="text-2xl font-bold text-foreground">{orderId}</p>
                 </div>

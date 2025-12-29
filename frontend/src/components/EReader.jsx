@@ -564,7 +564,7 @@ export default function EReader({ bookId, onClose }) {
                   </button>
 
                   {showNoteInput && (
-                    <div className="p-3 bg-gray-50 dark:bg-card rounded-lg">
+                    <div className="p-3 bg-muted dark:bg-card rounded-lg">
                       <textarea
                         value={noteContent}
                         onChange={(e) => setNoteContent(e.target.value)}
@@ -590,7 +590,7 @@ export default function EReader({ bookId, onClose }) {
                   )}
 
                   {notes.map((note) => (
-                    <div key={note.id} className="p-3 bg-gray-50 dark:bg-card rounded-lg">
+                    <div key={note.id} className="p-3 bg-muted dark:bg-card rounded-lg">
                       {editingNote === note.id ? (
                         <div>
                           <textarea
@@ -633,7 +633,7 @@ export default function EReader({ bookId, onClose }) {
               {activeTab === 'highlights' && (
                 <div className="space-y-3">
                   {highlights.map((highlight) => (
-                    <div key={highlight.id} className="p-3 bg-gray-50 dark:bg-card rounded-lg">
+                    <div key={highlight.id} className="p-3 bg-muted dark:bg-card rounded-lg">
                       <div className="flex items-start gap-2 mb-2">
                         <div
                           className="w-3 h-3 rounded-full mt-1 flex-shrink-0"
@@ -699,7 +699,7 @@ export default function EReader({ bookId, onClose }) {
 
       {/* TOC Sidebar */}
       {showToc && (
-        <div className="absolute top-0 left-0 bottom-0 w-80 bg-white dark:bg-card shadow-2xl z-10 overflow-y-auto">
+        <div className="absolute top-0 left-0 bottom-0 w-80 bg-card dark:bg-card shadow-2xl z-10 overflow-y-auto">
           <div className="p-4 border-b border-gray-200 dark:border-border flex items-center justify-between">
             <h2 className="text-lg font-bold text-foreground dark:text-gray-100">Table of Contents</h2>
             <button
@@ -727,7 +727,7 @@ export default function EReader({ bookId, onClose }) {
 
       {/* Settings Panel */}
       {showSettings && (
-        <div className="absolute top-16 right-4 w-80 bg-white dark:bg-card rounded-xl shadow-2xl z-10 p-6">
+        <div className="absolute top-16 right-4 w-80 bg-card dark:bg-card rounded-xl shadow-2xl z-10 p-6">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-bold text-foreground dark:text-gray-100">Reading Settings</h3>
             <button
@@ -786,7 +786,7 @@ export default function EReader({ bookId, onClose }) {
                   theme === 'light' ? 'border-primary bg-blue-50' : 'border-gray-200 dark:border-border'
                 }`}
               >
-                <div className="w-full h-8 bg-white border border-gray-300 rounded mb-2"></div>
+                <div className="w-full h-8 bg-card border border-gray-300 rounded mb-2"></div>
                 <p className="text-xs font-medium text-foreground dark:text-gray-100">Light</p>
               </button>
               <button
@@ -814,7 +814,7 @@ export default function EReader({ bookId, onClose }) {
 
       {/* Selection Menu */}
       {showSelectionMenu && selectedText && (
-        <div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-white dark:bg-card rounded-lg shadow-xl border border-gray-200 dark:border-border p-2 flex gap-2 z-50">
+        <div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-card dark:bg-card rounded-lg shadow-xl border border-gray-200 dark:border-border p-2 flex gap-2 z-50">
           <button
             onClick={() => createHighlight('#ffeb3b')}
             className="px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-card"

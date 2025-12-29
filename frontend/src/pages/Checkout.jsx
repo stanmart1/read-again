@@ -275,7 +275,7 @@ function OrderSummarySidebar({ cartItems }) {
         {cartItems.map((item) => {
           const itemImageUrl = getImageUrl(item.book?.cover_image_url);
           return (
-          <div key={item.id} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+          <div key={item.id} className="flex items-center space-x-3 p-3 bg-muted rounded-lg">
             <img
               src={itemImageUrl || '/placeholder-book.jpg'}
               alt={item.book?.title}

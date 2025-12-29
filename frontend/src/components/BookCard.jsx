@@ -82,7 +82,7 @@ export default function BookCard({ book }) {
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <Link 
               to={`/books/${book.id}`}
-              className="p-3 bg-white rounded-full hover:bg-gray-100 transition-colors"
+              className="p-3 bg-card rounded-full hover:bg-gray-100 transition-colors"
               title="View Details"
             >
               <i className="ri-eye-line text-muted-foreground text-lg"></i>
