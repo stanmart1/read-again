@@ -355,7 +355,7 @@ const AdminBooks = () => {
                       )}
                       <button
                         onClick={() => setShowAddModal(true)}
-                        className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center"
+                        className="px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center"
                       >
                         <i className="ri-add-line mr-2"></i>
                         Add Book
@@ -657,10 +657,10 @@ const AdminBooks = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
               <div className="bg-card rounded-2xl shadow-2xl max-w-lg w-full transform transition-all">
                 {/* Header */}
-                <div className="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-t-2xl">
+                <div className="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-primary/5 to-primary/10 rounded-t-2xl">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary rounded-full flex items-center justify-center">
                         <i className="ri-book-line text-white text-lg"></i>
                       </div>
                       <div>
@@ -887,7 +887,7 @@ const AdminBooks = () => {
                         setModals(prev => ({ ...prev, assignConfirm: true }));
                       }}
                       disabled={selection.users.length === 0 || loadingStates.assign}
-                      className="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium flex items-center justify-center space-x-2"
+                      className="flex-1 px-4 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium flex items-center justify-center space-x-2"
                     >
                       <i className="ri-user-add-line"></i>
                       <span>Assign to {selection.users.length} User{selection.users.length !== 1 ? 's' : ''}</span>

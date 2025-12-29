@@ -84,7 +84,7 @@ export default function RedisManagement() {
   return (
     <div className="space-y-6">
       {/* Redis Enable/Disable Toggle */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-200">
+      <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg p-4 border border-blue-200">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="font-medium text-foreground mb-1">Redis Caching</h4>

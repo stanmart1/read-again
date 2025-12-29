@@ -17,7 +17,7 @@ const UserMobileCard = ({ user, onView, onEdit, onAnalytics, onAssignBooks, onAs
       {/* User Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+          <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary rounded-full flex items-center justify-center flex-shrink-0">
             <span className="text-white font-semibold text-sm">
               {user.first_name?.[0] || ''}{user.last_name?.[0] || ''}
             </span>

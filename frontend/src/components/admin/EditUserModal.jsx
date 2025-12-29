@@ -58,8 +58,8 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+            <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl">
+              <div className="w-16 h-16 bg-gradient-to-r from-primary to-primary rounded-full flex items-center justify-center">
                 <span className="text-white font-semibold text-lg">
                   {formData.first_name?.charAt(0) || ''}{formData.last_name?.charAt(0) || ''}
                 </span>
@@ -223,7 +223,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <i className="ri-save-line mr-2"></i>
                 {loading ? 'Saving...' : 'Save Changes'}

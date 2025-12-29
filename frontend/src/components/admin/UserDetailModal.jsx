@@ -27,8 +27,8 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
         </div>
 
         {/* User Header */}
-        <div className="flex items-center space-x-4 mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
-          <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+        <div className="flex items-center space-x-4 mb-6 p-4 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg">
+          <div className="w-20 h-20 bg-gradient-to-r from-primary to-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">
             {user.first_name?.[0]}{user.last_name?.[0]}
           </div>
           <div>
@@ -182,7 +182,7 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
           </button>
           <button
             onClick={onClose}
-            className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700"
+            className="px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700"
           >
             Close
           </button>

@@ -227,7 +227,7 @@ const WorksManagement = () => {
 
         {/* Header */}
         <div className="bg-card rounded-xl shadow-md overflow-hidden mb-4 sm:mb-6">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-4 border-b border-border">
+          <div className="bg-gradient-to-r from-primary/5 to-primary/10 px-6 py-4 border-b border-border">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
@@ -241,7 +241,7 @@ const WorksManagement = () => {
                   resetForm();
                   setShowUploadForm(true);
                 }}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
+                className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
               >
                 <i className="ri-upload-line"></i>
                 <span>Upload Work</span>

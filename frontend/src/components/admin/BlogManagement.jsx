@@ -498,7 +498,7 @@ const BlogManagement = () => {
 
         {/* Header */}
         <div className="bg-card rounded-xl shadow-md overflow-hidden mb-4 sm:mb-6">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-4 border-b border-border">
+          <div className="bg-gradient-to-r from-primary/5 to-primary/10 px-6 py-4 border-b border-border">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
@@ -523,7 +523,7 @@ const BlogManagement = () => {
                     resetForm();
                     setShowCreateModal(true);
                   }}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
+                  className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
                 >
                   <i className="ri-add-line"></i>
                   <span>Create Post</span>
@@ -1024,7 +1024,7 @@ const BlogManagement = () => {
             <div className="bg-card rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto">
               <div className="p-4 sm:p-6">
                 {/* Header with Steps */}
-                <div className="px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50 -m-4 sm:-m-6 mb-6">
+                <div className="px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-primary/5 to-primary/10 -m-4 sm:-m-6 mb-6">
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <h2 className="text-xl sm:text-2xl font-bold text-foreground">Create Blog Post</h2>
@@ -1050,23 +1050,23 @@ const BlogManagement = () => {
                   {/* Step Indicator */}
                   <div className="flex items-center space-x-2 mb-3">
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all ${
-                      currentStep >= 1 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-muted-foreground'
+                      currentStep >= 1 ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg' : 'bg-gray-200 text-muted-foreground'
                     }`}>
                       {currentStep > 1 ? <i className="ri-check-line"></i> : '1'}
                     </div>
                     <div className={`flex-1 h-1 rounded-full transition-all ${
-                      currentStep >= 2 ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-gray-200'
+                      currentStep >= 2 ? 'bg-gradient-to-r from-primary to-primary' : 'bg-gray-200'
                     }`}></div>
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all ${
-                      currentStep >= 2 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-muted-foreground'
+                      currentStep >= 2 ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg' : 'bg-gray-200 text-muted-foreground'
                     }`}>
                       {currentStep > 2 ? <i className="ri-check-line"></i> : '2'}
                     </div>
                     <div className={`flex-1 h-1 rounded-full transition-all ${
-                      currentStep >= 3 ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-gray-200'
+                      currentStep >= 3 ? 'bg-gradient-to-r from-primary to-primary' : 'bg-gray-200'
                     }`}></div>
                     <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all ${
-                      currentStep >= 3 ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-muted-foreground'
+                      currentStep >= 3 ? 'bg-gradient-to-r from-primary to-primary text-white shadow-lg' : 'bg-gray-200 text-muted-foreground'
                     }`}>
                       3
                     </div>
@@ -1369,7 +1369,7 @@ const BlogManagement = () => {
                         setValidationErrors({});
                         setCurrentStep(currentStep + 1);
                       }}
-                      className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg font-medium order-1"
+                      className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg font-medium order-1"
                     >
                       Next
                       <i className="ri-arrow-right-line ml-2"></i>
@@ -1378,7 +1378,7 @@ const BlogManagement = () => {
                     <button
                       onClick={handleCreatePost}
                       disabled={isSaving}
-                      className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 font-medium order-1"
+                      className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 font-medium order-1"
                     >
                       {isSaving && <i className="ri-loader-4-line animate-spin"></i>}
                       {isSaving ? 'Creating...' : 'Create Post'}
@@ -1395,7 +1395,7 @@ const BlogManagement = () => {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">
             <div className="bg-card rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto">
               <div className="p-4 sm:p-6">
-                <div className="px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50 -m-4 sm:-m-6 mb-6">
+                <div className="px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-primary/5 to-primary/10 -m-4 sm:-m-6 mb-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <h2 className="text-xl sm:text-2xl font-bold text-foreground">Edit Blog Post</h2>
@@ -1421,7 +1421,7 @@ const BlogManagement = () => {
                     <button
                       type="button"
                       onClick={() => setEditMode('basic')}
-                      className={`px-4 py-3 rounded-xl font-medium transition-all text-center border-2 ${editMode === 'basic' ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white border-transparent shadow-lg' : 'bg-card text-foreground border-border hover:border-input hover:bg-muted'}`}
+                      className={`px-4 py-3 rounded-xl font-medium transition-all text-center border-2 ${editMode === 'basic' ? 'bg-gradient-to-r from-primary to-primary text-white border-transparent shadow-lg' : 'bg-card text-foreground border-border hover:border-input hover:bg-muted'}`}
                     >
                       <i className="ri-edit-line mr-2"></i>
                       <span className="hidden sm:inline">Basic Edit</span>
@@ -1430,7 +1430,7 @@ const BlogManagement = () => {
                     <button
                       type="button"
                       onClick={() => setEditMode('advanced')}
-                      className={`px-4 py-3 rounded-xl font-medium transition-all text-center border-2 ${editMode === 'advanced' ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white border-transparent shadow-lg' : 'bg-card text-foreground border-border hover:border-input hover:bg-muted'}`}
+                      className={`px-4 py-3 rounded-xl font-medium transition-all text-center border-2 ${editMode === 'advanced' ? 'bg-gradient-to-r from-primary to-primary text-white border-transparent shadow-lg' : 'bg-card text-foreground border-border hover:border-input hover:bg-muted'}`}
                     >
                       <i className="ri-settings-3-line mr-2"></i>
                       <span className="hidden sm:inline">Advanced Edit</span>
@@ -1502,7 +1502,7 @@ const BlogManagement = () => {
                           <option value="archived">Archived</option>
                         </select>
                       </div>
-                      <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border border-purple-200">
+                      <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border border-primary/20">
                         <label className="text-sm font-semibold text-gray-800">Featured Post</label>
                         <input type="checkbox" checked={formData.featured} onChange={(e) => setFormData({ ...formData, featured: e.target.checked })} className="h-5 w-5 text-primary rounded focus:ring-2 focus:ring-blue-500" />
                       </div>
@@ -1520,7 +1520,7 @@ const BlogManagement = () => {
                       <label className="block text-sm font-semibold text-gray-800 mb-2">Tags</label>
                       <div className="flex gap-2 mb-2">
                         <input type="text" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input" placeholder="Add tag and press Enter" />
-                        <button onClick={addTag} type="button" className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>
+                        <button onClick={addTag} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {formData.tags.map(tag => (
@@ -1557,7 +1557,7 @@ const BlogManagement = () => {
                       <label className="block text-sm font-semibold text-gray-800 mb-2">SEO Keywords</label>
                       <div className="flex gap-2 mb-2">
                         <input type="text" value={keywordInput} onChange={(e) => setKeywordInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addKeyword())} className="flex-1 px-4 py-3 border-2 border-border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-primary transition-all hover:border-input" placeholder="Add keyword and press Enter" />
-                        <button onClick={addKeyword} type="button" className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>
+                        <button onClick={addKeyword} type="button" className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all font-medium">Add</button>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {formData.seo_keywords.map(keyword => (
@@ -1574,7 +1574,7 @@ const BlogManagement = () => {
                 <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-border mt-6">
                   <button onClick={() => { if (hasUnsavedChanges && !confirm('Discard changes?')) return; setShowEditModal(false); setEditMode('basic'); setHasUnsavedChanges(false); }} className="px-6 py-3 border-2 border-input rounded-xl hover:bg-muted transition-colors font-medium order-2 sm:order-1">Cancel</button>
                   <div className="flex-1 hidden sm:block"></div>
-                  <button onClick={handleUpdatePost} disabled={isSaving} className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 font-medium order-1 sm:order-2">
+                  <button onClick={handleUpdatePost} disabled={isSaving} className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 font-medium order-1 sm:order-2">
                     {isSaving && <i className="ri-loader-4-line animate-spin"></i>}
                     {isSaving ? 'Updating...' : 'Update Post'}
                   </button>

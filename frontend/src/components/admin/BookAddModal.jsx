@@ -227,7 +227,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-card rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-hidden">
         {/* Header */}
-        <div className="px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="px-4 sm:px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-primary/5 to-primary/10">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl sm:text-2xl font-bold text-foreground">Add New Book</h2>
@@ -490,7 +490,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
                 {/* Featured Book Toggle */}
                 <div className="sm:col-span-2">
-                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border border-purple-200">
+                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border border-primary/20">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
                         <i className="ri-star-line text-purple-600"></i>
@@ -566,7 +566,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-colors font-medium"
+                  className="px-6 py-2.5 bg-gradient-to-r from-primary to-primary text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-colors font-medium"
                 >
                   Next Step →
                 </button>
@@ -670,7 +670,7 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors disabled:opacity-50"
+                  className="px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors disabled:opacity-50"
                 >
                   {isSubmitting ? 'Uploading...' : 'Upload Book'}
                 </button>

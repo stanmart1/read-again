@@ -4,7 +4,7 @@ const UserTable = ({ users, selectedUsers, onSelectAll, onSelectUser, onView, on
   const getRoleColor = (role) => {
     switch (role) {
       case 'super_admin': return 'bg-gradient-to-r from-purple-600 to-pink-600';
-      case 'admin': return 'bg-gradient-to-r from-blue-600 to-purple-600';
+      case 'admin': return 'bg-gradient-to-r from-primary to-primary';
       case 'moderator': return 'bg-gradient-to-r from-cyan-500 to-blue-500';
       case 'author': return 'bg-gradient-to-r from-green-500 to-teal-500';
       case 'user': return 'bg-gradient-to-r from-gray-500 to-gray-600';

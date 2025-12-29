@@ -177,7 +177,7 @@ const Audit = () => {
               </button>
               <button
                 onClick={handleExport}
-                className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center"
+                className="px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center"
               >
                 <i className="ri-download-line mr-2"></i>
                 Export
@@ -228,7 +228,7 @@ const Audit = () => {
               <div className="flex items-end gap-2">
                 <button
                   onClick={applyFilters}
-                  className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                  className="flex-1 px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
                 >
                   Apply
                 </button>
@@ -439,7 +439,7 @@ const Audit = () => {
               animate={{ opacity: 1, scale: 1 }}
               className="bg-card rounded-2xl shadow-2xl max-w-3xl w-full max-h-[85vh] overflow-hidden"
             >
-              <div className="px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border-b border-border">
+              <div className="px-6 py-4 bg-gradient-to-r from-primary/5 to-primary/10 border-b border-border">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 ${getActionColor(selectedLog.action)} rounded-xl flex items-center justify-center shadow-md`}>
@@ -461,7 +461,7 @@ const Audit = () => {
               <div className="p-6 overflow-y-auto max-h-[calc(85vh-100px)]">
                 <div className="space-y-6">
                   {/* User Information */}
-                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4">
+                  <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl p-4">
                     <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                       <i className="ri-user-line"></i>
                       User Information
@@ -501,7 +501,7 @@ const Audit = () => {
                   </div>
 
                   {/* Device & Location */}
-                  <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4">
+                  <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl p-4">
                     <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                       <i className="ri-device-line"></i>
                       Device & Location

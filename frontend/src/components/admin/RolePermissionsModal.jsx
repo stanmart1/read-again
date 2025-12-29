@@ -73,7 +73,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
             className="bg-card rounded-xl shadow-2xl max-w-6xl w-full max-h-[85vh] overflow-hidden flex flex-col"
           >
             {/* Header */}
-            <div className="p-6 border-b border-border bg-gradient-to-r from-blue-50 to-purple-50">
+            <div className="p-6 border-b border-border bg-gradient-to-r from-primary/5 to-primary/10">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-2xl font-bold text-foreground">
@@ -89,7 +89,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                   {!isEditingPermissions ? (
                     <button
                       onClick={() => setIsEditingPermissions(true)}
-                      className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center"
+                      className="px-4 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center"
                     >
                       <i className="ri-edit-line mr-2"></i>
                       Edit Permissions
@@ -212,7 +212,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                   </p>
                   <button
                     onClick={() => setIsEditingPermissions(true)}
-                    className="mt-4 px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                    className="mt-4 px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
                   >
                     Assign Permissions
                   </button>

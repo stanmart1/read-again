@@ -119,7 +119,7 @@ const AdminAbout = () => {
       <div className="space-y-6">
         {/* Header */}
         <div className="bg-card rounded-xl shadow-md overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-4 border-b border-border">
+          <div className="bg-gradient-to-r from-primary/5 to-primary/10 px-6 py-4 border-b border-border">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
@@ -131,7 +131,7 @@ const AdminAbout = () => {
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center gap-2"
+                className="px-6 py-3 bg-gradient-to-r from-primary to-primary text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center gap-2"
               >
                 {saving ? (
                   <>
@@ -177,7 +177,7 @@ const AdminAbout = () => {
                     onClick={() => setActiveSection(section.id)}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
                       activeSection === section.id 
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md' 
+                        ? 'bg-gradient-to-r from-primary to-primary text-white shadow-md' 
                         : 'text-muted-foreground hover:bg-muted'
                     }`}
                   >

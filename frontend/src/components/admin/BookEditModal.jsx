@@ -365,7 +365,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 </div>
 
                 <div className="sm:col-span-2">
-                  <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border border-purple-200">
+                  <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border border-primary/20">
                     <label className="text-sm font-semibold text-foreground">Featured Book</label>
                     <input
                       type="checkbox"
@@ -465,7 +465,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 <button type="button" onClick={handlePrevious} disabled={isSubmitting} className="px-6 py-2 border border-input rounded-lg hover:bg-muted transition-colors disabled:opacity-50">
                   Previous
                 </button>
-                <button type="button" onClick={handleSubmit} disabled={isSubmitting} className="px-6 py-2 bg-gradient-to-r from-orange-600 to-purple-600 text-white rounded-lg hover:from-orange-700 hover:to-purple-700 transition-colors disabled:opacity-50">
+                <button type="button" onClick={handleSubmit} disabled={isSubmitting} className="px-6 py-2 bg-gradient-to-r from-primary to-primary text-white rounded-lg hover:from-orange-700 hover:to-purple-700 transition-colors disabled:opacity-50">
                   {isSubmitting ? 'Updating...' : 'Update Book'}
                 </button>
               </div>
