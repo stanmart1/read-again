@@ -217,44 +217,15 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
         </div>
       )}
 
-      {/* Cart Type Indicator */}
-      <div className={`border-2 rounded-lg p-4 mb-6 ${
-        analytics.isEbookOnly 
-          ? 'bg-green-50 border-green-200' 
-          : 'bg-blue-50 border-primary/30'
-      }`}>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            {analytics.isEbookOnly ? (
-              <>
-                <div className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full">
-                  <i className="ri-download-cloud-line text-green-600 text-xl"></i>
-                </div>
-                <div>
-                  <span className="text-green-900 font-semibold block">Digital Purchase</span>
-                  <span className="text-green-700 text-sm">Instant delivery • No shipping fees</span>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full">
-                  <i className="ri-truck-line text-blue-600 text-xl"></i>
-                </div>
-                <div>
-                  <span className="text-blue-900 font-semibold block">Physical Delivery</span>
-                  <span className="text-blue-700 text-sm">Shipping required • Address needed</span>
-                </div>
-              </>
-            )}
+      {/* Digital Purchase Indicator */}
+      <div className="border-2 rounded-lg p-4 mb-6 bg-green-50 border-green-200">
+        <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full">
+            <i className="ri-download-cloud-line text-green-600 text-xl"></i>
           </div>
-          <div className="text-right">
-            <div className={`px-3 py-1 rounded-full text-xs font-medium ${
-              analytics.isEbookOnly 
-                ? 'bg-green-200 text-green-800' 
-                : 'bg-blue-200 text-blue-800'
-            }`}>
-              {analytics.isEbookOnly ? 'Digital Only' : 'Physical Books'}
-            </div>
+          <div>
+            <span className="text-green-900 font-semibold block">Digital Purchase</span>
+            <span className="text-green-700 text-sm">Instant delivery • No shipping fees</span>
           </div>
         </div>
       </div>
@@ -265,21 +236,7 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
           <CustomerInformationStep formData={formData} updateFormData={updateFormData} />
         )}
         
-        {currentStep === 2 && !analytics.isEbookOnly && (
-          <ShippingAddressStep formData={formData} updateFormData={updateFormData} />
-        )}
-        
-        {currentStep === 3 && !analytics.isEbookOnly && (
-          <ShippingMethodStep 
-            formData={formData}
-            updateFormData={updateFormData}
-            shippingMethods={shippingMethods}
-            analytics={analytics}
-            isLoading={isLoadingCheckoutData}
-          />
-        )}
-        
-        {(currentStep === steps.length || (analytics.isEbookOnly && currentStep === 2)) && (
+        {currentStep === 2 && (
           <PaymentStep 
             formData={formData}
             updateFormData={updateFormData}
@@ -299,7 +256,7 @@ export default function CheckoutFlow({ cartItems, onComplete, onCancel }) {
           {currentStep === 1 ? 'Back to Cart' : 'Previous'}
         </button>
 
-        {currentStep < steps.length && (!analytics.isEbookOnly || currentStep < 2) ? (
+        {currentStep < steps.length ? (
           <button
             onClick={nextStep}
             disabled={!validateStep(currentStep)}
