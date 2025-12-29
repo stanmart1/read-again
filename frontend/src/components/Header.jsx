@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../hooks';
 import { useCartContext } from '../context/CartContext';
+import { ThemeToggle } from './ThemeToggle';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,6 +53,8 @@ export default function Header() {
 
             {/* Right side */}
             <div className="flex items-center space-x-4">
+              <ThemeToggle />
+              
               <Link to="/cart" className="relative p-2 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
                 <i className="ri-shopping-cart-line text-2xl"></i>
                 {getTotalItems() > 0 && (

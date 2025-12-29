@@ -1,4 +1,4 @@
-import { Header } from "@/components/public-layout/Header";
+import Header from "@/components/Header";
 import { HeroSection } from "@/components/public-sections/HeroSection";
 import { AboutSection } from "@/components/public-sections/AboutSection";
 import { BooksSection } from "@/components/public-sections/BooksSection";
