@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const CTASection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -50,13 +51,17 @@ export const CTASection = () => {
             Join thousands of readers who are already winning prizes while enjoying their favorite books. Your next great read is waiting.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="hero" size="xl" className="group">
-              Get Started Free
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button variant="heroOutline" size="xl">
-              Contact Us
-            </Button>
+            <Link to="/signup">
+              <Button variant="hero" size="xl" className="group">
+                Get Started Free
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="heroOutline" size="xl">
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
