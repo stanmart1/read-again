@@ -157,7 +157,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                             <h4 className="font-medium text-foreground">
                               {permission.display_name}
                             </h4>
-                            <span className="px-2 py-1 bg-primary/30 text-primary rounded-full text-xs font-medium">
+                            <span className="px-2 py-1 bg-primary text-primary-foreground rounded-full text-xs font-medium">
                               {permission.resource}
                             </span>
                           </div>
@@ -186,7 +186,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                         <h4 className="font-medium text-foreground">
                           {permission.display_name}
                         </h4>
-                        <span className="px-2 py-1 bg-primary/30 text-primary rounded-full text-xs font-medium">
+                        <span className="px-2 py-1 bg-primary text-primary-foreground rounded-full text-xs font-medium">
                           {permission.resource}
                         </span>
                       </div>
