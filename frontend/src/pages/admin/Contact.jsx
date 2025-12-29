@@ -43,15 +43,15 @@ const AdminContact = () => {
     <AdminLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-4 border-b border-gray-200">
+        <div className="bg-card rounded-xl shadow-md overflow-hidden">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-4 border-b border-border">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 flex items-center gap-2">
-                  <i className="ri-contacts-line text-blue-600"></i>
+                <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
+                  <i className="ri-contacts-line text-primary"></i>
                   Contact Page Management
                 </h1>
-                <p className="text-gray-600 mt-1">Manage contact methods and office information</p>
+                <p className="text-muted-foreground mt-1">Manage contact methods and office information</p>
               </div>
               <button
                 onClick={handleSave}
@@ -75,7 +75,7 @@ const AdminContact = () => {
         </div>
 
         {/* Tabs */}
-        <div className="bg-white rounded-lg shadow-sm border">
+        <div className="bg-card rounded-lg shadow-sm border">
           <div className="border-b px-6">
             <nav className="flex gap-4">
               {tabs.map(tab => (
@@ -83,7 +83,7 @@ const AdminContact = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors ${
-                    activeTab === tab.id ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-600 hover:text-gray-900'
+                    activeTab === tab.id ? 'border-blue-600 text-primary' : 'border-transparent text-muted-foreground hover:text-foreground'
                   }`}
                 >
                   <i className={tab.icon}></i>
@@ -164,7 +164,7 @@ const AdminContact = () => {
                     ))}
                     <button
                       onClick={() => setContactMethods([...contactMethods, { icon: 'ri-mail-line', title: '', description: '', contact: '', action: '', isActive: true }])}
-                      className="border-2 border-dashed rounded-lg p-8 text-gray-500"
+                      className="border-2 border-dashed rounded-lg p-8 text-muted-foreground"
                     >
                       Add Method
                     </button>

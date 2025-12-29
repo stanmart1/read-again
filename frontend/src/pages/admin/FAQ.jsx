@@ -115,7 +115,7 @@ export default function FAQManagementPage() {
   if (loading) {
     return (
       <AdminLayout>
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="min-h-screen bg-muted flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
         </div>
       </AdminLayout>
@@ -134,18 +134,18 @@ export default function FAQManagementPage() {
 
   return (
     <AdminLayout>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-muted">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
           <div className="mb-4 sm:mb-8">
             <div className="flex flex-col gap-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">FAQ Management</h1>
-                <p className="mt-1 sm:mt-2 text-xs sm:text-base text-gray-600">Manage frequently asked questions and categories</p>
+                <h1 className="text-2xl sm:text-3xl font-bold text-foreground">FAQ Management</h1>
+                <p className="mt-1 sm:mt-2 text-xs sm:text-base text-muted-foreground">Manage frequently asked questions and categories</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                 <button
                   onClick={refetch}
-                  className="inline-flex items-center justify-center sm:justify-start px-3 sm:px-4 py-2 border border-gray-300 rounded-md shadow-sm text-xs sm:text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 w-full sm:w-auto"
+                  className="inline-flex items-center justify-center sm:justify-start px-3 sm:px-4 py-2 border border-input rounded-md shadow-sm text-xs sm:text-sm font-medium text-gray-700 bg-card hover:bg-muted w-full sm:w-auto"
                 >
                   <i className="ri-refresh-line mr-2"></i>
                   <span className="hidden sm:inline">Refresh</span>
@@ -160,7 +160,7 @@ export default function FAQManagementPage() {
                 </button>
                 <button
                   onClick={() => setShowFAQForm(true)}
-                  className="inline-flex items-center justify-center sm:justify-start px-3 sm:px-4 py-2 border border-transparent rounded-md shadow-sm text-xs sm:text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 w-full sm:w-auto"
+                  className="inline-flex items-center justify-center sm:justify-start px-3 sm:px-4 py-2 border border-transparent rounded-md shadow-sm text-xs sm:text-sm font-medium text-white bg-primary hover:bg-primary/90 w-full sm:w-auto"
                 >
                   <i className="ri-add-line mr-2"></i>
                   <span>Add FAQ</span>
@@ -171,7 +171,7 @@ export default function FAQManagementPage() {
 
           <FAQStats stats={stats} />
 
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3 sm:p-6 mb-4 sm:mb-6">
+          <div className="bg-card rounded-lg shadow-sm border border-border p-3 sm:p-6 mb-4 sm:mb-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               <div>
                 <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Search FAQs</label>
@@ -182,7 +182,7 @@ export default function FAQManagementPage() {
                     placeholder="Search questions..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="pl-10 w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-input rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
@@ -191,7 +191,7 @@ export default function FAQManagementPage() {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-2 sm:px-3 py-1.5 sm:py-2 border border-input rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">All Categories</option>
                   {categories.map(category => (
@@ -200,7 +200,7 @@ export default function FAQManagementPage() {
                 </select>
               </div>
               <div className="flex items-end">
-                <div className="text-xs sm:text-sm text-gray-600">
+                <div className="text-xs sm:text-sm text-muted-foreground">
                   Showing {filteredFAQs.length} of {faqs.length}
                 </div>
               </div>

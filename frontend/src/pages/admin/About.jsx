@@ -118,15 +118,15 @@ const AdminAbout = () => {
     <AdminLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-4 border-b border-gray-200">
+        <div className="bg-card rounded-xl shadow-md overflow-hidden">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-4 border-b border-border">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 flex items-center gap-2">
-                  <i className="ri-information-line text-blue-600"></i>
+                <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
+                  <i className="ri-information-line text-primary"></i>
                   About Page Management
                 </h1>
-                <p className="text-gray-600 mt-1">Manage your About Us page content</p>
+                <p className="text-muted-foreground mt-1">Manage your About Us page content</p>
               </div>
               <button
                 onClick={handleSave}
@@ -147,7 +147,7 @@ const AdminAbout = () => {
               </button>
             </div>
           </div>
-          <div className="px-6 py-3 bg-white flex items-center gap-4 text-sm">
+          <div className="px-6 py-3 bg-card flex items-center gap-4 text-sm">
             {lastSaved && (
               <div className="flex items-center gap-2 text-green-600">
                 <i className="ri-check-circle-line"></i>
@@ -166,9 +166,9 @@ const AdminAbout = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-xl shadow-md overflow-hidden">
-              <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-3 border-b border-gray-200">
-                <h3 className="font-semibold text-gray-900">Sections</h3>
+            <div className="bg-card rounded-xl shadow-md overflow-hidden">
+              <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-4 py-3 border-b border-border">
+                <h3 className="font-semibold text-foreground">Sections</h3>
               </div>
               <nav className="p-3 space-y-1">
                 {sections.map(section => (
@@ -178,7 +178,7 @@ const AdminAbout = () => {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${
                       activeSection === section.id 
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md' 
-                        : 'text-gray-600 hover:bg-gray-50'
+                        : 'text-muted-foreground hover:bg-muted'
                     }`}
                   >
                     <i className={section.icon}></i>
@@ -191,7 +191,7 @@ const AdminAbout = () => {
 
           {/* Main Content */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-xl shadow-md p-6">
+            <div className="bg-card rounded-xl shadow-md p-6">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeSection}
@@ -219,7 +219,7 @@ const AdminAbout = () => {
                           theme="snow"
                           value={content.hero?.subtitle || ''}
                           onChange={(value) => updateContent('hero', { ...content.hero, subtitle: value })}
-                          className="bg-white rounded-lg"
+                          className="bg-card rounded-lg"
                           modules={{ toolbar: [['bold', 'italic', 'underline'], ['clean']] }}
                         />
                       </div>
@@ -275,7 +275,7 @@ const AdminAbout = () => {
                           theme="snow"
                           value={content.mission?.description || ''}
                           onChange={(value) => updateContent('mission', { ...content.mission, description: value })}
-                          className="bg-white rounded-lg"
+                          className="bg-card rounded-lg"
                           modules={{ toolbar: [['bold', 'italic', 'underline'], [{ 'list': 'bullet' }], ['clean']] }}
                           style={{ height: '150px', marginBottom: '50px' }}
                         />
@@ -306,7 +306,7 @@ const AdminAbout = () => {
                         />
                         {content.mission?.image_url && (
                           <div className="mt-2">
-                            <img src={getFileUrl(content.mission.image_url)} alt="Mission" className="w-full h-48 object-cover rounded-lg border border-gray-200" />
+                            <img src={getFileUrl(content.mission.image_url)} alt="Mission" className="w-full h-48 object-cover rounded-lg border border-border" />
                           </div>
                         )}
                       </div>
@@ -337,7 +337,7 @@ const AdminAbout = () => {
                         ))}
                         <button
                           onClick={() => updateContent('mission', { ...content.mission, features: [...content.mission.features, ''] })}
-                          className="w-full px-3 py-2 border-2 border-dashed rounded-lg text-gray-500"
+                          className="w-full px-3 py-2 border-2 border-dashed rounded-lg text-muted-foreground"
                         >
                           Add Feature
                         </button>
@@ -391,7 +391,7 @@ const AdminAbout = () => {
                                 newValues[idx] = { ...value, description: val };
                                 updateContent('values', newValues);
                               }}
-                              className="bg-white rounded-lg"
+                              className="bg-card rounded-lg"
                               placeholder="Description"
                               modules={{ toolbar: [['bold', 'italic'], ['clean']] }}
                             />
@@ -399,7 +399,7 @@ const AdminAbout = () => {
                         ))}
                         <button
                           onClick={() => updateContent('values', [...content.values, { icon: 'ri-star-line', title: '', description: '' }])}
-                          className="border-2 border-dashed rounded-lg p-8 text-gray-500"
+                          className="border-2 border-dashed rounded-lg p-8 text-muted-foreground"
                         >
                           Add Value
                         </button>
@@ -447,10 +447,10 @@ const AdminAbout = () => {
                                     }
                                   }
                                 }}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                                className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                               />
                               {member.image && (
-                                <img src={getFileUrl(member.image)} alt={member.name} className="mt-2 w-full h-48 object-cover rounded-lg border border-gray-200" />
+                                <img src={getFileUrl(member.image)} alt={member.name} className="mt-2 w-full h-48 object-cover rounded-lg border border-border" />
                               )}
                             </div>
                             <input
@@ -462,7 +462,7 @@ const AdminAbout = () => {
                                 newTeam[idx] = { ...member, name: e.target.value };
                                 updateContent('team', newTeam);
                               }}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
                             <input
                               type="text"
@@ -473,7 +473,7 @@ const AdminAbout = () => {
                                 newTeam[idx] = { ...member, role: e.target.value };
                                 updateContent('team', newTeam);
                               }}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              className="w-full px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-2">Bio</label>
@@ -485,7 +485,7 @@ const AdminAbout = () => {
                                   newTeam[idx] = { ...member, bio: val };
                                   updateContent('team', newTeam);
                                 }}
-                                className="bg-white rounded-lg"
+                                className="bg-card rounded-lg"
                                 placeholder="Enter bio..."
                                 modules={{ toolbar: [['bold', 'italic', 'underline'], [{ 'list': 'bullet' }], ['clean']] }}
                                 style={{ height: '120px', marginBottom: '50px' }}
@@ -495,7 +495,7 @@ const AdminAbout = () => {
                         ))}
                         <button
                           onClick={() => updateContent('team', [...(content.team || []), { name: '', role: '', bio: '', image: '' }])}
-                          className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-gray-500 hover:border-gray-400 hover:text-gray-600 transition-colors"
+                          className="border-2 border-dashed border-input rounded-lg p-8 text-muted-foreground hover:border-gray-400 hover:text-muted-foreground transition-colors"
                         >
                           <i className="ri-add-line text-2xl mb-2"></i>
                           <div>Add Team Member</div>
@@ -523,7 +523,7 @@ const AdminAbout = () => {
                           theme="snow"
                           value={content.cta?.description || ''}
                           onChange={(value) => updateContent('cta', { ...content.cta, description: value })}
-                          className="bg-white rounded-lg"
+                          className="bg-card rounded-lg"
                           modules={{ toolbar: [['bold', 'italic', 'underline'], ['clean']] }}
                         />
                       </div>

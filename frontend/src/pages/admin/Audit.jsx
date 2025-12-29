@@ -159,18 +159,18 @@ const Audit = () => {
     <AdminLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+        <div className="bg-card rounded-lg shadow-md p-4 sm:p-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Audit Logs</h1>
-              <p className="text-sm sm:text-base text-gray-600 mt-1">
+              <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Audit Logs</h1>
+              <p className="text-sm sm:text-base text-muted-foreground mt-1">
                 Track all system activities and changes
               </p>
             </div>
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors duration-200 flex items-center"
+                className="px-4 py-2 border border-input rounded-full hover:bg-muted transition-colors duration-200 flex items-center"
               >
                 <i className="ri-filter-line mr-2"></i>
                 Filters
@@ -192,7 +192,7 @@ const Audit = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-white rounded-lg shadow-md p-6"
+            className="bg-card rounded-lg shadow-md p-6"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
@@ -201,7 +201,7 @@ const Audit = () => {
                   type="text"
                   value={filters.userId}
                   onChange={(e) => setFilters({...filters, userId: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Filter by user ID"
                 />
               </div>
@@ -211,7 +211,7 @@ const Audit = () => {
                   type="text"
                   value={filters.action}
                   onChange={(e) => setFilters({...filters, action: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Filter by action"
                 />
               </div>
@@ -221,7 +221,7 @@ const Audit = () => {
                   type="text"
                   value={filters.resource}
                   onChange={(e) => setFilters({...filters, resource: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Filter by resource"
                 />
               </div>
@@ -234,7 +234,7 @@ const Audit = () => {
                 </button>
                 <button
                   onClick={clearFilters}
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                  className="flex-1 px-4 py-2 border border-input rounded-lg hover:bg-muted transition-colors duration-200"
                 >
                   Clear
                 </button>
@@ -246,10 +246,10 @@ const Audit = () => {
         {/* Mobile Cards */}
         <div className="xl:hidden space-y-4">
           {!loading && auditLogs.length === 0 ? (
-            <div className="bg-white rounded-lg shadow-md p-12 text-center">
+            <div className="bg-card rounded-lg shadow-md p-12 text-center">
               <i className="ri-file-list-3-line text-6xl text-gray-300 mb-4"></i>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No Audit Logs Found</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-foreground mb-2">No Audit Logs Found</h3>
+              <p className="text-muted-foreground">
                 {filters.userId || filters.action || filters.resource
                   ? 'Try adjusting your filters to see more results'
                   : 'Audit logs will appear here as actions are performed'}
@@ -261,7 +261,7 @@ const Audit = () => {
               key={log.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+              className="bg-card rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
             >
               <div className="p-4 space-y-3">
                 <div className="flex items-start justify-between">
@@ -270,11 +270,11 @@ const Audit = () => {
                       <i className={`${getActionIcon(log.action)} text-white text-xl`}></i>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-bold text-gray-900 text-base">{log.action}</div>
-                      <div className="text-sm text-gray-600 mt-1">
+                      <div className="font-bold text-foreground text-base">{log.action}</div>
+                      <div className="text-sm text-muted-foreground mt-1">
                         {log.user_name || 'System'} • {log.resource || 'System'}
                       </div>
-                      <div className="flex items-center gap-2 mt-2 text-xs text-gray-500">
+                      <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
                         <i className="ri-time-line"></i>
                         <span>{formatDateTime(log.created_at)}</span>
                       </div>
@@ -306,7 +306,7 @@ const Audit = () => {
                         setSelectedLog(log);
                         setShowDetailsModal(true);
                       }}
-                      className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center gap-1"
+                      className="text-primary hover:text-blue-800 text-sm font-medium flex items-center gap-1"
                     >
                       <i className="ri-information-line"></i>
                       View Full Details
@@ -320,12 +320,12 @@ const Audit = () => {
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden xl:block bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="hidden xl:block bg-card rounded-lg shadow-md overflow-hidden">
           {!loading && auditLogs.length === 0 ? (
             <div className="p-12 text-center">
               <i className="ri-file-list-3-line text-6xl text-gray-300 mb-4"></i>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No Audit Logs Found</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-semibold text-foreground mb-2">No Audit Logs Found</h3>
+              <p className="text-muted-foreground">
                 {filters.userId || filters.action || filters.resource
                   ? 'Try adjusting your filters to see more results'
                   : 'Audit logs will appear here as actions are performed'}
@@ -336,15 +336,15 @@ const Audit = () => {
             <table className="w-full">
               <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
                 <tr>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Activity</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">User</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Device & Location</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Page</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Time</th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Activity</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">User</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Device & Location</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Page</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Time</th>
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Actions</th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-100">
+              <tbody className="bg-card divide-y divide-gray-100">
                 {auditLogs.map((log) => (
                   <tr key={log.id} className="hover:bg-blue-50 transition-colors duration-200">
                     <td className="px-6 py-4">
@@ -353,21 +353,21 @@ const Audit = () => {
                           <i className={`${getActionIcon(log.action)} text-white text-lg`}></i>
                         </div>
                         <div>
-                          <div className="text-sm font-semibold text-gray-900">{log.action}</div>
-                          <div className="text-xs text-gray-500">{log.resource || 'System'}</div>
+                          <div className="text-sm font-semibold text-foreground">{log.action}</div>
+                          <div className="text-xs text-muted-foreground">{log.resource || 'System'}</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm font-medium text-gray-900">{log.user_name || 'System'}</div>
-                      <div className="text-xs text-gray-500">{log.user_email || 'N/A'}</div>
+                      <div className="text-sm font-medium text-foreground">{log.user_name || 'System'}</div>
+                      <div className="text-xs text-muted-foreground">{log.user_email || 'N/A'}</div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2 text-sm text-gray-700 mb-1">
                         <i className={`${getDeviceIcon(log.user_agent)} text-gray-400`}></i>
                         <span className="text-xs">{getDeviceInfo(log.user_agent)}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
                         <i className="ri-map-pin-line text-gray-400"></i>
                         <span>{getLocationInfo(log.ip_address)}</span>
                       </div>
@@ -387,7 +387,7 @@ const Audit = () => {
                             setSelectedLog(log);
                             setShowDetailsModal(true);
                           }}
-                          className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center gap-1"
+                          className="text-primary hover:text-blue-800 text-sm font-medium flex items-center gap-1"
                         >
                           <i className="ri-information-line"></i>
                           Details
@@ -404,7 +404,7 @@ const Audit = () => {
 
         {/* Pagination */}
         {auditLogs.length > 0 && (
-          <div className="bg-white rounded-lg shadow-md p-4">
+          <div className="bg-card rounded-lg shadow-md p-4">
             <div className="flex items-center justify-between">
               <div className="text-sm text-gray-700">
                 Showing <span className="font-medium">{(currentPage - 1) * 20 + 1}</span> to{' '}
@@ -415,14 +415,14 @@ const Audit = () => {
                 <button
                   onClick={() => loadAuditLogs(currentPage - 1)}
                   disabled={currentPage === 1}
-                  className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 py-2 border border-input rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Previous
                 </button>
                 <button
                   onClick={() => loadAuditLogs(currentPage + 1)}
                   disabled={currentPage === totalPages}
-                  className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 py-2 border border-input rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Next
                 </button>
@@ -437,22 +437,22 @@ const Audit = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[85vh] overflow-hidden"
+              className="bg-card rounded-2xl shadow-2xl max-w-3xl w-full max-h-[85vh] overflow-hidden"
             >
-              <div className="px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-200">
+              <div className="px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border-b border-border">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 ${getActionColor(selectedLog.action)} rounded-xl flex items-center justify-center shadow-md`}>
                       <i className={`${getActionIcon(selectedLog.action)} text-white text-xl`}></i>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">Activity Details</h3>
-                      <p className="text-sm text-gray-600">{selectedLog.action}</p>
+                      <h3 className="text-xl font-bold text-foreground">Activity Details</h3>
+                      <p className="text-sm text-muted-foreground">{selectedLog.action}</p>
                     </div>
                   </div>
                   <button
                     onClick={() => setShowDetailsModal(false)}
-                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                    className="text-gray-400 hover:text-muted-foreground transition-colors"
                   >
                     <i className="ri-close-line text-2xl"></i>
                   </button>
@@ -468,12 +468,12 @@ const Audit = () => {
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <p className="text-xs text-gray-600">Name</p>
-                        <p className="text-sm font-medium text-gray-900">{selectedLog.user_name || 'System'}</p>
+                        <p className="text-xs text-muted-foreground">Name</p>
+                        <p className="text-sm font-medium text-foreground">{selectedLog.user_name || 'System'}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600">Email</p>
-                        <p className="text-sm font-medium text-gray-900">{selectedLog.user_email || 'N/A'}</p>
+                        <p className="text-xs text-muted-foreground">Email</p>
+                        <p className="text-sm font-medium text-foreground">{selectedLog.user_email || 'N/A'}</p>
                       </div>
                     </div>
                   </div>
@@ -486,16 +486,16 @@ const Audit = () => {
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <p className="text-xs text-gray-600">Resource</p>
-                        <p className="text-sm font-medium text-gray-900">{selectedLog.resource || 'N/A'}</p>
+                        <p className="text-xs text-muted-foreground">Resource</p>
+                        <p className="text-sm font-medium text-foreground">{selectedLog.resource || 'N/A'}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600">Resource ID</p>
-                        <p className="text-sm font-medium text-gray-900">{selectedLog.resource_id || 'N/A'}</p>
+                        <p className="text-xs text-muted-foreground">Resource ID</p>
+                        <p className="text-sm font-medium text-foreground">{selectedLog.resource_id || 'N/A'}</p>
                       </div>
                       <div className="sm:col-span-2">
-                        <p className="text-xs text-gray-600">Page Visited</p>
-                        <p className="text-sm font-medium text-gray-900 break-all">{selectedLog.page_visited || 'N/A'}</p>
+                        <p className="text-xs text-muted-foreground">Page Visited</p>
+                        <p className="text-sm font-medium text-foreground break-all">{selectedLog.page_visited || 'N/A'}</p>
                       </div>
                     </div>
                   </div>
@@ -508,23 +508,23 @@ const Audit = () => {
                     </h4>
                     <div className="space-y-3">
                       <div>
-                        <p className="text-xs text-gray-600">Device Information</p>
+                        <p className="text-xs text-muted-foreground">Device Information</p>
                         <div className="flex items-center gap-2 mt-1">
-                          <i className={`${getDeviceIcon(selectedLog.user_agent)} text-gray-500`}></i>
-                          <p className="text-sm font-medium text-gray-900">{getDeviceInfo(selectedLog.user_agent)}</p>
+                          <i className={`${getDeviceIcon(selectedLog.user_agent)} text-muted-foreground`}></i>
+                          <p className="text-sm font-medium text-foreground">{getDeviceInfo(selectedLog.user_agent)}</p>
                         </div>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600">IP Address / Location</p>
+                        <p className="text-xs text-muted-foreground">IP Address / Location</p>
                         <div className="flex items-center gap-2 mt-1">
-                          <i className="ri-map-pin-line text-gray-500"></i>
-                          <p className="text-sm font-medium text-gray-900">{getLocationInfo(selectedLog.ip_address)}</p>
+                          <i className="ri-map-pin-line text-muted-foreground"></i>
+                          <p className="text-sm font-medium text-foreground">{getLocationInfo(selectedLog.ip_address)}</p>
                         </div>
                       </div>
                       {selectedLog.user_agent && (
                         <div>
-                          <p className="text-xs text-gray-600">User Agent</p>
-                          <p className="text-xs text-gray-700 mt-1 break-all bg-white p-2 rounded">{selectedLog.user_agent}</p>
+                          <p className="text-xs text-muted-foreground">User Agent</p>
+                          <p className="text-xs text-gray-700 mt-1 break-all bg-card p-2 rounded">{selectedLog.user_agent}</p>
                         </div>
                       )}
                     </div>
@@ -537,20 +537,20 @@ const Audit = () => {
                       Timestamp
                     </h4>
                     <div className="flex items-center gap-2">
-                      <p className="text-sm font-medium text-gray-900">{formatDateTime(selectedLog.created_at)}</p>
-                      <span className="text-xs text-gray-500">•</span>
-                      <p className="text-xs text-gray-600">{new Date(selectedLog.created_at).toLocaleString()}</p>
+                      <p className="text-sm font-medium text-foreground">{formatDateTime(selectedLog.created_at)}</p>
+                      <span className="text-xs text-muted-foreground">•</span>
+                      <p className="text-xs text-muted-foreground">{new Date(selectedLog.created_at).toLocaleString()}</p>
                     </div>
                   </div>
 
                   {/* Additional Details */}
                   {selectedLog.details && (
-                    <div className="bg-gray-50 rounded-xl p-4">
+                    <div className="bg-muted rounded-xl p-4">
                       <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
                         <i className="ri-information-line"></i>
                         Additional Details
                       </h4>
-                      <pre className="text-xs text-gray-700 overflow-x-auto bg-white p-3 rounded border border-gray-200">
+                      <pre className="text-xs text-gray-700 overflow-x-auto bg-card p-3 rounded border border-border">
                         {formatDetails(selectedLog.details)}
                       </pre>
                     </div>
