@@ -126,7 +126,7 @@ export default function Checkout() {
           <p className="text-muted-foreground mb-8">Add some books before checking out</p>
           <button
             onClick={() => navigate('/books')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90"
           >
             Browse Books
           </button>
@@ -150,7 +150,7 @@ export default function Checkout() {
               <i className={`text-xl mr-3 ${
                 paymentStatus.type === 'warning' ? 'ri-alert-line text-yellow-600' :
                 paymentStatus.type === 'error' ? 'ri-close-circle-line text-red-600' :
-                'ri-information-line text-blue-600'
+                'ri-information-line text-primary'
               }`}></i>
               <div className="flex-1">
                 <h4 className={`font-medium ${
@@ -169,7 +169,7 @@ export default function Checkout() {
                 className={`transition-colors ${
                   paymentStatus.type === 'warning' ? 'text-yellow-600 hover:text-yellow-800' :
                   paymentStatus.type === 'error' ? 'text-red-600 hover:text-red-800' :
-                  'text-blue-600 hover:text-primary/90'
+                  'text-primary hover:text-primary/90'
                 }`}
               >
                 <i className="ri-close-line text-xl"></i>
@@ -267,7 +267,7 @@ function OrderSummarySidebar({ cartItems }) {
   const total = subtotal + shipping + tax;
 
   return (
-    <div className="bg-white rounded-lg shadow p-6">
+    <div className="bg-card rounded-lg shadow p-6">
       <h3 className="text-xl font-bold text-foreground mb-6">Order Summary</h3>
       
       {/* Cart Items */}
@@ -298,14 +298,14 @@ function OrderSummarySidebar({ cartItems }) {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => updateQuantity(item.book_id, item.quantity - 1)}
-                className="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 text-xs"
+                className="w-6 h-6 rounded-full border border-input flex items-center justify-center hover:bg-gray-100 text-xs"
               >
                 <i className="ri-subtract-line"></i>
               </button>
               <span className="w-6 text-center text-sm font-medium">{item.quantity}</span>
               <button
                 onClick={() => updateQuantity(item.book_id, item.quantity + 1)}
-                className="w-6 h-6 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 text-xs"
+                className="w-6 h-6 rounded-full border border-input flex items-center justify-center hover:bg-gray-100 text-xs"
               >
                 <i className="ri-add-line"></i>
               </button>

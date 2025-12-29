@@ -99,7 +99,7 @@ export default function Cart() {
         title: "Physical Books Only",
         message: "Your cart contains only physical books. Shipping address required.",
         icon: "ri-box-3-line",
-        color: "text-blue-600",
+        color: "text-primary",
         bgColor: "bg-blue-50",
         borderColor: "border-primary/30"
       };
@@ -126,7 +126,7 @@ export default function Cart() {
             <div className="h-8 bg-muted rounded w-1/4 mb-8"></div>
             <div className="space-y-4">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-white p-6 rounded-lg shadow">
+                <div key={i} className="bg-card p-6 rounded-lg shadow">
                   <div className="flex space-x-4">
                     <div className="w-20 h-24 bg-muted rounded"></div>
                     <div className="flex-1 space-y-2">
@@ -195,14 +195,14 @@ export default function Cart() {
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                   <button
                     onClick={handleGuestLogin}
-                    className="inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="inline-flex items-center justify-center px-4 py-2.5 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring"
                   >
                     <i className="ri-login-box-line mr-2"></i>
                     Sign In
                   </button>
                   <button
                     onClick={handleGuestSignup}
-                    className="inline-flex items-center justify-center px-4 py-2.5 border border-gray-300 text-sm font-medium rounded-md text-foreground bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="inline-flex items-center justify-center px-4 py-2.5 border border-input text-sm font-medium rounded-md text-foreground bg-card hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
                   >
                     <i className="ri-user-add-line mr-2"></i>
                     Create Account
@@ -252,7 +252,7 @@ export default function Cart() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="bg-card rounded-lg shadow overflow-hidden">
                 <div className="p-4 sm:p-6">
                   <h2 className="text-base sm:text-lg font-medium text-foreground mb-3 sm:mb-4">Cart Items</h2>
                   <AnimatePresence>
@@ -335,10 +335,10 @@ export default function Cart() {
                             {/* Quantity Controls and Remove Button */}
                             <div className="flex items-center space-x-3">
                               {/* Quantity Controls */}
-                              <div className="flex items-center space-x-1 bg-white border-2 border-gray-200 rounded-lg p-1 shadow-sm">
+                              <div className="flex items-center space-x-1 bg-card border-2 border-gray-200 rounded-lg p-1 shadow-sm">
                                 <button
                                   onClick={() => handleUpdateQuantity(item.book_id, item.quantity - 1)}
-                                  className="p-2 rounded-md hover:bg-blue-50 hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                  className="p-2 rounded-md hover:bg-primary/10 hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                   disabled={item.quantity <= 1}
                                 >
                                   <i className="ri-subtract-line text-lg"></i>
@@ -348,7 +348,7 @@ export default function Cart() {
                                 </span>
                                 <button
                                   onClick={() => handleUpdateQuantity(item.book_id, item.quantity + 1)}
-                                  className="p-2 rounded-md hover:bg-blue-50 hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                  className="p-2 rounded-md hover:bg-primary/10 hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                   disabled={item.book?.format === 'physical' && (item.book?.stock_quantity || 0) <= item.quantity}
                                 >
                                   <i className="ri-add-line text-lg"></i>
@@ -379,7 +379,7 @@ export default function Cart() {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-white rounded-lg shadow p-4 sm:p-6 lg:sticky lg:top-8"
+                className="bg-card rounded-lg shadow p-4 sm:p-6 lg:sticky lg:top-8"
               >
                 <h2 className="text-base sm:text-lg font-medium text-foreground mb-3 sm:mb-4">Order Summary</h2>
                 
@@ -425,7 +425,7 @@ export default function Cart() {
                   <button
                     onClick={handleCheckout}
                     disabled={cartItems.length === 0}
-                    className="w-full mt-4 sm:mt-6 bg-blue-600 text-white py-3 px-4 rounded-md text-sm sm:text-base font-medium hover:bg-blue-700 disabled:bg-muted disabled:cursor-not-allowed transition-colors"
+                    className="w-full mt-4 sm:mt-6 bg-primary text-white py-3 px-4 rounded-md text-sm sm:text-base font-medium hover:bg-primary/90 disabled:bg-muted disabled:cursor-not-allowed transition-colors"
                   >
                     Proceed to Checkout
                   </button>
@@ -433,7 +433,7 @@ export default function Cart() {
                   <div className="mt-4 sm:mt-6 space-y-2 sm:space-y-3">
                     <button
                       onClick={handleGuestLogin}
-                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-md text-sm sm:text-base font-medium hover:bg-blue-700 transition-colors"
+                      className="w-full bg-primary text-white py-3 px-4 rounded-md text-sm sm:text-base font-medium hover:bg-primary/90 transition-colors"
                     >
                       Sign In to Checkout
                     </button>
@@ -449,7 +449,7 @@ export default function Cart() {
                 <div className="mt-3 sm:mt-4 text-center">
                   <Link
                     to="/books"
-                    className="text-sm text-blue-600 hover:text-blue-500"
+                    className="text-sm text-primary hover:text-primary/90"
                   >
                     Continue Shopping
                   </Link>
