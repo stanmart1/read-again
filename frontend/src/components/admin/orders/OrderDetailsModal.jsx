@@ -227,12 +227,6 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
                   <span>{formatCurrency(displayOrder.tax_amount)}</span>
                 </div>
               )}
-              {displayOrder.shipping_cost > 0 && (
-                <div className="flex justify-between text-sm">
-                  <span>Shipping:</span>
-                  <span>{formatCurrency(displayOrder.shipping_cost)}</span>
-                </div>
-              )}
               {displayOrder.discount_amount > 0 && (
                 <div className="flex justify-between text-sm text-green-600 dark:text-green-400">
                   <span>Discount:</span>
@@ -276,37 +270,6 @@ const OrderDetailsModal = ({ order, isOpen, onClose, onStatusUpdate, onPaymentSt
             </div>
           </div>
 
-          {/* Shipping Information */}
-          {displayOrder.shipping_address && displayOrder.shipping_address.street && (
-            <div className="bg-muted rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center">
-                <i className="ri-truck-line mr-2"></i>
-                Shipping Information
-              </h3>
-              <div className="space-y-2">
-                {displayOrder.shipping_method && (
-                  <p className="text-sm"><span className="font-medium">Method:</span> {displayOrder.shipping_method}</p>
-                )}
-                {displayOrder.tracking_number && (
-                  <p className="text-sm"><span className="font-medium">Tracking:</span> {displayOrder.tracking_number}</p>
-                )}
-                {displayOrder.estimated_delivery_date && (
-                  <p className="text-sm"><span className="font-medium">Est. Delivery:</span> {formatDate(displayOrder.estimated_delivery_date)}</p>
-                )}
-                {displayOrder.shipping_address && (
-                  <div className="mt-2">
-                    <p className="text-sm font-medium">Shipping Address:</p>
-                    <p className="text-sm text-muted-foreground">
-                      {displayOrder.shipping_address.name}<br />
-                      {displayOrder.shipping_address.street}<br />
-                      {displayOrder.shipping_address.city}, {displayOrder.shipping_address.state} {displayOrder.shipping_address.zip}<br />
-                      {displayOrder.shipping_address.country}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
 
           {/* Order Notes */}
           {displayOrder.notes && (
