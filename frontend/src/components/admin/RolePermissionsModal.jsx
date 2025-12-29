@@ -79,7 +79,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                   <h2 className="text-2xl font-bold text-foreground">
                     Permissions for {role.display_name}
                   </h2>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-sm text-foreground mt-1">
                     {isEditingPermissions
                       ? "Select permissions to assign to this role"
                       : "View current permissions"}
@@ -157,7 +157,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                             <h4 className="font-medium text-foreground">
                               {permission.display_name}
                             </h4>
-                            <span className="px-2 py-1 bg-primary/20 text-blue-800 rounded-full text-xs">
+                            <span className="px-2 py-1 bg-primary/30 text-primary rounded-full text-xs font-medium">
                               {permission.resource}
                             </span>
                           </div>
@@ -186,7 +186,7 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                         <h4 className="font-medium text-foreground">
                           {permission.display_name}
                         </h4>
-                        <span className="px-2 py-1 bg-primary/20 text-blue-800 rounded-full text-xs">
+                        <span className="px-2 py-1 bg-primary/30 text-primary rounded-full text-xs font-medium">
                           {permission.resource}
                         </span>
                       </div>
