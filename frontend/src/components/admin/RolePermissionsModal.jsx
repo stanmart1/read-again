@@ -161,10 +161,10 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                               {permission.resource}
                             </span>
                           </div>
-                          <p className="text-sm text-muted-foreground mb-2">
+                          <p className="text-sm text-foreground mb-2">
                             {permission.description}
                           </p>
-                          <div className="flex items-center text-xs text-muted-foreground">
+                          <div className="flex items-center text-xs text-foreground">
                             <span className="mr-2">
                               Action: {permission.action}
                             </span>
@@ -190,10 +190,10 @@ const RolePermissionsModal = ({ isOpen, onClose, role }) => {
                           {permission.resource}
                         </span>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">
+                      <p className="text-sm text-foreground mb-2">
                         {permission.description}
                       </p>
-                      <div className="flex items-center text-xs text-muted-foreground">
+                      <div className="flex items-center text-xs text-foreground">
                         <span className="mr-2">
                           Action: {permission.action}
                         </span>
