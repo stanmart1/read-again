@@ -397,7 +397,7 @@ export default function EmailGatewayManagement() {
               <button
                 onClick={() => handleTestConnection(activeGateway)}
                 disabled={isLoading || !testEmail}
-                className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm"
+                className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-600 disabled:opacity-50 text-sm"
               >
                 Test Connection
               </button>

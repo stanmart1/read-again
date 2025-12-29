@@ -542,7 +542,7 @@ export default function PaymentGatewayManagement() {
               className={`px-3 py-1 text-sm rounded-lg transition-all duration-200 flex items-center ${
                 savedGateways.has(gateway.id)
                   ? 'bg-green-100 dark:bg-green-900/30 text-green-700 border border-green-300'
-                  : 'bg-green-600 text-white hover:bg-green-700'
+                  : 'bg-green-600 text-white hover:bg-green-700 dark:hover:bg-green-600'
               } disabled:opacity-50 disabled:cursor-not-allowed`}
             >
               {savingGateway === gateway.id ? (

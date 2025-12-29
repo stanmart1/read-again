@@ -205,7 +205,7 @@ const AdminUsers = () => {
                       selectedUsers.forEach(userId => handleStatusChange(userId, true));
                     }
                   }}
-                  className="px-4 py-2 bg-green-600 dark:bg-green-700 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-800 transition-colors text-sm flex items-center gap-2"
+                  className="px-4 py-2 bg-green-600 dark:bg-green-700 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-600 dark:hover:bg-green-800 transition-colors text-sm flex items-center gap-2"
                 >
                   <i className="ri-check-line"></i>
                   Activate All
@@ -216,7 +216,7 @@ const AdminUsers = () => {
                       selectedUsers.forEach(userId => handleStatusChange(userId, false));
                     }
                   }}
-                  className="px-4 py-2 bg-yellow-600 dark:bg-yellow-700 text-white rounded-lg hover:bg-yellow-700 dark:hover:bg-yellow-800 transition-colors text-sm flex items-center gap-2"
+                  className="px-4 py-2 bg-yellow-600 dark:bg-yellow-700 text-white rounded-lg hover:bg-yellow-700 dark:hover:bg-yellow-600 dark:hover:bg-yellow-800 transition-colors text-sm flex items-center gap-2"
                 >
                   <i className="ri-pause-line"></i>
                   Deactivate All
@@ -227,7 +227,7 @@ const AdminUsers = () => {
                       selectedUsers.forEach(userId => handleDeleteUser(userId));
                     }
                   }}
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm flex items-center gap-2"
+                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors text-sm flex items-center gap-2"
                 >
                   <i className="ri-delete-bin-line"></i>
                   Delete All

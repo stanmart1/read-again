@@ -4,8 +4,8 @@ const ConfirmDialog = ({ isOpen, onClose, onConfirm, title, message, confirmText
   if (!isOpen) return null;
 
   const typeStyles = {
-    danger: 'bg-red-600 hover:bg-red-700',
-    warning: 'bg-yellow-600 hover:bg-yellow-700',
+    danger: 'bg-red-600 hover:bg-red-700 dark:hover:bg-red-600',
+    warning: 'bg-yellow-600 hover:bg-yellow-700 dark:hover:bg-yellow-600',
     info: 'bg-primary hover:bg-primary/90'
   };
 

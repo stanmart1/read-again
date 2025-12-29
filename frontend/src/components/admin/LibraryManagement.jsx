@@ -433,7 +433,7 @@ const LibraryManagement = () => {
         <div className="flex flex-wrap gap-2 justify-end">
           <button
             onClick={handleExport}
-            className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm flex items-center gap-2"
+            className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors text-sm flex items-center gap-2"
           >
             <i className="ri-download-line"></i>
             <span className="hidden sm:inline">Export CSV</span>
@@ -441,7 +441,7 @@ const LibraryManagement = () => {
           </button>
           <button
             onClick={() => setShowBulkModal(true)}
-            className="px-3 sm:px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm flex items-center gap-2"
+            className="px-3 sm:px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 dark:hover:bg-purple-600 transition-colors text-sm flex items-center gap-2"
           >
             <i className="ri-group-line"></i>
             <span className="hidden sm:inline">Bulk Assign</span>

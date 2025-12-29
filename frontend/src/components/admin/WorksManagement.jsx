@@ -369,7 +369,7 @@ const WorksManagement = () => {
                     className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-1 ${
                       work.is_active
                         ? 'bg-orange-600 hover:bg-orange-700 text-white'
-                        : 'bg-green-600 hover:bg-green-700 text-white'
+                        : 'bg-green-600 hover:bg-green-700 dark:hover:bg-green-600 text-white'
                     }`}
                     title={work.is_active ? 'Deactivate' : 'Activate'}
                   >
@@ -382,7 +382,7 @@ const WorksManagement = () => {
                   <button
                     onClick={() => handleDelete(work.id)}
                     disabled={isDeleting}
-                    className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="bg-red-600 hover:bg-red-700 dark:hover:bg-red-600 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                     title="Delete"
                   >
                     {isDeleting ? (

@@ -185,7 +185,7 @@ export default function RedisManagement() {
         <button
           onClick={refreshRedisSettings}
           disabled={refreshing}
-          className="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+          className="w-full px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-600 disabled:opacity-50"
         >
           {refreshing ? 'Refreshing...' : 'Refresh Settings Cache'}
         </button>
@@ -194,7 +194,7 @@ export default function RedisManagement() {
           <button
             onClick={flushRedis}
             disabled={flushing}
-            className="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50"
+            className="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 disabled:opacity-50"
           >
             {flushing ? 'Flushing...' : 'Flush All Redis Data'}
           </button>

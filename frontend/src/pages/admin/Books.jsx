@@ -267,7 +267,7 @@ const AdminBooks = () => {
               <div className="flex gap-3">
                 <button
                   onClick={() => { setError(null); }}
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
+                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors text-sm font-medium"
                 >
                   Try Again
                 </button>
@@ -346,7 +346,7 @@ const AdminBooks = () => {
                           </button>
                           <button
                             onClick={handleBulkDelete}
-                            className="px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition-all duration-300 flex items-center"
+                            className="px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 dark:hover:bg-red-600 transition-all duration-300 flex items-center"
                           >
                             <i className="ri-delete-bin-line mr-2"></i>
                             Delete ({selection.books.length})
@@ -451,7 +451,7 @@ const AdminBooks = () => {
                     <button
                       onClick={confirmDeleteBook}
                       disabled={loadingStates.delete}
-                      className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {loadingStates.delete && <i className="ri-loader-4-line animate-spin"></i>}
                       {loadingStates.delete ? 'Deleting...' : 'Delete'}

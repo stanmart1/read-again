@@ -638,13 +638,13 @@ const BlogManagement = () => {
             <div className="flex gap-2">
               <button
                 onClick={handleBulkPublish}
-                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm"
+                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-600 text-sm"
               >
                 Publish Selected
               </button>
               <button
                 onClick={handleBulkDelete}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm"
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 text-sm"
               >
                 Delete Selected
               </button>

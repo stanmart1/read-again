@@ -153,7 +153,7 @@ export default function FAQManagementPage() {
                 </button>
                 <button
                   onClick={() => setShowCategoryForm(true)}
-                  className="inline-flex items-center justify-center sm:justify-start px-3 sm:px-4 py-2 border border-transparent rounded-md shadow-sm text-xs sm:text-sm font-medium text-white bg-green-600 hover:bg-green-700 w-full sm:w-auto"
+                  className="inline-flex items-center justify-center sm:justify-start px-3 sm:px-4 py-2 border border-transparent rounded-md shadow-sm text-xs sm:text-sm font-medium text-white bg-green-600 hover:bg-green-700 dark:hover:bg-green-600 w-full sm:w-auto"
                 >
                   <i className="ri-folder-add-line mr-2"></i>
                   <span>Add Category</span>
