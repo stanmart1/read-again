@@ -6,7 +6,7 @@ export default function OrderConfirmation() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-24">

@@ -94,7 +94,7 @@ export default function Checkout() {
 
   if (cartLoading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-16 pt-24 text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
@@ -106,7 +106,7 @@ export default function Checkout() {
 
   if (cartError) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-16 pt-24 text-center">
           <div className="bg-red-50 border border-red-200 rounded-lg p-4 max-w-md mx-auto">
@@ -119,7 +119,7 @@ export default function Checkout() {
 
   if (!cartItems || cartItems.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-16 pt-24 text-center">
           <h2 className="text-2xl font-bold text-foreground mb-4">Your Cart is Empty</h2>
@@ -136,7 +136,7 @@ export default function Checkout() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24">

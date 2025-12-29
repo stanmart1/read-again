@@ -12,7 +12,7 @@ export default function NotFound() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
       
       <div className="flex-grow flex items-center justify-center px-4 py-20">

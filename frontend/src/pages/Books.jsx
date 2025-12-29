@@ -22,7 +22,7 @@ export default function Books() {
   const { books, loading } = useBooks(params);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}

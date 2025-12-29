@@ -64,7 +64,7 @@ export default function BookDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <Header />
         <div className="flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
@@ -76,7 +76,7 @@ export default function BookDetail() {
 
   if (!book) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
         <Header />
         <div className="max-w-7xl mx-auto px-4 py-20 text-center">
           <h2 className="text-2xl font-bold text-foreground mb-4">Book not found</h2>
@@ -90,7 +90,7 @@ export default function BookDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
 
       {/* Book Detail Section */}
