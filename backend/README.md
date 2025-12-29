@@ -35,7 +35,11 @@ docker-compose up -d
 
 4. Run migrations:
 ```bash
-go run cmd/api/main.go migrate
+# Initialize database and create all tables
+go run cmd/initdb/main.go
+
+# Or run the API server (it will auto-migrate on startup)
+go run cmd/api/main.go
 ```
 
 5. Start server:
