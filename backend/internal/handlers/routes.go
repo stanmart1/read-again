@@ -14,6 +14,7 @@ func SetupRoutes(
 	roleService *services.RoleService,
 	categoryService *services.CategoryService,
 	authorService *services.AuthorService,
+	authorDashboardService *services.AuthorDashboardService,
 	bookService *services.BookService,
 	storageService *services.StorageService,
 	cartService *services.CartService,
@@ -45,6 +46,7 @@ func SetupRoutes(
 	roleHandler := NewRoleHandler(roleService)
 	categoryHandler := NewCategoryHandler(categoryService)
 	authorHandler := NewAuthorHandler(authorService)
+	authorDashboardHandler := NewAuthorDashboardHandler(authorDashboardService)
 	bookHandler := NewBookHandler(bookService, storageService)
 	cartHandler := NewCartHandler(cartService)
 	checkoutHandler := NewCheckoutHandler(orderService, paymentService)
@@ -152,6 +154,12 @@ func SetupRoutes(
 	adminAuthors.Get("/:id", authorHandler.GetAuthor)
 	adminAuthors.Put("/:id", authorHandler.UpdateAuthor)
 	adminAuthors.Delete("/:id", authorHandler.DeleteAuthor)
+
+	// Author Dashboard routes (for authors to manage their own content)
+	authorDashboard := api.Group("/author", middleware.AuthRequired(), middleware.AuthorOnly)
+	authorDashboard.Get("/dashboard", authorDashboardHandler.GetDashboard)
+	authorDashboard.Get("/profile", authorDashboardHandler.GetProfile)
+	authorDashboard.Put("/profile", authorDashboardHandler.UpdateProfile)
 
 	books := api.Group("/books")
 	books.Get("/", bookHandler.ListBooks)
