@@ -13,6 +13,7 @@ const LoadingFallback = () => (
 );
 
 import { AdminRoute } from './components/ProtectedRoute';
+import AuthorRoute from './components/AuthorRoute';
 
 // Public Pages (New TypeScript versions)
 const Landing = lazy(() => import('./pages/home/Landing'));
@@ -65,6 +66,9 @@ const AdminAbout = lazy(() => import('./pages/admin/About'));
 const AdminContact = lazy(() => import('./pages/admin/Contact'));
 const AdminFAQ = lazy(() => import('./pages/admin/FAQ'));
 const AdminSettings = lazy(() => import('./pages/admin/Settings'));
+
+// Author pages
+const AuthorDashboard = lazy(() => import('./pages/author/Dashboard'));
 
 import './styles/index.css';
 
@@ -137,6 +141,9 @@ function App() {
               <Route path="/admin/contact" element={<AdminRoute><AdminContact /></AdminRoute>} />
               <Route path="/admin/faq" element={<AdminRoute><AdminFAQ /></AdminRoute>} />
               <Route path="/admin/settings" element={<AdminRoute><AdminSettings /></AdminRoute>} />
+              
+              {/* Author Routes */}
+              <Route path="/author/dashboard" element={<AuthorRoute><AuthorDashboard /></AuthorRoute>} />
               
               {/* 404 */}
               <Route path="*" element={<PublicNotFound />} />
