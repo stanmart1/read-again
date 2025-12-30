@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import AuthorLayout from '../../components/author/AuthorLayout';
 import { useAuthorDashboard } from '../../hooks/useAuthorDashboard';
 
@@ -24,46 +25,57 @@ export default function AuthorDashboard() {
     );
   }
 
+  const statsData = [
+    { label: 'Total Books', value: dashboard?.total_books || 0, icon: 'ri-book-line' },
+    { label: 'Total Sales', value: dashboard?.total_sales || 0, icon: 'ri-shopping-cart-line' },
+    { label: 'Total Earnings', value: `₦${(dashboard?.total_earnings || 0).toLocaleString()}`, icon: 'ri-money-dollar-circle-line' },
+    { label: 'Available Balance', value: `₦${(dashboard?.available_balance || 0).toLocaleString()}`, icon: 'ri-wallet-line' },
+  ];
+
   return (
     <AuthorLayout>
-      <div className="space-y-6">
-        {/* Header */}
-        <div>
-          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-          <p className="text-muted-foreground mt-1">Welcome back! Here's your overview.</p>
-        </div>
+      <div className="max-w-7xl mx-auto">
+        {/* Welcome Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <h1 className="text-3xl font-bold text-foreground mb-2">Dashboard</h1>
+          <p className="text-muted-foreground">Welcome back! Here's your overview.</p>
+        </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatCard
-            icon="ri-book-line"
-            label="Total Books"
-            value={dashboard?.total_books || 0}
-            color="blue"
-          />
-          <StatCard
-            icon="ri-shopping-cart-line"
-            label="Total Sales"
-            value={dashboard?.total_sales || 0}
-            color="green"
-          />
-          <StatCard
-            icon="ri-money-dollar-circle-line"
-            label="Total Earnings"
-            value={`₦${(dashboard?.total_earnings || 0).toLocaleString()}`}
-            color="purple"
-          />
-          <StatCard
-            icon="ri-wallet-line"
-            label="Available Balance"
-            value={`₦${(dashboard?.available_balance || 0).toLocaleString()}`}
-            color="orange"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {statsData.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-card rounded-xl shadow-md p-6"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-muted-foreground text-sm mb-1">{stat.label}</p>
+                  <p className="text-3xl font-bold text-foreground">{stat.value}</p>
+                </div>
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <i className={`${stat.icon} text-2xl text-primary`}></i>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* Additional Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-card rounded-lg border border-border p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="bg-card rounded-xl shadow-md p-6"
+          >
             <h3 className="text-lg font-semibold text-foreground mb-4">This Month</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
@@ -79,9 +91,14 @@ export default function AuthorDashboard() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-card rounded-lg border border-border p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="bg-card rounded-xl shadow-md p-6"
+          >
             <h3 className="text-lg font-semibold text-foreground mb-4">Pending</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
@@ -91,32 +108,9 @@ export default function AuthorDashboard() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </AuthorLayout>
-  );
-}
-
-function StatCard({ icon, label, value, color }) {
-  const colorClasses = {
-    blue: 'bg-primary/10 text-primary',
-    green: 'bg-green-500/10 text-green-600 dark:text-green-400',
-    purple: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
-    orange: 'bg-orange-500/10 text-orange-600 dark:text-orange-400',
-  };
-
-  return (
-    <div className="bg-card rounded-lg border border-border p-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm text-muted-foreground mb-1">{label}</p>
-          <p className="text-2xl font-bold text-foreground">{value}</p>
-        </div>
-        <div className={`w-12 h-12 rounded-full flex items-center justify-center ${colorClasses[color]}`}>
-          <i className={`${icon} text-2xl`}></i>
-        </div>
-      </div>
-    </div>
   );
 }
