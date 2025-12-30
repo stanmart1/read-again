@@ -17,8 +17,8 @@ export default function AuthorDashboard() {
   if (error) {
     return (
       <AuthorLayout>
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-800">{error}</p>
+        <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4">
+          <p className="text-destructive">{error}</p>
         </div>
       </AuthorLayout>
     );
@@ -100,10 +100,10 @@ export default function AuthorDashboard() {
 
 function StatCard({ icon, label, value, color }) {
   const colorClasses = {
-    blue: 'bg-blue-100 text-blue-600',
-    green: 'bg-green-100 text-green-600',
-    purple: 'bg-purple-100 text-purple-600',
-    orange: 'bg-orange-100 text-orange-600',
+    blue: 'bg-primary/10 text-primary',
+    green: 'bg-green-500/10 text-green-600 dark:text-green-400',
+    purple: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
+    orange: 'bg-orange-500/10 text-orange-600 dark:text-orange-400',
   };
 
   return (
