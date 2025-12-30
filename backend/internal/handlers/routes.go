@@ -15,6 +15,7 @@ func SetupRoutes(
 	categoryService *services.CategoryService,
 	authorService *services.AuthorService,
 	authorDashboardService *services.AuthorDashboardService,
+	authorBookService *services.AuthorBookService,
 	bookService *services.BookService,
 	storageService *services.StorageService,
 	cartService *services.CartService,
@@ -47,6 +48,7 @@ func SetupRoutes(
 	categoryHandler := NewCategoryHandler(categoryService)
 	authorHandler := NewAuthorHandler(authorService)
 	authorDashboardHandler := NewAuthorDashboardHandler(authorDashboardService)
+	authorBookHandler := NewAuthorBookHandler(authorBookService)
 	bookHandler := NewBookHandler(bookService, storageService)
 	cartHandler := NewCartHandler(cartService)
 	checkoutHandler := NewCheckoutHandler(orderService, paymentService)
@@ -160,6 +162,16 @@ func SetupRoutes(
 	authorDashboard.Get("/dashboard", authorDashboardHandler.GetDashboard)
 	authorDashboard.Get("/profile", authorDashboardHandler.GetProfile)
 	authorDashboard.Put("/profile", authorDashboardHandler.UpdateProfile)
+	
+	// Author Book Management routes
+	authorDashboard.Get("/books", authorBookHandler.ListBooks)
+	authorDashboard.Post("/books", authorBookHandler.CreateBook)
+	authorDashboard.Get("/books/:id", authorBookHandler.GetBook)
+	authorDashboard.Put("/books/:id", authorBookHandler.UpdateBook)
+	authorDashboard.Delete("/books/:id", authorBookHandler.DeleteBook)
+	authorDashboard.Post("/books/:id/publish", authorBookHandler.PublishBook)
+	authorDashboard.Post("/books/:id/unpublish", authorBookHandler.UnpublishBook)
+	authorDashboard.Get("/books/:id/stats", authorBookHandler.GetBookStats)
 
 	books := api.Group("/books")
 	books.Get("/", bookHandler.ListBooks)
