@@ -4,14 +4,18 @@ import "time"
 
 type Author struct {
 	BaseModel
-	UserID       uint   `gorm:"uniqueIndex;not null" json:"user_id"`
-	User         *User  `gorm:"foreignKey:UserID" json:"user,omitempty"`
-	BusinessName string `gorm:"not null" json:"business_name" validate:"required"`
-	Bio          string `gorm:"type:text" json:"bio"`
-	Photo        string `json:"photo"`
-	Website      string `json:"website"`
-	Email        string `json:"email" validate:"omitempty,email"`
-	Status       string `gorm:"default:active" json:"status"`
+	UserID          uint    `gorm:"uniqueIndex;not null" json:"user_id"`
+	User            *User   `gorm:"foreignKey:UserID" json:"user,omitempty"`
+	BusinessName    string  `gorm:"not null" json:"business_name" validate:"required"`
+	Bio             string  `gorm:"type:text" json:"bio"`
+	Photo           string  `json:"photo"`
+	Website         string  `json:"website"`
+	Email           string  `json:"email" validate:"omitempty,email"`
+	Status          string  `gorm:"default:active" json:"status"`
+	CommissionRate  float64 `gorm:"default:70.0" json:"commission_rate"` // Author's percentage
+	TotalEarnings   float64 `gorm:"default:0" json:"total_earnings"`
+	AvailableBalance float64 `gorm:"default:0" json:"available_balance"`
+	PendingBalance  float64 `gorm:"default:0" json:"pending_balance"`
 }
 
 type Book struct {
