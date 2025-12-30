@@ -60,6 +60,14 @@ func main() {
 		{Name: "orders.delete", Description: "Delete orders", Category: "orders"},
 		{Name: "orders.manage", Description: "Full order management", Category: "orders"},
 
+		// Author Dashboard
+		{Name: "author.manage_own_books", Description: "Manage own books", Category: "author"},
+		{Name: "author.view_own_sales", Description: "View own sales data", Category: "author"},
+		{Name: "author.view_own_earnings", Description: "View own earnings", Category: "author"},
+		{Name: "author.manage_profile", Description: "Manage author profile", Category: "author"},
+		{Name: "author.respond_reviews", Description: "Respond to reviews", Category: "author"},
+		{Name: "author.request_payout", Description: "Request earnings withdrawal", Category: "author"},
+
 		// Reading Analytics
 		{Name: "reading.view_analytics", Description: "View reading analytics", Category: "reading"},
 		{Name: "reading.manage", Description: "Manage reading data", Category: "reading"},
