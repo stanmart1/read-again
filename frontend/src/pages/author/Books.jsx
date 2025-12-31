@@ -3,11 +3,17 @@ import { motion } from 'framer-motion';
 import AuthorLayout from '../../components/author/AuthorLayout';
 import { useAuthorBooks } from '../../hooks/useAuthorBooks';
 import { getImageUrl } from '../../lib/fileService';
+import BookAddModal from '../../components/author/BookAddModal';
+import BookEditModal from '../../components/author/BookEditModal';
 
 export default function AuthorBooks() {
   const { books, isLoading, error, fetchBooks, deleteBook, publishBook, unpublishBook } = useAuthorBooks();
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -74,7 +80,10 @@ export default function AuthorBooks() {
               <h1 className="text-3xl font-bold text-foreground mb-2">My Books</h1>
               <p className="text-muted-foreground">Manage your book collection</p>
             </div>
-            <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2">
+            <button 
+              onClick={() => setShowAddModal(true)}
+              className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2"
+            >
               <i className="ri-add-line text-xl"></i>
               Add New Book
             </button>
@@ -181,7 +190,10 @@ export default function AuthorBooks() {
             <i className="ri-book-line text-6xl text-muted-foreground mb-4"></i>
             <h3 className="text-xl font-semibold text-foreground mb-2">No books yet</h3>
             <p className="text-muted-foreground mb-6">Start by adding your first book</p>
-            <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
+            <button 
+              onClick={() => setShowAddModal(true)}
+              className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+            >
               Add Your First Book
             </button>
           </motion.div>
@@ -219,7 +231,13 @@ export default function AuthorBooks() {
                   <p className="text-sm text-muted-foreground mb-4">₦{book.price?.toLocaleString()}</p>
                   
                   <div className="flex items-center gap-2">
-                    <button className="flex-1 bg-primary/10 text-primary px-3 py-2 rounded-lg hover:bg-primary/20 transition-colors text-sm">
+                    <button 
+                      onClick={() => {
+                        setSelectedBook(book);
+                        setShowEditModal(true);
+                      }}
+                      className="flex-1 bg-primary/10 text-primary px-3 py-2 rounded-lg hover:bg-primary/20 transition-colors text-sm"
+                    >
                       Edit
                     </button>
                     {book.status === 'draft' ? (
@@ -250,6 +268,32 @@ export default function AuthorBooks() {
           </div>
         )}
       </div>
+
+      {/* Modals */}
+      <BookAddModal
+        isOpen={showAddModal}
+        onClose={() => setShowAddModal(false)}
+        categories={categories}
+        onSuccess={() => {
+          setShowAddModal(false);
+          fetchBooks();
+        }}
+      />
+
+      <BookEditModal
+        isOpen={showEditModal}
+        onClose={() => {
+          setShowEditModal(false);
+          setSelectedBook(null);
+        }}
+        book={selectedBook}
+        categories={categories}
+        onSuccess={() => {
+          setShowEditModal(false);
+          setSelectedBook(null);
+          fetchBooks();
+        }}
+      />
     </AuthorLayout>
   );
 }
