@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import api from '../../lib/api';
 
-const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }) => {
+const BookEditModal = ({ isOpen, onClose, book, categories, onSuccess }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [formData, setFormData] = useState({
     title: '',
-    author_id: '',
     category_id: '',
     price: '',
     isbn: '',
@@ -16,10 +15,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
     pages: '',
     publication_date: '',
     publisher: '',
-    stock_quantity: '0',
-    track_inventory: true,
-    is_featured: false,
-    status: 'published',
+    status: 'draft',
     cover_image: null,
     ebook_file: null
   });
@@ -33,7 +29,6 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
     if (book && isOpen) {
       setFormData({
         title: book.title || '',
-        author_id: book.author_id?.toString() || '',
         category_id: book.category_id?.toString() || '',
         price: book.price?.toString() || '',
         isbn: book.isbn || '',
@@ -42,10 +37,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
         pages: book.pages?.toString() || '',
         publication_date: book.publication_date || '',
         publisher: book.publisher || '',
-        stock_quantity: book.stock_quantity?.toString() || '0',
-        track_inventory: book.inventory_enabled || false,
-        is_featured: book.is_featured || false,
-        status: book.status || 'published',
+        status: book.status || 'draft',
         cover_image: null,
         ebook_file: null
       });
@@ -67,10 +59,7 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
       pages: '',
       publication_date: '',
       publisher: '',
-      stock_quantity: '0',
-      track_inventory: true,
-      is_featured: false,
-      status: 'published',
+      status: 'draft',
       cover_image: null,
       ebook_file: null
     });
@@ -99,7 +88,6 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
     
     if (step === 1) {
       if (!formData.title.trim()) newErrors.title = 'Title is required';
-      if (!formData.author_id) newErrors.author_id = 'Author is required';
       if (!formData.category_id) newErrors.category_id = 'Category is required';
       if (!formData.price || parseFloat(formData.price) <= 0) newErrors.price = 'Valid price is required';
       if (!formData.format) newErrors.format = 'Book type is required';
@@ -260,23 +248,6 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2">Author *</label>
-                  <select
-                    value={formData.author_id}
-                    onChange={(e) => handleInputChange('author_id', e.target.value)}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all appearance-none bg-card ${
-                      errors.author_id ? 'border-red-400 bg-red-50 dark:bg-red-900/20' : 'border-border hover:border-input'
-                    }`}
-                  >
-                    <option value="">Select an author</option>
-                    {authors.map(author => (
-                      <option key={author.id} value={author.id}>{author.name}</option>
-                    ))}
-                  </select>
-                  {errors.author_id && <p className="text-red-500 text-sm mt-1"><i className="ri-error-warning-line mr-1"></i>{errors.author_id}</p>}
-                </div>
-
-                <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">Category *</label>
                   <select
                     value={formData.category_id}
@@ -328,18 +299,6 @@ const BookEditModal = ({ isOpen, onClose, book, categories, authors, onSuccess }
                     className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                     placeholder="Book description..."
                   />
-                </div>
-
-                <div className="sm:col-span-2">
-                  <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border border-primary/20">
-                    <label className="text-sm font-semibold text-foreground">Featured Book</label>
-                    <input
-                      type="checkbox"
-                      checked={formData.is_featured}
-                      onChange={(e) => handleInputChange('is_featured', e.target.checked)}
-                      className="h-4 w-4"
-                    />
-                  </div>
                 </div>
               </div>
               <div className="flex justify-between gap-3 pt-4 border-t">
