@@ -52,6 +52,17 @@ export const useAuthorAnalytics = () => {
     }
   };
 
+  const fetchBookBuyers = async (bookId, page = 1, limit = 10) => {
+    try {
+      const response = await api.get(`/author/analytics/books/${bookId}/buyers`, {
+        params: { page, limit }
+      });
+      return response.data;
+    } catch (err) {
+      throw new Error(err.response?.data?.error || 'Failed to fetch book buyers');
+    }
+  };
+
   useEffect(() => {
     fetchOverview();
   }, []);
@@ -63,6 +74,7 @@ export const useAuthorAnalytics = () => {
     fetchOverview,
     fetchSalesData,
     fetchRevenueData,
-    fetchTopBooks
+    fetchTopBooks,
+    fetchBookBuyers
   };
 };

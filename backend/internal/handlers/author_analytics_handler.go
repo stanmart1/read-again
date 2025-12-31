@@ -98,3 +98,35 @@ func (h *AuthorAnalyticsHandler) GetTopBooks(c *fiber.Ctx) error {
 	
 	return c.JSON(fiber.Map{"books": topBooks})
 }
+
+func (h *AuthorAnalyticsHandler) GetBookBuyers(c *fiber.Ctx) error {
+	authorID := c.Locals("author_id").(uint)
+	
+	bookID, err := strconv.ParseUint(c.Params("id"), 10, 32)
+	if err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid book ID"})
+	}
+	
+	page, err := strconv.Atoi(c.Query("page", "1"))
+	if err != nil || page < 1 {
+		page = 1
+	}
+	
+	limit, err := strconv.Atoi(c.Query("limit", "10"))
+	if err != nil || limit < 1 {
+		limit = 10
+	}
+	
+	buyers, total, err := h.service.GetBookBuyers(authorID, uint(bookID), page, limit)
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get book buyers: %v", err)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to fetch buyers"})
+	}
+	
+	return c.JSON(fiber.Map{
+		"buyers": buyers,
+		"total": total,
+		"page": page,
+		"limit": limit,
+	})
+}

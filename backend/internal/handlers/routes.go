@@ -180,6 +180,7 @@ func SetupRoutes(
 	authorDashboard.Get("/analytics/sales", authorAnalyticsHandler.GetSalesData)
 	authorDashboard.Get("/analytics/revenue", authorAnalyticsHandler.GetRevenueData)
 	authorDashboard.Get("/analytics/top-books", authorAnalyticsHandler.GetTopBooks)
+	authorDashboard.Get("/analytics/books/:id/buyers", authorAnalyticsHandler.GetBookBuyers)
 
 	books := api.Group("/books")
 	books.Get("/", bookHandler.ListBooks)

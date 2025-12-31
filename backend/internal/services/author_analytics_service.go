@@ -39,6 +39,15 @@ type TopBook struct {
 	Downloads int64  `json:"downloads"`
 }
 
+type BookBuyer struct {
+	UserID       uint      `json:"user_id"`
+	FullName     string    `json:"full_name"`
+	Email        string    `json:"email"`
+	PurchaseDate time.Time `json:"purchase_date"`
+	AmountPaid   float64   `json:"amount_paid"`
+	OrderID      uint      `json:"order_id"`
+}
+
 func (s *AuthorAnalyticsService) GetOverview(authorID uint) (*OverviewStats, error) {
 	var stats OverviewStats
 	
@@ -162,4 +171,47 @@ func (s *AuthorAnalyticsService) GetRevenueData(authorID uint, startDate, endDat
 	}
 	
 	return revenueData, nil
+}
+
+func (s *AuthorAnalyticsService) GetBookBuyers(authorID, bookID uint, page, limit int) ([]BookBuyer, int64, error) {
+	// Verify book belongs to author
+	var book models.Book
+	if err := s.db.DB.Where("id = ? AND author_id = ?", bookID, authorID).First(&book).Error; err != nil {
+		return nil, 0, utils.NewNotFoundError("Book not found", err)
+	}
+	
+	var buyers []BookBuyer
+	var total int64
+	
+	offset := (page - 1) * limit
+	
+	// Get total count
+	s.db.DB.Model(&models.OrderItem{}).
+		Joins("JOIN orders ON orders.id = order_items.order_id").
+		Joins("JOIN users ON users.id = orders.user_id").
+		Where("order_items.book_id = ? AND orders.status = 'completed'", bookID).
+		Count(&total)
+	
+	// Get buyers
+	err := s.db.DB.Raw(`
+		SELECT 
+			users.id as user_id,
+			users.full_name,
+			users.email,
+			orders.created_at as purchase_date,
+			order_items.price * order_items.quantity as amount_paid,
+			orders.id as order_id
+		FROM order_items
+		JOIN orders ON orders.id = order_items.order_id
+		JOIN users ON users.id = orders.user_id
+		WHERE order_items.book_id = ? AND orders.status = 'completed'
+		ORDER BY orders.created_at DESC
+		LIMIT ? OFFSET ?
+	`, bookID, limit, offset).Scan(&buyers).Error
+	
+	if err != nil {
+		return nil, 0, utils.NewInternalServerError("Failed to fetch book buyers", err)
+	}
+	
+	return buyers, total, nil
 }

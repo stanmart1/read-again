@@ -17,13 +17,17 @@ import { useAuthorAnalytics } from '../../hooks/useAuthorAnalytics';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export default function BookAnalyticsModal({ book, isOpen, onClose }) {
-  const { fetchSalesData } = useAuthorAnalytics();
+  const { fetchSalesData, fetchBookBuyers } = useAuthorAnalytics();
   const [salesData, setSalesData] = useState([]);
+  const [buyers, setBuyers] = useState([]);
+  const [buyersTotal, setBuyersTotal] = useState(0);
+  const [buyersPage, setBuyersPage] = useState(1);
   const [dateRange, setDateRange] = useState('30');
 
   useEffect(() => {
     if (isOpen && book) {
       loadSalesData();
+      loadBuyers(1);
     }
   }, [isOpen, book, dateRange]);
 
@@ -36,6 +40,17 @@ export default function BookAnalyticsModal({ book, isOpen, onClose }) {
       setSalesData(data);
     } catch (err) {
       console.error('Failed to load sales data:', err);
+    }
+  };
+
+  const loadBuyers = async (page) => {
+    try {
+      const data = await fetchBookBuyers(book.id, page, 10);
+      setBuyers(data.buyers);
+      setBuyersTotal(data.total);
+      setBuyersPage(page);
+    } catch (err) {
+      console.error('Failed to load buyers:', err);
     }
   };
 
@@ -177,6 +192,64 @@ export default function BookAnalyticsModal({ book, isOpen, onClose }) {
               <p className="text-sm text-gray-500 dark:text-gray-400">Created</p>
               <p className="text-gray-900 dark:text-white">{new Date(book.created_at).toLocaleDateString()}</p>
             </div>
+          </div>
+
+          {/* Buyers List */}
+          <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              Customers ({buyersTotal})
+            </h3>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    <th className="text-left py-2 px-3 text-sm text-gray-600 dark:text-gray-400">Customer</th>
+                    <th className="text-left py-2 px-3 text-sm text-gray-600 dark:text-gray-400">Email</th>
+                    <th className="text-right py-2 px-3 text-sm text-gray-600 dark:text-gray-400">Amount</th>
+                    <th className="text-right py-2 px-3 text-sm text-gray-600 dark:text-gray-400">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {buyers.map((buyer) => (
+                    <tr key={buyer.order_id} className="border-b border-gray-100 dark:border-gray-800">
+                      <td className="py-3 px-3 text-sm text-gray-900 dark:text-white">{buyer.full_name}</td>
+                      <td className="py-3 px-3 text-sm text-gray-600 dark:text-gray-400">{buyer.email}</td>
+                      <td className="py-3 px-3 text-sm text-right text-gray-900 dark:text-white">₦{buyer.amount_paid?.toLocaleString()}</td>
+                      <td className="py-3 px-3 text-sm text-right text-gray-600 dark:text-gray-400">
+                        {new Date(buyer.purchase_date).toLocaleDateString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Pagination */}
+            {buyersTotal > 10 && (
+              <div className="flex justify-center items-center gap-2 mt-4">
+                <button
+                  onClick={() => loadBuyers(buyersPage - 1)}
+                  disabled={buyersPage === 1}
+                  className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-white"
+                >
+                  Previous
+                </button>
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  Page {buyersPage} of {Math.ceil(buyersTotal / 10)}
+                </span>
+                <button
+                  onClick={() => loadBuyers(buyersPage + 1)}
+                  disabled={buyersPage >= Math.ceil(buyersTotal / 10)}
+                  className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 dark:text-white"
+                >
+                  Next
+                </button>
+              </div>
+            )}
+
+            {buyers.length === 0 && (
+              <p className="text-center py-8 text-gray-500 dark:text-gray-400">No customers yet</p>
+            )}
           </div>
         </div>
       </div>
