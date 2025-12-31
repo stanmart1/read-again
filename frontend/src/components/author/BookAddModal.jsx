@@ -1,13 +1,12 @@
 import { useState, useRef } from 'react';
 import api from '../../lib/api';
 
-const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
+const BookAddModal = ({ isOpen, onClose, categories, onSuccess }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [formData, setFormData] = useState({
     title: '',
-    author_id: '',
     category_id: '',
     price: '',
     isbn: '',
@@ -16,16 +15,12 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
     pages: '',
     publication_date: '',
     publisher: '',
-    is_featured: false,
-    status: 'published',
+    status: 'draft',
     cover_image: null,
     ebook_file: null
   });
   const [errors, setErrors] = useState({});
   const [dragActive, setDragActive] = useState({ cover: false, ebook: false });
-  const [showAddAuthor, setShowAddAuthor] = useState(false);
-  const [newAuthorName, setNewAuthorName] = useState('');
-  const [addingAuthor, setAddingAuthor] = useState(false);
 
   const coverInputRef = useRef(null);
   const ebookInputRef = useRef(null);
@@ -71,7 +66,6 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
 
     if (step === 1) {
       if (!formData.title.trim()) newErrors.title = 'Title is required';
-      if (!formData.author_id) newErrors.author_id = 'Author is required';
       if (!formData.category_id) newErrors.category_id = 'Category is required';
       if (!formData.price || parseFloat(formData.price) <= 0) newErrors.price = 'Valid price is required';
     }
@@ -159,33 +153,10 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
     }
   };
 
-  const handleAddAuthor = async () => {
-    if (!newAuthorName.trim()) return;
-
-    setAddingAuthor(true);
-    try {
-      const response = await api.post('/admin/authors', {
-        name: newAuthorName.trim()
-      });
-
-      const newAuthor = response.data.author || response.data;
-      authors.push(newAuthor);
-      setFormData(prev => ({ ...prev, author_id: newAuthor.id.toString() }));
-      setNewAuthorName('');
-      setShowAddAuthor(false);
-      alert(`Author "${newAuthor.name}" added successfully!`);
-    } catch (error) {
-      console.error('Add author error:', error);
-      alert('Failed to add author');
-    } finally {
-      setAddingAuthor(false);
-    }
-  };
 
   const resetForm = () => {
     setFormData({
       title: '',
-      author_id: '',
       category_id: '',
       price: '',
       isbn: '',
@@ -194,17 +165,13 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
       pages: '',
       publication_date: '',
       publisher: '',
-      format: '',
-      is_featured: false,
-      status: 'published',
+      status: 'draft',
       cover_image: null,
       ebook_file: null
     });
     setErrors({});
     setCurrentStep(1);
     setUploadProgress(0);
-    setShowAddAuthor(false);
-    setNewAuthorName('');
   };
 
   const handleClose = () => {
@@ -275,74 +242,6 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     placeholder="Enter the book title"
                   />
                   {errors.title && <p className="text-red-500 text-sm mt-1 flex items-center"><i className="ri-error-warning-line mr-1"></i>{errors.title}</p>}
-                </div>
-
-                {/* Author */}
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2">
-                    Author *
-                  </label>
-                  <div className="relative">
-                    <select
-                      value={formData.author_id}
-                      onChange={(e) => {
-                        if (e.target.value === 'add_new') {
-                          setShowAddAuthor(true);
-                        } else {
-                          handleInputChange('author_id', e.target.value);
-                        }
-                      }}
-                      className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-ring focus:border-primary transition-all appearance-none bg-card ${errors.author_id ? 'border-red-400 bg-red-50 dark:bg-red-900/20' : 'border-border hover:border-input'
-                        }`}
-                    >
-                      <option value="">Select an author</option>
-                      {authors.map(author => (
-                        <option key={author.id} value={author.id}>
-                          {author.name}
-                        </option>
-                      ))}
-                      <option value="add_new" className="font-medium text-primary">
-                        + Add New Author
-                      </option>
-                    </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <i className="ri-arrow-down-s-line text-muted-foreground"></i>
-                    </div>
-                  </div>
-                  {errors.author_id && <p className="text-red-500 text-sm mt-1 flex items-center"><i className="ri-error-warning-line mr-1"></i>{errors.author_id}</p>}
-
-                  {showAddAuthor && (
-                    <div className="mt-3 p-4 bg-primary/10 rounded-xl border border-primary/30">
-                      <label className="block text-sm font-medium text-foreground mb-2">New Author Name</label>
-                      <div className="flex gap-2">
-                        <input
-                          type="text"
-                          value={newAuthorName}
-                          onChange={(e) => setNewAuthorName(e.target.value)}
-                          placeholder="Enter author name"
-                          className="flex-1 px-3 py-2 border border-input rounded-lg focus:ring-2 focus:ring-ring"
-                        />
-                        <button
-                          type="button"
-                          onClick={handleAddAuthor}
-                          disabled={addingAuthor || !newAuthorName.trim()}
-                          className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 disabled:opacity-50"
-                        >
-                          {addingAuthor ? 'Adding...' : 'Add'}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setShowAddAuthor(false);
-                            setNewAuthorName('');
-                          }}
-                          className="px-3 py-2 bg-muted text-foreground rounded-lg hover:bg-muted"
-                        >
-                          <i className="ri-close-line"></i>
-                        </button>
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* Category */}
@@ -444,38 +343,6 @@ const BookAddModal = ({ isOpen, onClose, categories, authors, onSuccess }) => {
                     />
                   </div>
                 )}
-
-                {/* Featured Book Toggle */}
-                <div className="sm:col-span-2">
-                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border border-primary/20">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                        <i className="ri-star-line text-purple-600"></i>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-foreground">
-                          Featured Book
-                        </label>
-                        <p className="text-xs text-muted-foreground">
-                          Featured books appear prominently on the homepage
-                        </p>
-                      </div>
-                    </div>
-                    <label className="flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={formData.is_featured}
-                        onChange={(e) => handleInputChange('is_featured', e.target.checked)}
-                        className="sr-only"
-                      />
-                      <div className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${formData.is_featured ? 'bg-purple-600' : 'bg-muted'
-                        }`}>
-                        <span className={`inline-block h-4 w-4 transform rounded-full bg-card transition-transform ${formData.is_featured ? 'translate-x-6' : 'translate-x-1'
-                          }`} />
-                      </div>
-                    </label>
-                  </div>
-                </div>
               </div>
 
               <div className="flex justify-between gap-3 pt-4 border-t">
