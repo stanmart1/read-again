@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import AuthorLayout from '../../components/author/AuthorLayout';
 import { useAuthorBooks } from '../../hooks/useAuthorBooks';
 import { getImageUrl } from '../../lib/fileService';
 import BookAddModal from '../../components/author/BookAddModal';
 import BookEditModal from '../../components/author/BookEditModal';
+import BookDetailsModal from '../../components/author/BookDetailsModal';
+import api from '../../lib/api';
 
 export default function AuthorBooks() {
   const { books, isLoading, error, fetchBooks, deleteBook, publishBook, unpublishBook } = useAuthorBooks();
@@ -12,8 +14,22 @@ export default function AuthorBooks() {
   const [statusFilter, setStatusFilter] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
   const [categories, setCategories] = useState([]);
+
+  // Fetch categories
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await api.get('/categories');
+        setCategories(response.data.categories || response.data || []);
+      } catch (err) {
+        console.error('Failed to fetch categories:', err);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -234,6 +250,15 @@ export default function AuthorBooks() {
                     <button 
                       onClick={() => {
                         setSelectedBook(book);
+                        setShowDetailsModal(true);
+                      }}
+                      className="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm"
+                    >
+                      View
+                    </button>
+                    <button 
+                      onClick={() => {
+                        setSelectedBook(book);
                         setShowEditModal(true);
                       }}
                       className="flex-1 bg-primary/10 text-primary px-3 py-2 rounded-lg hover:bg-primary/20 transition-colors text-sm"
@@ -292,6 +317,14 @@ export default function AuthorBooks() {
           setShowEditModal(false);
           setSelectedBook(null);
           fetchBooks();
+        }}
+      />
+
+      <BookDetailsModal
+        book={selectedBook}
+        onClose={() => {
+          setShowDetailsModal(false);
+          setSelectedBook(null);
         }}
       />
     </AuthorLayout>

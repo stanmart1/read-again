@@ -67,6 +67,7 @@ func main() {
 		{Name: "author.manage_profile", Description: "Manage author profile", Category: "author"},
 		{Name: "author.respond_reviews", Description: "Respond to reviews", Category: "author"},
 		{Name: "author.request_payout", Description: "Request earnings withdrawal", Category: "author"},
+		{Name: "author.create_categories", Description: "Create book categories", Category: "author"},
 
 		// Reading Analytics
 		{Name: "reading.view_analytics", Description: "View reading analytics", Category: "reading"},

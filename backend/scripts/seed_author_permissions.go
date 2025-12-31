@@ -33,6 +33,7 @@ func main() {
 		"author.manage_profile",
 		"author.respond_reviews",
 		"author.request_payout",
+		"author.create_categories",
 	}
 
 	var permissions []models.Permission

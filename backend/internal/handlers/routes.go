@@ -137,7 +137,7 @@ func SetupRoutes(
 	categories := api.Group("/categories")
 	categories.Get("/", categoryHandler.ListCategories)
 	categories.Get("/:id", categoryHandler.GetCategory)
-	categories.Post("/", middleware.AdminRequired(), categoryHandler.CreateCategory)
+	categories.Post("/", middleware.AuthorOrAdmin(), categoryHandler.CreateCategory)
 	categories.Put("/:id", middleware.AdminRequired(), categoryHandler.UpdateCategory)
 	categories.Delete("/:id", middleware.AdminRequired(), categoryHandler.DeleteCategory)
 
