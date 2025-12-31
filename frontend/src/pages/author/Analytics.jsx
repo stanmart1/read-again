@@ -2,104 +2,32 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import AuthorLayout from '../../components/author/AuthorLayout';
 import { useAuthorAnalytics } from '../../hooks/useAuthorAnalytics';
-import { Line, Bar } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import { useAuthorBooks } from '../../hooks/useAuthorBooks';
+import { getImageUrl } from '../../lib/fileService';
+import BookAnalyticsModal from '../../components/author/BookAnalyticsModal';
 
 export default function Analytics() {
-  const { overview, isLoading, error, fetchSalesData, fetchRevenueData, fetchTopBooks } = useAuthorAnalytics();
-  const [salesData, setSalesData] = useState([]);
-  const [revenueData, setRevenueData] = useState([]);
-  const [topBooks, setTopBooks] = useState([]);
-  const [dateRange, setDateRange] = useState('30');
+  const { overview, isLoading, error } = useAuthorAnalytics();
+  const { books, fetchBooks } = useAuthorBooks();
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('revenue');
 
   useEffect(() => {
-    loadAnalyticsData();
-  }, [dateRange]);
+    fetchBooks();
+  }, []);
 
-  const loadAnalyticsData = async () => {
-    const endDate = new Date().toISOString().split('T')[0];
-    const startDate = new Date(Date.now() - parseInt(dateRange) * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+  const sortedBooks = [...(books || [])].sort((a, b) => {
+    if (sortBy === 'revenue') return (b.revenue || 0) - (a.revenue || 0);
+    if (sortBy === 'sales') return (b.sales || 0) - (a.sales || 0);
+    if (sortBy === 'title') return a.title.localeCompare(b.title);
+    return 0;
+  });
 
-    try {
-      const [sales, revenue, books] = await Promise.all([
-        fetchSalesData(startDate, endDate),
-        fetchRevenueData(startDate, endDate),
-        fetchTopBooks(5)
-      ]);
-      setSalesData(sales);
-      setRevenueData(revenue);
-      setTopBooks(books);
-    } catch (err) {
-      console.error('Failed to load analytics:', err);
-    }
-  };
-
-  const salesChartData = {
-    labels: salesData.map(d => new Date(d.date).toLocaleDateString()),
-    datasets: [
-      {
-        label: 'Sales',
-        data: salesData.map(d => d.sales),
-        borderColor: 'rgb(59, 130, 246)',
-        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-        tension: 0.4,
-      },
-    ],
-  };
-
-  const revenueChartData = {
-    labels: revenueData.map(d => new Date(d.date).toLocaleDateString()),
-    datasets: [
-      {
-        label: 'Revenue (₦)',
-        data: revenueData.map(d => d.revenue),
-        backgroundColor: 'rgba(34, 197, 94, 0.8)',
-      },
-    ],
-  };
-
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        labels: {
-          color: 'var(--foreground)',
-        },
-      },
-    },
-    scales: {
-      x: {
-        ticks: { color: 'var(--muted-foreground)' },
-        grid: { color: 'var(--border)' },
-      },
-      y: {
-        ticks: { color: 'var(--muted-foreground)' },
-        grid: { color: 'var(--border)' },
-      },
-    },
-  };
+  const filteredBooks = sortedBooks.filter(book =>
+    book.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (isLoading) {
     return (
@@ -124,19 +52,7 @@ export default function Analytics() {
   return (
     <AuthorLayout>
       <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-foreground">Sales Analytics</h1>
-          <select
-            value={dateRange}
-            onChange={(e) => setDateRange(e.target.value)}
-            className="px-4 py-2 border border-border rounded-lg bg-background text-foreground"
-          >
-            <option value="7">Last 7 days</option>
-            <option value="30">Last 30 days</option>
-            <option value="90">Last 90 days</option>
-            <option value="365">Last year</option>
-          </select>
-        </div>
+        <h1 className="text-2xl font-bold text-foreground">Sales Analytics</h1>
 
         {/* Stats Cards */}
         {overview && (
@@ -176,71 +92,109 @@ export default function Analytics() {
               transition={{ delay: 0.3 }}
               className="bg-card p-6 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Avg Rating</p>
-              <p className="text-2xl font-bold text-foreground">{overview.average_rating?.toFixed(1)}</p>
+              <p className="text-sm text-muted-foreground mb-1">Published Books</p>
+              <p className="text-2xl font-bold text-foreground">{overview.published_books}</p>
             </motion.div>
           </div>
         )}
 
-        {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="bg-card p-6 rounded-lg border border-border"
-          >
-            <h2 className="text-lg font-semibold text-foreground mb-4">Sales Trend</h2>
-            <div className="h-64">
-              <Line data={salesChartData} options={chartOptions} />
+        {/* Books List */}
+        <div className="bg-card rounded-lg border border-border p-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <h2 className="text-lg font-semibold text-foreground">Book Performance</h2>
+            <div className="flex gap-3 w-full md:w-auto">
+              <input
+                type="text"
+                placeholder="Search books..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="flex-1 md:w-64 px-4 py-2 border border-border rounded-lg bg-background text-foreground"
+              />
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="px-4 py-2 border border-border rounded-lg bg-background text-foreground"
+              >
+                <option value="revenue">Revenue</option>
+                <option value="sales">Sales</option>
+                <option value="title">Title</option>
+              </select>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="bg-card p-6 rounded-lg border border-border"
-          >
-            <h2 className="text-lg font-semibold text-foreground mb-4">Revenue</h2>
-            <div className="h-64">
-              <Bar data={revenueChartData} options={chartOptions} />
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Top Books */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="bg-card p-6 rounded-lg border border-border"
-        >
-          <h2 className="text-lg font-semibold text-foreground mb-4">Top Performing Books</h2>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-3 px-4 text-muted-foreground font-medium">Title</th>
+                  <th className="text-left py-3 px-4 text-muted-foreground font-medium">Book</th>
+                  <th className="text-center py-3 px-4 text-muted-foreground font-medium">Status</th>
                   <th className="text-right py-3 px-4 text-muted-foreground font-medium">Sales</th>
                   <th className="text-right py-3 px-4 text-muted-foreground font-medium">Revenue</th>
-                  <th className="text-right py-3 px-4 text-muted-foreground font-medium">Downloads</th>
+                  <th className="text-right py-3 px-4 text-muted-foreground font-medium">Avg Rating</th>
+                  <th className="text-center py-3 px-4 text-muted-foreground font-medium">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {topBooks.map((book, index) => (
-                  <tr key={book.book_id} className="border-b border-border">
-                    <td className="py-3 px-4 text-foreground">{book.title}</td>
-                    <td className="py-3 px-4 text-right text-foreground">{book.sales}</td>
-                    <td className="py-3 px-4 text-right text-foreground">₦{book.revenue?.toLocaleString()}</td>
-                    <td className="py-3 px-4 text-right text-foreground">{book.downloads}</td>
+                {filteredBooks.map((book) => (
+                  <tr key={book.id} className="border-b border-border hover:bg-muted/50">
+                    <td className="py-3 px-4">
+                      <div className="flex items-center gap-3">
+                        <img
+                          src={getImageUrl(book.cover_image)}
+                          alt={book.title}
+                          className="w-12 h-16 object-cover rounded"
+                        />
+                        <div>
+                          <p className="font-medium text-foreground">{book.title}</p>
+                          <p className="text-sm text-muted-foreground">₦{book.price?.toLocaleString()}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-3 px-4 text-center">
+                      <span className={`inline-block px-2 py-1 text-xs font-semibold rounded ${
+                        book.status === 'published' 
+                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
+                          : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                      }`}>
+                        {book.status}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 text-right text-foreground">{book.sales || 0}</td>
+                    <td className="py-3 px-4 text-right text-foreground">₦{(book.revenue || 0).toLocaleString()}</td>
+                    <td className="py-3 px-4 text-right text-foreground">{book.average_rating?.toFixed(1) || 'N/A'}</td>
+                    <td className="py-3 px-4 text-center">
+                      <button
+                        onClick={() => {
+                          setSelectedBook(book);
+                          setShowDetailsModal(true);
+                        }}
+                        className="px-3 py-1 bg-primary/10 text-primary rounded hover:bg-primary/20 transition-colors text-sm"
+                      >
+                        View Details
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-        </motion.div>
+
+          {filteredBooks.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No books found</p>
+            </div>
+          )}
+        </div>
       </div>
+
+      <BookAnalyticsModal
+        book={selectedBook}
+        isOpen={showDetailsModal}
+        onClose={() => {
+          setShowDetailsModal(false);
+          setSelectedBook(null);
+        }}
+      />
     </AuthorLayout>
   );
 }
