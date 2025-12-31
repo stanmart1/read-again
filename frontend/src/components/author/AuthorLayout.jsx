@@ -7,7 +7,7 @@ export default function AuthorLayout({ children }) {
   const menuItems = [
     { name: 'Dashboard', path: '/author/dashboard', icon: 'ri-dashboard-line' },
     { name: 'My Books', path: '/author/books', icon: 'ri-book-line' },
-    { name: 'Sales', path: '/author/sales', icon: 'ri-line-chart-line' },
+    { name: 'Analytics', path: '/author/analytics', icon: 'ri-line-chart-line' },
     { name: 'Earnings', path: '/author/earnings', icon: 'ri-money-dollar-circle-line' },
     { name: 'Orders', path: '/author/orders', icon: 'ri-shopping-cart-line' },
     { name: 'Reviews', path: '/author/reviews', icon: 'ri-star-line' },

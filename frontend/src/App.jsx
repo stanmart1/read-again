@@ -70,6 +70,7 @@ const AdminSettings = lazy(() => import('./pages/admin/Settings'));
 // Author pages
 const AuthorDashboard = lazy(() => import('./pages/author/Dashboard'));
 const AuthorBooks = lazy(() => import('./pages/author/Books'));
+const AuthorAnalytics = lazy(() => import('./pages/author/Analytics'));
 
 import './styles/index.css';
 
@@ -146,6 +147,7 @@ function App() {
               {/* Author Routes */}
               <Route path="/author/dashboard" element={<AuthorRoute><AuthorDashboard /></AuthorRoute>} />
               <Route path="/author/books" element={<AuthorRoute><AuthorBooks /></AuthorRoute>} />
+              <Route path="/author/analytics" element={<AuthorRoute><AuthorAnalytics /></AuthorRoute>} />
               
               {/* 404 */}
               <Route path="*" element={<PublicNotFound />} />

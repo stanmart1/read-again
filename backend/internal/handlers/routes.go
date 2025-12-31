@@ -16,6 +16,7 @@ func SetupRoutes(
 	authorService *services.AuthorService,
 	authorDashboardService *services.AuthorDashboardService,
 	authorBookService *services.AuthorBookService,
+	authorAnalyticsService *services.AuthorAnalyticsService,
 	bookService *services.BookService,
 	storageService *services.StorageService,
 	cartService *services.CartService,
@@ -49,6 +50,7 @@ func SetupRoutes(
 	authorHandler := NewAuthorHandler(authorService)
 	authorDashboardHandler := NewAuthorDashboardHandler(authorDashboardService)
 	authorBookHandler := NewAuthorBookHandler(authorBookService)
+	authorAnalyticsHandler := NewAuthorAnalyticsHandler(authorAnalyticsService)
 	bookHandler := NewBookHandler(bookService, storageService)
 	cartHandler := NewCartHandler(cartService)
 	checkoutHandler := NewCheckoutHandler(orderService, paymentService)
@@ -172,6 +174,12 @@ func SetupRoutes(
 	authorDashboard.Post("/books/:id/publish", authorBookHandler.PublishBook)
 	authorDashboard.Post("/books/:id/unpublish", authorBookHandler.UnpublishBook)
 	authorDashboard.Get("/books/:id/stats", authorBookHandler.GetBookStats)
+	
+	// Author Analytics routes
+	authorDashboard.Get("/analytics/overview", authorAnalyticsHandler.GetOverview)
+	authorDashboard.Get("/analytics/sales", authorAnalyticsHandler.GetSalesData)
+	authorDashboard.Get("/analytics/revenue", authorAnalyticsHandler.GetRevenueData)
+	authorDashboard.Get("/analytics/top-books", authorAnalyticsHandler.GetTopBooks)
 
 	books := api.Group("/books")
 	books.Get("/", bookHandler.ListBooks)
