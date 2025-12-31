@@ -328,21 +328,19 @@ const BookAddModal = ({ isOpen, onClose, categories, onSuccess }) => {
                   </div>
                 </div>
 
-                {/* Publisher (for physical books) */}
-                {formData.format === 'physical' && (
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Publisher
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.publisher}
-                      onChange={(e) => handleInputChange('publisher', e.target.value)}
-                      className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-primary"
-                      placeholder="Publisher name"
-                    />
-                  </div>
-                )}
+                {/* Publisher */}
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Publisher
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.publisher}
+                    onChange={(e) => handleInputChange('publisher', e.target.value)}
+                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-primary"
+                    placeholder="Publisher name"
+                  />
+                </div>
               </div>
 
               <div className="flex justify-between gap-3 pt-4 border-t">
