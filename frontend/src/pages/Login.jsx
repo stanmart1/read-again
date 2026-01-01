@@ -29,15 +29,14 @@ export default function Login() {
       let targetPath = redirectPath;
       
       if (!targetPath) {
-        // Determine default path based on role
-        if (user.role_id === 1) {
-          // Admin
+        // Determine default path based on role name
+        const roleName = user.role?.name?.toLowerCase();
+        
+        if (roleName === 'admin' || roleName === 'super_admin') {
           targetPath = '/admin/dashboard';
-        } else if (user.role_id === 3) {
-          // Author
+        } else if (roleName === 'author') {
           targetPath = '/author/dashboard';
         } else {
-          // Regular user
           targetPath = '/dashboard';
         }
       }
