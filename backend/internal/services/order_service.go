@@ -116,20 +116,6 @@ func (s *OrderService) GetOrderByReference(reference string) (*models.Order, err
 	return &order, nil
 }
 
-func (s *OrderService) UpdateOrderStatus(orderID uint, status string) (*models.Order, error) {
-	var order models.Order
-	if err := s.db.First(&order, orderID).Error; err != nil {
-		return nil, utils.NewNotFoundError("Order not found")
-	}
-
-	order.Status = status
-	if err := s.db.Save(&order).Error; err != nil {
-		return nil, utils.NewInternalServerError("Failed to update order", err)
-	}
-
-	return &order, nil
-}
-
 func (s *OrderService) CompleteOrder(orderID uint, transactionID string) error {
 	var order models.Order
 	if err := s.db.Preload("Items").First(&order, orderID).Error; err != nil {
@@ -219,54 +205,6 @@ func (s *OrderService) CancelOrder(orderID, userID uint) error {
 	}
 
 	return nil
-}
-
-func (s *OrderService) GetAllOrders(page, limit int, status, paymentMethod string) ([]models.Order, *utils.PaginationMeta, error) {
-	params := utils.GetPaginationParams(page, limit)
-
-	query := s.db.Model(&models.Order{}).Preload("Items.Book").Preload("User")
-
-	if status != "" {
-		query = query.Where("status = ?", status)
-	}
-
-	if paymentMethod != "" {
-		query = query.Where("payment_method = ?", paymentMethod)
-	}
-
-	var total int64
-	if err := query.Count(&total).Error; err != nil {
-		return nil, nil, utils.NewInternalServerError("Failed to count orders", err)
-	}
-
-	var orders []models.Order
-	if err := query.Scopes(utils.Paginate(params)).Order("created_at DESC").Find(&orders).Error; err != nil {
-		return nil, nil, utils.NewInternalServerError("Failed to fetch orders", err)
-	}
-
-	meta := utils.GetPaginationMeta(params.Page, params.Limit, total)
-	return orders, &meta, nil
-}
-
-func (s *OrderService) GetOrderStatistics() (map[string]interface{}, error) {
-	var totalOrders int64
-	s.db.Model(&models.Order{}).Count(&totalOrders)
-
-	var completedOrders int64
-	s.db.Model(&models.Order{}).Where("status = ?", "completed").Count(&completedOrders)
-
-	var pendingOrders int64
-	s.db.Model(&models.Order{}).Where("status = ?", "pending").Count(&pendingOrders)
-
-	var totalRevenue float64
-	s.db.Model(&models.Order{}).Where("status = ?", "completed").Select("COALESCE(SUM(total), 0)").Scan(&totalRevenue)
-
-	return map[string]interface{}{
-		"total_orders":     totalOrders,
-		"completed_orders": completedOrders,
-		"pending_orders":   pendingOrders,
-		"total_revenue":    totalRevenue,
-	}, nil
 }
 
 func (s *OrderService) generateOrderNumber() string {
