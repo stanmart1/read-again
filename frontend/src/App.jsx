@@ -73,6 +73,7 @@ const AuthorBooks = lazy(() => import('./pages/author/Books'));
 const AuthorAnalytics = lazy(() => import('./pages/author/Analytics'));
 const AuthorEarnings = lazy(() => import('./pages/author/Earnings'));
 const AuthorOrders = lazy(() => import('./pages/author/Orders'));
+const AuthorReviews = lazy(() => import('./pages/author/Reviews'));
 
 import './styles/index.css';
 
@@ -152,6 +153,7 @@ function App() {
               <Route path="/author/analytics" element={<AuthorRoute><AuthorAnalytics /></AuthorRoute>} />
               <Route path="/author/earnings" element={<AuthorRoute><AuthorEarnings /></AuthorRoute>} />
               <Route path="/author/orders" element={<AuthorRoute><AuthorOrders /></AuthorRoute>} />
+              <Route path="/author/reviews" element={<AuthorRoute><AuthorReviews /></AuthorRoute>} />
               
               {/* 404 */}
               <Route path="*" element={<PublicNotFound />} />
