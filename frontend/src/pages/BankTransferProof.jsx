@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import api from '../lib/api';
+import { uploadPaymentProof } from '../lib/fileService';
 
 export default function BankTransferProof() {
   const { orderId } = useParams();
@@ -58,18 +59,17 @@ export default function BankTransferProof() {
       setIsUploading(true);
       setError(null);
 
-      const formData = new FormData();
-      formData.append('file', file);
+      // Upload to upload service
+      const result = await uploadPaymentProof(file);
 
-      await api.post(`/bank-transfer/upload-proof/${orderData.id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+      // Send path to backend
+      await api.post(`/bank-transfer/upload-proof/${orderData.id}`, {
+        proof_path: result.path
       });
 
       navigate(`/order-confirmation/${orderId}`);
     } catch (err) {
-      setError(err.response?.data?.detail || 'Failed to upload proof');
+      setError(err.response?.data?.detail || err.message || 'Failed to upload proof');
     } finally {
       setIsUploading(false);
     }

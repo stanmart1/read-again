@@ -33,6 +33,7 @@ func main() {
 	ebookHandler := handlers.NewEbookHandler(cfg)
 	coverHandler := handlers.NewCoverHandler(cfg)
 	profileHandler := handlers.NewProfileHandler(cfg)
+	paymentProofHandler := handlers.NewPaymentProofHandler(cfg)
 	fileHandler := handlers.NewFileHandler(cfg)
 
 	// API routes
@@ -40,6 +41,7 @@ func main() {
 	api.Post("/upload/ebook", ebookHandler.Upload)
 	api.Post("/upload/cover", coverHandler.Upload)
 	api.Post("/upload/profile", profileHandler.Upload)
+	api.Post("/upload/payment-proof", paymentProofHandler.Upload)
 	
 	// File serving
 	app.Get("/files/*", fileHandler.Serve)

@@ -69,6 +69,28 @@ export const uploadProfile = async (file) => {
 };
 
 /**
+ * Upload payment proof
+ * @param {File} file - Payment proof file to upload
+ * @returns {Promise<{path: string, size: number}>}
+ */
+export const uploadPaymentProof = async (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const response = await fetch(`${UPLOAD_SERVICE_URL}/api/upload/payment-proof`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || 'Failed to upload payment proof');
+  }
+
+  return response.json();
+};
+
+/**
  * Get full URL for file serving
  * @param {string} filePath - File path from upload service (e.g., '/ebooks/123.epub' or '/covers/456.jpg')
  * @returns {string} Full URL to access the file

@@ -99,17 +99,14 @@ const BookAddModal = ({ isOpen, onClose, categories, onSuccess }) => {
     setUploadProgress(0);
 
     try {
-      // Upload cover image first
       setUploadProgress(10);
       const coverResult = await uploadCover(formData.cover_image);
       
-      // Upload ebook file
-      setUploadProgress(40);
+      setUploadProgress(50);
       const ebookResult = await uploadEbook(formData.ebook_file);
       
-      setUploadProgress(70);
+      setUploadProgress(80);
 
-      // Send book data with file paths to backend
       const bookData = {
         title: formData.title,
         category_id: formData.category_id,

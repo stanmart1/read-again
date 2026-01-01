@@ -160,21 +160,19 @@ const BookEditModal = ({ isOpen, onClose, book, categories, onSuccess }) => {
         status: formData.status
       };
 
-      // Upload new cover if provided
       if (formData.cover_image) {
-        setUploadProgress(20);
+        setUploadProgress(25);
         const coverResult = await uploadCover(formData.cover_image);
         bookData.cover_image = coverResult.path;
       }
 
-      // Upload new ebook if provided
       if (formData.ebook_file) {
-        setUploadProgress(50);
+        setUploadProgress(60);
         const ebookResult = await uploadEbook(formData.ebook_file);
         bookData.file_url = ebookResult.path;
       }
 
-      setUploadProgress(80);
+      setUploadProgress(90);
       
       const response = await api.put(`/author/books/${book.id}`, bookData);
       
