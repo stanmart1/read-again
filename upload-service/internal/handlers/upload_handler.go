@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"fmt"
+	"mime/multipart"
 	"os"
 	"path/filepath"
 	"strings"
@@ -9,7 +10,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func validateFile(file *fiber.FormFile, allowedExts []string, maxSize int64) error {
+func validateFile(file *multipart.FileHeader, allowedExts []string, maxSize int64) error {
 	ext := strings.ToLower(filepath.Ext(file.Filename))
 	
 	allowed := false
@@ -31,7 +32,7 @@ func validateFile(file *fiber.FormFile, allowedExts []string, maxSize int64) err
 	return nil
 }
 
-func saveFile(c *fiber.Ctx, file *fiber.FormFile, uploadDir, subdir string) (string, error) {
+func saveFile(c *fiber.Ctx, file *multipart.FileHeader, uploadDir, subdir string) (string, error) {
 	ext := strings.ToLower(filepath.Ext(file.Filename))
 	filename := fmt.Sprintf("%d%s", c.Locals("timestamp"), ext)
 	uploadPath := filepath.Join(uploadDir, subdir)
