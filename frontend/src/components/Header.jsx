@@ -94,12 +94,16 @@ export default function Header() {
                       >
                         <i className="ri-dashboard-line mr-2"></i>Dashboard
                       </Link>
-                      <Link to="/dashboard/library" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-foreground hover:bg-muted">
-                        <i className="ri-book-line mr-2"></i>My Library
-                      </Link>
-                      <Link to="/dashboard/orders" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-foreground hover:bg-muted">
-                        <i className="ri-shopping-bag-line mr-2"></i>Orders
-                      </Link>
+                      {user?.role?.name?.toLowerCase() !== 'author' && (
+                        <>
+                          <Link to="/dashboard/library" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-foreground hover:bg-muted">
+                            <i className="ri-book-line mr-2"></i>My Library
+                          </Link>
+                          <Link to="/dashboard/orders" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-foreground hover:bg-muted">
+                            <i className="ri-shopping-bag-line mr-2"></i>Orders
+                          </Link>
+                        </>
+                      )}
                       <button
                         onClick={handleLogout}
                         className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50"
