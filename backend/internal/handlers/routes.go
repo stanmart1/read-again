@@ -261,12 +261,6 @@ func SetupRoutes(
 	orders.Get("/:id", orderHandler.GetOrder)
 	orders.Post("/:id/cancel", orderHandler.CancelOrder)
 
-	adminOrders := api.Group("/admin/orders", middleware.AdminRequired())
-	adminOrders.Get("/", orderHandler.GetAllOrders)
-	adminOrders.Get("/stats", orderHandler.GetOrderStatistics)
-	adminOrders.Get("/:id", orderHandler.GetOrderAdmin)
-	adminOrders.Patch("/:id/status", orderHandler.UpdateOrderStatus)
-
 	library := api.Group("/library", middleware.AuthRequired())
 	library.Get("/", libraryHandler.GetLibrary)
 	library.Get("/statistics", libraryHandler.GetStatistics)
