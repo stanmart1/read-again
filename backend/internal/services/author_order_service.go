@@ -88,7 +88,7 @@ func (s *AuthorOrderService) ListOrders(authorID uint, page, limit int, status, 
 	offset := (page - 1) * limit
 	err := query.
 		Preload("User").
-		Preload("OrderItems.Book").
+		Preload("Items.Book").
 		Order("orders.created_at DESC").
 		Limit(limit).
 		Offset(offset).
@@ -117,7 +117,7 @@ func (s *AuthorOrderService) GetOrder(authorID, orderID uint) (*models.Order, er
 
 	err := s.db.
 		Preload("User").
-		Preload("OrderItems.Book").
+		Preload("Items.Book").
 		First(&order, orderID).Error
 
 	if err != nil {

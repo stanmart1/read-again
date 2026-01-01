@@ -4,7 +4,7 @@ export default function OrderDetailsModal({ order, isOpen, onClose }) {
   if (!isOpen || !order) return null;
 
   // Filter to show only author's books
-  const authorBooks = order.order_items?.filter(item => item.book) || [];
+  const authorBooks = order.items?.filter(item => item.book) || [];
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
