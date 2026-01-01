@@ -2,14 +2,16 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks';
 
 export default function AuthorRoute({ children }) {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, getUser } = useAuth();
 
   if (!isAuthenticated()) {
     return <Navigate to="/login?redirect=/author/dashboard" replace />;
   }
 
   // Check if user has author role
+  const user = getUser();
   const roleName = user?.role?.name?.toLowerCase();
+  
   if (roleName !== 'author') {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
