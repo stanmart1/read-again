@@ -18,11 +18,7 @@ export default function Signup() {
     first_name: '',
     last_name: '',
     phone_number: '',
-    is_student: '',
-    school_name: '',
-    school_category: '',
-    class_level: '',
-    department: '',
+    is_author: false,
     password: '',
     confirm_password: ''
   });
@@ -56,7 +52,9 @@ export default function Signup() {
         username: formData.username,
         first_name: formData.first_name,
         last_name: formData.last_name,
+        phone_number: formData.phone_number,
         password: formData.password,
+        is_author: formData.is_author,
       });
 
       if (result) {
@@ -150,68 +148,35 @@ export default function Signup() {
   const renderStep2 = () => (
     <div className="space-y-6">
       <div>
-        <Label className="block font-semibold mb-2">Are you a student?</Label>
-        <Select onValueChange={(value) => handleSelectChange('is_student', value)}>
-          <SelectTrigger className="h-12">
-            <SelectValue placeholder="Select an option" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="yes">Yes</SelectItem>
-            <SelectItem value="no">No</SelectItem>
-          </SelectContent>
-        </Select>
+        <Label className="block font-semibold mb-4">I am a:</Label>
+        <div className="space-y-4">
+          <label className="flex items-center space-x-3 p-4 border-2 rounded-lg cursor-pointer hover:border-primary transition-colors">
+            <input
+              type="checkbox"
+              checked={!formData.is_author}
+              onChange={(e) => setFormData({ ...formData, is_author: !e.target.checked })}
+              className="w-5 h-5 text-primary"
+            />
+            <div>
+              <div className="font-semibold">Reader</div>
+              <div className="text-sm text-muted-foreground">I want to discover and read ebooks</div>
+            </div>
+          </label>
+          
+          <label className="flex items-center space-x-3 p-4 border-2 rounded-lg cursor-pointer hover:border-primary transition-colors">
+            <input
+              type="checkbox"
+              checked={formData.is_author}
+              onChange={(e) => setFormData({ ...formData, is_author: e.target.checked })}
+              className="w-5 h-5 text-primary"
+            />
+            <div>
+              <div className="font-semibold">Author</div>
+              <div className="text-sm text-muted-foreground">I want to publish and sell my ebooks</div>
+            </div>
+          </label>
+        </div>
       </div>
-
-      {formData.is_student === 'yes' && (
-        <>
-          <div>
-            <Label className="block font-semibold mb-2">School Name</Label>
-            <Input
-              name="school_name"
-              value={formData.school_name}
-              onChange={handleChange}
-              className="h-12"
-              placeholder="University of Example"
-            />
-          </div>
-
-          <div>
-            <Label className="block font-semibold mb-2">School Category</Label>
-            <Select onValueChange={(value) => handleSelectChange('school_category', value)}>
-              <SelectTrigger className="h-12">
-                <SelectValue placeholder="Select category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="university">University</SelectItem>
-                <SelectItem value="college">College</SelectItem>
-                <SelectItem value="high_school">High School</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div>
-            <Label className="block font-semibold mb-2">Class Level</Label>
-            <Input
-              name="class_level"
-              value={formData.class_level}
-              onChange={handleChange}
-              className="h-12"
-              placeholder="Sophomore, Junior, etc."
-            />
-          </div>
-
-          <div>
-            <Label className="block font-semibold mb-2">Department</Label>
-            <Input
-              name="department"
-              value={formData.department}
-              onChange={handleChange}
-              className="h-12"
-              placeholder="Computer Science, English, etc."
-            />
-          </div>
-        </>
-      )}
     </div>
   );
 

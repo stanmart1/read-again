@@ -23,7 +23,7 @@ func (s *UserService) GetUserByID(userID uint) (*models.User, error) {
 	return &user, nil
 }
 
-func (s *UserService) UpdateProfile(userID uint, firstName, lastName, phoneNumber, schoolName, schoolCategory, classLevel, department string) (*models.User, error) {
+func (s *UserService) UpdateProfile(userID uint, firstName, lastName, phoneNumber string) (*models.User, error) {
 	var user models.User
 	if err := s.db.First(&user, userID).Error; err != nil {
 		return nil, utils.NewNotFoundError("User not found")
@@ -32,10 +32,6 @@ func (s *UserService) UpdateProfile(userID uint, firstName, lastName, phoneNumbe
 	user.FirstName = firstName
 	user.LastName = lastName
 	user.PhoneNumber = phoneNumber
-	user.SchoolName = schoolName
-	user.SchoolCategory = schoolCategory
-	user.ClassLevel = classLevel
-	user.Department = department
 
 	if err := s.db.Save(&user).Error; err != nil {
 		return nil, utils.NewInternalServerError("Failed to update profile", err)

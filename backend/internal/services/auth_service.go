@@ -24,7 +24,7 @@ func NewAuthService(db *gorm.DB, cfg *config.Config, emailService *EmailService)
 	}
 }
 
-func (s *AuthService) Register(email, username, password, firstName, lastName string) (*models.User, error) {
+func (s *AuthService) Register(email, username, password, firstName, lastName, phoneNumber string, isAuthor bool) (*models.User, error) {
 	var existingUser models.User
 	if err := s.db.Where("email = ? OR username = ?", email, username).First(&existingUser).Error; err == nil {
 		return nil, utils.NewBadRequestError("Email or username already exists")
@@ -35,18 +35,40 @@ func (s *AuthService) Register(email, username, password, firstName, lastName st
 		return nil, utils.NewInternalServerError("Failed to hash password", err)
 	}
 
+	// Determine role: Author (3) or Customer (4)
+	roleID := uint(4) // Default to Customer
+	if isAuthor {
+		roleID = 3 // Author role
+	}
+
 	user := &models.User{
 		Email:        email,
 		Username:     username,
 		PasswordHash: hashedPassword,
 		FirstName:    firstName,
 		LastName:     lastName,
-		RoleID:       4,
+		PhoneNumber:  phoneNumber,
+		RoleID:       roleID,
 		IsActive:     false,
 	}
 
 	if err := s.db.Create(user).Error; err != nil {
 		return nil, utils.NewInternalServerError("Failed to create user", err)
+	}
+
+	// If author, create author profile
+	if isAuthor {
+		author := &models.Author{
+			UserID:       user.ID,
+			BusinessName: firstName + " " + lastName,
+			Email:        email,
+			Status:       "active",
+		}
+		if err := s.db.Create(author).Error; err != nil {
+			// Rollback user creation if author profile fails
+			s.db.Delete(user)
+			return nil, utils.NewInternalServerError("Failed to create author profile", err)
+		}
 	}
 
 	name := firstName

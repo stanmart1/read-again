@@ -10,10 +10,6 @@ type User struct {
 	FirstName                string     `json:"first_name"`
 	LastName                 string     `json:"last_name"`
 	PhoneNumber              string     `json:"phone_number"`
-	SchoolName               string     `json:"school_name"`
-	SchoolCategory           string     `json:"school_category"`
-	ClassLevel               string     `json:"class_level"`
-	Department               string     `json:"department"`
 	RoleID                   uint       `gorm:"index" json:"role_id"`
 	Role                     *Role      `gorm:"foreignKey:RoleID" json:"role,omitempty"`
 	IsActive                 bool       `gorm:"default:false;index" json:"is_active"`
