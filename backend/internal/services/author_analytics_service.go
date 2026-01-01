@@ -221,7 +221,7 @@ func (s *AuthorAnalyticsService) GetBookBuyers(authorID, bookID uint, page, limi
 	err := s.db.Raw(`
 		SELECT 
 			users.id as user_id,
-			users.full_name,
+			CONCAT(users.first_name, ' ', users.last_name) as full_name,
 			users.email,
 			orders.created_at as purchase_date,
 			order_items.price * order_items.quantity as amount_paid,
@@ -270,7 +270,7 @@ func (s *AuthorAnalyticsService) GetRecentOrders(authorID uint, limit int) ([]Re
 	err := s.db.Raw(`
 		SELECT 
 			orders.id as order_id,
-			users.full_name as customer_name,
+			CONCAT(users.first_name, ' ', users.last_name) as customer_name,
 			books.title as book_title,
 			order_items.price * order_items.quantity as amount,
 			orders.created_at as order_date,
@@ -298,7 +298,7 @@ func (s *AuthorAnalyticsService) GetRecentReviews(authorID uint, limit int) ([]R
 		SELECT 
 			reviews.id as review_id,
 			books.title as book_title,
-			users.full_name as customer_name,
+			CONCAT(users.first_name, ' ', users.last_name) as customer_name,
 			reviews.rating,
 			reviews.comment,
 			reviews.created_at as review_date
