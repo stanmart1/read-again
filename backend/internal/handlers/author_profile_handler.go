@@ -15,7 +15,10 @@ func NewAuthorProfileHandler(service *services.AuthorProfileService) *AuthorProf
 }
 
 func (h *AuthorProfileHandler) GetProfile(c *fiber.Ctx) error {
-	authorID := c.Locals("author_id").(uint)
+	authorID, ok := c.Locals("author_id").(uint)
+	if !ok {
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Unauthorized"})
+	}
 
 	profile, err := h.service.GetProfile(authorID)
 	if err != nil {
@@ -26,7 +29,10 @@ func (h *AuthorProfileHandler) GetProfile(c *fiber.Ctx) error {
 }
 
 func (h *AuthorProfileHandler) UpdateProfile(c *fiber.Ctx) error {
-	authorID := c.Locals("author_id").(uint)
+	authorID, ok := c.Locals("author_id").(uint)
+	if !ok {
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Unauthorized"})
+	}
 
 	var input services.UpdateProfileInput
 	if err := c.BodyParser(&input); err != nil {
@@ -42,7 +48,10 @@ func (h *AuthorProfileHandler) UpdateProfile(c *fiber.Ctx) error {
 }
 
 func (h *AuthorProfileHandler) UpdatePhoto(c *fiber.Ctx) error {
-	authorID := c.Locals("author_id").(uint)
+	authorID, ok := c.Locals("author_id").(uint)
+	if !ok {
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Unauthorized"})
+	}
 
 	file, err := c.FormFile("photo")
 	if err != nil {
