@@ -324,7 +324,6 @@ export default function AuthorBooks() {
             ))}
           </div>
         )}
-      </div>
 
       {/* Modals */}
       <BookAddModal
@@ -359,7 +358,7 @@ export default function AuthorBooks() {
           setSelectedBook(null);
         }}
       />
-      </>
+        </>
         )}
       </div>
     </AuthorLayout>
