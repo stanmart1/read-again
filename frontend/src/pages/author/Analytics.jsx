@@ -212,7 +212,7 @@ export default function Analytics() {
           >
             <h2 className="text-lg font-semibold text-foreground mb-4">Recent Orders</h2>
             <div className="space-y-3">
-              {recentOrders.map((order) => (
+              {recentOrders && recentOrders.length > 0 ? recentOrders.map((order) => (
                 <div key={order.order_id} className="flex justify-between items-start p-3 bg-muted/50 rounded-lg">
                   <div className="flex-1">
                     <p className="font-medium text-foreground">{order.book_title}</p>
@@ -230,9 +230,9 @@ export default function Analytics() {
                     </span>
                   </div>
                 </div>
-              ))}
-              {recentOrders.length === 0 && (
+              )) : (
                 <p className="text-center py-8 text-muted-foreground">No orders yet</p>
+              )}
               )}
             </div>
           </motion.div>
@@ -246,7 +246,7 @@ export default function Analytics() {
           >
             <h2 className="text-lg font-semibold text-foreground mb-4">Recent Reviews</h2>
             <div className="space-y-3">
-              {recentReviews.map((review) => (
+              {recentReviews && recentReviews.length > 0 ? recentReviews.map((review) => (
                 <div key={review.review_id} className="p-3 bg-muted/50 rounded-lg">
                   <div className="flex justify-between items-start mb-2">
                     <div>
@@ -261,8 +261,7 @@ export default function Analytics() {
                   <p className="text-sm text-muted-foreground line-clamp-2">{review.comment}</p>
                   <p className="text-xs text-muted-foreground mt-1">{new Date(review.review_date).toLocaleDateString()}</p>
                 </div>
-              ))}
-              {recentReviews.length === 0 && (
+              )) : (
                 <p className="text-center py-8 text-muted-foreground">No reviews yet</p>
               )}
             </div>
