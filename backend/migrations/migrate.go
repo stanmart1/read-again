@@ -33,6 +33,8 @@ func RunMigrations(db *gorm.DB) error {
 		&models.Notification{},
 		&models.Achievement{},
 		&models.UserAchievement{},
+		&models.Earning{},
+		&models.Payout{},
 	)
 
 	if err != nil {

@@ -62,6 +62,10 @@ func main() {
 		&models.ContactMessage{},
 		&models.Work{},
 		
+		// Author Earnings
+		&models.Earning{},
+		&models.Payout{},
+		
 		// System
 		&models.Notification{},
 		&models.Achievement{},
