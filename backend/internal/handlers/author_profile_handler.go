@@ -15,7 +15,7 @@ func NewAuthorProfileHandler(service *services.AuthorProfileService) *AuthorProf
 }
 
 func (h *AuthorProfileHandler) GetProfile(c *fiber.Ctx) error {
-	authorID := c.Locals("authorID").(uint)
+	authorID := c.Locals("author_id").(uint)
 
 	profile, err := h.service.GetProfile(authorID)
 	if err != nil {
@@ -26,7 +26,7 @@ func (h *AuthorProfileHandler) GetProfile(c *fiber.Ctx) error {
 }
 
 func (h *AuthorProfileHandler) UpdateProfile(c *fiber.Ctx) error {
-	authorID := c.Locals("authorID").(uint)
+	authorID := c.Locals("author_id").(uint)
 
 	var input services.UpdateProfileInput
 	if err := c.BodyParser(&input); err != nil {
@@ -42,7 +42,7 @@ func (h *AuthorProfileHandler) UpdateProfile(c *fiber.Ctx) error {
 }
 
 func (h *AuthorProfileHandler) UpdatePhoto(c *fiber.Ctx) error {
-	authorID := c.Locals("authorID").(uint)
+	authorID := c.Locals("author_id").(uint)
 
 	file, err := c.FormFile("photo")
 	if err != nil {

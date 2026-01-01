@@ -12,12 +12,14 @@ const Profile = () => {
   });
   const [photoPreview, setPhotoPreview] = useState(null);
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     loadProfile();
   }, []);
 
   const loadProfile = async () => {
+    setIsLoading(true);
     try {
       const data = await fetchProfile();
       setProfile(data);
@@ -32,6 +34,9 @@ const Profile = () => {
       }
     } catch (error) {
       console.error('Failed to load profile:', error);
+      setMessage('Failed to load profile. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -67,8 +72,12 @@ const Profile = () => {
     }
   };
 
-  if (!profile) {
-    return <div className="p-6">Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
   }
 
   return (
