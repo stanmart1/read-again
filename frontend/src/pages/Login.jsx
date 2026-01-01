@@ -24,8 +24,24 @@ export default function Login() {
     e.preventDefault();
     const result = await login(email, password);
     if (result) {
-      // Use redirect path from URL params, localStorage, or default to dashboard
-      const targetPath = redirectPath || '/dashboard';
+      // Check user role and redirect accordingly
+      const user = result.user;
+      let targetPath = redirectPath;
+      
+      if (!targetPath) {
+        // Determine default path based on role
+        if (user.role_id === 1) {
+          // Admin
+          targetPath = '/admin/dashboard';
+        } else if (user.role_id === 3) {
+          // Author
+          targetPath = '/author/dashboard';
+        } else {
+          // Regular user
+          targetPath = '/dashboard';
+        }
+      }
+      
       localStorage.removeItem('redirectAfterLogin');
       navigate(targetPath);
     }
