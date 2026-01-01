@@ -18,6 +18,7 @@ func SetupRoutes(
 	authorBookService *services.AuthorBookService,
 	authorAnalyticsService *services.AuthorAnalyticsService,
 	authorEarningsService *services.AuthorEarningsService,
+	authorOrderService *services.AuthorOrderService,
 	bookService *services.BookService,
 	storageService *services.StorageService,
 	cartService *services.CartService,
@@ -53,6 +54,7 @@ func SetupRoutes(
 	authorBookHandler := NewAuthorBookHandler(authorBookService)
 	authorAnalyticsHandler := NewAuthorAnalyticsHandler(authorAnalyticsService)
 	authorEarningsHandler := NewAuthorEarningsHandler(authorEarningsService)
+	authorOrderHandler := NewAuthorOrderHandler(authorOrderService)
 	bookHandler := NewBookHandler(bookService, storageService)
 	cartHandler := NewCartHandler(cartService)
 	checkoutHandler := NewCheckoutHandler(orderService, paymentService)
@@ -191,6 +193,13 @@ func SetupRoutes(
 	authorDashboard.Get("/earnings/summary", authorEarningsHandler.GetEarningsSummary)
 	authorDashboard.Get("/earnings", authorEarningsHandler.ListEarnings)
 	authorDashboard.Get("/payouts", authorEarningsHandler.ListPayouts)
+	authorDashboard.Post("/payouts/request", authorEarningsHandler.RequestPayout)
+	authorDashboard.Get("/payouts/:id", authorEarningsHandler.GetPayout)
+	
+	// Author Orders routes
+	authorDashboard.Get("/orders/stats", authorOrderHandler.GetOrderStats)
+	authorDashboard.Get("/orders", authorOrderHandler.ListOrders)
+	authorDashboard.Get("/orders/:id", authorOrderHandler.GetOrder)
 	authorDashboard.Post("/payouts/request", authorEarningsHandler.RequestPayout)
 	authorDashboard.Get("/payouts/:id", authorEarningsHandler.GetPayout)
 
