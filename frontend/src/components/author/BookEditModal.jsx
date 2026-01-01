@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import api from '../../lib/api';
+import { uploadEbook, uploadCover } from '../../lib/fileService';
 
 const BookEditModal = ({ isOpen, onClose, book, categories, onSuccess }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -146,32 +147,41 @@ const BookEditModal = ({ isOpen, onClose, book, categories, onSuccess }) => {
     setUploadProgress(0);
     
     try {
-      const submitData = new FormData();
-      
-      Object.entries(formData).forEach(([key, value]) => {
-        if (key !== 'cover_image' && key !== 'ebook_file' && value !== null && value !== '') {
-          submitData.append(key, String(value));
-        }
-      });
-      
+      const bookData = {
+        title: formData.title,
+        category_id: formData.category_id,
+        price: formData.price,
+        isbn: formData.isbn || '',
+        description: formData.description || '',
+        language: formData.language,
+        pages: formData.pages || '',
+        publication_date: formData.publication_date || '',
+        publisher: formData.publisher || '',
+        status: formData.status
+      };
+
+      // Upload new cover if provided
       if (formData.cover_image) {
-        submitData.append('cover_image', formData.cover_image);
+        setUploadProgress(20);
+        const coverResult = await uploadCover(formData.cover_image);
+        bookData.cover_image = coverResult.path;
       }
+
+      // Upload new ebook if provided
       if (formData.ebook_file) {
-        submitData.append('ebook_file', formData.ebook_file);
+        setUploadProgress(50);
+        const ebookResult = await uploadEbook(formData.ebook_file);
+        bookData.file_url = ebookResult.path;
       }
+
+      setUploadProgress(80);
       
-      const response = await api.put(`/admin/books/${book.id}`, submitData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-        onUploadProgress: (progressEvent) => {
-          const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-          setUploadProgress(progress);
-        }
-      });
+      const response = await api.put(`/author/books/${book.id}`, bookData);
       
       const bookTitle = response.data.book?.title || formData.title;
       alert(`Book "${bookTitle}" updated successfully!`);
       
+      setUploadProgress(100);
       setTimeout(() => {
         onSuccess();
         resetForm();

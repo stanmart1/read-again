@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import api from '../../lib/api';
+import { uploadEbook, uploadCover } from '../../lib/fileService';
 
 const BookAddModal = ({ isOpen, onClose, categories, onSuccess }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -98,32 +99,33 @@ const BookAddModal = ({ isOpen, onClose, categories, onSuccess }) => {
     setUploadProgress(0);
 
     try {
-      const submitData = new FormData();
+      // Upload cover image first
+      setUploadProgress(10);
+      const coverResult = await uploadCover(formData.cover_image);
       
-      // Add form fields
-      Object.entries(formData).forEach(([key, value]) => {
-        if (key !== 'cover_image' && key !== 'ebook_file' && value !== null && value !== '') {
-          submitData.append(key, String(value));
-        }
-      });
+      // Upload ebook file
+      setUploadProgress(40);
+      const ebookResult = await uploadEbook(formData.ebook_file);
+      
+      setUploadProgress(70);
 
-      // Add files
-      if (formData.cover_image) {
-        submitData.append('cover_image', formData.cover_image);
-      }
-      if (formData.ebook_file) {
-        submitData.append('ebook_file', formData.ebook_file);
-      }
+      // Send book data with file paths to backend
+      const bookData = {
+        title: formData.title,
+        category_id: formData.category_id,
+        price: formData.price,
+        isbn: formData.isbn || '',
+        description: formData.description || '',
+        language: formData.language,
+        pages: formData.pages || '',
+        publication_date: formData.publication_date || '',
+        publisher: formData.publisher || '',
+        status: formData.status,
+        cover_image: coverResult.path,
+        file_url: ebookResult.path
+      };
 
-      setUploadProgress(25);
-
-      const response = await api.post('/author/books', submitData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-        onUploadProgress: (progressEvent) => {
-          const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-          setUploadProgress(Math.min(progress, 95)); // Cap at 95% until response
-        }
-      });
+      const response = await api.post('/author/books', bookData);
       
       if (!response.data.book_id) {
         throw new Error('Book creation failed - no book ID returned');

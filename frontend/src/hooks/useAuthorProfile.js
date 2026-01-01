@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import api from '../lib/api';
+import { uploadProfile } from '../lib/fileService';
 
 export const useAuthorProfile = () => {
   const [loading, setLoading] = useState(false);
@@ -37,10 +38,12 @@ export const useAuthorProfile = () => {
     setLoading(true);
     setError(null);
     try {
-      const formData = new FormData();
-      formData.append('photo', file);
-      const response = await api.post('/author/profile/photo', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+      // Upload to upload service
+      const result = await uploadProfile(file);
+      
+      // Send path to backend
+      const response = await api.post('/author/profile/photo', {
+        photo: result.path
       });
       return response.data.photo;
     } catch (err) {
