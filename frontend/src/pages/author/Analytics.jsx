@@ -67,7 +67,7 @@ export default function Analytics() {
 
   return (
     <AuthorLayout>
-      <div className="space-y-6">
+      <div className="max-w-7xl mx-auto space-y-6">
         <h1 className="text-2xl font-bold text-foreground">Sales Analytics</h1>
 
         {/* Stats Cards */}
@@ -115,10 +115,10 @@ export default function Analytics() {
         )}
 
         {/* Books List */}
-        <div className="bg-card rounded-lg border border-border p-6">
+        <div className="bg-card rounded-lg border border-border p-4 sm:p-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
             <h2 className="text-lg font-semibold text-foreground">Book Performance</h2>
-            <div className="flex gap-3 w-full md:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <input
                 type="text"
                 placeholder="Search books..."
