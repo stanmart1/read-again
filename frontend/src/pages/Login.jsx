@@ -31,7 +31,7 @@ export default function Login() {
       if (!targetPath) {
         // Determine default path based on role name
         const roleName = user.role?.name?.toLowerCase();
-        console.log('Role name:', roleName, 'User:', user);
+        alert(`Role: ${roleName}, User: ${JSON.stringify(user.role)}`);
         
         if (roleName === 'admin' || roleName === 'super_admin') {
           targetPath = '/admin';
@@ -42,7 +42,7 @@ export default function Login() {
         }
       }
       
-      console.log('Redirecting to:', targetPath);
+      alert(`Redirecting to: ${targetPath}`);
       localStorage.removeItem('redirectAfterLogin');
       navigate(targetPath);
     }

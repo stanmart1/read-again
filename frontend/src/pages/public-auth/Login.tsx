@@ -21,7 +21,19 @@ export default function Login() {
 
     const result = await login(email, password);
     if (result) {
-      navigate('/dashboard');
+      // Check user role and redirect accordingly
+      const user = result.user;
+      const roleName = user.role?.name?.toLowerCase();
+      
+      let targetPath = '/dashboard';
+      
+      if (roleName === 'admin' || roleName === 'super_admin') {
+        targetPath = '/admin';
+      } else if (roleName === 'author') {
+        targetPath = '/author/dashboard';
+      }
+      
+      navigate(targetPath);
     }
   };
 
