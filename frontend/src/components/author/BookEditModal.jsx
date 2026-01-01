@@ -90,7 +90,6 @@ const BookEditModal = ({ isOpen, onClose, book, categories, onSuccess }) => {
       if (!formData.title.trim()) newErrors.title = 'Title is required';
       if (!formData.category_id) newErrors.category_id = 'Category is required';
       if (!formData.price || parseFloat(formData.price) <= 0) newErrors.price = 'Valid price is required';
-      if (!formData.format) newErrors.format = 'Book type is required';
     }
     
     if (step === 2) {

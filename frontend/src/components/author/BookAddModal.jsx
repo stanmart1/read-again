@@ -99,17 +99,11 @@ const BookAddModal = ({ isOpen, onClose, categories, onSuccess }) => {
 
     try {
       const submitData = new FormData();
-
-      // Map frontend fields to backend expected fields
-      const fieldMapping = {
-        'format': 'book_type'
-      };
       
       // Add form fields
       Object.entries(formData).forEach(([key, value]) => {
         if (key !== 'cover_image' && key !== 'ebook_file' && value !== null && value !== '') {
-          const backendKey = fieldMapping[key] || key;
-          submitData.append(backendKey, String(value));
+          submitData.append(key, String(value));
         }
       });
 
