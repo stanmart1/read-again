@@ -2,17 +2,28 @@ package main
 
 import (
 	"log"
+	"os"
+	"readagain/internal/config"
 	"readagain/internal/database"
 	"readagain/internal/models"
 
+	"github.com/joho/godotenv"
 	"golang.org/x/crypto/bcrypt"
 )
 
 func main() {
 	log.Println("🔄 Creating author user...")
 
+	// Load environment variables
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found, using environment variables")
+	}
+
+	// Load config
+	cfg := config.Load()
+
 	// Initialize database
-	if err := database.InitDB(); err != nil {
+	if err := database.Connect(cfg.Database.URL); err != nil {
 		log.Fatal("❌ Failed to connect to database:", err)
 	}
 
@@ -70,4 +81,6 @@ func main() {
 	log.Println("📧 Email: author@readagain.com")
 	log.Println("🔑 Password: author123")
 	log.Println("👤 Username: author")
+	
+	os.Exit(0)
 }
