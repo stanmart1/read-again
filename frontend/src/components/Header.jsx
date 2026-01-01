@@ -87,7 +87,11 @@ export default function Header() {
                           <i className="ri-admin-line mr-2"></i>Admin Dashboard
                         </Link>
                       )}
-                      <Link to="/dashboard" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-foreground hover:bg-muted">
+                      <Link 
+                        to={user?.role?.name?.toLowerCase() === 'author' ? '/author/dashboard' : '/dashboard'} 
+                        onClick={() => setIsProfileOpen(false)} 
+                        className="block px-4 py-2 text-foreground hover:bg-muted"
+                      >
                         <i className="ri-dashboard-line mr-2"></i>Dashboard
                       </Link>
                       <Link to="/dashboard/library" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-foreground hover:bg-muted">
