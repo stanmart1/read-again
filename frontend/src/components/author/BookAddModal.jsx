@@ -396,38 +396,36 @@ const BookAddModal = ({ isOpen, onClose, categories, onSuccess }) => {
                 {errors.cover_image && <p className="text-red-500 text-sm mt-1">{errors.cover_image}</p>}
               </div>
 
-              {/* Ebook File Upload (conditional) */}
-              {(formData.format === 'ebook' || formData.format === 'hybrid') && (
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Ebook File {formData.format === 'ebook' && '*'} {formData.ebook_file && <span className="text-green-600 dark:text-green-400">✓ Uploaded</span>}
-                  </label>
-                  <div
-                    onDragEnter={(e) => handleDrag(e, 'ebook')}
-                    onDragLeave={(e) => handleDrag(e, 'ebook')}
-                    onDragOver={(e) => handleDrag(e, 'ebook')}
-                    onDrop={(e) => handleDrop(e, 'ebook')}
-                    className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${dragActive.ebook ? 'border-primary bg-primary/10' :
-                      errors.ebook_file ? 'border-red-500' : 'border-input hover:border-primary'
-                      }`}
-                    onClick={() => ebookInputRef.current?.click()}
-                  >
-                    <i className="ri-file-pdf-line text-4xl text-muted-foreground mb-2"></i>
-                    <p className="text-sm text-muted-foreground">
-                      {formData.ebook_file ? formData.ebook_file.name : 'Drag & drop ebook file or click to browse'}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">PDF, EPUB, MOBI, HTML up to 500MB</p>
-                    <input
-                      ref={ebookInputRef}
-                      type="file"
-                      accept=".pdf,.epub,.mobi,.html,.htm"
-                      onChange={(e) => e.target.files[0] && handleFileChange('ebook_file', e.target.files[0])}
-                      className="hidden"
-                    />
-                  </div>
-                  {errors.ebook_file && <p className="text-red-500 text-sm mt-1">{errors.ebook_file}</p>}
+              {/* Ebook File Upload */}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Ebook File * {formData.ebook_file && <span className="text-green-600 dark:text-green-400">✓ Uploaded</span>}
+                </label>
+                <div
+                  onDragEnter={(e) => handleDrag(e, 'ebook')}
+                  onDragLeave={(e) => handleDrag(e, 'ebook')}
+                  onDragOver={(e) => handleDrag(e, 'ebook')}
+                  onDrop={(e) => handleDrop(e, 'ebook')}
+                  className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${dragActive.ebook ? 'border-primary bg-primary/10' :
+                    errors.ebook_file ? 'border-red-500' : 'border-input hover:border-primary'
+                    }`}
+                  onClick={() => ebookInputRef.current?.click()}
+                >
+                  <i className="ri-file-pdf-line text-4xl text-muted-foreground mb-2"></i>
+                  <p className="text-sm text-muted-foreground">
+                    {formData.ebook_file ? formData.ebook_file.name : 'Drag & drop ebook file or click to browse'}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">PDF, EPUB, MOBI, HTML up to 500MB</p>
+                  <input
+                    ref={ebookInputRef}
+                    type="file"
+                    accept=".pdf,.epub,.mobi,.html,.htm"
+                    onChange={(e) => e.target.files[0] && handleFileChange('ebook_file', e.target.files[0])}
+                    className="hidden"
+                  />
                 </div>
-              )}
+                {errors.ebook_file && <p className="text-red-500 text-sm mt-1">{errors.ebook_file}</p>}
+              </div>
 
               {/* Upload Progress */}
               {isSubmitting && (
