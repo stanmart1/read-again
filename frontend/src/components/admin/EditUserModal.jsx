@@ -8,10 +8,6 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
     email: '',
     username: '',
     phone_number: '',
-    school_name: '',
-    school_category: '',
-    class_level: '',
-    department: '',
     is_active: true,
     role_id: 3
   });
@@ -25,10 +21,6 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
         email: user.email || '',
         username: user.username || '',
         phone_number: user.phone_number || '',
-        school_name: user.school_name || '',
-        school_category: user.school_category || '',
-        class_level: user.class_level || '',
-        department: user.department || '',
         is_active: user.is_active !== undefined ? user.is_active : true,
         role_id: user.role?.id || 3
       });
@@ -139,66 +131,6 @@ const EditUserModal = ({ isOpen, onClose, user, onSave, roles = [] }) => {
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
                 </select>
-              </div>
-            </div>
-
-            <div className="border-t border-border pt-6">
-              <div className="mb-4">
-                <h3 className="text-lg font-semibold text-foreground mb-2">Educational Information</h3>
-                <p className="text-sm text-muted-foreground">Optional educational details</p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">School Category</label>
-                  <select
-                    value={formData.school_category}
-                    onChange={(e) => setFormData({ ...formData, school_category: e.target.value })}
-                    className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
-                  >
-                    <option value="">Select category</option>
-                    <option value="Primary">Primary</option>
-                    <option value="Secondary">Secondary</option>
-                    <option value="Tertiary">Tertiary</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">School Name</label>
-                  <input
-                    type="text"
-                    value={formData.school_name}
-                    onChange={(e) => setFormData({ ...formData, school_name: e.target.value })}
-                    className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
-                    placeholder="University of Lagos"
-                  />
-                </div>
-
-                {(formData.school_category === 'Primary' || formData.school_category === 'Secondary') && (
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Class Level</label>
-                    <input
-                      type="text"
-                      value={formData.class_level}
-                      onChange={(e) => setFormData({ ...formData, class_level: e.target.value })}
-                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
-                      placeholder={formData.school_category === 'Primary' ? 'Primary 1' : 'SS1'}
-                    />
-                  </div>
-                )}
-
-                {formData.school_category === 'Tertiary' && (
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Department</label>
-                    <input
-                      type="text"
-                      value={formData.department}
-                      onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                      className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200"
-                      placeholder="Computer Science"
-                    />
-                  </div>
-                )}
               </div>
             </div>
 

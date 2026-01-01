@@ -32,15 +32,7 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
             {user.first_name?.[0]}{user.last_name?.[0]}
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <h4 className="text-xl font-bold text-foreground">{user.first_name} {user.last_name}</h4>
-              {user.school_name && (
-                <span className="inline-flex items-center px-2 py-1 bg-primary/20 text-primary text-xs font-semibold rounded" title="Student">
-                  <i className="ri-graduation-cap-line mr-1"></i>
-                  Student
-                </span>
-              )}
-            </div>
+            <h4 className="text-xl font-bold text-foreground">{user.first_name} {user.last_name}</h4>
             <p className="text-muted-foreground">@{user.username}</p>
             <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full text-white mt-2 ${getRoleColor(user.role?.name)}`}>
               {user.role?.display_name || 'No Role'}
@@ -65,32 +57,6 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
               <div className="p-4 bg-muted rounded-lg">
                 <p className="text-sm text-muted-foreground mb-1">Phone Number</p>
                 <p className="font-medium text-foreground">{user.phone_number || 'N/A'}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Educational Information */}
-          <div>
-            <h5 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
-              <i className="ri-graduation-cap-line"></i>
-              Educational Information
-            </h5>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-muted rounded-lg">
-                <p className="text-sm text-muted-foreground mb-1">School Name</p>
-                <p className="font-medium text-foreground">{user.school_name || 'N/A'}</p>
-              </div>
-              <div className="p-4 bg-muted rounded-lg">
-                <p className="text-sm text-muted-foreground mb-1">School Category</p>
-                <p className="font-medium text-foreground">{user.school_category || 'N/A'}</p>
-              </div>
-              <div className="p-4 bg-muted rounded-lg">
-                <p className="text-sm text-muted-foreground mb-1">Class Level</p>
-                <p className="font-medium text-foreground">{user.class_level || 'N/A'}</p>
-              </div>
-              <div className="p-4 bg-muted rounded-lg">
-                <p className="text-sm text-muted-foreground mb-1">Department</p>
-                <p className="font-medium text-foreground">{user.department || 'N/A'}</p>
               </div>
             </div>
           </div>
