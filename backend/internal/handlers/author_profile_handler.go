@@ -53,19 +53,20 @@ func (h *AuthorProfileHandler) UpdatePhoto(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Unauthorized"})
 	}
 
-	file, err := c.FormFile("photo")
-	if err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Photo file is required"})
+	var input struct {
+		Photo string `json:"photo"`
+	}
+	if err := c.BodyParser(&input); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid input"})
 	}
 
-	photoPath := "/uploads/authors/" + file.Filename
-	if err := c.SaveFile(file, "."+photoPath); err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to upload photo"})
+	if input.Photo == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Photo path is required"})
 	}
 
-	if err := h.service.UpdatePhoto(authorID, photoPath); err != nil {
+	if err := h.service.UpdatePhoto(authorID, input.Photo); err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to update photo"})
 	}
 
-	return c.JSON(fiber.Map{"message": "Photo updated", "photo": photoPath})
+	return c.JSON(fiber.Map{"message": "Photo updated", "photo": input.Photo})
 }
