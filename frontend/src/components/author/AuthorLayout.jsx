@@ -9,7 +9,7 @@ export default function AuthorLayout({ children }) {
     { name: 'My Books', path: '/author/books', icon: 'ri-book-line' },
     { name: 'Analytics', path: '/author/analytics', icon: 'ri-line-chart-line' },
     { name: 'Earnings', path: '/author/earnings', icon: 'ri-money-dollar-circle-line' },
-    { name: 'Payouts', path: '/author/payouts', icon: 'ri-wallet-line' },
+    { name: 'Orders', path: '/author/orders', icon: 'ri-shopping-cart-line' },
     { name: 'Reviews', path: '/author/reviews', icon: 'ri-star-line' },
     { name: 'Profile', path: '/author/profile', icon: 'ri-user-settings-line' },
   ];

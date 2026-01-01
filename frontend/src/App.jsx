@@ -72,7 +72,6 @@ const AuthorDashboard = lazy(() => import('./pages/author/Dashboard'));
 const AuthorBooks = lazy(() => import('./pages/author/Books'));
 const AuthorAnalytics = lazy(() => import('./pages/author/Analytics'));
 const AuthorEarnings = lazy(() => import('./pages/author/Earnings'));
-const AuthorPayouts = lazy(() => import('./pages/author/Payouts'));
 
 import './styles/index.css';
 
@@ -151,7 +150,6 @@ function App() {
               <Route path="/author/books" element={<AuthorRoute><AuthorBooks /></AuthorRoute>} />
               <Route path="/author/analytics" element={<AuthorRoute><AuthorAnalytics /></AuthorRoute>} />
               <Route path="/author/earnings" element={<AuthorRoute><AuthorEarnings /></AuthorRoute>} />
-              <Route path="/author/payouts" element={<AuthorRoute><AuthorPayouts /></AuthorRoute>} />
               
               {/* 404 */}
               <Route path="*" element={<PublicNotFound />} />
