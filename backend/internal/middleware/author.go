@@ -9,7 +9,7 @@ import (
 )
 
 func AuthorOnly(c *fiber.Ctx) error {
-	userID, ok := c.Locals("user_id").(uint)
+	userID, ok := c.Locals("userID").(uint)
 	if !ok {
 		return utils.NewUnauthorizedError("User not authenticated")
 	}
@@ -26,12 +26,12 @@ func AuthorOnly(c *fiber.Ctx) error {
 }
 
 func AuthorOrAdmin(c *fiber.Ctx) error {
-	userID, ok := c.Locals("user_id").(uint)
+	userID, ok := c.Locals("userID").(uint)
 	if !ok {
 		return utils.NewUnauthorizedError("User not authenticated")
 	}
 
-	roleID, ok := c.Locals("role_id").(uint)
+	roleID, ok := c.Locals("roleID").(uint)
 	if ok && (roleID == 1 || roleID == 2) {
 		return c.Next()
 	}
