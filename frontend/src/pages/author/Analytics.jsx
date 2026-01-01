@@ -233,7 +233,6 @@ export default function Analytics() {
               )) : (
                 <p className="text-center py-8 text-muted-foreground">No orders yet</p>
               )}
-              )}
             </div>
           </motion.div>
 
