@@ -24,8 +24,8 @@ export default function AuthorBooks() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await api.get('/categories');
-        setCategories(response.data.categories || response.data || []);
+        const response = await api.get('/author/categories');
+        setCategories(response.data.categories || []);
       } catch (err) {
         console.error('Failed to fetch categories:', err);
       }
