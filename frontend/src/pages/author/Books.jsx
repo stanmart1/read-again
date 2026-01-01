@@ -6,6 +6,7 @@ import { getImageUrl } from '../../lib/fileService';
 import BookAddModal from '../../components/author/BookAddModal';
 import BookEditModal from '../../components/author/BookEditModal';
 import BookDetailsModal from '../../components/author/BookDetailsModal';
+import CategoriesTab from '../../components/author/CategoriesTab';
 import api from '../../lib/api';
 
 export default function AuthorBooks() {
@@ -17,6 +18,7 @@ export default function AuthorBooks() {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [activeTab, setActiveTab] = useState('books');
 
   // Fetch categories
   useEffect(() => {
@@ -96,16 +98,46 @@ export default function AuthorBooks() {
               <h1 className="text-3xl font-bold text-foreground mb-2">My Books</h1>
               <p className="text-muted-foreground">Manage your book collection</p>
             </div>
-            <button 
-              onClick={() => setShowAddModal(true)}
-              className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2"
+            {activeTab === 'books' && (
+              <button 
+                onClick={() => setShowAddModal(true)}
+                className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2"
+              >
+                <i className="ri-add-line text-xl"></i>
+                Add New Book
+              </button>
+            )}
+          </div>
+
+          {/* Tabs */}
+          <div className="flex gap-4 border-b border-border">
+            <button
+              onClick={() => setActiveTab('books')}
+              className={`px-4 py-2 font-medium transition-colors ${
+                activeTab === 'books'
+                  ? 'text-primary border-b-2 border-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
             >
-              <i className="ri-add-line text-xl"></i>
-              Add New Book
+              Books
+            </button>
+            <button
+              onClick={() => setActiveTab('categories')}
+              className={`px-4 py-2 font-medium transition-colors ${
+                activeTab === 'categories'
+                  ? 'text-primary border-b-2 border-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              My Categories
             </button>
           </div>
         </motion.div>
 
+        {activeTab === 'categories' ? (
+          <CategoriesTab />
+        ) : (
+          <>
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <motion.div
@@ -327,6 +359,8 @@ export default function AuthorBooks() {
           setSelectedBook(null);
         }}
       />
+      </>
+        )}
     </AuthorLayout>
   );
 }
