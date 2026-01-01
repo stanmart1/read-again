@@ -4,11 +4,16 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
   if (!isOpen || !user) return null;
 
   const getRoleColor = (role) => {
-    switch (role) {
-      case 'admin': return 'bg-purple-500';
-      case 'super_admin': return 'bg-red-50 dark:bg-red-900/200';
-      case 'user': return 'bg-primary/100';
-      default: return 'bg-muted0';
+    switch (role?.toLowerCase()) {
+      case 'admin': 
+      case 'superadmin': 
+        return 'bg-purple-500';
+      case 'author': 
+        return 'bg-blue-500';
+      case 'customer': 
+        return 'bg-green-500';
+      default: 
+        return 'bg-gray-500';
     }
   };
 
@@ -35,7 +40,7 @@ const UserDetailModal = ({ isOpen, onClose, user, onEdit }) => {
             <h4 className="text-xl font-bold text-foreground">{user.first_name} {user.last_name}</h4>
             <p className="text-muted-foreground">@{user.username}</p>
             <span className={`inline-flex px-3 py-1 text-xs font-semibold rounded-full text-white mt-2 ${getRoleColor(user.role?.name)}`}>
-              {user.role?.display_name || 'No Role'}
+              {user.role?.name || 'No Role'}
             </span>
           </div>
         </div>
