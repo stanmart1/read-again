@@ -7,16 +7,32 @@ import { getImageUrl } from '../../lib/fileService';
 import BookAnalyticsModal from '../../components/author/BookAnalyticsModal';
 
 export default function Analytics() {
-  const { overview, isLoading, error } = useAuthorAnalytics();
+  const { overview, isLoading, error, fetchRecentOrders, fetchRecentReviews } = useAuthorAnalytics();
   const { books, fetchBooks } = useAuthorBooks();
   const [selectedBook, setSelectedBook] = useState(null);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('revenue');
+  const [recentOrders, setRecentOrders] = useState([]);
+  const [recentReviews, setRecentReviews] = useState([]);
 
   useEffect(() => {
     fetchBooks();
+    loadRecentData();
   }, []);
+
+  const loadRecentData = async () => {
+    try {
+      const [orders, reviews] = await Promise.all([
+        fetchRecentOrders(5),
+        fetchRecentReviews(5)
+      ]);
+      setRecentOrders(orders);
+      setRecentReviews(reviews);
+    } catch (err) {
+      console.error('Failed to load recent data:', err);
+    }
+  };
 
   const sortedBooks = [...(books || [])].sort((a, b) => {
     if (sortBy === 'revenue') return (b.revenue || 0) - (a.revenue || 0);
@@ -184,6 +200,73 @@ export default function Analytics() {
               <p className="text-muted-foreground">No books found</p>
             </div>
           )}
+        </div>
+
+        {/* Recent Orders & Reviews */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Recent Orders */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-card rounded-lg border border-border p-6"
+          >
+            <h2 className="text-lg font-semibold text-foreground mb-4">Recent Orders</h2>
+            <div className="space-y-3">
+              {recentOrders.map((order) => (
+                <div key={order.order_id} className="flex justify-between items-start p-3 bg-muted/50 rounded-lg">
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground">{order.book_title}</p>
+                    <p className="text-sm text-muted-foreground">{order.customer_name}</p>
+                    <p className="text-xs text-muted-foreground">{new Date(order.order_date).toLocaleDateString()}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-semibold text-foreground">₦{order.amount?.toLocaleString()}</p>
+                    <span className={`text-xs px-2 py-1 rounded ${
+                      order.status === 'completed' 
+                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                        : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                    }`}>
+                      {order.status}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              {recentOrders.length === 0 && (
+                <p className="text-center py-8 text-muted-foreground">No orders yet</p>
+              )}
+            </div>
+          </motion.div>
+
+          {/* Recent Reviews */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-card rounded-lg border border-border p-6"
+          >
+            <h2 className="text-lg font-semibold text-foreground mb-4">Recent Reviews</h2>
+            <div className="space-y-3">
+              {recentReviews.map((review) => (
+                <div key={review.review_id} className="p-3 bg-muted/50 rounded-lg">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <p className="font-medium text-foreground">{review.book_title}</p>
+                      <p className="text-sm text-muted-foreground">{review.customer_name}</p>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="text-yellow-500">★</span>
+                      <span className="font-semibold text-foreground">{review.rating}</span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-2">{review.comment}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{new Date(review.review_date).toLocaleDateString()}</p>
+                </div>
+              ))}
+              {recentReviews.length === 0 && (
+                <p className="text-center py-8 text-muted-foreground">No reviews yet</p>
+              )}
+            </div>
+          </motion.div>
         </div>
       </div>
 

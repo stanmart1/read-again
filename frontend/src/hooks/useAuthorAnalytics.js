@@ -63,6 +63,37 @@ export const useAuthorAnalytics = () => {
     }
   };
 
+  const fetchDownloadStats = async () => {
+    try {
+      const response = await api.get('/author/analytics/downloads');
+      return response.data.downloads;
+    } catch (err) {
+      throw new Error(err.response?.data?.error || 'Failed to fetch downloads');
+    }
+  };
+
+  const fetchRecentOrders = async (limit = 10) => {
+    try {
+      const response = await api.get('/author/analytics/recent-orders', {
+        params: { limit }
+      });
+      return response.data.orders;
+    } catch (err) {
+      throw new Error(err.response?.data?.error || 'Failed to fetch recent orders');
+    }
+  };
+
+  const fetchRecentReviews = async (limit = 10) => {
+    try {
+      const response = await api.get('/author/analytics/recent-reviews', {
+        params: { limit }
+      });
+      return response.data.reviews;
+    } catch (err) {
+      throw new Error(err.response?.data?.error || 'Failed to fetch recent reviews');
+    }
+  };
+
   useEffect(() => {
     fetchOverview();
   }, []);
@@ -75,6 +106,9 @@ export const useAuthorAnalytics = () => {
     fetchSalesData,
     fetchRevenueData,
     fetchTopBooks,
-    fetchBookBuyers
+    fetchBookBuyers,
+    fetchDownloadStats,
+    fetchRecentOrders,
+    fetchRecentReviews
   };
 };

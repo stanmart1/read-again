@@ -48,6 +48,30 @@ type BookBuyer struct {
 	OrderID      uint      `json:"order_id"`
 }
 
+type DownloadStat struct {
+	BookID    uint   `json:"book_id"`
+	Title     string `json:"title"`
+	Downloads int64  `json:"downloads"`
+}
+
+type RecentOrder struct {
+	OrderID      uint      `json:"order_id"`
+	CustomerName string    `json:"customer_name"`
+	BookTitle    string    `json:"book_title"`
+	Amount       float64   `json:"amount"`
+	OrderDate    time.Time `json:"order_date"`
+	Status       string    `json:"status"`
+}
+
+type RecentReview struct {
+	ReviewID     uint      `json:"review_id"`
+	BookTitle    string    `json:"book_title"`
+	CustomerName string    `json:"customer_name"`
+	Rating       int       `json:"rating"`
+	Comment      string    `json:"comment"`
+	ReviewDate   time.Time `json:"review_date"`
+}
+
 func (s *AuthorAnalyticsService) GetOverview(authorID uint) (*OverviewStats, error) {
 	var stats OverviewStats
 	
@@ -215,3 +239,80 @@ func (s *AuthorAnalyticsService) GetBookBuyers(authorID, bookID uint, page, limi
 	
 	return buyers, total, nil
 }
+
+func (s *AuthorAnalyticsService) GetDownloadStats(authorID uint) ([]DownloadStat, error) {
+	var downloads []DownloadStat
+	
+	err := s.db.DB.Raw(`
+		SELECT 
+			books.id as book_id,
+			books.title,
+			COUNT(DISTINCT order_items.order_id) as downloads
+		FROM books
+		LEFT JOIN order_items ON order_items.book_id = books.id
+		LEFT JOIN orders ON orders.id = order_items.order_id AND orders.status = 'completed'
+		WHERE books.author_id = ?
+		GROUP BY books.id, books.title
+		ORDER BY downloads DESC
+	`, authorID).Scan(&downloads).Error
+	
+	if err != nil {
+		return nil, utils.NewInternalServerError("Failed to fetch download stats", err)
+	}
+	
+	return downloads, nil
+}
+
+func (s *AuthorAnalyticsService) GetRecentOrders(authorID uint, limit int) ([]RecentOrder, error) {
+	var orders []RecentOrder
+	
+	err := s.db.DB.Raw(`
+		SELECT 
+			orders.id as order_id,
+			users.full_name as customer_name,
+			books.title as book_title,
+			order_items.price * order_items.quantity as amount,
+			orders.created_at as order_date,
+			orders.status
+		FROM orders
+		JOIN order_items ON order_items.order_id = orders.id
+		JOIN books ON books.id = order_items.book_id
+		JOIN users ON users.id = orders.user_id
+		WHERE books.author_id = ?
+		ORDER BY orders.created_at DESC
+		LIMIT ?
+	`, authorID, limit).Scan(&orders).Error
+	
+	if err != nil {
+		return nil, utils.NewInternalServerError("Failed to fetch recent orders", err)
+	}
+	
+	return orders, nil
+}
+
+func (s *AuthorAnalyticsService) GetRecentReviews(authorID uint, limit int) ([]RecentReview, error) {
+	var reviews []RecentReview
+	
+	err := s.db.DB.Raw(`
+		SELECT 
+			reviews.id as review_id,
+			books.title as book_title,
+			users.full_name as customer_name,
+			reviews.rating,
+			reviews.comment,
+			reviews.created_at as review_date
+		FROM reviews
+		JOIN books ON books.id = reviews.book_id
+		JOIN users ON users.id = reviews.user_id
+		WHERE books.author_id = ?
+		ORDER BY reviews.created_at DESC
+		LIMIT ?
+	`, authorID, limit).Scan(&reviews).Error
+	
+	if err != nil {
+		return nil, utils.NewInternalServerError("Failed to fetch recent reviews", err)
+	}
+	
+	return reviews, nil
+}
+

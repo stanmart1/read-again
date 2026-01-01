@@ -130,3 +130,50 @@ func (h *AuthorAnalyticsHandler) GetBookBuyers(c *fiber.Ctx) error {
 		"limit": limit,
 	})
 }
+
+func (h *AuthorAnalyticsHandler) GetDownloadStats(c *fiber.Ctx) error {
+	authorID := c.Locals("author_id").(uint)
+	
+	downloads, err := h.service.GetDownloadStats(authorID)
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get download stats: %v", err)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to fetch downloads"})
+	}
+	
+	return c.JSON(fiber.Map{"downloads": downloads})
+}
+
+func (h *AuthorAnalyticsHandler) GetRecentOrders(c *fiber.Ctx) error {
+	authorID := c.Locals("author_id").(uint)
+	
+	limit, err := strconv.Atoi(c.Query("limit", "10"))
+	if err != nil || limit < 1 {
+		limit = 10
+	}
+	
+	orders, err := h.service.GetRecentOrders(authorID, limit)
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get recent orders: %v", err)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to fetch orders"})
+	}
+	
+	return c.JSON(fiber.Map{"orders": orders})
+}
+
+func (h *AuthorAnalyticsHandler) GetRecentReviews(c *fiber.Ctx) error {
+	authorID := c.Locals("author_id").(uint)
+	
+	limit, err := strconv.Atoi(c.Query("limit", "10"))
+	if err != nil || limit < 1 {
+		limit = 10
+	}
+	
+	reviews, err := h.service.GetRecentReviews(authorID, limit)
+	if err != nil {
+		utils.ErrorLogger.Printf("Failed to get recent reviews: %v", err)
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Failed to fetch reviews"})
+	}
+	
+	return c.JSON(fiber.Map{"reviews": reviews})
+}
+
