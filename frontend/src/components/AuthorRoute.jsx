@@ -8,8 +8,9 @@ export default function AuthorRoute({ children }) {
     return <Navigate to="/login?redirect=/author/dashboard" replace />;
   }
 
-  // Check if user has author role (role_id === 3)
-  if (user?.role_id !== 3) {
+  // Check if user has author role
+  const roleName = user?.role?.name?.toLowerCase();
+  if (roleName !== 'author') {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-card rounded-lg shadow-lg p-6 text-center border border-border">
