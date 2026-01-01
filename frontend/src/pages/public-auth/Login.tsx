@@ -23,13 +23,13 @@ export default function Login() {
     if (result) {
       // Check user role and redirect accordingly
       const user = result.user;
-      const roleName = user.role?.name?.toLowerCase();
+      const roleName = user.role?.name;
       
       let targetPath = '/dashboard';
       
-      if (roleName === 'admin' || roleName === 'super_admin') {
+      if (roleName === 'Admin' || roleName === 'SuperAdmin') {
         targetPath = '/admin';
-      } else if (roleName === 'author') {
+      } else if (roleName === 'Author') {
         targetPath = '/author/dashboard';
       }
       
