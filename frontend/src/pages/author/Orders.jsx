@@ -64,40 +64,40 @@ export default function Orders() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Total Orders</p>
-              <p className="text-2xl font-bold text-foreground">{stats.total_orders}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Total Orders</p>
+              <p className="text-xl sm:text-2xl font-bold text-foreground">{stats.total_orders}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Total Revenue</p>
-              <p className="text-2xl font-bold text-foreground">₦{stats.total_revenue?.toLocaleString()}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Total Revenue</p>
+              <p className="text-xl sm:text-2xl font-bold text-foreground break-words">₦{stats.total_revenue?.toLocaleString()}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Pending Orders</p>
-              <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{stats.pending_orders}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Pending Orders</p>
+              <p className="text-xl sm:text-2xl font-bold text-yellow-600 dark:text-yellow-400">{stats.pending_orders}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Completed Orders</p>
-              <p className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.completed_orders}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Completed Orders</p>
+              <p className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">{stats.completed_orders}</p>
             </motion.div>
           </div>
         )}
