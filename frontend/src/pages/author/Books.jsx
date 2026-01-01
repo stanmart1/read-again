@@ -361,6 +361,7 @@ export default function AuthorBooks() {
       />
       </>
         )}
+      </div>
     </AuthorLayout>
   );
 }
