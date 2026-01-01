@@ -22,12 +22,12 @@ const Profile = () => {
       const data = await fetchProfile();
       setProfile(data);
       setFormData({
-        business_name: data.business_name || '',
-        bio: data.bio || '',
-        website: data.website || '',
-        email: data.email || ''
+        business_name: data?.business_name || '',
+        bio: data?.bio || '',
+        website: data?.website || '',
+        email: data?.email || ''
       });
-      if (data.photo) {
+      if (data?.photo) {
         setPhotoPreview(`${import.meta.env.VITE_API_URL}${data.photo}`);
       }
     } catch (error) {
