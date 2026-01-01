@@ -213,6 +213,8 @@ func SetupRoutes(
 	authorDashboard.Get("/profile", authorProfileHandler.GetProfile)
 	authorDashboard.Put("/profile", authorProfileHandler.UpdateProfile)
 	authorDashboard.Post("/profile/photo", authorProfileHandler.UpdatePhoto)
+	authorDashboard.Get("/categories", categoryHandler.ListCategories)
+	authorDashboard.Post("/categories", categoryHandler.CreateCategory)
 	authorDashboard.Post("/payouts/request", authorEarningsHandler.RequestPayout)
 	authorDashboard.Get("/payouts/:id", authorEarningsHandler.GetPayout)
 
