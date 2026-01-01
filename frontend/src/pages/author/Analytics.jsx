@@ -76,40 +76,40 @@ export default function Analytics() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Total Earnings</p>
-              <p className="text-2xl font-bold text-foreground">₦{overview.total_earnings?.toLocaleString()}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Total Earnings</p>
+              <p className="text-xl sm:text-2xl font-bold text-foreground break-words">₦{overview.total_earnings?.toLocaleString()}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">This Month</p>
-              <p className="text-2xl font-bold text-foreground">₦{overview.monthly_revenue?.toLocaleString()}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">This Month</p>
+              <p className="text-xl sm:text-2xl font-bold text-foreground break-words">₦{overview.monthly_revenue?.toLocaleString()}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Total Sales</p>
-              <p className="text-2xl font-bold text-foreground">{overview.total_sales?.toLocaleString()}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Total Sales</p>
+              <p className="text-xl sm:text-2xl font-bold text-foreground">{overview.total_sales?.toLocaleString()}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Published Books</p>
-              <p className="text-2xl font-bold text-foreground">{overview.published_books}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Published Books</p>
+              <p className="text-xl sm:text-2xl font-bold text-foreground">{overview.published_books}</p>
             </motion.div>
           </div>
         )}

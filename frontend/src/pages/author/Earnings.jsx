@@ -71,40 +71,40 @@ export default function Earnings() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Available Balance</p>
-              <p className="text-2xl font-bold text-green-600 dark:text-green-400">₦{summary.available_balance?.toLocaleString()}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Available Balance</p>
+              <p className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400 break-words">₦{summary.available_balance?.toLocaleString()}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Pending Balance</p>
-              <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">₦{summary.pending_balance?.toLocaleString()}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Pending Balance</p>
+              <p className="text-xl sm:text-2xl font-bold text-yellow-600 dark:text-yellow-400 break-words">₦{summary.pending_balance?.toLocaleString()}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Total Earnings</p>
-              <p className="text-2xl font-bold text-foreground">₦{summary.total_earnings?.toLocaleString()}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Total Earnings</p>
+              <p className="text-xl sm:text-2xl font-bold text-foreground break-words">₦{summary.total_earnings?.toLocaleString()}</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-card p-6 rounded-lg border border-border"
+              className="bg-card p-4 rounded-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Total Withdrawn</p>
-              <p className="text-2xl font-bold text-foreground">₦{summary.total_withdrawn?.toLocaleString()}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mb-1">Total Withdrawn</p>
+              <p className="text-xl sm:text-2xl font-bold text-foreground break-words">₦{summary.total_withdrawn?.toLocaleString()}</p>
             </motion.div>
           </div>
         )}
