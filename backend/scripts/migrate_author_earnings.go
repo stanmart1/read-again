@@ -2,8 +2,8 @@ package main
 
 import (
 	"log"
-	"read-again/internal/database"
-	"read-again/internal/models"
+	"readagain/internal/database"
+	"readagain/internal/models"
 )
 
 func main() {

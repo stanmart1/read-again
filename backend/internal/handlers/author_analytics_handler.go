@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"read-again/internal/services"
-	"read-again/internal/utils"
+	"readagain/internal/services"
+	"readagain/internal/utils"
 	"strconv"
 	"time"
 

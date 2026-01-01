@@ -1,17 +1,18 @@
 package services
 
 import (
-	"read-again/internal/database"
-	"read-again/internal/models"
-	"read-again/internal/utils"
+	"readagain/internal/models"
+	"readagain/internal/utils"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type AuthorAnalyticsService struct {
-	db *database.Database
+	db *gorm.DB
 }
 
-func NewAuthorAnalyticsService(db *database.Database) *AuthorAnalyticsService {
+func NewAuthorAnalyticsService(db *gorm.DB) *AuthorAnalyticsService {
 	return &AuthorAnalyticsService{db: db}
 }
 
@@ -77,24 +78,24 @@ func (s *AuthorAnalyticsService) GetOverview(authorID uint) (*OverviewStats, err
 	
 	// Get author earnings
 	var author models.Author
-	if err := s.db.DB.Select("total_earnings, available_balance").First(&author, authorID).Error; err != nil {
-		return nil, utils.NewNotFoundError("Author not found", err)
+	if err := s.db.Select("total_earnings, available_balance").First(&author, authorID).Error; err != nil {
+		return nil, utils.NewNotFoundError("Author not found")
 	}
 	stats.TotalEarnings = author.TotalEarnings
 	
 	// Get monthly revenue
 	startOfMonth := time.Now().Truncate(24 * time.Hour).AddDate(0, 0, -time.Now().Day()+1)
-	s.db.DB.Model(&models.Earning{}).
+	s.db.Model(&models.Earning{}).
 		Where("author_id = ? AND created_at >= ?", authorID, startOfMonth).
 		Select("COALESCE(SUM(amount), 0)").
 		Scan(&stats.MonthlyRevenue)
 	
 	// Get book counts
-	s.db.DB.Model(&models.Book{}).Where("author_id = ?", authorID).Count(&stats.TotalBooks)
-	s.db.DB.Model(&models.Book{}).Where("author_id = ? AND status = ?", authorID, "published").Count(&stats.PublishedBooks)
+	s.db.Model(&models.Book{}).Where("author_id = ?", authorID).Count(&stats.TotalBooks)
+	s.db.Model(&models.Book{}).Where("author_id = ? AND status = ?", authorID, "published").Count(&stats.PublishedBooks)
 	
 	// Get sales count
-	s.db.DB.Model(&models.OrderItem{}).
+	s.db.Model(&models.OrderItem{}).
 		Joins("JOIN books ON books.id = order_items.book_id").
 		Where("books.author_id = ?", authorID).
 		Count(&stats.TotalSales)
@@ -103,7 +104,7 @@ func (s *AuthorAnalyticsService) GetOverview(authorID uint) (*OverviewStats, err
 	stats.TotalDownloads = stats.TotalSales
 	
 	// Get average rating
-	s.db.DB.Model(&models.Review{}).
+	s.db.Model(&models.Review{}).
 		Joins("JOIN books ON books.id = reviews.book_id").
 		Where("books.author_id = ?", authorID).
 		Select("COALESCE(AVG(rating), 0)").
@@ -115,7 +116,7 @@ func (s *AuthorAnalyticsService) GetOverview(authorID uint) (*OverviewStats, err
 func (s *AuthorAnalyticsService) GetSalesData(authorID uint, startDate, endDate time.Time) ([]SalesData, error) {
 	var salesData []SalesData
 	
-	err := s.db.DB.Raw(`
+	err := s.db.Raw(`
 		SELECT 
 			DATE(orders.created_at) as date,
 			COUNT(DISTINCT orders.id) as sales,
@@ -140,7 +141,7 @@ func (s *AuthorAnalyticsService) GetSalesData(authorID uint, startDate, endDate 
 func (s *AuthorAnalyticsService) GetTopBooks(authorID uint, limit int) ([]TopBook, error) {
 	var topBooks []TopBook
 	
-	err := s.db.DB.Raw(`
+	err := s.db.Raw(`
 		SELECT 
 			books.id as book_id,
 			books.title,
@@ -188,7 +189,7 @@ func (s *AuthorAnalyticsService) GetRevenueData(authorID uint, startDate, endDat
 		ORDER BY date ASC
 	`
 	
-	err := s.db.DB.Raw(query, authorID, startDate, endDate).Scan(&revenueData).Error
+	err := s.db.Raw(query, authorID, startDate, endDate).Scan(&revenueData).Error
 	
 	if err != nil {
 		return nil, utils.NewInternalServerError("Failed to fetch revenue data", err)
@@ -200,8 +201,8 @@ func (s *AuthorAnalyticsService) GetRevenueData(authorID uint, startDate, endDat
 func (s *AuthorAnalyticsService) GetBookBuyers(authorID, bookID uint, page, limit int) ([]BookBuyer, int64, error) {
 	// Verify book belongs to author
 	var book models.Book
-	if err := s.db.DB.Where("id = ? AND author_id = ?", bookID, authorID).First(&book).Error; err != nil {
-		return nil, 0, utils.NewNotFoundError("Book not found", err)
+	if err := s.db.Where("id = ? AND author_id = ?", bookID, authorID).First(&book).Error; err != nil {
+		return nil, 0, utils.NewNotFoundError("Book not found")
 	}
 	
 	var buyers []BookBuyer
@@ -210,14 +211,14 @@ func (s *AuthorAnalyticsService) GetBookBuyers(authorID, bookID uint, page, limi
 	offset := (page - 1) * limit
 	
 	// Get total count
-	s.db.DB.Model(&models.OrderItem{}).
+	s.db.Model(&models.OrderItem{}).
 		Joins("JOIN orders ON orders.id = order_items.order_id").
 		Joins("JOIN users ON users.id = orders.user_id").
 		Where("order_items.book_id = ? AND orders.status = 'completed'", bookID).
 		Count(&total)
 	
 	// Get buyers
-	err := s.db.DB.Raw(`
+	err := s.db.Raw(`
 		SELECT 
 			users.id as user_id,
 			users.full_name,
@@ -243,7 +244,7 @@ func (s *AuthorAnalyticsService) GetBookBuyers(authorID, bookID uint, page, limi
 func (s *AuthorAnalyticsService) GetDownloadStats(authorID uint) ([]DownloadStat, error) {
 	var downloads []DownloadStat
 	
-	err := s.db.DB.Raw(`
+	err := s.db.Raw(`
 		SELECT 
 			books.id as book_id,
 			books.title,
@@ -266,7 +267,7 @@ func (s *AuthorAnalyticsService) GetDownloadStats(authorID uint) ([]DownloadStat
 func (s *AuthorAnalyticsService) GetRecentOrders(authorID uint, limit int) ([]RecentOrder, error) {
 	var orders []RecentOrder
 	
-	err := s.db.DB.Raw(`
+	err := s.db.Raw(`
 		SELECT 
 			orders.id as order_id,
 			users.full_name as customer_name,
@@ -293,7 +294,7 @@ func (s *AuthorAnalyticsService) GetRecentOrders(authorID uint, limit int) ([]Re
 func (s *AuthorAnalyticsService) GetRecentReviews(authorID uint, limit int) ([]RecentReview, error) {
 	var reviews []RecentReview
 	
-	err := s.db.DB.Raw(`
+	err := s.db.Raw(`
 		SELECT 
 			reviews.id as review_id,
 			books.title as book_title,
