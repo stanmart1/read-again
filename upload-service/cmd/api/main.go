@@ -46,6 +46,15 @@ func main() {
 	// File serving
 	app.Get("/files/*", fileHandler.Serve)
 
+	// Root endpoint
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.JSON(fiber.Map{
+			"service": "ReadAgain Upload Service",
+			"version": "1.0.0",
+			"status":  "running",
+		})
+	})
+
 	// Health check
 	app.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{"status": "ok"})
