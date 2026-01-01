@@ -33,7 +33,7 @@ export default function Login() {
         const roleName = user.role?.name?.toLowerCase();
         
         if (roleName === 'admin' || roleName === 'super_admin') {
-          targetPath = '/admin/dashboard';
+          targetPath = '/admin';
         } else if (roleName === 'author') {
           targetPath = '/author/dashboard';
         } else {
