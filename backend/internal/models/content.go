@@ -34,14 +34,16 @@ type FAQ struct {
 
 type Review struct {
 	BaseModel
-	UserID     uint   `gorm:"not null;index" json:"user_id"`
-	User       *User  `gorm:"foreignKey:UserID" json:"user,omitempty"`
-	BookID     uint   `gorm:"not null;index" json:"book_id"`
-	Book       *Book  `gorm:"foreignKey:BookID" json:"book,omitempty"`
-	Rating     int    `gorm:"not null" json:"rating" validate:"required,gte=1,lte=5"`
-	Comment    string `gorm:"type:text" json:"comment"`
-	Status     string `gorm:"default:pending;index" json:"status"`
-	IsFeatured bool   `gorm:"default:false" json:"is_featured"`
+	UserID         uint       `gorm:"not null;index" json:"user_id"`
+	User           *User      `gorm:"foreignKey:UserID" json:"user,omitempty"`
+	BookID         uint       `gorm:"not null;index" json:"book_id"`
+	Book           *Book      `gorm:"foreignKey:BookID" json:"book,omitempty"`
+	Rating         int        `gorm:"not null" json:"rating" validate:"required,gte=1,lte=5"`
+	Comment        string     `gorm:"type:text" json:"comment"`
+	Status         string     `gorm:"default:pending;index" json:"status"`
+	IsFeatured     bool       `gorm:"default:false" json:"is_featured"`
+	AuthorResponse string     `gorm:"type:text" json:"author_response"`
+	RespondedAt    *time.Time `json:"responded_at,omitempty"`
 }
 
 type Testimonial struct {
